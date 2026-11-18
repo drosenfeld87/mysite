@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-16">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name — Portfolio</title>
+  <!-- Tailwind CSS v4 via CDN (no build step). For production you can
+       switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-white text-neutral-900 font-sans leading-relaxed">
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-white border-b border-neutral-200">
+    <a class="font-bold" href="#top">Your Name</a>
+    <nav class="flex gap-6" aria-label="Main">
+      <a class="hover:underline" href="#projects">Projects</a>
+      <a class="hover:underline" href="#about">About</a>
+      <a class="hover:underline" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="max-w-6xl mx-auto px-6 min-h-[calc(100vh-4rem)] flex flex-col justify-center">
+      <h1 class="text-5xl md:text-7xl font-bold mb-3">Your Name</h1>
+      <p class="mb-6 text-lg">A one-line description of what you do.</p>
+      <a class="inline-block self-start px-6 py-3 border border-neutral-900 bg-neutral-900 text-white hover:bg-white hover:text-neutral-900 cursor-pointer" href="#projects">See my work</a>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-neutral-200" id="projects">
+      <h2 class="text-3xl font-bold mb-8">Projects</h2>
+
+      <!-- 4-panel gallery (2x2 on desktop, stacked on mobile).
+           To use a real thumbnail, replace each placeholder <div> with:
+           <img class="aspect-[4/3] w-full object-cover" src="images/project-1.jpg" alt="Short description"> -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a class="block group" href="projects/project-1.html">
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-neutral-100 text-neutral-500">Thumbnail 1</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">Project One</h3>
+          <p class="text-neutral-500">One-line summary of the project.</p>
+        </a>
+
+        <a class="block group" href="projects/project-2.html">
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-neutral-100 text-neutral-500">Thumbnail 2</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">Project Two</h3>
+          <p class="text-neutral-500">One-line summary of the project.</p>
+        </a>
+
+        <a class="block group" href="projects/project-3.html">
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-neutral-100 text-neutral-500">Thumbnail 3</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">Project Three</h3>
+          <p class="text-neutral-500">One-line summary of the project.</p>
+        </a>
+
+        <a class="block group" href="projects/project-4.html">
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-neutral-100 text-neutral-500">Thumbnail 4</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">Project Four</h3>
+          <p class="text-neutral-500">One-line summary of the project.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-neutral-200" id="about">
+      <h2 class="text-3xl font-bold mb-8">About Me</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <!-- Replace with <img class="aspect-square w-full object-cover" src="images/portrait.jpg" alt="Your Name"> -->
+        <div class="aspect-square flex items-center justify-center bg-neutral-100 text-neutral-500">Photo</div>
+        <div class="md:col-span-2 space-y-4">
+          <p>A short paragraph about who you are, what you do, and what you care about in your work.</p>
+          <p>A second paragraph: background, tools you use, the kind of projects you're looking for.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-neutral-200" id="contact">
+      <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
+      <p class="mb-8">Have a project in mind? Send me a message.</p>
+
+      <!--
+        This form uses FormSubmit (https://formsubmit.co), a free service
+        that forwards submissions to your email. No account needed.
+
+        SETUP:
+        1. Replace YOUR_EMAIL@gmail.com below with your Gmail address.
+        2. Replace YOUR-DOMAIN.com in the _next field with your domain.
+        3. Submit the form once from the live site. FormSubmit emails you
+           an activation link: click it.
+        4. FormSubmit then gives you a random alias string. Swap your email
+           in the action URL for that string so your address isn't visible
+           in the page source.
+      -->
+      <form class="flex flex-col gap-2 max-w-xl" action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
+        <!-- Settings for FormSubmit -->
+        <input type="hidden" name="_subject" value="New message from your portfolio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://YOUR-DOMAIN.com/thanks.html">
+        <!-- Spam trap: real visitors never fill this in -->
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+        <label for="name">Name</label>
+        <input class="border border-neutral-300 p-2.5 mb-2" type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input class="border border-neutral-300 p-2.5 mb-2" type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea class="border border-neutral-300 p-2.5 mb-2" id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit" class="inline-block self-start px-6 py-3 border border-neutral-900 bg-neutral-900 text-white hover:bg-white hover:text-neutral-900 cursor-pointer mt-2">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-neutral-200 px-6 py-8 text-center text-neutral-500 space-y-1">
+    <p>&copy; <span id="year"></span> Your Name</p>
+    <p>
+      <a class="hover:underline" href="#">LinkedIn</a> ·
+      <a class="hover:underline" href="#">GitHub</a> ·
+      <a class="hover:underline" href="#">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
