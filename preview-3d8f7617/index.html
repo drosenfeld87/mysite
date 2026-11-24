@@ -76,9 +76,15 @@
     }
     .bg-grain {
       inset: 0;
-      opacity: 0.09;
+      opacity: 0.14;
       mix-blend-mode: overlay;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    /* Faint halftone dots for a photocopied feel */
+    .bg-grain::after {
+      content: ""; position: absolute; inset: 0;
+      background-image: radial-gradient(rgb(232 230 227 / .5) 0.6px, transparent 0.9px);
+      background-size: 4px 4px; opacity: .35; /* halftone */
     }
     @media (prefers-reduced-motion: reduce) { .bg-fx, .bg-fx::before, .bg-fx::after { animation: none; } }
   </style>
@@ -134,6 +140,10 @@
     .card:focus-visible { outline: none; }
     @media (prefers-reduced-motion: reduce) { .card .thumb { transition: none; } }
 
+    /* Photocopied thumbnails: grainy two-tone at rest, full colour on hover */
+    .card img.thumb { filter: url(#xerox) contrast(1.15); }
+    .card:hover img.thumb, .card:focus-visible img.thumb { filter: none; }
+
     /* Buttons: sticker-style with a pink offset shadow */
     .btn {
       display: inline-flex; align-items: center; gap: .6em; align-self: flex-start;
@@ -156,6 +166,22 @@
 <body class="bg-bg text-ink font-sans leading-relaxed">
   <div class="bg-fx" aria-hidden="true"></div>
   <div class="bg-grain" aria-hidden="true"></div>
+  <!-- Two-tone "photocopy" filter for project thumbnails: shadows near-black, mids pink, highlights green -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="xerox" color-interpolation-filters="sRGB">
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer result="duo">
+        <feFuncR type="table" tableValues="0.055 0.75 0.486"/>
+        <feFuncG type="table" tableValues="0.055 0.20 1"/>
+        <feFuncB type="table" tableValues="0.063 0.42 0.31"/>
+      </feComponentTransfer>
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+      <feBlend in="duo" in2="mono" mode="multiply" result="grainy"/>
+      <feComposite in="grainy" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </svg>
+
 
 
   <!-- ============ HEADER / NAV ============ -->
@@ -199,7 +225,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <a class="card block group" href="projects/project-1.html">
           <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-1-thumb.jpg" alt="CIO Analytics"> -->
-          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 1</div>
+          <div class="thumb aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 1</div>
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">CIO Analytics</h3>
           <p class="text-muted mb-2">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
           <!-- Role tags: what you did on this project -->
@@ -211,7 +237,7 @@
 
         <a class="card block group" href="projects/project-2.html">
           <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-2-thumb.jpg" alt="Project Two"> -->
-          <img class="aspect-[4/3] w-full object-cover" src="images/infographic-genai-security.jpg" alt="Research infographic on security and privacy risks for generative AI">
+          <img class="thumb aspect-[4/3] w-full object-cover" src="images/infographic-genai-security.jpg" alt="Research infographic on security and privacy risks for generative AI">
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Research Infographics</h3>
           <p class="text-muted mb-2">Visual frameworks that distill Info-Tech research blueprints into a single, scannable image for IT leaders.</p>
           <!-- Role tags: what you did on this project -->
@@ -223,7 +249,7 @@
 
         <a class="card block group" href="projects/project-3.html">
           <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-3-thumb.jpg" alt="Project Three"> -->
-          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 3</div>
+          <div class="thumb aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 3</div>
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Diagnostic Reports</h3>
           <p class="text-muted mb-2">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
           <!-- Role tags: what you did on this project -->
@@ -235,7 +261,7 @@
 
         <a class="card block group" href="projects/project-4.html">
           <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-4-thumb.jpg" alt="Project Four"> -->
-          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 4</div>
+          <div class="thumb aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 4</div>
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Request a Demo Page</h3>
           <p class="text-muted mb-2">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
           <!-- Role tags: what you did on this project -->
