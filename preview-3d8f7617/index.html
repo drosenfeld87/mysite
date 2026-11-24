@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-16">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deb Rosenfeld — Senior Product Designer &amp; Front-end Developer</title>
+  <!-- Tailwind CSS v4 via CDN (no build step). For production you can
+       switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Fonts: Mona Sans (headlines), Satoshi (body), JetBrains Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+
+  <!-- Design tokens: change colours and fonts here -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg: #0E0E10;
+      --color-surface: #17171A;
+      --color-ink: #E8E6E3;
+      --color-muted: #9A9893;
+      --color-line: #2A2A2E;
+      --color-accent: #7CFF4F;   /* green: highlights, links, buttons */
+      --color-accent2: #FF3D8B;  /* pink: tags and small details */
+      --font-sans: "Satoshi", system-ui, sans-serif;
+      --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    @layer base {
+      h1, h2, h3, .font-display {
+        font-family: var(--font-display);
+        font-stretch: 75%;
+        font-variation-settings: "wdth" 75;
+        letter-spacing: -0.01em;
+      }
+      ::selection { background: var(--color-accent); color: var(--color-bg); }
+    }
+  </style>
+
+  <!-- Background texture: soft colour glows that drift as you scroll, plus film grain -->
+  <style>
+    .bg-fx, .bg-grain { position: fixed; pointer-events: none; z-index: -1; }
+    .bg-fx {
+      inset: -25vh -25vw;
+      background:
+        radial-gradient(42vmax 42vmax at 18% 22%, rgb(124 255 79 / 0.16), rgb(124 255 79 / 0.05) 40%, transparent 72%),
+        radial-gradient(48vmax 48vmax at 82% 68%, rgb(255 61 139 / 0.18), rgb(255 61 139 / 0.06) 40%, transparent 72%),
+        radial-gradient(34vmax 34vmax at 55% 110%, rgb(124 255 79 / 0.10), transparent 70%);
+      animation: bg-drift linear both;
+      animation-timeline: scroll(root);
+    }
+    @keyframes bg-drift {
+      from { transform: translate3d(0, 0, 0) rotate(0deg); }
+      to   { transform: translate3d(-8vw, -18vh, 0) rotate(28deg); }
+    }
+    .bg-grain {
+      inset: 0;
+      opacity: 0.09;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    @media (prefers-reduced-motion: reduce) { .bg-fx { animation: none; } }
+  </style>
+
+  <!-- Zine details: sticker tags, flexing headline -->
+  <style>
+    .tag { display: inline-block; }
+    .tag:nth-child(odd)  { transform: rotate(-2deg); }
+    .tag:nth-child(even) { transform: rotate(1.5deg); }
+
+
+    .marquee { overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+    /* Retro visitor counter */
+    .counter { display: inline-flex; gap: 3px; padding: 4px; background: #050506; border: 1px solid var(--color-line); box-shadow: inset 0 0 8px rgb(0 0 0 / .8); }
+    .counter span {
+      width: 1.35em; padding: 2px 0; text-align: center;
+      font: 500 18px/1.2 var(--font-mono); color: var(--color-accent);
+      background: linear-gradient(#0c160a 0 49%, #091107 51% 100%);
+      text-shadow: 0 0 6px rgb(124 255 79 / .7);
+      border-radius: 2px;
+    }
+
+    .fx-word { display: inline-block; white-space: nowrap; }
+    .fx-ch {
+      display: inline-block;
+      font-variation-settings: "wdth" 75, "wght" 500;
+      transition: font-variation-settings .4s cubic-bezier(.2,.7,.2,1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fx-ch { transition: none; }
+    }
+  </style>
+</head>
+<body class="bg-bg text-ink font-sans leading-relaxed">
+  <div class="bg-fx" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-bg/70 backdrop-blur-md border-b border-line">
+    <a class="font-display font-bold text-lg md:text-xl whitespace-nowrap" href="#top">Deb Rosenfeld</a>
+    <nav class="flex gap-4 md:gap-6 text-sm md:text-base" aria-label="Main">
+      <a class="hover:text-accent" href="#projects">Projects</a>
+      <a class="hover:text-accent" href="#about">About</a>
+      <a class="hover:text-accent" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="relative px-6 md:px-12 min-h-[calc(100svh-4rem)] flex flex-col justify-center">
+      <p class="mb-6"><span class="tag font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-accent2 border border-accent2/45 px-3 py-1.5">Senior Product Designer</span></p>
+      <h1 data-flex class="text-[clamp(3.25rem,10vw,11rem)] font-medium leading-[0.9] tracking-tight md:whitespace-nowrap mb-8">Pixels in,<br class="md:hidden"> <span class="text-accent">code out.</span></h1>
+      <p class="mb-10 text-lg md:text-xl text-muted flex flex-wrap items-center gap-x-4 gap-y-1">
+        <span>Front-end developer</span>
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-accent2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Toronto
+        </span>
+      </p>
+      <a class="inline-block self-start px-7 py-3.5 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors" href="#projects">See my work</a>
+      <a href="#projects" class="absolute bottom-8 left-6 md:left-12 font-mono text-xs uppercase tracking-widest text-muted hover:text-accent">Scroll &darr;</a>
+    </section>
+
+    <!-- ============ SKILLS MARQUEE (decorative) ============ -->
+    <div class="marquee border-y border-line py-4 font-display text-2xl md:text-3xl font-bold uppercase text-ink/90" aria-hidden="true">
+      <div class="marquee-track items-center"><span class="px-6">Product design</span><span class="text-accent2">✦</span><span class="px-6">Design systems</span><span class="text-accent2">✦</span><span class="px-6">UX</span><span class="text-accent2">✦</span><span class="px-6">Information design</span><span class="text-accent2">✦</span><span class="px-6">Figma</span><span class="text-accent2">✦</span><span class="px-6">Illustrator</span><span class="text-accent2">✦</span><span class="px-6">Photoshop</span><span class="text-accent2">✦</span><span class="px-6">HTML</span><span class="text-accent2">✦</span><span class="px-6">CSS</span><span class="text-accent2">✦</span><span class="px-6">JavaScript</span><span class="text-accent2">✦</span><span class="px-6">Ruby on Rails</span><span class="text-accent2">✦</span><span class="px-6">Tailwind CSS</span><span class="text-accent2">✦</span><span class="px-6">Product design</span><span class="text-accent2">✦</span><span class="px-6">Design systems</span><span class="text-accent2">✦</span><span class="px-6">UX</span><span class="text-accent2">✦</span><span class="px-6">Information design</span><span class="text-accent2">✦</span><span class="px-6">Figma</span><span class="text-accent2">✦</span><span class="px-6">Illustrator</span><span class="text-accent2">✦</span><span class="px-6">Photoshop</span><span class="text-accent2">✦</span><span class="px-6">HTML</span><span class="text-accent2">✦</span><span class="px-6">CSS</span><span class="text-accent2">✦</span><span class="px-6">JavaScript</span><span class="text-accent2">✦</span><span class="px-6">Ruby on Rails</span><span class="text-accent2">✦</span><span class="px-6">Tailwind CSS</span><span class="text-accent2">✦</span></div>
+    </div>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="projects">
+      <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">01 /</span>Projects</h2>
+
+      <!-- 4-panel gallery (2x2 on desktop, stacked on mobile).
+           To use a real thumbnail, replace each placeholder <div> with:
+           <img class="aspect-[4/3] w-full object-cover" src="images/project-1.jpg" alt="Short description"> -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a class="block group" href="projects/project-1.html">
+          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-1-thumb.jpg" alt="CIO Analytics"> -->
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 1</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">CIO Analytics</h3>
+          <p class="text-muted mb-2">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
+          <!-- Role tags: what you did on this project -->
+          <div class="flex flex-wrap gap-2">
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
+          </div>
+        </a>
+
+        <a class="block group" href="projects/project-2.html">
+          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-2-thumb.jpg" alt="Project Two"> -->
+          <img class="aspect-[4/3] w-full object-cover" src="images/infographic-genai-security.jpg" alt="Research infographic on security and privacy risks for generative AI">
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Research Infographics</h3>
+          <p class="text-muted mb-2">Visual frameworks that distill Info-Tech research blueprints into a single, scannable image for IT leaders.</p>
+          <!-- Role tags: what you did on this project -->
+          <div class="flex flex-wrap gap-2">
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
+          </div>
+        </a>
+
+        <a class="block group" href="projects/project-3.html">
+          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-3-thumb.jpg" alt="Project Three"> -->
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 3</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Diagnostic Reports</h3>
+          <p class="text-muted mb-2">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
+          <!-- Role tags: what you did on this project -->
+          <div class="flex flex-wrap gap-2">
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
+          </div>
+        </a>
+
+        <a class="block group" href="projects/project-4.html">
+          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-4-thumb.jpg" alt="Project Four"> -->
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 4</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Request a Demo Page</h3>
+          <p class="text-muted mb-2">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
+          <!-- Role tags: what you did on this project -->
+          <div class="flex flex-wrap gap-2">
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="about">
+      <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">02 /</span>About Me</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <!-- Replace with <img class="aspect-square w-full object-cover" src="images/portrait.jpg" alt="Deb Rosenfeld"> -->
+        <div class="aspect-square flex items-center justify-center bg-surface text-muted">Photo</div>
+        <div class="md:col-span-2 space-y-4">
+          <p>I'm a senior product designer in Toronto who codes. At Info-Tech Research Group, I design and build the interface for CIO Analytics, an AI-powered analytics platform for IT leaders. Over seven years there, I've also designed the infographics that sum up Info-Tech's research and the diagnostic reports that benchmark IT teams.</p>
+          <p>Outside of work, I play bass (mostly the metal and punk I listen to), draw graffiti-inspired, abstract and typographic art, and read a lot of horror, usually with a cat or two nearby.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="contact">
+      <h2 class="text-3xl font-bold mb-4"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">03 /</span>Contact Me</h2>
+      <p class="mb-8">Have a project in mind? Send me a message.</p>
+
+      <!--
+        This form uses FormSubmit (https://formsubmit.co), a free service
+        that forwards submissions to your email. No account needed.
+
+        SETUP:
+        1. Replace YOUR_EMAIL@gmail.com below with your Gmail address.
+        2. Replace YOUR-DOMAIN.com in the _next field with your domain.
+        3. Submit the form once from the live site. FormSubmit emails you
+           an activation link: click it.
+        4. FormSubmit then gives you a random alias string. Swap your email
+           in the action URL for that string so your address isn't visible
+           in the page source.
+      -->
+      <form class="flex flex-col gap-2 max-w-xl" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
+        <!-- Settings for FormSubmit -->
+        <input type="hidden" name="_subject" value="New message from your portfolio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://www.debbierosenfeld.com/preview-3d8f7617/thanks.html">
+        <!-- Spam trap: real visitors never fill this in -->
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+        <label for="name">Name</label>
+        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit" class="inline-block self-start px-6 py-3 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors mt-2">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-line px-6 py-8 text-center text-muted space-y-1">
+    <!-- Old-school visitor counter (counts each browser once per visit, via the free Abacus API) -->
+    <div id="visits" class="hidden pb-4 font-mono text-xs uppercase tracking-widest">
+      <p class="mb-2">You are visitor no.</p>
+      <div class="counter" role="img" aria-label=""></div>
+    </div>
+    <p>&copy; <span id="year"></span> Deb Rosenfeld</p>
+    <p>
+      <a class="hover:text-accent" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a class="hover:text-accent" href="#">GitHub</a> ·
+      <a class="hover:text-accent" href="#">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    // Headline letters stretch and thicken near the cursor (Mona Sans width + weight axes)
+    (() => {
+      const h = document.querySelector("[data-flex]");
+      if (!h) return;
+      h.setAttribute("aria-label", h.textContent.replace(/\s+/g, " ").trim());
+      const wrap = node => {
+        [...node.childNodes].forEach(n => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(part => {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.append(" "); return; }
+              const w = document.createElement("span");
+              w.className = "fx-word"; w.setAttribute("aria-hidden", "true");
+              [...part].forEach(c => { const s = document.createElement("span"); s.className = "fx-ch"; s.textContent = c; w.append(s); });
+              frag.append(w);
+            });
+            n.replaceWith(frag);
+          } else wrap(n);
+        });
+      };
+      wrap(h);
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches || !matchMedia("(hover: hover)").matches) return;
+      const chars = [...h.querySelectorAll(".fx-ch")];
+      let raf;
+      h.addEventListener("pointermove", e => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => chars.forEach(c => {
+          const r = c.getBoundingClientRect();
+          const d = Math.abs(e.clientX - (r.left + r.width / 2));
+          const t = Math.max(0, 1 - d / 220);          // 0 far away, 1 under the cursor
+          c.style.fontVariationSettings = `"wdth" ${75 + 37 * t}, "wght" ${500 + 250 * t}`;
+        }));
+      });
+      h.addEventListener("pointerleave", () => chars.forEach(c => c.style.fontVariationSettings = ""));
+    })();
+  </script>
+
+  <script>
+    // Visitor counter: one hit per browser session; hides itself if the service is unavailable
+    (async () => {
+      const box = document.getElementById("visits");
+      const base = "https://abacus.jasoncameron.dev";
+      const key = "debbierosenfeld.com/home";
+      const seen = (() => { try { return sessionStorage.getItem("counted"); } catch { return null; } })();
+      try {
+        const res = await fetch(`${base}/${seen ? "get" : "hit"}/${key}`);
+        if (!res.ok) throw 0;
+        const { value } = await res.json();
+        if (typeof value !== "number") throw 0;
+        try { sessionStorage.setItem("counted", "1"); } catch {}
+        const digits = String(value).padStart(6, "0");
+        const c = box.querySelector(".counter");
+        c.setAttribute("aria-label", `Visitor number ${value}`);
+        c.innerHTML = [...digits].map(d => `<span aria-hidden="true">${d}</span>`).join("");
+        box.classList.remove("hidden");
+      } catch {}
+    })();
+  </script>
+</body>
+</html>
