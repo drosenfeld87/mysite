@@ -154,18 +154,21 @@
 
     /* Project index */
     .proj-row {
-      display: grid; grid-template-columns: 3rem 1fr auto 11rem; align-items: center; gap: 1.5rem;
+      display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; align-items: center; gap: 2rem;
       padding: 1.75rem 0; border-top: 1px solid var(--color-line);
       transition: padding-left .25s ease;
     }
-    .proj-title { font-size: clamp(2rem, 4.5vw, 3.75rem); line-height: 1; transition: color .2s ease; }
+    .proj-title { font-size: clamp(2rem, 4.2vw, 3.5rem); line-height: 1; transition: color .2s ease; }
+    .proj-meta { display: flex; flex-direction: column; align-items: flex-end; gap: .9rem; }
     .proj-year { text-align: right; }
     .proj-row:hover, .proj-row:focus-visible { padding-left: .75rem; outline: none; }
     .proj-row:hover .proj-title, .proj-row:focus-visible .proj-title { color: var(--color-accent); }
     @media (max-width: 900px) {
-      .proj-row { grid-template-columns: 2.5rem 1fr; }
-      .proj-tags { grid-column: 2; }
-      .proj-year { grid-column: 2; text-align: left; }
+      .proj-row { grid-template-columns: 2.5rem 1fr; align-items: start; }
+      .proj-num { padding-top: .6rem; }
+      .proj-meta { grid-column: 2; align-items: flex-start; }
+      .proj-tags { justify-content: flex-start; }
+      .proj-year { text-align: left; }
     }
 
     @media (prefers-reduced-motion: reduce) { .proj-row, .proj-detail { transition: none; } }
@@ -223,7 +226,8 @@
 
 
   <!-- ============ HEADER / NAV ============ -->
-  <header class="sticky top-0 z-10 h-16 flex items-center justify-end px-6 bg-bg/70 backdrop-blur-md border-b border-line">
+  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-bg/70 backdrop-blur-md border-b border-line">
+    <a id="header-name" class="font-display font-bold text-lg md:text-xl whitespace-nowrap opacity-0 transition-opacity duration-300" href="#top" tabindex="-1">Deb Rosenfeld</a>
     <nav class="flex gap-4 md:gap-6 text-sm md:text-base" aria-label="Main">
       <a class="hover:text-accent" href="#projects">Projects</a>
       <a class="hover:text-accent" href="#about">About</a>
@@ -234,8 +238,8 @@
   <main id="top">
 
     <!-- ============ HERO ============ -->
-    <section class="relative px-6 md:px-12 min-h-[calc(100svh-4rem)] flex flex-col justify-center">
-      <p class="mb-6"><span class="tag font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-accent2 border border-accent2/45 px-3 py-1.5">Deb Rosenfeld</span></p>
+    <section class="relative max-w-6xl mx-auto px-6 min-h-[calc(100svh-4rem)] flex flex-col justify-center">
+      <p class="mb-6" id="hero-name"><span class="tag font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-accent2 border border-accent2/45 px-3 py-1.5">Deb Rosenfeld</span></p>
       <h1 class="text-[clamp(3.25rem,10vw,11rem)] font-medium leading-[0.9] tracking-tight md:whitespace-nowrap mb-8"><span class="hl hl-1">Pixels in,</span><br class="md:hidden"> <span class="hl hl-2 text-accent">code out.</span></h1>
       <p class="mb-10 text-lg md:text-xl text-muted flex flex-wrap items-center gap-x-4 gap-y-1">
         <span>Senior product designer &amp; front-end developer</span>
@@ -245,7 +249,7 @@
         </span>
       </p>
       <a class="btn" href="#projects">See my work <span class="arrow arrow-down" aria-hidden="true">&darr;</span></a>
-      <a href="#projects" class="absolute bottom-8 left-6 md:left-12 font-mono text-xs uppercase tracking-widest text-muted hover:text-accent">Scroll &darr;</a>
+      <a href="#projects" class="absolute bottom-8 left-6 font-mono text-xs uppercase tracking-widest text-muted hover:text-accent">Scroll &darr;</a>
     </section>
 
     <!-- ============ SKILLS MARQUEE (decorative) ============ -->
@@ -254,11 +258,11 @@
     </div>
 
     <!-- ============ PROJECTS ============ -->
-    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="projects">
-      <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">01 /</span>Projects</h2>
+    <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 border-t border-line" id="projects">
+      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3">01 /</span>Projects</h2>
 
       <!-- Typographic project index: hover scrambles the title into an outline and reveals my role -->
-      <ol class="proj-list border-b border-line">
+      <ol class="proj-list">
         <li>
           <a class="proj-row type-row group" href="projects/project-1.html">
             <span class="proj-num font-mono text-sm text-accent2">01</span>
@@ -267,8 +271,7 @@
               <span class="block text-muted mt-1">AI-powered analytics platform for IT leaders.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed the Key Insights component used across the app, and built the front end in Rails.</span>
             </span>
-            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span>
-            <span class="proj-year font-mono text-sm text-muted"><span class="yr">2025–now</span><span class="view text-accent">View case study &rarr;</span></span>
+            <span class="proj-meta"><span class="proj-tags flex flex-wrap justify-end gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span><span class="proj-year font-mono text-sm text-muted"><span class="yr">2025–now</span><span class="view text-accent">View case study &rarr;</span></span></span>
           </a>
         </li>
 
@@ -280,8 +283,7 @@
               <span class="block text-muted mt-1">Visual frameworks that sum up Info-Tech research.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>One-page visual frameworks for research blueprints, taken from wireframe to final design.</span>
             </span>
-            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span></span>
-            <span class="proj-year font-mono text-sm text-muted"><span class="yr">2019–now</span><span class="view text-accent">View case study &rarr;</span></span>
+            <span class="proj-meta"><span class="proj-tags flex flex-wrap justify-end gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span></span><span class="proj-year font-mono text-sm text-muted"><span class="yr">2019–now</span><span class="view text-accent">View case study &rarr;</span></span></span>
           </a>
         </li>
 
@@ -293,8 +295,7 @@
               <span class="block text-muted mt-1">Reports that benchmark IT teams.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed the full Exponential IT Readiness report and coded part of it.</span>
             </span>
-            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span></span>
-            <span class="proj-year font-mono text-sm text-muted"><span class="yr">2024</span><span class="view text-accent">View case study &rarr;</span></span>
+            <span class="proj-meta"><span class="proj-tags flex flex-wrap justify-end gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span></span><span class="proj-year font-mono text-sm text-muted"><span class="yr">2024</span><span class="view text-accent">View case study &rarr;</span></span></span>
           </a>
         </li>
 
@@ -302,20 +303,19 @@
           <a class="proj-row type-row group" href="projects/project-4.html">
             <span class="proj-num font-mono text-sm text-accent2">04</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold" data-text="Request a Demo Page">Request a Demo Page</span>
+              <span class="proj-title block font-display font-semibold" data-text="Request a Demo">Request a Demo</span>
               <span class="block text-muted mt-1">Landing page and sign-up flow.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed and built the page, and coded a sign-up flow designed with a UX designer.</span>
             </span>
-            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span>
-            <span class="proj-year font-mono text-sm text-muted"><span class="yr"></span><span class="view text-accent">View case study &rarr;</span></span>
+            <span class="proj-meta"><span class="proj-tags flex flex-wrap justify-end gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span><span class="proj-year font-mono text-sm text-muted"><span class="yr"></span><span class="view text-accent">View case study &rarr;</span></span></span>
           </a>
         </li>
       </ol>
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="about">
-      <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">02 /</span>About Me</h2>
+    <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 border-t border-line" id="about">
+      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3">02 /</span>About</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
         <!-- Replace with <img class="aspect-square w-full object-cover" src="images/portrait.jpg" alt="Deb Rosenfeld"> -->
         <div class="aspect-square flex items-center justify-center bg-surface text-muted">Photo</div>
@@ -327,24 +327,16 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="contact">
-      <h2 class="text-3xl font-bold mb-4"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">03 /</span>Contact Me</h2>
-      <p class="mb-8">Have a project in mind? Send me a message.</p>
-
-      <!--
-        This form uses FormSubmit (https://formsubmit.co), a free service
-        that forwards submissions to your email. No account needed.
-
-        SETUP:
-        1. Replace YOUR_EMAIL@gmail.com below with your Gmail address.
-        2. Replace YOUR-DOMAIN.com in the _next field with your domain.
-        3. Submit the form once from the live site. FormSubmit emails you
-           an activation link: click it.
-        4. FormSubmit then gives you a random alias string. Swap your email
-           in the action URL for that string so your address isn't visible
-           in the page source.
-      -->
-      <form class="flex flex-col gap-2 max-w-xl" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
+    <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 border-t border-line" id="contact">
+      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3">03 /</span>Contact</h2>
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+        <div>
+          <p class="font-display font-semibold text-4xl md:text-5xl leading-none mb-6">Hiring a senior product designer? <span class="text-accent">Let&rsquo;s talk.</span></p>
+          <p class="text-muted mb-6 max-w-md">I&rsquo;m open to senior product design roles where I can design the experience and help build it. Send a message, or find me on LinkedIn.</p>
+          <a class="font-mono text-sm uppercase tracking-widest text-accent hover:text-ink" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+        </div>
+        <div>
+      <form class="flex flex-col gap-2" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
         <!-- Settings for FormSubmit -->
         <input type="hidden" name="_subject" value="New message from your portfolio">
         <input type="hidden" name="_template" value="table">
@@ -352,17 +344,19 @@
         <!-- Spam trap: real visitors never fill this in -->
         <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
 
-        <label for="name">Name</label>
+        <label class="font-mono text-xs uppercase tracking-widest text-muted" for="name">Name</label>
         <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="text" id="name" name="name" required>
 
-        <label for="email">Email</label>
+        <label class="font-mono text-xs uppercase tracking-widest text-muted" for="email">Email</label>
         <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="email" id="email" name="email" required>
 
-        <label for="message">Message</label>
+        <label class="font-mono text-xs uppercase tracking-widest text-muted" for="message">Message</label>
         <textarea class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" id="message" name="message" rows="6" required></textarea>
 
         <button type="submit" class="btn mt-2">Send <span class="arrow" aria-hidden="true">&rarr;</span></button>
       </form>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -376,9 +370,7 @@
     </div>
     <p>&copy; <span id="year"></span> Deb Rosenfeld</p>
     <p>
-      <a class="hover:text-accent" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn</a> ·
-      <a class="hover:text-accent" href="#">GitHub</a> ·
-      <a class="hover:text-accent" href="#">Instagram</a>
+      <a class="hover:text-accent" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn</a>
     </p>
   </footer>
 
@@ -439,6 +431,19 @@
         row.addEventListener("pointerenter", run);
         row.addEventListener("pointerleave", () => { clearInterval(timer); t.textContent = final; });
       });
+    })();
+  </script>
+
+  <script>
+    // Show the name in the header once the hero name sticker has scrolled out of view
+    (() => {
+      const name = document.getElementById("header-name"), hero = document.getElementById("hero-name");
+      if (!name || !hero || !("IntersectionObserver" in window)) { if (name) name.classList.remove("opacity-0"); return; }
+      new IntersectionObserver(([e]) => {
+        const show = !e.isIntersecting;
+        name.classList.toggle("opacity-0", !show);
+        show ? name.removeAttribute("tabindex") : name.setAttribute("tabindex", "-1");
+      }, { rootMargin: "-64px 0px 0px 0px" }).observe(hero);
     })();
   </script>
 </body>
