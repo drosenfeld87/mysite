@@ -1,26 +1,28 @@
-# Portfolio
+# Debbie Rosenfeld — portfolio
 
-Skeleton of a one-page portfolio: hero, 4-project gallery, about, contact form.
-Plain HTML styled with Tailwind CSS v4, loaded from its CDN, so there's no build step.
+Personal portfolio site. Plain HTML and CSS, hosted on GitHub Pages at www.debbierosenfeld.com.
+
+## Design
+Editorial, type-led direction: flat near-black background, one coral accent (#FF7A59), still film grain,
+Mona Sans (condensed) for display type, Satoshi for body text, JetBrains Mono for labels.
 
 ## Structure
-- `index.html`: home page (Projects, About, Contact sections)
-- `projects/project-1.html` to `project-4.html`: one page per project
-- `thanks.html`: shown after the contact form is sent
-- `images/`: put thumbnails, photos and media here
+- `index.html` (repo root): the public "Coming soon" holding page
+- The full site lives in an unlisted preview folder until launch:
+  - `index.html`: home page (work, about, contact)
+  - `projects/project-1.html` to `project-4.html`: one page per project
+  - `thanks.html`: shown after the contact form is sent
+  - `css/site.css`: all shared styles; colours and fonts are variables at the top
+  - `images/`: project images
 
-## Contact form setup (sends to Gmail)
-The form uses FormSubmit (formsubmit.co), free and no account needed.
-1. In `index.html`, replace `YOUR_EMAIL@gmail.com` with your Gmail address.
-2. Replace `YOUR-DOMAIN.com` in the `_next` field with your domain.
-3. Once the site is live, submit the form once and click the activation link FormSubmit emails you.
-4. Swap your email in the form's action URL for the random alias FormSubmit gives you, so your address isn't in the page source.
+Project pages also load Tailwind CSS v4 from its CDN for layout utilities, with colours set in each page's `@theme` block.
+Before launch, consider replacing that with a pre-built stylesheet so pages load faster.
 
-## Hosting on GitHub Pages
-1. Push these files to the repo's main branch.
-2. Repo Settings > Pages > Source: "Deploy from a branch", branch `main`, folder `/ (root)`.
-3. Add your domain under Settings > Pages > Custom domain, then add the DNS records GitHub shows you at your registrar.
+## Contact form (sends to Gmail)
+Uses FormSubmit (formsubmit.co). To hide the email address from the page source, swap it in the form's
+action URL for the random alias FormSubmit provides after activation.
 
-## About the Tailwind setup
-Each page loads Tailwind from `cdn.jsdelivr.net/npm/@tailwindcss/browser@4`, which builds styles in the browser.
-That's great for prototyping. Before launch, consider switching to the Tailwind CLI so the site ships one small, pre-built CSS file.
+## Launch checklist
+1. Move the preview folder's contents to the repo root (replacing the holding page) and update the form's `_next` URL.
+2. Remove `noindex` from the pages.
+3. In Settings > Pages, confirm the custom domain and tick Enforce HTTPS.
