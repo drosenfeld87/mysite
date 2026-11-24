@@ -65,12 +65,6 @@ a.sticker { text-decoration: none; }
 .sec-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--ink); margin-bottom: 0; }
 .sec-head .num { color: var(--accent); }
 
-/* ---------- Work strip: real images up front ---------- */
-.strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
-.strip figure { margin: 0; }
-.strip img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: filter .3s ease; }
-.strip a:hover img, .strip a:focus-visible img { filter: none; }
-.strip figcaption { margin-top: 10px; }
 
 /* ---------- Index ---------- */
 .index { list-style: none; margin: 40px 0 0; padding: 0; }
@@ -121,7 +115,6 @@ footer { display: flex; justify-content: space-between; gap: 24px; margin-top: c
   .masthead nav { gap: 14px; font-size: 16px; }
   .hero h1 .l2 { padding-left: .4em; }
   .hero-foot .intro, .hero-foot .meta { grid-column: 1 / -1; }
-  .strip { grid-template-columns: 1fr; }
   .index a { grid-template-columns: 2.5rem 1fr; }
   .index .tags, .index .yr { grid-column: 2; text-align: left; }
   .about .pull, .about .body, .contact-lead, .contact form { grid-column: 1 / -1; }
@@ -176,13 +169,6 @@ html { scroll-padding-top: 88px; }
 .hero-cta a { font: 500 13px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 12px 0; color: var(--ink); border-bottom: 1px solid var(--accent); }
 @media (hover: hover) { .hero-cta a:hover { color: var(--accent); } }
 
-/* Touch screens can't hover, so work images show in full colour */
-@media (hover: none) { .strip img { filter: none; } }
-/* Phones: work images become a swipeable row instead of a tall stack */
-@media (max-width: 900px) {
-  .strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 8px; margin-right: calc(-1 * var(--gutter)); }
-  .strip figure { flex: 0 0 78%; scroll-snap-align: start; }
-}
 
 /* Bigger tap areas for small text links (WCAG 2.5.8) */
 .tap { display: inline-block; padding-block: 10px; }
