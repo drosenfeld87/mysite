@@ -11,13 +11,11 @@
   <!-- Google Fonts: one link per family, so one bad name can't break the rest -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
 
   <style>
@@ -81,21 +79,29 @@
     .bio a { font-family: var(--body); font-weight: 500; }
 
     /* ---------- The four pairings ---------- */
-    #p1 { --display: "Clash Display", system-ui, sans-serif; --body: "Satoshi", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace; }
-    #p1 .name { font-weight: 600; font-size: clamp(56px, 10vw, 132px); }
-    #p1 .projects h3 { font-weight: 500; }
+    /* Name sizes are deliberately modest so a 16-character name fits comfortably */
+    #p1, #p4 { --display: "Mona Sans", "Archivo", system-ui, sans-serif; --body: "Satoshi", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace; }
+    #p1 .name { font-weight: 800; font-stretch: 75%; font-variation-settings: "wdth" 75; font-size: clamp(44px, 7vw, 92px); letter-spacing: -0.01em; }
+    #p1 .projects h3, #p4 .projects h3 { font-weight: 700; font-stretch: 75%; font-variation-settings: "wdth" 75; }
 
-    #p2 { --display: "Big Shoulders Display", "Big Shoulders", "Arial Narrow", sans-serif; --body: "Inter", system-ui, sans-serif; --mono: "Space Mono", ui-monospace, monospace; }
-    #p2 .name { font-weight: 900; text-transform: uppercase; font-size: clamp(72px, 14vw, 190px); letter-spacing: 0; line-height: .85; }
-    #p2 .projects h3 { font-weight: 700; text-transform: uppercase; letter-spacing: .01em; }
+    #p2 { --display: "Oswald", "Arial Narrow", sans-serif; --body: "Inter", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace; }
+    #p2 .name { font-weight: 600; text-transform: uppercase; font-size: clamp(44px, 6.5vw, 84px); letter-spacing: 0.01em; line-height: 1; }
+    #p2 .projects h3 { font-weight: 500; text-transform: uppercase; letter-spacing: .02em; }
 
-    #p3 { --display: "Syne", system-ui, sans-serif; --body: "Space Grotesk", system-ui, sans-serif; --mono: "Space Mono", ui-monospace, monospace; }
-    #p3 .name { font-weight: 800; font-size: clamp(52px, 9.5vw, 128px); letter-spacing: -0.03em; }
-    #p3 .projects h3 { font-weight: 700; }
+    #p3 { --display: "Clash Display", system-ui, sans-serif; --body: "Space Grotesk", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace; }
+    #p3 .name { font-weight: 600; font-size: clamp(40px, 6vw, 80px); }
+    #p3 .projects h3 { font-weight: 500; }
 
-    #p4 { --display: "Instrument Serif", Georgia, serif; --body: "Inter", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace; }
-    #p4 .name { font-weight: 400; font-style: italic; font-size: clamp(64px, 11vw, 150px); letter-spacing: -0.01em; }
-    #p4 .projects h3 { font-weight: 400; font-size: clamp(28px, 3.4vw, 40px); }
+    /* 4: statement layout. Name small, statement big */
+    .masthead { display: none; }
+    #p4 .masthead {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding-bottom: 16px; margin-bottom: 64px; border-bottom: 1px solid var(--line);
+    }
+    #p4 .masthead strong { font-family: var(--display); font-weight: 700; font-size: 20px; font-variation-settings: "wdth" 75; font-stretch: 75%; letter-spacing: .01em; }
+    #p4 .masthead span { font: 400 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+    #p4 .name { font-weight: 800; font-stretch: 75%; font-variation-settings: "wdth" 75; font-size: clamp(44px, 7.5vw, 104px); line-height: 1; max-width: 14ch; }
+    #p4 .name em { font-style: normal; color: var(--accent); }
 
     @media (max-width: 760px) {
       .grid { grid-template-columns: 1fr; }
@@ -107,10 +113,10 @@
 
   <div class="toolbar">
     <nav aria-label="Pairings">
-      <a href="#p1">1 · Clash + Satoshi</a>
-      <a href="#p2">2 · Big Shoulders + Inter</a>
-      <a href="#p3">3 · Syne + Space Grotesk</a>
-      <a href="#p4">4 · Instrument Serif + Inter</a>
+      <a href="#p1">1 · Mona Sans + Satoshi</a>
+      <a href="#p2">2 · Oswald + Inter</a>
+      <a href="#p3">3 · Clash + Space Grotesk</a>
+      <a href="#p4">4 · Statement layout</a>
     </nav>
     <div class="swatches" role="group" aria-label="Accent colour">
       <span>Accent</span>
@@ -124,7 +130,7 @@
 
   <header class="intro">
     <h1>Type specimens</h1>
-    <p>Four font pairings on a dark background, set with real site content. Use the dots above to try accent colours. This page is hidden from search engines and not linked from the site.</p>
+    <p>Four options on a dark background, with your name at a sensible size. Option 4 tries a different layout: name small, a statement as the headline. Body fonts are from the pairings you liked. Set with real site content. Use the dots above to try accent colours. This page is hidden from search engines and not linked from the site.</p>
   </header>
 
   <main id="specimens"></main>
@@ -133,6 +139,7 @@
     <section class="specimen">
       <div class="inner">
         <div class="label"></div>
+        <div class="masthead"><strong>Debbie Rosenfeld</strong><span>Toronto · Designer &amp; front-end dev</span></div>
         <h2 class="name">Debbie Rosenfeld</h2>
         <p class="role">Designer <span>&amp;</span> front-end developer. Toronto.</p>
         <div class="grid">
@@ -155,10 +162,10 @@
 
   <script>
     const pairings = [
-      ["p1", "Clash Display", "Satoshi", "JetBrains Mono", "Sharp and contemporary"],
-      ["p2", "Big Shoulders Display", "Inter", "Space Mono", "Raw and poster-like"],
-      ["p3", "Syne", "Space Grotesk", "Space Mono", "Quirky and characterful"],
-      ["p4", "Instrument Serif", "Inter", "JetBrains Mono", "Editorial contrast"],
+      ["p1", "Mona Sans (narrow)", "Satoshi", "JetBrains Mono", "Condensed and confident"],
+      ["p2", "Oswald", "Inter", "JetBrains Mono", "Poster-like, toned down"],
+      ["p3", "Clash Display", "Space Grotesk", "JetBrains Mono", "Sharp, at a modest size"],
+      ["p4", "Mona Sans (narrow)", "Satoshi", "JetBrains Mono", "Statement layout: name small, message big"],
     ];
     const main = document.getElementById("specimens");
     const tpl = document.getElementById("tpl");
@@ -168,6 +175,10 @@
       sec.id = id;
       sec.querySelector(".label").innerHTML =
         `<b>${i + 1}</b> · ${mood} · ${d} / ${b} / ${m}`;
+      if (id === "p4") {
+        sec.querySelector(".name").innerHTML = "I design it. <em>Often I build it too.</em>";
+        sec.querySelector(".role").textContent = "Designer and front-end developer at Info-Tech Research Group.";
+      }
       main.appendChild(node);
     });
 
