@@ -133,16 +133,48 @@
     .btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 4px; }
     @media (prefers-reduced-motion: reduce) { .btn, .btn .arrow { transition: none; } }
   </style>
+
+  <!-- Accessibility: visible focus, skip link, and a site-wide "pause animations" switch -->
+  <style>
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    input:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 0; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 50; padding: .6rem 1rem; background: var(--color-accent); color: var(--color-bg); font: 500 .85rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+    .skip-link:focus { top: 1rem; }
+    html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
+    .motion-toggle { font: 400 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .15em; color: var(--color-muted); border: 1px solid var(--color-line); padding: .5rem .75rem; cursor: pointer; background: transparent; }
+    .motion-toggle:hover { color: var(--color-ink); }
+  </style>
+  <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
+
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="bg-fx" aria-hidden="true"></div>
   <div class="bg-grain" aria-hidden="true"></div>
 
 
-  <main class="max-w-3xl mx-auto px-6 py-24">
+  <main id="main" class="max-w-3xl mx-auto px-6 py-24">
     <h1 class="text-4xl font-bold mb-3">Thanks for your message</h1>
     <p class="mb-6">I'll get back to you soon.</p>
     <a class="btn" href="index.html"><span class="arrow arrow-back" aria-hidden="true">&larr;</span> Back to home</a>
   </main>
+  <footer class="px-6 pb-10 text-center">
+    <p><button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false">Pause animations</button></p>
+  </footer>
+
+  <script>
+    // Pause / play all animations (WCAG 2.2.2); remembered on this device
+    (() => {
+      const btn = document.getElementById("motion-toggle"), root = document.documentElement;
+      if (!btn) return;
+      const sync = () => { const off = root.classList.contains("no-motion"); btn.setAttribute("aria-pressed", off); btn.textContent = off ? "Play animations" : "Pause animations"; };
+      btn.addEventListener("click", () => {
+        root.classList.toggle("no-motion");
+        try { localStorage.setItem("no-motion", root.classList.contains("no-motion") ? "1" : "0"); } catch {}
+        sync();
+      });
+      sync();
+    })();
+  </script>
 </body>
 </html>

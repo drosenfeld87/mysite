@@ -114,8 +114,22 @@
       .fx-ch { transition: none; }
     }
   </style>
+
+  <!-- Accessibility: visible focus, skip link, and a site-wide "pause animations" switch -->
+  <style>
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    input:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 0; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 50; padding: .6rem 1rem; background: var(--color-accent); color: var(--color-bg); font: 500 .85rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+    .skip-link:focus { top: 1rem; }
+    html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
+    .motion-toggle { font: 400 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .15em; color: var(--color-muted); border: 1px solid var(--color-line); padding: .5rem .75rem; cursor: pointer; background: transparent; }
+    .motion-toggle:hover { color: var(--color-ink); }
+  </style>
+  <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
+
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="bg-fx" aria-hidden="true"></div>
   <div class="bg-grain" aria-hidden="true"></div>
 
@@ -130,7 +144,7 @@
     </nav>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6 py-16">
+  <main id="main" class="max-w-4xl mx-auto px-6 py-16">
     <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#projects">&larr; Back to projects</a>
 
     <!-- ===== Summary: everything a skimmer needs ===== -->
@@ -146,7 +160,7 @@
       <div><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Company</dt><dd>Info-Tech Research Group</dd></div>
       <div><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Timeline</dt><dd>2025–now</dd></div>
       <div class="col-span-2"><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">Figma</span><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">Ruby on Rails</span><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">Tailwind CSS</span><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">ViewComponent</span><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">Lookbook</span><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">Hotwire (Turbo + Stimulus)</span><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">Highcharts</span></dd></div>
-      <div><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Links</dt><dd><a class="text-accent underline" href="https://www.infotech.com/cio-analytics" target="_blank" rel="noopener">Marketing page</a></dd></div>
+      <div><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Links</dt><dd><a class="text-accent underline" href="https://www.infotech.com/cio-analytics" target="_blank" rel="noopener">Marketing page<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
     </dl>
 
     <!-- My contribution: design vs. code, side by side -->
@@ -215,7 +229,23 @@
 
   <footer class="border-t border-line px-6 py-8 text-center text-muted">
     <p>&copy; Deb Rosenfeld</p>
+    <p class="pt-3"><button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false">Pause animations</button></p>
   </footer>
 
+
+  <script>
+    // Pause / play all animations (WCAG 2.2.2); remembered on this device
+    (() => {
+      const btn = document.getElementById("motion-toggle"), root = document.documentElement;
+      if (!btn) return;
+      const sync = () => { const off = root.classList.contains("no-motion"); btn.setAttribute("aria-pressed", off); btn.textContent = off ? "Play animations" : "Pause animations"; };
+      btn.addEventListener("click", () => {
+        root.classList.toggle("no-motion");
+        try { localStorage.setItem("no-motion", root.classList.contains("no-motion") ? "1" : "0"); } catch {}
+        sync();
+      });
+      sync();
+    })();
+  </script>
 </body>
 </html>

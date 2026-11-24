@@ -114,8 +114,22 @@
       .fx-ch { transition: none; }
     }
   </style>
+
+  <!-- Accessibility: visible focus, skip link, and a site-wide "pause animations" switch -->
+  <style>
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    input:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 0; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 50; padding: .6rem 1rem; background: var(--color-accent); color: var(--color-bg); font: 500 .85rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+    .skip-link:focus { top: 1rem; }
+    html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
+    .motion-toggle { font: 400 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .15em; color: var(--color-muted); border: 1px solid var(--color-line); padding: .5rem .75rem; cursor: pointer; background: transparent; }
+    .motion-toggle:hover { color: var(--color-ink); }
+  </style>
+  <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
+
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="bg-fx" aria-hidden="true"></div>
   <div class="bg-grain" aria-hidden="true"></div>
 
@@ -130,7 +144,7 @@
     </nav>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6 py-16">
+  <main id="main" class="max-w-4xl mx-auto px-6 py-16">
     <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#projects">&larr; Back to projects</a>
 
     <!-- ===== Summary ===== -->
@@ -164,7 +178,7 @@
       <a href="../images/infographic-cloud-strategy.jpg" target="_blank" rel="noopener" title="Open full size">
         <img class="w-full border border-line" src="../images/infographic-cloud-strategy.jpg" loading="lazy"
              alt="Infographic titled Empower Your Business With a Proven Cloud Strategy, set against a soft sky of blue, peach and lavender clouds. The left side gives the case for a cloud strategy, highlighting a KPMG finding that many organizations overspend by 35 percent. On the right, stacked panels flow downward like a funnel: establish vision and alignment, identify patterns and antipatterns, pinpoint six key components, and run the suitability assessment. Light beams then fan out to six migration paths: reuse, retain, rehost, replatform, refactor and repurchase.">
-      </a>
+      <span class="sr-only"> (opens in a new tab)</span></a>
 
       <div class="mt-6">
         <p class="text-sm uppercase tracking-wide text-muted mb-3">Process</p>
@@ -173,14 +187,14 @@
             <a href="../images/process-cloud-strategy-layouts.jpg" target="_blank" rel="noopener" title="Open full size">
               <img class="w-full border border-line" src="../images/process-cloud-strategy-layouts.jpg" loading="lazy"
                    alt="Four greyscale wireframes of the same cloud strategy content, each testing a different visual structure: a plain stacked layout, light beams fanning out to the migration options, a large speech-bubble outline, and lines branching from the suitability assessment to six migration paths.">
-            </a>
+            <span class="sr-only"> (opens in a new tab)</span></a>
             <p class="text-sm text-muted mt-2"><strong>1. Wireframes</strong> by a UX designer: four ways to frame the same content, as a starting point for the visual direction.</p>
           </div>
           <div>
             <a href="../images/process-cloud-strategy-review.jpg" target="_blank" rel="noopener" title="Open full size">
               <img class="w-full border border-line" src="../images/process-cloud-strategy-review.jpg" loading="lazy"
                    alt="Figma canvas labelled Ready for design review. It shows the research team's original draft diagrams, the greyscale wireframe, and three full-colour versions of the infographic in sky-blue and deep purple directions.">
-            </a>
+            <span class="sr-only"> (opens in a new tab)</span></a>
             <p class="text-sm text-muted mt-2"><strong>2. Design review.</strong> From the research team's draft model and the wireframe to my colour directions, prepared for review with the design team.</p>
           </div>
         </div>
@@ -188,7 +202,7 @@
       <figcaption class="mt-4">
         <h3 class="font-semibold text-lg">Empower Your Business With a Proven Cloud Strategy</h3>
         <p class="text-muted">A pattern-driven path from vision and alignment through to choosing how each workload moves to the cloud.</p>
-        <a class="text-accent underline text-sm" href="https://www.infotech.com/research/ss/empower-your-business-with-a-proven-cloud-strategy" target="_blank" rel="noopener">View the research blueprint &rarr;</a>
+        <a class="text-accent underline text-sm" href="https://www.infotech.com/research/ss/empower-your-business-with-a-proven-cloud-strategy" target="_blank" rel="noopener">View the research blueprint &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
       </figcaption>
     </figure>
 
@@ -201,7 +215,7 @@
       <a href="../images/infographic-global-uncertainty.jpg" target="_blank" rel="noopener" title="Open full size">
         <img class="w-full border border-line" src="../images/infographic-global-uncertainty.jpg" loading="lazy"
              alt="Infographic titled Identify and Respond to Credible Threats Arising From Global Uncertainty, in glowing teal and purple on a dark starfield. A left panel sets out the problem and common obstacles. On the right, four numbered phases circle a Key Outcomes box, joined by curved light trails: Phase 1, scan the horizon for macro uncertainties such as tariffs and policy changes; Phase 2, run a premortem and plot risk events on an impact and probability grid; Phase 3, choose a response (avoid, transfer, accept, mitigate); Phase 4, build resilience with a quarterly release roadmap.">
-      </a>
+      <span class="sr-only"> (opens in a new tab)</span></a>
 
       <!-- Process: from wireframe to final -->
       <div class="mt-6">
@@ -211,14 +225,14 @@
             <a href="../images/process-global-uncertainty-wireframe.jpg" target="_blank" rel="noopener" title="Open full size">
               <img class="w-full border border-line" src="../images/process-global-uncertainty-wireframe.jpg" loading="lazy"
                    alt="Black-and-white wireframe of the infographic. A dark panel on the left holds the title, the problem and common obstacles. On the right, four phases are arranged in a cycle joined by arrows: scan the horizon for macro uncertainties, conduct a premortem to identify failure modes, estimate risk probability and impact and choose a response (avoid, mitigate, accept, transfer), and build resilience against unknown threats. Key outcomes sit in the centre.">
-            </a>
+            <span class="sr-only"> (opens in a new tab)</span></a>
             <p class="text-sm text-muted mt-2"><strong>1. Wireframe</strong> by a UX designer, setting out the structure and content.</p>
           </div>
           <div>
             <a href="../images/process-global-uncertainty-figma.jpg" target="_blank" rel="noopener" title="Open full size">
               <img class="w-full border border-line" src="../images/process-global-uncertainty-figma.jpg" loading="lazy"
                    alt="Figma canvas showing many versions of the infographic side by side: annotated wireframes, several dark blue and purple colour directions, and a set of glowing ring images explored as the central visual motif.">
-            </a>
+            <span class="sr-only"> (opens in a new tab)</span></a>
             <p class="text-sm text-muted mt-2"><strong>2. Visual exploration.</strong> My colour directions, iterations and ring motifs in Figma, with imagery generated in Midjourney.</p>
           </div>
         </div>
@@ -226,7 +240,7 @@
       <figcaption class="mt-4">
         <h3 class="font-semibold text-lg">Identify and Respond to Credible Threats Arising From Global Uncertainty</h3>
         <p class="text-muted">A four-phase method for scanning macro uncertainties, running premortems, estimating risk and building adaptive responses.</p>
-        <a class="text-accent underline text-sm" href="https://www.infotech.com/research/ss/identify-and-respond-to-credible-threats-arising-from-global-uncertainty" target="_blank" rel="noopener">View the research blueprint &rarr;</a>
+        <a class="text-accent underline text-sm" href="https://www.infotech.com/research/ss/identify-and-respond-to-credible-threats-arising-from-global-uncertainty" target="_blank" rel="noopener">View the research blueprint &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
       </figcaption>
     </figure>
 
@@ -239,11 +253,11 @@
       <a href="../images/infographic-genai-security.jpg" target="_blank" rel="noopener" title="Open full size">
         <img class="w-full border border-line" src="../images/infographic-genai-security.jpg" loading="lazy"
              alt="Infographic titled Manage Security and Privacy Risks for Generative AI, on a dark magenta background. A glowing sphere labelled Generative AI: Security and Privacy Risks sits at the centre. Lines on the left lead to four risk mitigation essentials: AI suitability test, AI security policy, generative AI risk map, and data security improvement plan. Lines on the right branch into public and private AI systems, mapping risk scenarios (data exposure, bad data) to risk categories (data confidentiality, data integrity) and to attacks on generative AI (weaponization, data exfiltration, input attacks, data poisoning, sponge attacks).">
-      </a>
+      <span class="sr-only"> (opens in a new tab)</span></a>
       <figcaption class="mt-4">
         <h3 class="font-semibold text-lg">Address Security and Privacy Risks for Generative AI</h3>
         <p class="text-muted">How security leaders can understand generative AI risks, set acceptable-use criteria and plan data security improvements.</p>
-        <a class="text-accent underline text-sm" href="https://www.infotech.com/research/ss/address-security-and-privacy-risks-for-generative-ai" target="_blank" rel="noopener">View the research blueprint &rarr;</a>
+        <a class="text-accent underline text-sm" href="https://www.infotech.com/research/ss/address-security-and-privacy-risks-for-generative-ai" target="_blank" rel="noopener">View the research blueprint &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
       </figcaption>
     </figure>
 
@@ -257,7 +271,23 @@
 
   <footer class="border-t border-line px-6 py-8 text-center text-muted">
     <p>&copy; Deb Rosenfeld</p>
+    <p class="pt-3"><button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false">Pause animations</button></p>
   </footer>
 
+
+  <script>
+    // Pause / play all animations (WCAG 2.2.2); remembered on this device
+    (() => {
+      const btn = document.getElementById("motion-toggle"), root = document.documentElement;
+      if (!btn) return;
+      const sync = () => { const off = root.classList.contains("no-motion"); btn.setAttribute("aria-pressed", off); btn.textContent = off ? "Play animations" : "Pause animations"; };
+      btn.addEventListener("click", () => {
+        root.classList.toggle("no-motion");
+        try { localStorage.setItem("no-motion", root.classList.contains("no-motion") ? "1" : "0"); } catch {}
+        sync();
+      });
+      sync();
+    })();
+  </script>
 </body>
 </html>

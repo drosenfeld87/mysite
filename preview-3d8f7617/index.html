@@ -220,8 +220,21 @@
     .btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 4px; }
     @media (prefers-reduced-motion: reduce) { .btn, .btn .arrow { transition: none; } }
   </style>
+
+  <!-- Accessibility: visible focus, skip link, and a site-wide "pause animations" switch -->
+  <style>
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    input:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 0; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 50; padding: .6rem 1rem; background: var(--color-accent); color: var(--color-bg); font: 500 .85rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+    .skip-link:focus { top: 1rem; }
+    html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
+    .motion-toggle { font: 400 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .15em; color: var(--color-muted); border: 1px solid var(--color-line); padding: .5rem .75rem; cursor: pointer; background: transparent; }
+    .motion-toggle:hover { color: var(--color-ink); }
+  </style>
+  <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
+  <a class="skip-link" href="#top">Skip to content</a>
   <div class="bg-fx" aria-hidden="true"></div>
   <div class="bg-lines" aria-hidden="true"><i></i></div>
   <div class="bg-grain" aria-hidden="true"></div>
@@ -245,7 +258,7 @@
 
   <!-- ============ HEADER / NAV ============ -->
   <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-bg/70 backdrop-blur-md border-b border-line">
-    <a id="header-name" class="font-display font-bold text-lg md:text-xl whitespace-nowrap opacity-0 transition-opacity duration-300" href="#top" tabindex="-1">Deb Rosenfeld</a>
+    <a id="header-name" class="font-display font-bold text-lg md:text-xl whitespace-nowrap opacity-0 transition-opacity duration-300" href="#top" tabindex="-1" aria-hidden="true">Deb Rosenfeld</a>
     <nav class="flex gap-4 md:gap-6 text-sm md:text-base" aria-label="Main">
       <a class="hover:text-accent" href="#projects">Projects</a>
       <a class="hover:text-accent" href="#about">About</a>
@@ -277,15 +290,15 @@
 
     <!-- ============ PROJECTS ============ -->
     <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 border-t border-line" id="projects">
-      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3">01 /</span>Projects</h2>
+      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3" aria-hidden="true">01 /</span>Projects</h2>
 
       <!-- Typographic project index: hover scrambles the title into an outline and reveals my role -->
       <ol class="proj-list">
         <li>
           <a class="proj-row type-row group" href="projects/project-1.html">
-            <span class="proj-num font-mono text-sm text-accent2">01</span>
+            <span class="proj-num font-mono text-sm text-accent2" aria-hidden="true">01</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold" data-text="CIO Analytics">CIO Analytics</span>
+              <h3 class="proj-title font-display font-semibold"><span class="scr" aria-hidden="true" data-text="CIO Analytics">CIO Analytics</span><span class="sr-only">CIO Analytics</span></h3>
               <span class="block text-muted mt-1">AI-powered analytics platform for IT leaders.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed the Key Insights component used across the app, and built the front end in Rails.</span>
             </span>
@@ -295,9 +308,9 @@
 
         <li>
           <a class="proj-row type-row group" href="projects/project-2.html">
-            <span class="proj-num font-mono text-sm text-accent2">02</span>
+            <span class="proj-num font-mono text-sm text-accent2" aria-hidden="true">02</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold" data-text="Research Infographics">Research Infographics</span>
+              <h3 class="proj-title font-display font-semibold"><span class="scr" aria-hidden="true" data-text="Research Infographics">Research Infographics</span><span class="sr-only">Research Infographics</span></h3>
               <span class="block text-muted mt-1">Visual frameworks that sum up Info-Tech research.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>One-page visual frameworks for research blueprints, taken from wireframe to final design.</span>
             </span>
@@ -307,9 +320,9 @@
 
         <li>
           <a class="proj-row type-row group" href="projects/project-3.html">
-            <span class="proj-num font-mono text-sm text-accent2">03</span>
+            <span class="proj-num font-mono text-sm text-accent2" aria-hidden="true">03</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold" data-text="Diagnostic Reports">Diagnostic Reports</span>
+              <h3 class="proj-title font-display font-semibold"><span class="scr" aria-hidden="true" data-text="Diagnostic Reports">Diagnostic Reports</span><span class="sr-only">Diagnostic Reports</span></h3>
               <span class="block text-muted mt-1">Reports that benchmark IT teams.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed the full Exponential IT Readiness report and coded part of it.</span>
             </span>
@@ -319,9 +332,9 @@
 
         <li>
           <a class="proj-row type-row group" href="projects/project-4.html">
-            <span class="proj-num font-mono text-sm text-accent2">04</span>
+            <span class="proj-num font-mono text-sm text-accent2" aria-hidden="true">04</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold" data-text="Request a Demo">Request a Demo</span>
+              <h3 class="proj-title font-display font-semibold"><span class="scr" aria-hidden="true" data-text="Request a Demo">Request a Demo</span><span class="sr-only">Request a Demo</span></h3>
               <span class="block text-muted mt-1">Landing page and sign-up flow.</span>
               <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed and built the page, and coded a sign-up flow designed with a UX designer.</span>
             </span>
@@ -333,7 +346,7 @@
 
     <!-- ============ ABOUT ============ -->
     <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 border-t border-line" id="about">
-      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3">02 /</span>About</h2>
+      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3" aria-hidden="true">02 /</span>About</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
         <!-- Replace with <img class="aspect-square w-full object-cover" src="images/portrait.jpg" alt="Deb Rosenfeld"> -->
         <div class="aspect-square flex items-center justify-center bg-surface text-muted">Photo</div>
@@ -346,11 +359,11 @@
 
     <!-- ============ CONTACT ============ -->
     <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 border-t border-line" id="contact">
-      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3">03 /</span>Contact</h2>
+      <h2 class="font-mono text-sm font-normal uppercase tracking-[0.2em] text-muted mb-10"><span class="text-accent2 mr-3" aria-hidden="true">03 /</span>Contact</h2>
       <div class="grid md:grid-cols-2 gap-12 md:gap-16">
         <div>
-          <p class="font-display font-semibold text-4xl md:text-5xl leading-none mb-6">Get in touch.</p>
-          <a class="font-mono text-sm uppercase tracking-widest text-accent hover:text-ink" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+          <h3 class="font-display font-semibold text-4xl md:text-5xl leading-none mb-6">Get in touch.</h3>
+          <a class="font-mono text-sm uppercase tracking-widest text-accent hover:text-ink" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
         <div>
       <form class="flex flex-col gap-2" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
@@ -362,10 +375,10 @@
         <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
 
         <label class="font-mono text-xs uppercase tracking-widest text-muted" for="name">Name</label>
-        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="text" id="name" name="name" required>
+        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="text" id="name" name="name" autocomplete="name" required>
 
         <label class="font-mono text-xs uppercase tracking-widest text-muted" for="email">Email</label>
-        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="email" id="email" name="email" required>
+        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="email" id="email" name="email" autocomplete="email" required>
 
         <label class="font-mono text-xs uppercase tracking-widest text-muted" for="message">Message</label>
         <textarea class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" id="message" name="message" rows="6" required></textarea>
@@ -387,8 +400,9 @@
     </div>
     <p>&copy; <span id="year"></span> Deb Rosenfeld</p>
     <p>
-      <a class="hover:text-accent" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="hover:text-accent" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
     </p>
+    <p class="pt-3"><button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false">Pause animations</button></p>
   </footer>
 
   <script>
@@ -435,8 +449,9 @@
       if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const glyphs = "!<>-_\\/[]{}=+*^?#01";
       document.querySelectorAll(".type-row").forEach(row => {
-        const t = row.querySelector(".proj-title"), final = t.dataset.text; let timer;
+        const t = row.querySelector(".proj-title .scr"), final = t.dataset.text; let timer;
         const run = () => {
+          if (document.documentElement.classList.contains("no-motion")) return;
           let frame = 0; clearInterval(timer);
           timer = setInterval(() => {
             const reveal = Math.floor(frame / 1.6);
@@ -455,12 +470,28 @@
     // Show the name in the header once the hero name sticker has scrolled out of view
     (() => {
       const name = document.getElementById("header-name"), hero = document.getElementById("hero-name");
-      if (!name || !hero || !("IntersectionObserver" in window)) { if (name) name.classList.remove("opacity-0"); return; }
+      if (!name || !hero || !("IntersectionObserver" in window)) { if (name) { name.classList.remove("opacity-0"); name.removeAttribute("aria-hidden"); name.removeAttribute("tabindex"); } return; }
       new IntersectionObserver(([e]) => {
         const show = !e.isIntersecting;
         name.classList.toggle("opacity-0", !show);
         show ? name.removeAttribute("tabindex") : name.setAttribute("tabindex", "-1");
+        name.setAttribute("aria-hidden", String(!show));
       }, { rootMargin: "-64px 0px 0px 0px" }).observe(hero);
+    })();
+  </script>
+
+  <script>
+    // Pause / play all animations (WCAG 2.2.2); remembered on this device
+    (() => {
+      const btn = document.getElementById("motion-toggle"), root = document.documentElement;
+      if (!btn) return;
+      const sync = () => { const off = root.classList.contains("no-motion"); btn.setAttribute("aria-pressed", off); btn.textContent = off ? "Play animations" : "Pause animations"; };
+      btn.addEventListener("click", () => {
+        root.classList.toggle("no-motion");
+        try { localStorage.setItem("no-motion", root.classList.contains("no-motion") ? "1" : "0"); } catch {}
+        sync();
+      });
+      sync();
     })();
   </script>
 </body>

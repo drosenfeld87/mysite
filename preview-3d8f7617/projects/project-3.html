@@ -114,8 +114,22 @@
       .fx-ch { transition: none; }
     }
   </style>
+
+  <!-- Accessibility: visible focus, skip link, and a site-wide "pause animations" switch -->
+  <style>
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    input:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 0; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 50; padding: .6rem 1rem; background: var(--color-accent); color: var(--color-bg); font: 500 .85rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+    .skip-link:focus { top: 1rem; }
+    html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
+    .motion-toggle { font: 400 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .15em; color: var(--color-muted); border: 1px solid var(--color-line); padding: .5rem .75rem; cursor: pointer; background: transparent; }
+    .motion-toggle:hover { color: var(--color-ink); }
+  </style>
+  <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
+
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="bg-fx" aria-hidden="true"></div>
   <div class="bg-grain" aria-hidden="true"></div>
 
@@ -130,7 +144,7 @@
     </nav>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6 py-16">
+  <main id="main" class="max-w-4xl mx-auto px-6 py-16">
     <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#projects">&larr; Back to projects</a>
 
     <!-- ===== Summary ===== -->
@@ -167,31 +181,31 @@
 
       <a href="../images/report-exponential-cover.jpg" target="_blank" rel="noopener" title="Open full size">
             <img class="w-full border border-line" src="../images/report-exponential-cover.jpg" loading="lazy" alt="Report cover: Exponential IT Readiness Diagnostic, with the company name in large white type over a flowing pink and purple particle wave on a dark background.">
-          </a>
+          <span class="sr-only"> (opens in a new tab)</span></a>
 
       <div class="grid md:grid-cols-2 gap-4 mt-4">
         <div>
           <a href="../images/report-exponential-strategy.jpg" target="_blank" rel="noopener" title="Open full size">
             <img class="w-full border border-line" src="../images/report-exponential-strategy.jpg" loading="lazy" alt="Domain results page for Strategy and Innovation: a large gauge showing an overall score of 48, beside a card listing the question and each stakeholder's score as a gradient bar, split into highest and lowest scores.">
-          </a>
+          <span class="sr-only"> (opens in a new tab)</span></a>
           <p class="text-sm text-muted mt-2">Each IT domain gets a page: an overall score up front, then every stakeholder's response.</p>
         </div>
         <div>
           <a href="../images/report-exponential-security.jpg" target="_blank" rel="noopener" title="Open full size">
             <img class="w-full border border-line" src="../images/report-exponential-security.jpg" loading="lazy" alt="Domain results page for Security and Risk: an overall score gauge of 37 beside two question cards, AI threat preparedness and data privacy, each ranking stakeholder scores from highest to lowest.">
-          </a>
+          <span class="sr-only"> (opens in a new tab)</span></a>
           <p class="text-sm text-muted mt-2">Highest and lowest scores are split so disagreement between leaders stands out.</p>
         </div>
         <div>
           <a href="../images/report-exponential-quadrant.jpg" target="_blank" rel="noopener" title="Open full size">
             <img class="w-full border border-line" src="../images/report-exponential-quadrant.jpg" loading="lazy" alt="Org readiness vs IT readiness page: definitions of five readiness positions on the left, and on the right a blue-to-magenta quadrant chart plotting the organization's position, with overall scores of 62 for organizational readiness and 52 for IT readiness.">
-          </a>
+          <span class="sr-only"> (opens in a new tab)</span></a>
           <p class="text-sm text-muted mt-2">The headline finding: where the organization sits on org vs IT readiness, and what that means.</p>
         </div>
         <div>
           <a href="../images/report-exponential-feedback.jpg" target="_blank" rel="noopener" title="Open full size">
             <img class="w-full border border-line" src="../images/report-exponential-feedback.jpg" loading="lazy" alt="CIO and IT feedback page: an open-ended question at the top, followed by each leader's written answer with their name and title.">
-          </a>
+          <span class="sr-only"> (opens in a new tab)</span></a>
           <p class="text-sm text-muted mt-2">Open-ended feedback, kept readable with clear attribution for each leader.</p>
         </div>
       </div>
@@ -227,7 +241,23 @@
 
   <footer class="border-t border-line px-6 py-8 text-center text-muted">
     <p>&copy; Deb Rosenfeld</p>
+    <p class="pt-3"><button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false">Pause animations</button></p>
   </footer>
 
+
+  <script>
+    // Pause / play all animations (WCAG 2.2.2); remembered on this device
+    (() => {
+      const btn = document.getElementById("motion-toggle"), root = document.documentElement;
+      if (!btn) return;
+      const sync = () => { const off = root.classList.contains("no-motion"); btn.setAttribute("aria-pressed", off); btn.textContent = off ? "Play animations" : "Pause animations"; };
+      btn.addEventListener("click", () => {
+        root.classList.toggle("no-motion");
+        try { localStorage.setItem("no-motion", root.classList.contains("no-motion") ? "1" : "0"); } catch {}
+        sync();
+      });
+      sync();
+    })();
+  </script>
 </body>
 </html>
