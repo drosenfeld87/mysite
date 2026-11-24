@@ -23,9 +23,9 @@
       --color-ink: #E8E6E3;
       --color-muted: #9A9893;
       --color-line: #2A2A2E;
-      --color-accent: #7CFF4F;   /* green: highlights, links, buttons */
-      --color-accent2: #FF3D8B;  /* pink: tags and small details */
-      --color-accent3: #A98BFF;  /* rare pop: a glow and one edge in the background */
+      --color-accent: #FF7A59;   /* coral: highlights, links, buttons */
+      --color-accent2: #F5B451;  /* amber: tags and small details */
+      --color-accent3: #5ED6E8;  /* cyan: rare pop */
       --font-sans: "Satoshi", system-ui, sans-serif;
       --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -509,31 +509,5 @@
     })();
   </script>
 
-  <!-- TEMPORARY palette preview: only shows when the address ends with ?palette -->
-  <div id="palette-panel" hidden style="position:fixed;left:16px;bottom:16px;z-index:60;background:#0E0E10;border:1px solid #2A2A2E;padding:12px;font:12px/1.4 ui-monospace,monospace;color:#E8E6E3">
-    <div style="margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase;color:#9A9893">Palette</div>
-    <div id="palette-btns" style="display:flex;flex-direction:column;gap:6px"></div>
-  </div>
-  <script>
-    (() => {
-      if (!location.search.includes("palette")) return;
-      const P = {
-        "A+  Lime + teal + violet":  ["#A6F25B", "#3FD3B0", "#A98BFF"],
-        "D+  Coral + amber + cyan":  ["#FF7A59", "#F5B451", "#5ED6E8"],
-        "A   Lime + teal":           ["#A6F25B", "#3FD3B0", "#3FD3B0"],
-        "D   Coral + amber":         ["#FF7A59", "#F5B451", "#F5B451"],
-        "C   Violet + rose":         ["#A78BFA", "#F08BB8", "#F08BB8"]
-      };
-      const panel = document.getElementById("palette-panel"), box = document.getElementById("palette-btns");
-      panel.hidden = false;
-      Object.entries(P).forEach(([name, [a, b, c]]) => {
-        const btn = document.createElement("button");
-        btn.innerHTML = `<span style="display:inline-block;width:12px;height:12px;background:${a};margin-right:4px"></span><span style="display:inline-block;width:12px;height:12px;background:${b};margin-right:4px"></span><span style="display:inline-block;width:12px;height:12px;background:${c};margin-right:8px"></span>${name}`;
-        btn.style.cssText = "text-align:left;background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:2px 0";
-        btn.onclick = () => { document.documentElement.style.setProperty("--color-accent", a); document.documentElement.style.setProperty("--color-accent2", b); document.documentElement.style.setProperty("--color-accent3", c); };
-        box.append(btn);
-      });
-    })();
-  </script>
 </body>
 </html>

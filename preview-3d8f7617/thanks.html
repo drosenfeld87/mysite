@@ -18,13 +18,14 @@
   <!-- Design tokens: change colours and fonts here -->
   <style type="text/tailwindcss">
     @theme {
-      --color-bg: #0E0E10;
+      --color-bg: #060609;
       --color-surface: #17171A;
       --color-ink: #E8E6E3;
       --color-muted: #9A9893;
       --color-line: #2A2A2E;
-      --color-accent: #7CFF4F;   /* green: highlights, links, buttons */
-      --color-accent2: #FF3D8B;  /* pink: tags and small details */
+      --color-accent: #FF7A59;   /* coral: highlights, links, buttons */
+      --color-accent2: #F5B451;  /* amber: tags and small details */
+      --color-accent3: #5ED6E8;  /* cyan: rare pop */
       --font-sans: "Satoshi", system-ui, sans-serif;
       --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -52,12 +53,12 @@
     .bg-fx::before, .bg-fx::after { content: ""; position: absolute; inset: 0; will-change: transform; }
     .bg-fx::before {
       background:
-        radial-gradient(42vmax 42vmax at 22% 26%, rgb(124 255 79 / 0.16), rgb(124 255 79 / 0.05) 40%, transparent 72%),
-        radial-gradient(34vmax 34vmax at 55% 105%, rgb(124 255 79 / 0.10), transparent 70%);
+        radial-gradient(42vmax 42vmax at 22% 26%, color-mix(in srgb, var(--color-accent) 16.0%, transparent), color-mix(in srgb, var(--color-accent) 5.0%, transparent) 40%, transparent 72%),
+        radial-gradient(34vmax 34vmax at 55% 105%, color-mix(in srgb, var(--color-accent) 10.0%, transparent), transparent 70%);
       animation: glow-a 14s ease-in-out infinite alternate;
     }
     .bg-fx::after {
-      background: radial-gradient(48vmax 48vmax at 78% 64%, rgb(255 61 139 / 0.18), rgb(255 61 139 / 0.06) 40%, transparent 72%);
+      background: radial-gradient(48vmax 48vmax at 78% 64%, color-mix(in srgb, var(--color-accent2) 18.0%, transparent), color-mix(in srgb, var(--color-accent2) 6.0%, transparent) 40%, transparent 72%);
       animation: glow-b 18s ease-in-out infinite alternate;
     }
     @keyframes glow-a {
@@ -77,7 +78,7 @@
     .bg-grain {
       inset: -50%;
       animation: grain-shift 1.2s steps(6) infinite;
-      opacity: 0.11;
+      opacity: 0.06;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     @keyframes grain-shift {
@@ -120,16 +121,16 @@
       display: inline-flex; align-items: center; gap: .6em; align-self: flex-start;
       padding: .9em 1.5em; cursor: pointer;
       font: 500 .8rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase;
-      color: var(--color-bg); background: var(--color-accent); border: 1px solid var(--color-accent);
-      box-shadow: 4px 4px 0 var(--color-accent2);
+      color: var(--color-bg); background: linear-gradient(100deg, var(--color-accent), var(--color-accent2)); border: 0;
+      box-shadow: 4px 4px 0 color-mix(in srgb, var(--color-accent2) 45%, #000);
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .btn .arrow { display: inline-block; transition: transform .18s ease; }
-    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--color-accent2); }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 color-mix(in srgb, var(--color-accent2) 45%, #000); }
     .btn:hover .arrow { transform: translateX(4px); }
     .btn:hover .arrow-down { transform: translateY(3px); }
     .btn:hover .arrow-back { transform: translateX(-4px); }
-    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--color-accent2); }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 color-mix(in srgb, var(--color-accent2) 45%, #000); }
     .btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 4px; }
     @media (prefers-reduced-motion: reduce) { .btn, .btn .arrow { transition: none; } }
   </style>
@@ -146,6 +147,7 @@
   </style>
   <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
 
+  <style>/* Static background on inner pages */ .bg-fx, .bg-fx::before, .bg-fx::after, .bg-grain { animation: none !important; }</style>
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
   <a class="skip-link" href="#main">Skip to content</a>
