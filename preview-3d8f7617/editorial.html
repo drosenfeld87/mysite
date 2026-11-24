@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Debbie Rosenfeld — Senior Product Designer (editorial direction)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+  <style>
+    /* ===== Editorial direction: one accent, flat black, type does the work ===== */
+    :root {
+      --bg: #0A0A0A;
+      --ink: #EDEBE6;
+      --muted: #8F8C86;
+      --line: #262624;
+      --accent: #FF7A59;
+      --display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
+      --body: "Satoshi", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+      --gutter: clamp(20px, 4vw, 56px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 400 19px/1.6 var(--body); }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    ::selection { background: var(--accent); color: var(--bg); }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .skip { position: absolute; left: 1rem; top: -4rem; background: var(--accent); color: var(--bg); padding: .6rem 1rem; font: 500 13px var(--mono); }
+    .skip:focus { top: 1rem; }
+
+    /* Still film grain: texture without movement */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .mono { font: 400 12px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .display { font-family: var(--display); font-stretch: 75%; font-variation-settings: "wdth" 75; }
+    .wrap { padding: 0 var(--gutter); }
+
+    /* ---------- Masthead ---------- */
+    .masthead {
+      display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 24px; align-items: center;
+      padding-top: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--line);
+    }
+    .masthead nav { display: flex; gap: 22px; }
+    .masthead nav a { text-decoration: none; color: var(--ink); }
+    .masthead nav a:hover { color: var(--accent); }
+    .sticker {
+      display: inline-block; justify-self: start; rotate: -2.5deg; padding: 6px 12px;
+      border: 1px solid var(--accent); color: var(--accent); font: 500 12px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; white-space: nowrap;
+    }
+
+    /* ---------- Hero: the type is the image ---------- */
+    .hero { padding-top: clamp(48px, 9vh, 120px); padding-bottom: clamp(40px, 7vh, 96px); }
+    .hero h1 {
+      margin: 0; font-weight: 750; line-height: .82; letter-spacing: -0.015em;
+      font-size: clamp(4.5rem, 17vw, 17rem); text-transform: uppercase;
+    }
+    .hero h1 .l2 { display: block; color: var(--accent); padding-left: 1.25em; }
+    .hero-foot {
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: clamp(36px, 6vh, 72px);
+      padding-top: 20px; border-top: 1px solid var(--line);
+    }
+    .hero-foot .intro { grid-column: 1 / span 6; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.35; margin: 0; }
+    .hero-foot .meta { grid-column: 9 / span 4; display: grid; gap: 6px; align-content: start; }
+
+    /* ---------- Section headers ---------- */
+    .sec { padding-top: clamp(72px, 10vh, 140px); }
+    .sec-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--ink); margin-bottom: 0; }
+    .sec-head .num { color: var(--accent); }
+
+    /* ---------- Work strip: real images up front ---------- */
+    .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .strip figure { margin: 0; }
+    .strip img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: filter .3s ease; }
+    .strip a:hover img, .strip a:focus-visible img { filter: none; }
+    .strip figcaption { margin-top: 10px; }
+
+    /* ---------- Index ---------- */
+    .index { list-style: none; margin: 40px 0 0; padding: 0; }
+    .index a {
+      display: grid; grid-template-columns: 4rem minmax(0, 1fr) 16rem 7rem; gap: 24px; align-items: baseline;
+      padding: 26px 0; border-bottom: 1px solid var(--line); text-decoration: none;
+    }
+    .index .n { color: var(--accent); }
+    .index h3 { margin: 0; font-weight: 650; font-size: clamp(2.4rem, 5.6vw, 5.25rem); line-height: .95; transition: color .2s ease; }
+    .index .sum { display: block; color: var(--muted); font-size: 17px; margin-top: 8px; font-family: var(--body); }
+    .index .role { color: var(--ink); }
+    .index .yr { text-align: right; }
+    @media (hover: hover) { .index a:hover h3 { color: var(--accent); } }
+
+    /* ---------- About ---------- */
+    .about { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: 40px; }
+    .about .pull { grid-column: 1 / span 7; margin: 0; font-weight: 650; font-size: clamp(2.2rem, 4.4vw, 4.25rem); line-height: 1; }
+    .about .body { grid-column: 9 / span 4; }
+    .about .body p { margin: 0 0 18px; }
+    .about .body p.quiet { color: var(--muted); }
+
+    /* ---------- Contact ---------- */
+    .contact { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: 40px; }
+    .contact h2 { grid-column: 1 / span 6; margin: 0; font-weight: 750; text-transform: uppercase; font-size: clamp(3.5rem, 9vw, 8.5rem); line-height: .85; }
+    .contact form { grid-column: 8 / span 5; display: grid; gap: 8px; }
+    .contact label { margin-top: 8px; }
+    .contact input, .contact textarea {
+      background: transparent; color: var(--ink); border: 0; border-bottom: 1px solid var(--line);
+      padding: 10px 0; font: inherit; outline: none;
+    }
+    .contact input:focus, .contact textarea:focus { border-color: var(--accent); }
+    .btn {
+      justify-self: start; margin-top: 18px; padding: 14px 22px; border: 0; cursor: pointer;
+      background: var(--accent); color: var(--bg); font: 500 13px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+      box-shadow: 4px 4px 0 var(--ink); transition: transform .15s ease, box-shadow .15s ease;
+    }
+    @media (hover: hover) { .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); } }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+
+    footer { display: flex; justify-content: space-between; gap: 24px; margin-top: clamp(72px, 10vh, 140px); padding-top: 18px; padding-bottom: 28px; border-top: 1px solid var(--line); }
+
+    /* Comparison banner (preview only) */
+    .compare { position: fixed; right: 16px; bottom: 16px; z-index: 50; background: var(--ink); color: var(--bg); padding: 10px 14px; font: 500 12px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .1em; text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .masthead { grid-template-columns: 1fr auto; }
+      .masthead .hide-m { display: none; }
+      .sticker { font-size: 11px; letter-spacing: .14em; }
+      .masthead nav { gap: 14px; font-size: 16px; }
+      .hero h1 .l2 { padding-left: .4em; }
+      .hero-foot .intro, .hero-foot .meta { grid-column: 1 / -1; }
+      .strip { grid-template-columns: 1fr; }
+      .index a { grid-template-columns: 2.5rem 1fr; }
+      .index .tags, .index .yr { grid-column: 2; text-align: left; }
+      .about .pull, .about .body, .contact h2, .contact form { grid-column: 1 / -1; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead wrap">
+    <span class="sticker">Debbie Rosenfeld</span>
+    <span class="mono hide-m">Senior Product Designer</span>
+    <span class="mono hide-m">Toronto</span>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero wrap">
+      <h1 class="display">Pixels in,<span class="l2">code out.</span></h1>
+      <div class="hero-foot">
+        <p class="intro">Senior product designer and front-end developer. I design product experiences, then build them.</p>
+        <div class="meta">
+          <span class="mono">Now — Info-Tech Research Group</span>
+          <span class="mono">Selected work 2019–2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WORK ===== -->
+    <section class="sec wrap" id="work" aria-labelledby="work-h">
+      <div class="sec-head">
+        <h2 id="work-h" class="mono"><span class="num" aria-hidden="true">01</span>&nbsp;&nbsp;Selected work</h2>
+        <span class="mono" aria-hidden="true">04 projects</span>
+      </div>
+
+      <!-- Real images first: proof of craft in the first scroll -->
+      <div class="strip">
+        <figure><a href="projects/project-2.html"><img src="images/infographic-cloud-strategy.jpg" alt="Infographic: Empower Your Business With a Proven Cloud Strategy"></a><figcaption class="mono">Research infographic</figcaption></figure>
+        <figure><a href="projects/project-3.html"><img src="images/report-exponential-cover.jpg" alt="Cover of the Exponential IT Readiness Diagnostic report"></a><figcaption class="mono">Diagnostic report</figcaption></figure>
+        <figure><a href="projects/project-2.html"><img src="images/infographic-genai-security.jpg" alt="Infographic: security and privacy risks for generative AI"></a><figcaption class="mono">Research infographic</figcaption></figure>
+      </div>
+
+      <ol class="index">
+        <li><a href="projects/project-1.html">
+          <span class="n mono" aria-hidden="true">01</span>
+          <span><h3 class="display">CIO Analytics</h3><span class="sum">AI-powered analytics platform for IT leaders. <span class="role">Designed the Key Insights component; built the front end.</span></span></span>
+          <span class="tags mono">Product design · Front-end</span>
+          <span class="yr mono">2025–now</span>
+        </a></li>
+        <li><a href="projects/project-2.html">
+          <span class="n mono" aria-hidden="true">02</span>
+          <span><h3 class="display">Research Infographics</h3><span class="sum">Visual frameworks for Info-Tech research. <span class="role">Wireframe to final design.</span></span></span>
+          <span class="tags mono">Information · Visual design</span>
+          <span class="yr mono">2019–now</span>
+        </a></li>
+        <li><a href="projects/project-3.html">
+          <span class="n mono" aria-hidden="true">03</span>
+          <span><h3 class="display">Diagnostic Reports</h3><span class="sum">Reports that benchmark IT teams. <span class="role">Designed the full report; coded part of it.</span></span></span>
+          <span class="tags mono">Information · Report design</span>
+          <span class="yr mono">2024–2025</span>
+        </a></li>
+        <li><a href="projects/project-4.html">
+          <span class="n mono" aria-hidden="true">04</span>
+          <span><h3 class="display">Request a Demo</h3><span class="sum">Landing page and sign-up flow. <span class="role">Designed and built the page.</span></span></span>
+          <span class="tags mono">Visual · UX · Front-end</span>
+          <span class="yr mono">2023</span>
+        </a></li>
+      </ol>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="sec wrap" id="about" aria-labelledby="about-h">
+      <div class="sec-head">
+        <h2 id="about-h" class="mono"><span class="num" aria-hidden="true">02</span>&nbsp;&nbsp;About</h2>
+        <span class="mono" aria-hidden="true">Toronto</span>
+      </div>
+      <div class="about">
+        <p class="pull display">A senior product designer who codes, seven years in at Info-Tech Research Group.</p>
+        <div class="body">
+          <p>I design and build the interface for CIO Analytics, an AI-powered analytics platform for IT leaders, and I&rsquo;ve designed the infographics and diagnostic reports that sum up Info-Tech&rsquo;s research.</p>
+          <p class="quiet">Outside of work: bass (mostly metal and punk), graffiti-inspired and typographic art, a lot of horror, and a cat or two nearby.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="sec wrap" id="contact" aria-labelledby="contact-h">
+      <div class="sec-head">
+        <span class="mono"><span class="num" aria-hidden="true">03</span>&nbsp;&nbsp;Contact</span>
+        <a class="mono" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <div class="contact">
+        <h2 id="contact-h" class="display">Get in<br>touch.</h2>
+        <!-- Preview only: this form doesn't send. The live site's form is unchanged. -->
+        <form onsubmit="event.preventDefault()">
+          <label class="mono" for="e-name">Name</label>
+          <input id="e-name" name="name" autocomplete="name" required>
+          <label class="mono" for="e-email">Email</label>
+          <input id="e-email" name="email" type="email" autocomplete="email" required>
+          <label class="mono" for="e-msg">Message</label>
+          <textarea id="e-msg" name="message" rows="4" required></textarea>
+          <button class="btn" type="submit">Send &rarr;</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span class="mono">&copy; 2026 Debbie Rosenfeld</span>
+    <span class="mono">Designed &amp; built by me</span>
+  </footer>
+
+  <a class="compare" href="index.html">&larr; Compare with current site</a>
+</body>
+</html>
