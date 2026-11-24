@@ -98,6 +98,25 @@
       .fx-ch { transition: none; }
     }
   </style>
+  <style>
+    /* Buttons: sticker-style with a pink offset shadow */
+    .btn {
+      display: inline-flex; align-items: center; gap: .6em; align-self: flex-start;
+      padding: .9em 1.5em; cursor: pointer;
+      font: 500 .8rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase;
+      color: var(--color-bg); background: var(--color-accent); border: 1px solid var(--color-accent);
+      box-shadow: 4px 4px 0 var(--color-accent2);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn .arrow { display: inline-block; transition: transform .18s ease; }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--color-accent2); }
+    .btn:hover .arrow { transform: translateX(4px); }
+    .btn:hover .arrow-down { transform: translateY(3px); }
+    .btn:hover .arrow-back { transform: translateX(-4px); }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--color-accent2); }
+    .btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { .btn, .btn .arrow { transition: none; } }
+  </style>
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
   <div class="bg-fx" aria-hidden="true"></div>
@@ -126,7 +145,7 @@
           Toronto
         </span>
       </p>
-      <a class="inline-block self-start px-7 py-3.5 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors" href="#projects">See my work</a>
+      <a class="btn" href="#projects">See my work <span class="arrow arrow-down" aria-hidden="true">&darr;</span></a>
       <a href="#projects" class="absolute bottom-8 left-6 md:left-12 font-mono text-xs uppercase tracking-widest text-muted hover:text-accent">Scroll &darr;</a>
     </section>
 
@@ -242,7 +261,7 @@
         <label for="message">Message</label>
         <textarea class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" id="message" name="message" rows="6" required></textarea>
 
-        <button type="submit" class="inline-block self-start px-6 py-3 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors mt-2">Send</button>
+        <button type="submit" class="btn mt-2">Send <span class="arrow" aria-hidden="true">&rarr;</span></button>
       </form>
     </section>
 
