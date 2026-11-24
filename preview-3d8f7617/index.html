@@ -152,6 +152,39 @@
     .card img.thumb { filter: url(#xerox) contrast(1.15); }
     .card:hover img.thumb, .card:focus-visible img.thumb { filter: none; }
 
+    /* Project index */
+    .proj-row {
+      display: grid; grid-template-columns: 3rem 1fr auto 7rem; align-items: center; gap: 1.5rem;
+      padding: 1.75rem 0; border-top: 1px solid var(--color-line);
+      transition: padding-left .25s ease;
+    }
+    .proj-title { font-size: clamp(2rem, 4.5vw, 3.75rem); line-height: 1; transition: color .2s ease; }
+    .proj-year { text-align: right; }
+    .proj-row:hover, .proj-row:focus-visible { padding-left: .75rem; outline: none; }
+    .proj-row:hover .proj-title, .proj-row:focus-visible .proj-title { color: var(--color-accent); }
+    .proj-mobile-img { display: none; grid-column: 1 / -1; }
+    @media (max-width: 900px) {
+      .proj-row { grid-template-columns: 2.5rem 1fr; }
+      .proj-tags { grid-column: 2; }
+      .proj-year { grid-column: 2; text-align: left; }
+    }
+    @media (hover: none) { .proj-mobile-img { display: block; } }
+
+    /* Floating preview that follows the cursor */
+    .proj-preview {
+      position: fixed; left: 0; top: 0; z-index: 20; pointer-events: none;
+      width: min(26rem, 32vw); aspect-ratio: 4 / 3; opacity: 0;
+      transition: opacity .2s ease;
+    }
+    .proj-preview.on { opacity: 1; }
+    .proj-preview img {
+      width: 100%; height: 100%; object-fit: cover; rotate: -2deg;
+      box-shadow: 6px 6px 0 var(--color-accent2);
+      filter: url(#xerox) contrast(1.15);
+    }
+    .proj-preview.color img { filter: none; }
+    @media (prefers-reduced-motion: reduce) { .proj-row, .proj-preview { transition: none; } }
+
     /* Buttons: sticker-style with a pink offset shadow */
     .btn {
       display: inline-flex; align-items: center; gap: .6em; align-self: flex-start;
@@ -227,59 +260,60 @@
     <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="projects">
       <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">01 /</span>Projects</h2>
 
-      <!-- 4-panel gallery (2x2 on desktop, stacked on mobile).
-           To use a real thumbnail, replace each placeholder <div> with:
-           <img class="aspect-[4/3] w-full object-cover" src="images/project-1.jpg" alt="Short description"> -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <a class="card block group" href="projects/project-1.html">
-          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-1-thumb.jpg" alt="CIO Analytics"> -->
-          <div class="thumb aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 1</div>
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">CIO Analytics</h3>
-          <p class="text-muted mb-2">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
-          <!-- Role tags: what you did on this project -->
-          <div class="flex flex-wrap gap-2">
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span>
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
-          </div>
-        </a>
+      <!-- Typographic project index. Hovering a row shows its image beside the cursor;
+           on touch screens the image shows inline instead. To add an image, give the
+           <a> a data-img="images/your-image.jpg" and add a matching proj-mobile-img. -->
+      <ol class="proj-list border-b border-line">
+        <li>
+          <a class="proj-row group" href="projects/project-1.html">
+            <span class="proj-num font-mono text-sm text-accent2">01</span>
+            <span class="proj-main">
+              <span class="proj-title block font-display font-semibold">CIO Analytics</span>
+              <span class="block text-muted mt-1">AI-powered analytics platform for IT leaders.</span>
+            </span>
+            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span>
+            <span class="proj-year font-mono text-sm text-muted">2025–now</span>
+          </a>
+        </li>
 
-        <a class="card block group" href="projects/project-2.html">
-          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-2-thumb.jpg" alt="Project Two"> -->
-          <img class="thumb aspect-[4/3] w-full object-cover" src="images/infographic-genai-security.jpg" alt="Research infographic on security and privacy risks for generative AI">
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Research Infographics</h3>
-          <p class="text-muted mb-2">Visual frameworks that distill Info-Tech research blueprints into a single, scannable image for IT leaders.</p>
-          <!-- Role tags: what you did on this project -->
-          <div class="flex flex-wrap gap-2">
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
-          </div>
-        </a>
+        <li>
+          <a class="proj-row group" href="projects/project-2.html" data-img="images/infographic-genai-security.jpg">
+          <img class="proj-mobile-img thumb aspect-[4/3] w-full object-cover mb-4" src="images/infographic-genai-security.jpg" alt="" loading="lazy">
+            <span class="proj-num font-mono text-sm text-accent2">02</span>
+            <span class="proj-main">
+              <span class="proj-title block font-display font-semibold">Research Infographics</span>
+              <span class="block text-muted mt-1">Visual frameworks that sum up Info-Tech research.</span>
+            </span>
+            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span></span>
+            <span class="proj-year font-mono text-sm text-muted">2019–now</span>
+          </a>
+        </li>
 
-        <a class="card block group" href="projects/project-3.html">
-          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-3-thumb.jpg" alt="Project Three"> -->
-          <div class="thumb aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 3</div>
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Diagnostic Reports</h3>
-          <p class="text-muted mb-2">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
-          <!-- Role tags: what you did on this project -->
-          <div class="flex flex-wrap gap-2">
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
-          </div>
-        </a>
+        <li>
+          <a class="proj-row group" href="projects/project-3.html" data-img="images/report-exponential-cover.jpg">
+          <img class="proj-mobile-img thumb aspect-[4/3] w-full object-cover mb-4" src="images/report-exponential-cover.jpg" alt="" loading="lazy">
+            <span class="proj-num font-mono text-sm text-accent2">03</span>
+            <span class="proj-main">
+              <span class="proj-title block font-display font-semibold">Diagnostic Reports</span>
+              <span class="block text-muted mt-1">Reports that benchmark IT teams.</span>
+            </span>
+            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span></span>
+            <span class="proj-year font-mono text-sm text-muted">2024</span>
+          </a>
+        </li>
 
-        <a class="card block group" href="projects/project-4.html">
-          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-4-thumb.jpg" alt="Project Four"> -->
-          <div class="thumb aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 4</div>
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Request a Demo Page</h3>
-          <p class="text-muted mb-2">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
-          <!-- Role tags: what you did on this project -->
-          <div class="flex flex-wrap gap-2">
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span>
-            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
-          </div>
-        </a>
-      </div>
+        <li>
+          <a class="proj-row group" href="projects/project-4.html">
+            <span class="proj-num font-mono text-sm text-accent2">04</span>
+            <span class="proj-main">
+              <span class="proj-title block font-display font-semibold">Request a Demo Page</span>
+              <span class="block text-muted mt-1">Landing page and sign-up flow.</span>
+            </span>
+            <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span>
+            <span class="proj-year font-mono text-sm text-muted"></span>
+          </a>
+        </li>
+      </ol>
     </section>
 
     <!-- ============ ABOUT ============ -->
@@ -385,6 +419,37 @@
           return;
         } catch {}
       }
+    })();
+  </script>
+
+  <script>
+    // Project index: floating, photocopied preview that follows the cursor and snaps to colour
+    (() => {
+      if (!matchMedia("(hover: hover)").matches) return;
+      const prev = document.createElement("div");
+      prev.className = "proj-preview"; prev.setAttribute("aria-hidden", "true");
+      prev.innerHTML = '<img alt="">';
+      document.body.append(prev);
+      const img = prev.querySelector("img");
+      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let x = 0, y = 0, cx = 0, cy = 0, raf, colorTimer;
+      const tick = () => {
+        cx += (x - cx) * (still ? 1 : 0.18); cy += (y - cy) * (still ? 1 : 0.18);
+        prev.style.transform = `translate(${cx + 28}px, ${cy - prev.offsetHeight / 2}px)`;
+        raf = requestAnimationFrame(tick);
+      };
+      document.querySelectorAll(".proj-row[data-img]").forEach(row => {
+        row.addEventListener("pointerenter", e => {
+          img.src = row.dataset.img; x = cx = e.clientX; y = cy = e.clientY;
+          prev.classList.add("on"); prev.classList.remove("color");
+          clearTimeout(colorTimer); colorTimer = setTimeout(() => prev.classList.add("color"), 450);
+          cancelAnimationFrame(raf); tick();
+        });
+        row.addEventListener("pointermove", e => { x = e.clientX; y = e.clientY; });
+        row.addEventListener("pointerleave", () => {
+          prev.classList.remove("on", "color"); clearTimeout(colorTimer); cancelAnimationFrame(raf);
+        });
+      });
     })();
   </script>
 </body>
