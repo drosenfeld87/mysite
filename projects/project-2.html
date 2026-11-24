@@ -64,16 +64,12 @@
     @media (prefers-reduced-motion: reduce) { .bg-fx { animation: none; } }
   </style>
 
-  <!-- Zine details: sticker tags, marquee, flexing headline -->
+  <!-- Zine details: sticker tags, flexing headline -->
   <style>
     .tag { display: inline-block; }
     .tag:nth-child(odd)  { transform: rotate(-2deg); }
     .tag:nth-child(even) { transform: rotate(1.5deg); }
 
-    .marquee { overflow: hidden; }
-    .marquee-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-    @keyframes marquee { to { transform: translateX(-50%); } }
 
     .fx-word { display: inline-block; white-space: nowrap; }
     .fx-ch {
@@ -82,7 +78,6 @@
       transition: font-variation-settings .4s cubic-bezier(.2,.7,.2,1);
     }
     @media (prefers-reduced-motion: reduce) {
-      .marquee-track { animation: none; }
       .fx-ch { transition: none; }
     }
   </style>
