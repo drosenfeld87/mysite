@@ -39,6 +39,7 @@
       }
       ::selection { background: var(--color-accent); color: var(--color-bg); }
     }
+    /* hover only on devices with a mouse or trackpad */
   </style>
 
   <!-- Background texture: soft colour glows that drift as you scroll, plus film grain -->
@@ -124,7 +125,7 @@
     .skip-link:focus { top: 1rem; }
     html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
     .motion-toggle { font: 400 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .15em; color: var(--color-muted); border: 1px solid var(--color-line); padding: .5rem .75rem; cursor: pointer; background: transparent; }
-    .motion-toggle:hover { color: var(--color-ink); }
+    @media (hover: hover) { .motion-toggle:hover { color: var(--color-ink); } }
   </style>
   <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
 

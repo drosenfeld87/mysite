@@ -39,6 +39,7 @@
       }
       ::selection { background: var(--color-accent); color: var(--color-bg); }
     }
+    /* hover only on devices with a mouse or trackpad */
   </style>
 
   <!-- Background texture: soft colour glows that drift as you scroll, plus film grain -->
@@ -126,10 +127,10 @@
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .btn .arrow { display: inline-block; transition: transform .18s ease; }
-    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 color-mix(in srgb, var(--color-accent2) 45%, #000); }
-    .btn:hover .arrow { transform: translateX(4px); }
-    .btn:hover .arrow-down { transform: translateY(3px); }
-    .btn:hover .arrow-back { transform: translateX(-4px); }
+    @media (hover: hover) { .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 color-mix(in srgb, var(--color-accent2) 45%, #000); } }
+    @media (hover: hover) { .btn:hover .arrow { transform: translateX(4px); } }
+    @media (hover: hover) { .btn:hover .arrow-down { transform: translateY(3px); } }
+    @media (hover: hover) { .btn:hover .arrow-back { transform: translateX(-4px); } }
     .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 color-mix(in srgb, var(--color-accent2) 45%, #000); }
     .btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 4px; }
     @media (prefers-reduced-motion: reduce) { .btn, .btn .arrow { transition: none; } }
@@ -143,7 +144,7 @@
     .skip-link:focus { top: 1rem; }
     html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
     .motion-toggle { font: 400 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .15em; color: var(--color-muted); border: 1px solid var(--color-line); padding: .5rem .75rem; cursor: pointer; background: transparent; }
-    .motion-toggle:hover { color: var(--color-ink); }
+    @media (hover: hover) { .motion-toggle:hover { color: var(--color-ink); } }
   </style>
   <script>try { if (localStorage.getItem("no-motion") === "1") document.documentElement.classList.add("no-motion"); } catch {}</script>
 
