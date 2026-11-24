@@ -199,3 +199,17 @@ html { scroll-padding-top: 88px; }
 /* Role labels sit on one line on wider screens; they may wrap on phones */
 .index .tags { flex-wrap: nowrap; justify-content: flex-end; }
 @media (max-width: 900px) { .index .tags { flex-wrap: wrap; justify-content: flex-start; } }
+
+/* Image viewer (lightbox) */
+a.zoom { display: block; cursor: zoom-in; }
+.lightbox { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 56px var(--gutter) 24px; border: 0; background: rgb(10 10 10 / .96); color: var(--ink); }
+.lightbox::backdrop { background: rgb(0 0 0 / .6); }
+.lightbox[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 140px); object-fit: contain; cursor: zoom-out; }
+.lightbox .lb-cap { max-width: 70ch; text-align: center; color: var(--muted); font-size: 15px; margin: 0; }
+.lightbox .lb-close {
+  position: absolute; top: 14px; right: var(--gutter); width: 44px; height: 44px; display: grid; place-items: center;
+  background: transparent; color: var(--ink); border: 1px solid var(--line); cursor: pointer; font: 400 24px/1 var(--mono);
+}
+@media (hover: hover) { .lightbox .lb-close:hover { color: var(--accent); border-color: var(--accent); } }
+html.lb-open { overflow: hidden; }
