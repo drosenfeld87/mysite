@@ -18,13 +18,14 @@
   <!-- Design tokens: change colours and fonts here -->
   <style type="text/tailwindcss">
     @theme {
-      --color-bg: #09090B;
+      --color-bg: #060609;
       --color-surface: #17171A;
       --color-ink: #E8E6E3;
       --color-muted: #9A9893;
       --color-line: #2A2A2E;
       --color-accent: #7CFF4F;   /* green: highlights, links, buttons */
       --color-accent2: #FF3D8B;  /* pink: tags and small details */
+      --color-accent3: #A98BFF;  /* rare pop: a glow and one edge in the background */
       --font-sans: "Satoshi", system-ui, sans-serif;
       --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -57,7 +58,9 @@
       animation: glow-a 14s ease-in-out infinite alternate;
     }
     .bg-fx::after {
-      background: radial-gradient(48vmax 48vmax at 78% 64%, color-mix(in srgb, var(--color-accent2) 18.0%, transparent), color-mix(in srgb, var(--color-accent2) 6.0%, transparent) 40%, transparent 72%);
+      background:
+        radial-gradient(48vmax 48vmax at 78% 64%, color-mix(in srgb, var(--color-accent2) 18.0%, transparent), color-mix(in srgb, var(--color-accent2) 6.0%, transparent) 40%, transparent 72%),
+        radial-gradient(20vmax 20vmax at 38% 92%, color-mix(in srgb, var(--color-accent3) 14%, transparent), transparent 70%);
       animation: glow-b 18s ease-in-out infinite alternate;
     }
     @keyframes glow-a {
@@ -77,7 +80,7 @@
     .bg-grain {
       inset: -50%;
       animation: grain-shift 1.2s steps(6) infinite;
-      opacity: 0.07;
+      opacity: 0.06;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     @keyframes grain-shift {
@@ -97,7 +100,7 @@
     .bg-lines i {
       position: absolute; inset: -100%; rotate: -24deg;
       background-image: repeating-linear-gradient(180deg,
-        rgb(232 230 227 / .06) 0 1px, rgb(232 230 227 / .022) 1px, transparent 220px,
+        color-mix(in srgb, var(--color-accent3) 16%, transparent) 0 1px, color-mix(in srgb, var(--color-accent3) 3%, transparent) 1px, transparent 220px,
         transparent 360px, color-mix(in srgb, var(--color-accent2) 12.0%, transparent) 360px 361px, color-mix(in srgb, var(--color-accent2) 3.0%, transparent) 361px, transparent 520px,
         transparent 720px, color-mix(in srgb, var(--color-accent) 10.0%, transparent) 720px 721px, color-mix(in srgb, var(--color-accent) 2.5%, transparent) 721px, transparent 880px,
         transparent 1080px);
@@ -515,20 +518,19 @@
     (() => {
       if (!location.search.includes("palette")) return;
       const P = {
-        "A  Lime + teal":          ["#A6F25B", "#3FD3B0"],
-        "C  Violet + rose":        ["#A78BFA", "#F08BB8"],
-        "1  Soft lime + grey":     ["#B9F45A", "#8C9199"],
-        "3  Cobalt + steel":       ["#5C8DFF", "#8F99AB"],
-        "B  Mint + sky":           ["#5EEAD4", "#7DB4FF"],
-        "D  Coral + amber":        ["#FF7A59", "#F5B451"]
+        "A+  Lime + teal + violet":  ["#A6F25B", "#3FD3B0", "#A98BFF"],
+        "D+  Coral + amber + cyan":  ["#FF7A59", "#F5B451", "#5ED6E8"],
+        "A   Lime + teal":           ["#A6F25B", "#3FD3B0", "#3FD3B0"],
+        "D   Coral + amber":         ["#FF7A59", "#F5B451", "#F5B451"],
+        "C   Violet + rose":         ["#A78BFA", "#F08BB8", "#F08BB8"]
       };
       const panel = document.getElementById("palette-panel"), box = document.getElementById("palette-btns");
       panel.hidden = false;
-      Object.entries(P).forEach(([name, [a, b]]) => {
+      Object.entries(P).forEach(([name, [a, b, c]]) => {
         const btn = document.createElement("button");
-        btn.innerHTML = `<span style="display:inline-block;width:12px;height:12px;background:${a};margin-right:4px"></span><span style="display:inline-block;width:12px;height:12px;background:${b};margin-right:8px"></span>${name}`;
+        btn.innerHTML = `<span style="display:inline-block;width:12px;height:12px;background:${a};margin-right:4px"></span><span style="display:inline-block;width:12px;height:12px;background:${b};margin-right:4px"></span><span style="display:inline-block;width:12px;height:12px;background:${c};margin-right:8px"></span>${name}`;
         btn.style.cssText = "text-align:left;background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:2px 0";
-        btn.onclick = () => { document.documentElement.style.setProperty("--color-accent", a); document.documentElement.style.setProperty("--color-accent2", b); };
+        btn.onclick = () => { document.documentElement.style.setProperty("--color-accent", a); document.documentElement.style.setProperty("--color-accent2", b); document.documentElement.style.setProperty("--color-accent3", c); };
         box.append(btn);
       });
     })();
