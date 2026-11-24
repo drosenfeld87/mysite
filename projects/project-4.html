@@ -3,40 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request a Demo Page — Debbie Rosenfeld</title>
+  <title>Request a Demo Page — Deb Rosenfeld</title>
   <!-- Tailwind CSS v4 via CDN (no build step). For production you can
        switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Fonts: Mona Sans (headlines), Satoshi (body), JetBrains Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+
+  <!-- Design tokens: change colours and fonts here -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg: #0E0E10;
+      --color-surface: #17171A;
+      --color-ink: #E8E6E3;
+      --color-muted: #9A9893;
+      --color-line: #2A2A2E;
+      --color-accent: #7CFF4F;   /* green: highlights, links, buttons */
+      --color-accent2: #FF3D8B;  /* pink: tags and small details */
+      --font-sans: "Satoshi", system-ui, sans-serif;
+      --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    @layer base {
+      h1, h2, h3, .font-display {
+        font-family: var(--font-display);
+        font-stretch: 75%;
+        font-variation-settings: "wdth" 75;
+        letter-spacing: -0.01em;
+      }
+      ::selection { background: var(--color-accent); color: var(--color-bg); }
+    }
+  </style>
 </head>
-<body class="bg-white text-neutral-900 font-sans leading-relaxed">
+<body class="bg-bg text-ink font-sans leading-relaxed">
 
   <!-- ============ HEADER / NAV ============ -->
-  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-white border-b border-neutral-200">
-    <a class="font-bold" href="../index.html#top">Debbie Rosenfeld</a>
+  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-bg border-b border-line">
+    <a class="font-display font-bold text-xl" href="../index.html#top">Deb Rosenfeld</a>
     <nav class="flex gap-6" aria-label="Main">
-      <a class="hover:underline" href="../index.html#projects">Projects</a>
-      <a class="hover:underline" href="../index.html#about">About</a>
-      <a class="hover:underline" href="../index.html#contact">Contact</a>
+      <a class="hover:text-accent" href="../index.html#projects">Projects</a>
+      <a class="hover:text-accent" href="../index.html#about">About</a>
+      <a class="hover:text-accent" href="../index.html#contact">Contact</a>
     </nav>
   </header>
 
   <main class="max-w-4xl mx-auto px-6 py-16">
-    <a class="inline-block mb-8 hover:underline" href="../index.html#projects">&larr; Back to projects</a>
+    <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#projects">&larr; Back to projects</a>
 
     <!-- ===== Summary ===== -->
     <h1 class="text-4xl md:text-5xl font-bold mb-3">Request a Demo Page</h1>
     <p class="text-lg mb-4">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
     <div class="flex flex-wrap gap-2 mb-10">
-      <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Visual design</span>
-      <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">UX</span>
-      <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Front-end dev</span>
+      <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
+      <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span>
+      <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
     </div>
 
-    <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-neutral-200 mb-10">
-      <div><dt class="text-sm text-neutral-500">Company</dt><dd>Info-Tech Research Group</dd></div>
-      <div><dt class="text-sm text-neutral-500">Timeline</dt><dd>YEAR</dd></div>
-      <div><dt class="text-sm text-neutral-500">Tools</dt><dd>TOOLS</dd></div>
-      <div><dt class="text-sm text-neutral-500">Links</dt><dd><a class="underline" href="https://www.infotech.com/request-a-demo" target="_blank" rel="noopener">Live page</a></dd></div>
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-line mb-10">
+      <div><dt class="text-sm text-muted">Company</dt><dd>Info-Tech Research Group</dd></div>
+      <div><dt class="text-sm text-muted">Timeline</dt><dd>YEAR</dd></div>
+      <div><dt class="text-sm text-muted">Tools</dt><dd>TOOLS</dd></div>
+      <div><dt class="text-sm text-muted">Links</dt><dd><a class="text-accent underline" href="https://www.infotech.com/request-a-demo" target="_blank" rel="noopener">Live page</a></dd></div>
     </dl>
 
     <h2 class="text-2xl font-bold mb-4">My contribution</h2>
@@ -59,8 +90,8 @@
     </div>
 
     <!-- Main image: full-page screenshot or a short screen recording of the form flow.
-         <img class="w-full border border-neutral-200" src="../images/demo-page.jpg" alt="..."> -->
-    <div class="aspect-video flex items-center justify-center bg-neutral-100 text-neutral-500">Main image or recording of the sign-up flow</div>
+         <img class="w-full border border-line" src="../images/demo-page.jpg" alt="..."> -->
+    <div class="aspect-video flex items-center justify-center bg-surface text-muted">Main image or recording of the sign-up flow</div>
 
     <h2 class="text-2xl font-bold mt-12 mb-2">Overview</h2>
     <p>The page invites IT leaders to book a personalized demo. It pairs a short sign-up form with a four-step overview of how Info-Tech works, customer testimonials and client logos to build trust.</p>
@@ -72,21 +103,21 @@
     <p>FLOW: the steps, what you and the UX designer decided, and why.</p>
 
     <div class="grid md:grid-cols-2 gap-6 my-8">
-      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Form step 1</div>
-      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Form step 2</div>
+      <div class="aspect-[4/3] flex items-center justify-center bg-surface text-muted">Form step 1</div>
+      <div class="aspect-[4/3] flex items-center justify-center bg-surface text-muted">Form step 2</div>
     </div>
 
     <h2 class="text-2xl font-bold mt-10 mb-2">Result</h2>
     <p>RESULT: launch, conversion or feedback, if you can share it.</p>
 
-    <nav class="flex justify-between mt-16 pt-6 border-t border-neutral-200" aria-label="More projects">
-      <a class="hover:underline" href="project-3.html">&larr; Diagnostic Reports</a>
+    <nav class="flex justify-between mt-16 pt-6 border-t border-line" aria-label="More projects">
+      <a class="hover:text-accent" href="project-3.html">&larr; Diagnostic Reports</a>
       <span></span>
     </nav>
   </main>
 
-  <footer class="border-t border-neutral-200 px-6 py-8 text-center text-neutral-500">
-    <p>&copy; Debbie Rosenfeld</p>
+  <footer class="border-t border-line px-6 py-8 text-center text-muted">
+    <p>&copy; Deb Rosenfeld</p>
   </footer>
 
 </body>

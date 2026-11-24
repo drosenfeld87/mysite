@@ -3,39 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diagnostic Reports — Debbie Rosenfeld</title>
+  <title>Diagnostic Reports — Deb Rosenfeld</title>
   <!-- Tailwind CSS v4 via CDN (no build step). For production you can
        switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Fonts: Mona Sans (headlines), Satoshi (body), JetBrains Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+
+  <!-- Design tokens: change colours and fonts here -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg: #0E0E10;
+      --color-surface: #17171A;
+      --color-ink: #E8E6E3;
+      --color-muted: #9A9893;
+      --color-line: #2A2A2E;
+      --color-accent: #7CFF4F;   /* green: highlights, links, buttons */
+      --color-accent2: #FF3D8B;  /* pink: tags and small details */
+      --font-sans: "Satoshi", system-ui, sans-serif;
+      --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    @layer base {
+      h1, h2, h3, .font-display {
+        font-family: var(--font-display);
+        font-stretch: 75%;
+        font-variation-settings: "wdth" 75;
+        letter-spacing: -0.01em;
+      }
+      ::selection { background: var(--color-accent); color: var(--color-bg); }
+    }
+  </style>
 </head>
-<body class="bg-white text-neutral-900 font-sans leading-relaxed">
+<body class="bg-bg text-ink font-sans leading-relaxed">
 
   <!-- ============ HEADER / NAV ============ -->
-  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-white border-b border-neutral-200">
-    <a class="font-bold" href="../index.html#top">Debbie Rosenfeld</a>
+  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-bg border-b border-line">
+    <a class="font-display font-bold text-xl" href="../index.html#top">Deb Rosenfeld</a>
     <nav class="flex gap-6" aria-label="Main">
-      <a class="hover:underline" href="../index.html#projects">Projects</a>
-      <a class="hover:underline" href="../index.html#about">About</a>
-      <a class="hover:underline" href="../index.html#contact">Contact</a>
+      <a class="hover:text-accent" href="../index.html#projects">Projects</a>
+      <a class="hover:text-accent" href="../index.html#about">About</a>
+      <a class="hover:text-accent" href="../index.html#contact">Contact</a>
     </nav>
   </header>
 
   <main class="max-w-4xl mx-auto px-6 py-16">
-    <a class="inline-block mb-8 hover:underline" href="../index.html#projects">&larr; Back to projects</a>
+    <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#projects">&larr; Back to projects</a>
 
     <!-- ===== Summary ===== -->
     <h1 class="text-4xl md:text-5xl font-bold mb-3">Diagnostic Reports</h1>
     <p class="text-lg mb-4">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
     <div class="flex flex-wrap gap-2 mb-10">
-      <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Information design</span>
-      <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Report design</span>
+      <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+      <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
     </div>
 
-    <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-neutral-200 mb-10">
-      <div><dt class="text-sm text-neutral-500">Company</dt><dd>Info-Tech Research Group</dd></div>
-      <div><dt class="text-sm text-neutral-500">Timeline</dt><dd>YEAR</dd></div>
-      <div><dt class="text-sm text-neutral-500">Tools</dt><dd>TOOLS</dd></div>
-      <div><dt class="text-sm text-neutral-500">Format</dt><dd>Multi-page reports</dd></div>
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-line mb-10">
+      <div><dt class="text-sm text-muted">Company</dt><dd>Info-Tech Research Group</dd></div>
+      <div><dt class="text-sm text-muted">Timeline</dt><dd>YEAR</dd></div>
+      <div><dt class="text-sm text-muted">Tools</dt><dd>TOOLS</dd></div>
+      <div><dt class="text-sm text-muted">Format</dt><dd>Multi-page reports</dd></div>
     </dl>
 
     <h2 class="text-2xl font-bold mb-2">About this work</h2>
@@ -47,76 +78,76 @@
 
     <figure class="mb-16">
       <h3 class="font-semibold text-xl mb-1">Exponential IT Readiness Diagnostic</h3>
-      <p class="text-neutral-600 mb-2">A report comparing how ready the organization is for technology-driven transformation with how ready IT is to lead it, scored across core IT domains.</p>
+      <p class="text-muted mb-2">A report comparing how ready the organization is for technology-driven transformation with how ready IT is to lead it, scored across core IT domains.</p>
       <div class="flex flex-wrap gap-2 mb-4">
-        <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Designed: full report</span>
-        <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Built: partially</span>
-        <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Unreleased</span>
+        <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Designed: full report</span>
+        <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Built: partially</span>
+        <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Unreleased</span>
       </div>
-      <p class="text-sm text-neutral-600 mb-6">I designed the complete report and was partway through coding it when the project was cancelled, so this design was never published. Shown with sample data.</p>
+      <p class="text-sm text-muted mb-6">I designed the complete report and was partway through coding it when the project was cancelled, so this design was never published. Shown with sample data.</p>
 
       <a href="../images/report-exponential-cover.jpg" target="_blank" rel="noopener" title="Open full size">
-            <img class="w-full border border-neutral-200" src="../images/report-exponential-cover.jpg" loading="lazy" alt="Report cover: Exponential IT Readiness Diagnostic, with the company name in large white type over a flowing pink and purple particle wave on a dark background.">
+            <img class="w-full border border-line" src="../images/report-exponential-cover.jpg" loading="lazy" alt="Report cover: Exponential IT Readiness Diagnostic, with the company name in large white type over a flowing pink and purple particle wave on a dark background.">
           </a>
 
       <div class="grid md:grid-cols-2 gap-4 mt-4">
         <div>
           <a href="../images/report-exponential-strategy.jpg" target="_blank" rel="noopener" title="Open full size">
-            <img class="w-full border border-neutral-200" src="../images/report-exponential-strategy.jpg" loading="lazy" alt="Domain results page for Strategy and Innovation: a large gauge showing an overall score of 48, beside a card listing the question and each stakeholder's score as a gradient bar, split into highest and lowest scores.">
+            <img class="w-full border border-line" src="../images/report-exponential-strategy.jpg" loading="lazy" alt="Domain results page for Strategy and Innovation: a large gauge showing an overall score of 48, beside a card listing the question and each stakeholder's score as a gradient bar, split into highest and lowest scores.">
           </a>
-          <p class="text-sm text-neutral-600 mt-2">Each IT domain gets a page: an overall score up front, then every stakeholder's response.</p>
+          <p class="text-sm text-muted mt-2">Each IT domain gets a page: an overall score up front, then every stakeholder's response.</p>
         </div>
         <div>
           <a href="../images/report-exponential-security.jpg" target="_blank" rel="noopener" title="Open full size">
-            <img class="w-full border border-neutral-200" src="../images/report-exponential-security.jpg" loading="lazy" alt="Domain results page for Security and Risk: an overall score gauge of 37 beside two question cards, AI threat preparedness and data privacy, each ranking stakeholder scores from highest to lowest.">
+            <img class="w-full border border-line" src="../images/report-exponential-security.jpg" loading="lazy" alt="Domain results page for Security and Risk: an overall score gauge of 37 beside two question cards, AI threat preparedness and data privacy, each ranking stakeholder scores from highest to lowest.">
           </a>
-          <p class="text-sm text-neutral-600 mt-2">Highest and lowest scores are split so disagreement between leaders stands out.</p>
+          <p class="text-sm text-muted mt-2">Highest and lowest scores are split so disagreement between leaders stands out.</p>
         </div>
         <div>
           <a href="../images/report-exponential-quadrant.jpg" target="_blank" rel="noopener" title="Open full size">
-            <img class="w-full border border-neutral-200" src="../images/report-exponential-quadrant.jpg" loading="lazy" alt="Org readiness vs IT readiness page: definitions of five readiness positions on the left, and on the right a blue-to-magenta quadrant chart plotting the organization's position, with overall scores of 62 for organizational readiness and 52 for IT readiness.">
+            <img class="w-full border border-line" src="../images/report-exponential-quadrant.jpg" loading="lazy" alt="Org readiness vs IT readiness page: definitions of five readiness positions on the left, and on the right a blue-to-magenta quadrant chart plotting the organization's position, with overall scores of 62 for organizational readiness and 52 for IT readiness.">
           </a>
-          <p class="text-sm text-neutral-600 mt-2">The headline finding: where the organization sits on org vs IT readiness, and what that means.</p>
+          <p class="text-sm text-muted mt-2">The headline finding: where the organization sits on org vs IT readiness, and what that means.</p>
         </div>
         <div>
           <a href="../images/report-exponential-feedback.jpg" target="_blank" rel="noopener" title="Open full size">
-            <img class="w-full border border-neutral-200" src="../images/report-exponential-feedback.jpg" loading="lazy" alt="CIO and IT feedback page: an open-ended question at the top, followed by each leader's written answer with their name and title.">
+            <img class="w-full border border-line" src="../images/report-exponential-feedback.jpg" loading="lazy" alt="CIO and IT feedback page: an open-ended question at the top, followed by each leader's written answer with their name and title.">
           </a>
-          <p class="text-sm text-neutral-600 mt-2">Open-ended feedback, kept readable with clear attribution for each leader.</p>
+          <p class="text-sm text-muted mt-2">Open-ended feedback, kept readable with clear attribution for each leader.</p>
         </div>
       </div>
     </figure>
 
     <figure class="mb-16">
-      <!-- Replace with <a href="../images/report-2.jpg" target="_blank" rel="noopener"><img class="w-full border border-neutral-200" src="../images/report-2.jpg" alt="..."></a>
+      <!-- Replace with <a href="../images/report-2.jpg" target="_blank" rel="noopener"><img class="w-full border border-line" src="../images/report-2.jpg" alt="..."></a>
            Use sample or demo data only. -->
-      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Report 2: cover or key spread</div>
+      <div class="aspect-[4/3] flex items-center justify-center bg-surface text-muted">Report 2: cover or key spread</div>
       <figcaption class="mt-4">
         <h3 class="font-semibold text-lg">REPORT 2 NAME</h3>
-        <p class="text-neutral-600">What this diagnostic measures and who reads the report.</p>
+        <p class="text-muted">What this diagnostic measures and who reads the report.</p>
       </figcaption>
     </figure>
 
     <figure class="mb-16">
-      <!-- Replace with <a href="../images/report-3.jpg" target="_blank" rel="noopener"><img class="w-full border border-neutral-200" src="../images/report-3.jpg" alt="..."></a>
+      <!-- Replace with <a href="../images/report-3.jpg" target="_blank" rel="noopener"><img class="w-full border border-line" src="../images/report-3.jpg" alt="..."></a>
            Use sample or demo data only. -->
-      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Report 3: cover or key spread</div>
+      <div class="aspect-[4/3] flex items-center justify-center bg-surface text-muted">Report 3: cover or key spread</div>
       <figcaption class="mt-4">
         <h3 class="font-semibold text-lg">REPORT 3 NAME</h3>
-        <p class="text-neutral-600">What this diagnostic measures and who reads the report.</p>
+        <p class="text-muted">What this diagnostic measures and who reads the report.</p>
       </figcaption>
     </figure>
 
-    <p class="text-sm text-neutral-500">Created for Info-Tech Research Group. Shown with sample data.</p>
+    <p class="text-sm text-muted">Created for Info-Tech Research Group. Shown with sample data.</p>
 
-    <nav class="flex justify-between mt-16 pt-6 border-t border-neutral-200" aria-label="More projects">
-      <a class="hover:underline" href="project-2.html">&larr; Research Infographics</a>
-      <a class="hover:underline" href="project-4.html">Request a Demo Page &rarr;</a>
+    <nav class="flex justify-between mt-16 pt-6 border-t border-line" aria-label="More projects">
+      <a class="hover:text-accent" href="project-2.html">&larr; Research Infographics</a>
+      <a class="hover:text-accent" href="project-4.html">Request a Demo Page &rarr;</a>
     </nav>
   </main>
 
-  <footer class="border-t border-neutral-200 px-6 py-8 text-center text-neutral-500">
-    <p>&copy; Debbie Rosenfeld</p>
+  <footer class="border-t border-line px-6 py-8 text-center text-muted">
+    <p>&copy; Deb Rosenfeld</p>
   </footer>
 
 </body>

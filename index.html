@@ -3,20 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debbie Rosenfeld — Portfolio</title>
+  <title>Deb Rosenfeld — Designer &amp; Front-end Developer</title>
   <!-- Tailwind CSS v4 via CDN (no build step). For production you can
        switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Fonts: Mona Sans (headlines), Satoshi (body), JetBrains Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+
+  <!-- Design tokens: change colours and fonts here -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg: #0E0E10;
+      --color-surface: #17171A;
+      --color-ink: #E8E6E3;
+      --color-muted: #9A9893;
+      --color-line: #2A2A2E;
+      --color-accent: #7CFF4F;   /* green: highlights, links, buttons */
+      --color-accent2: #FF3D8B;  /* pink: tags and small details */
+      --font-sans: "Satoshi", system-ui, sans-serif;
+      --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    @layer base {
+      h1, h2, h3, .font-display {
+        font-family: var(--font-display);
+        font-stretch: 75%;
+        font-variation-settings: "wdth" 75;
+        letter-spacing: -0.01em;
+      }
+      ::selection { background: var(--color-accent); color: var(--color-bg); }
+    }
+  </style>
 </head>
-<body class="bg-white text-neutral-900 font-sans leading-relaxed">
+<body class="bg-bg text-ink font-sans leading-relaxed">
 
   <!-- ============ HEADER / NAV ============ -->
-  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-white border-b border-neutral-200">
-    <a class="font-bold" href="#top">Debbie Rosenfeld</a>
+  <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-bg border-b border-line">
+    <a class="font-display font-bold text-xl" href="#top">Deb Rosenfeld</a>
     <nav class="flex gap-6" aria-label="Main">
-      <a class="hover:underline" href="#projects">Projects</a>
-      <a class="hover:underline" href="#about">About</a>
-      <a class="hover:underline" href="#contact">Contact</a>
+      <a class="hover:text-accent" href="#projects">Projects</a>
+      <a class="hover:text-accent" href="#about">About</a>
+      <a class="hover:text-accent" href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -24,13 +55,13 @@
 
     <!-- ============ HERO ============ -->
     <section class="max-w-6xl mx-auto px-6 min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-      <h1 class="text-5xl md:text-7xl font-bold mb-3">Debbie Rosenfeld</h1>
-      <p class="mb-6 text-lg">Designer and front-end developer.</p>
-      <a class="inline-block self-start px-6 py-3 border border-neutral-900 bg-neutral-900 text-white hover:bg-white hover:text-neutral-900 cursor-pointer" href="#projects">See my work</a>
+      <h1 class="text-5xl md:text-8xl font-extrabold leading-none max-w-[14ch] mb-6">I design it. <span class="text-accent">Often I build it too.</span></h1>
+      <p class="mb-8 text-lg text-muted">Designer and front-end developer. Toronto.</p>
+      <a class="inline-block self-start px-6 py-3 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors" href="#projects">See my work</a>
     </section>
 
     <!-- ============ PROJECTS ============ -->
-    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-neutral-200" id="projects">
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="projects">
       <h2 class="text-3xl font-bold mb-8">Projects</h2>
 
       <!-- 4-panel gallery (2x2 on desktop, stacked on mobile).
@@ -39,61 +70,61 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <a class="block group" href="projects/project-1.html">
           <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-1-thumb.jpg" alt="CIO Analytics"> -->
-          <div class="aspect-[4/3] w-full flex items-center justify-center bg-neutral-100 text-neutral-500">Thumbnail 1</div>
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">CIO Analytics</h3>
-          <p class="text-neutral-500 mb-2">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 1</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">CIO Analytics</h3>
+          <p class="text-muted mb-2">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Product design</span>
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Front-end dev</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
           </div>
         </a>
 
         <a class="block group" href="projects/project-2.html">
           <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-2-thumb.jpg" alt="Project Two"> -->
           <img class="aspect-[4/3] w-full object-cover" src="images/infographic-genai-security.jpg" alt="Research infographic on security and privacy risks for generative AI">
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">Research Infographics</h3>
-          <p class="text-neutral-500 mb-2">Visual frameworks that distill Info-Tech research blueprints into a single, scannable image for IT leaders.</p>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Research Infographics</h3>
+          <p class="text-muted mb-2">Visual frameworks that distill Info-Tech research blueprints into a single, scannable image for IT leaders.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Information design</span>
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Visual design</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
           </div>
         </a>
 
         <a class="block group" href="projects/project-3.html">
           <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-3-thumb.jpg" alt="Project Three"> -->
-          <div class="aspect-[4/3] w-full flex items-center justify-center bg-neutral-100 text-neutral-500">Thumbnail 3</div>
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">Diagnostic Reports</h3>
-          <p class="text-neutral-500 mb-2">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 3</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Diagnostic Reports</h3>
+          <p class="text-muted mb-2">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Information design</span>
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Report design</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
           </div>
         </a>
 
         <a class="block group" href="projects/project-4.html">
           <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-4-thumb.jpg" alt="Project Four"> -->
-          <div class="aspect-[4/3] w-full flex items-center justify-center bg-neutral-100 text-neutral-500">Thumbnail 4</div>
-          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:underline">Request a Demo Page</h3>
-          <p class="text-neutral-500 mb-2">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
+          <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 4</div>
+          <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Request a Demo Page</h3>
+          <p class="text-muted mb-2">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Visual design</span>
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">UX</span>
-            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Front-end dev</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span>
+            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
           </div>
         </a>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-neutral-200" id="about">
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="about">
       <h2 class="text-3xl font-bold mb-8">About Me</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-        <!-- Replace with <img class="aspect-square w-full object-cover" src="images/portrait.jpg" alt="Debbie Rosenfeld"> -->
-        <div class="aspect-square flex items-center justify-center bg-neutral-100 text-neutral-500">Photo</div>
+        <!-- Replace with <img class="aspect-square w-full object-cover" src="images/portrait.jpg" alt="Deb Rosenfeld"> -->
+        <div class="aspect-square flex items-center justify-center bg-surface text-muted">Photo</div>
         <div class="md:col-span-2 space-y-4">
           <p>I'm a Toronto-based designer who codes. At Info-Tech Research Group, I design and build the interface for CIO Analytics, an AI-powered analytics platform for IT leaders. Over seven years there, I've also designed the infographics that sum up Info-Tech's research and the diagnostic reports that benchmark IT teams.</p>
           <p>Outside of work, I play bass (mostly the metal and punk I listen to), draw graffiti-inspired, abstract and typographic art, and read a lot of horror, usually with a cat or two nearby.</p>
@@ -102,7 +133,7 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-neutral-200" id="contact">
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="contact">
       <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
       <p class="mb-8">Have a project in mind? Send me a message.</p>
 
@@ -128,27 +159,27 @@
         <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
 
         <label for="name">Name</label>
-        <input class="border border-neutral-300 p-2.5 mb-2" type="text" id="name" name="name" required>
+        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="text" id="name" name="name" required>
 
         <label for="email">Email</label>
-        <input class="border border-neutral-300 p-2.5 mb-2" type="email" id="email" name="email" required>
+        <input class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" type="email" id="email" name="email" required>
 
         <label for="message">Message</label>
-        <textarea class="border border-neutral-300 p-2.5 mb-2" id="message" name="message" rows="6" required></textarea>
+        <textarea class="bg-surface text-ink border border-line p-2.5 mb-2 outline-none focus:border-accent" id="message" name="message" rows="6" required></textarea>
 
-        <button type="submit" class="inline-block self-start px-6 py-3 border border-neutral-900 bg-neutral-900 text-white hover:bg-white hover:text-neutral-900 cursor-pointer mt-2">Send</button>
+        <button type="submit" class="inline-block self-start px-6 py-3 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors mt-2">Send</button>
       </form>
     </section>
 
   </main>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="border-t border-neutral-200 px-6 py-8 text-center text-neutral-500 space-y-1">
-    <p>&copy; <span id="year"></span> Debbie Rosenfeld</p>
+  <footer class="border-t border-line px-6 py-8 text-center text-muted space-y-1">
+    <p>&copy; <span id="year"></span> Deb Rosenfeld</p>
     <p>
-      <a class="hover:underline" href="#">LinkedIn</a> ·
-      <a class="hover:underline" href="#">GitHub</a> ·
-      <a class="hover:underline" href="#">Instagram</a>
+      <a class="hover:text-accent" href="#">LinkedIn</a> ·
+      <a class="hover:text-accent" href="#">GitHub</a> ·
+      <a class="hover:text-accent" href="#">Instagram</a>
     </p>
   </footer>
 
