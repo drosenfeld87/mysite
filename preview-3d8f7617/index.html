@@ -154,7 +154,7 @@
 
     /* Project index */
     .proj-row {
-      display: grid; grid-template-columns: 3rem 1fr auto 7rem; align-items: center; gap: 1.5rem;
+      display: grid; grid-template-columns: 3rem 1fr auto 11rem; align-items: center; gap: 1.5rem;
       padding: 1.75rem 0; border-top: 1px solid var(--color-line);
       transition: padding-left .25s ease;
     }
@@ -162,28 +162,25 @@
     .proj-year { text-align: right; }
     .proj-row:hover, .proj-row:focus-visible { padding-left: .75rem; outline: none; }
     .proj-row:hover .proj-title, .proj-row:focus-visible .proj-title { color: var(--color-accent); }
-    .proj-mobile-img { display: none; grid-column: 1 / -1; }
     @media (max-width: 900px) {
       .proj-row { grid-template-columns: 2.5rem 1fr; }
       .proj-tags { grid-column: 2; }
       .proj-year { grid-column: 2; text-align: left; }
     }
-    @media (hover: none) { .proj-mobile-img { display: block; } }
 
-    /* Floating preview that follows the cursor */
-    .proj-preview {
-      position: fixed; left: 0; top: 0; z-index: 20; pointer-events: none;
-      width: min(26rem, 32vw); aspect-ratio: 4 / 3; opacity: 0;
-      transition: opacity .2s ease;
-    }
-    .proj-preview.on { opacity: 1; }
-    .proj-preview img {
-      width: 100%; height: 100%; object-fit: cover; rotate: -2deg;
-      box-shadow: 6px 6px 0 var(--color-accent2);
-      filter: url(#xerox) contrast(1.15);
-    }
-    .proj-preview.color img { filter: none; }
-    @media (prefers-reduced-motion: reduce) { .proj-row, .proj-preview { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .proj-row, .proj-detail { transition: none; } }
+
+    /* Hover: title scrambles into an outline, role line opens, year becomes a link */
+    .type-row:hover .proj-title, .type-row:focus-visible .proj-title { color: transparent; -webkit-text-stroke: 1.5px var(--color-accent); }
+    .proj-detail { max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; transition: max-height .35s ease, opacity .25s ease, margin-top .35s ease; }
+    .type-row:hover .proj-detail, .type-row:focus-visible .proj-detail { max-height: 6em; opacity: 1; margin-top: .6rem; }
+    @media (hover: none) { .proj-detail { max-height: none; opacity: 1; margin-top: .6rem; } }
+    .type-row .proj-year { display: grid; justify-items: end; }
+    .type-row .yr, .type-row .view { grid-area: 1 / 1; white-space: nowrap; transition: opacity .2s ease, transform .25s ease; }
+    .type-row .view { opacity: 0; transform: translateX(-8px); }
+    .type-row:hover .yr, .type-row:focus-visible .yr { opacity: 0; }
+    .type-row:hover .view, .type-row:focus-visible .view { opacity: 1; transform: none; }
+    @media (max-width: 900px) { .type-row .proj-year { justify-items: start; } }
 
     /* Buttons: sticker-style with a pink offset shadow */
     .btn {
@@ -260,57 +257,57 @@
     <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="projects">
       <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">01 /</span>Projects</h2>
 
-      <!-- Typographic project index. Hovering a row shows its image beside the cursor;
-           on touch screens the image shows inline instead. To add an image, give the
-           <a> a data-img="images/your-image.jpg" and add a matching proj-mobile-img. -->
+      <!-- Typographic project index: hover scrambles the title into an outline and reveals my role -->
       <ol class="proj-list border-b border-line">
         <li>
-          <a class="proj-row group" href="projects/project-1.html">
+          <a class="proj-row type-row group" href="projects/project-1.html">
             <span class="proj-num font-mono text-sm text-accent2">01</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold">CIO Analytics</span>
+              <span class="proj-title block font-display font-semibold" data-text="CIO Analytics">CIO Analytics</span>
               <span class="block text-muted mt-1">AI-powered analytics platform for IT leaders.</span>
+              <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed the Key Insights component used across the app, and built the front end in Rails.</span>
             </span>
             <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span>
-            <span class="proj-year font-mono text-sm text-muted">2025–now</span>
+            <span class="proj-year font-mono text-sm text-muted"><span class="yr">2025–now</span><span class="view text-accent">View case study &rarr;</span></span>
           </a>
         </li>
 
         <li>
-          <a class="proj-row group" href="projects/project-2.html" data-img="images/infographic-genai-security.jpg">
-          <img class="proj-mobile-img thumb aspect-[4/3] w-full object-cover mb-4" src="images/infographic-genai-security.jpg" alt="" loading="lazy">
+          <a class="proj-row type-row group" href="projects/project-2.html">
             <span class="proj-num font-mono text-sm text-accent2">02</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold">Research Infographics</span>
+              <span class="proj-title block font-display font-semibold" data-text="Research Infographics">Research Infographics</span>
               <span class="block text-muted mt-1">Visual frameworks that sum up Info-Tech research.</span>
+              <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>One-page visual frameworks for research blueprints, taken from wireframe to final design.</span>
             </span>
             <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span></span>
-            <span class="proj-year font-mono text-sm text-muted">2019–now</span>
+            <span class="proj-year font-mono text-sm text-muted"><span class="yr">2019–now</span><span class="view text-accent">View case study &rarr;</span></span>
           </a>
         </li>
 
         <li>
-          <a class="proj-row group" href="projects/project-3.html" data-img="images/report-exponential-cover.jpg">
-          <img class="proj-mobile-img thumb aspect-[4/3] w-full object-cover mb-4" src="images/report-exponential-cover.jpg" alt="" loading="lazy">
+          <a class="proj-row type-row group" href="projects/project-3.html">
             <span class="proj-num font-mono text-sm text-accent2">03</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold">Diagnostic Reports</span>
+              <span class="proj-title block font-display font-semibold" data-text="Diagnostic Reports">Diagnostic Reports</span>
               <span class="block text-muted mt-1">Reports that benchmark IT teams.</span>
+              <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed the full Exponential IT Readiness report and coded part of it.</span>
             </span>
             <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span></span>
-            <span class="proj-year font-mono text-sm text-muted">2024</span>
+            <span class="proj-year font-mono text-sm text-muted"><span class="yr">2024</span><span class="view text-accent">View case study &rarr;</span></span>
           </a>
         </li>
 
         <li>
-          <a class="proj-row group" href="projects/project-4.html">
+          <a class="proj-row type-row group" href="projects/project-4.html">
             <span class="proj-num font-mono text-sm text-accent2">04</span>
             <span class="proj-main">
-              <span class="proj-title block font-display font-semibold">Request a Demo Page</span>
+              <span class="proj-title block font-display font-semibold" data-text="Request a Demo Page">Request a Demo Page</span>
               <span class="block text-muted mt-1">Landing page and sign-up flow.</span>
+              <span class="proj-detail block text-ink"><span class="font-mono text-xs uppercase tracking-widest text-accent2 mr-2">My role</span>Designed and built the page, and coded a sign-up flow designed with a UX designer.</span>
             </span>
             <span class="proj-tags flex flex-wrap gap-2"><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span><span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span></span>
-            <span class="proj-year font-mono text-sm text-muted"></span>
+            <span class="proj-year font-mono text-sm text-muted"><span class="yr"></span><span class="view text-accent">View case study &rarr;</span></span>
           </a>
         </li>
       </ol>
@@ -422,33 +419,25 @@
     })();
   </script>
 
+
   <script>
-    // Project index: floating, photocopied preview that follows the cursor and snaps to colour
+    // Project index: quick text scramble on hover before the title settles
     (() => {
-      if (!matchMedia("(hover: hover)").matches) return;
-      const prev = document.createElement("div");
-      prev.className = "proj-preview"; prev.setAttribute("aria-hidden", "true");
-      prev.innerHTML = '<img alt="">';
-      document.body.append(prev);
-      const img = prev.querySelector("img");
-      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-      let x = 0, y = 0, cx = 0, cy = 0, raf, colorTimer;
-      const tick = () => {
-        cx += (x - cx) * (still ? 1 : 0.18); cy += (y - cy) * (still ? 1 : 0.18);
-        prev.style.transform = `translate(${cx + 28}px, ${cy - prev.offsetHeight / 2}px)`;
-        raf = requestAnimationFrame(tick);
-      };
-      document.querySelectorAll(".proj-row[data-img]").forEach(row => {
-        row.addEventListener("pointerenter", e => {
-          img.src = row.dataset.img; x = cx = e.clientX; y = cy = e.clientY;
-          prev.classList.add("on"); prev.classList.remove("color");
-          clearTimeout(colorTimer); colorTimer = setTimeout(() => prev.classList.add("color"), 450);
-          cancelAnimationFrame(raf); tick();
-        });
-        row.addEventListener("pointermove", e => { x = e.clientX; y = e.clientY; });
-        row.addEventListener("pointerleave", () => {
-          prev.classList.remove("on", "color"); clearTimeout(colorTimer); cancelAnimationFrame(raf);
-        });
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const glyphs = "!<>-_\\/[]{}=+*^?#01";
+      document.querySelectorAll(".type-row").forEach(row => {
+        const t = row.querySelector(".proj-title"), final = t.dataset.text; let timer;
+        const run = () => {
+          let frame = 0; clearInterval(timer);
+          timer = setInterval(() => {
+            const reveal = Math.floor(frame / 1.6);
+            t.textContent = [...final].map((c, i) => c === " " ? " " : i < reveal ? c : glyphs[Math.floor(Math.random() * glyphs.length)]).join("");
+            if (reveal >= final.length) { clearInterval(timer); t.textContent = final; }
+            frame++;
+          }, 28);
+        };
+        row.addEventListener("pointerenter", run);
+        row.addEventListener("pointerleave", () => { clearInterval(timer); t.textContent = final; });
       });
     })();
   </script>
