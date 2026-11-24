@@ -29,6 +29,12 @@
   links.forEach(a => a.addEventListener("click", e => {
     e.preventDefault();
     const thumb = a.querySelector("img");
+    dlg.classList.remove("lb-tall"); dlg.scrollTop = 0;
+    img.onload = () => {
+      // Taller than the screen can show legibly: switch to a scrolling view
+      const fitScale = Math.min(1, (innerHeight - 140) / img.naturalHeight, (innerWidth - 48) / img.naturalWidth);
+      dlg.classList.toggle("lb-tall", fitScale * img.naturalWidth < Math.min(img.naturalWidth, innerWidth - 48) * 0.6);
+    };
     img.src = a.href; img.alt = thumb ? thumb.alt : "";
     const caption = a.parentElement.querySelector("p, figcaption p");
     cap.textContent = caption ? caption.textContent.trim() : "";
@@ -38,6 +44,6 @@
     dlg.querySelector(".lb-close").focus();
   }));
   dlg.querySelector(".lb-close").addEventListener("click", close);
-  dlg.addEventListener("click", e => { if (e.target === dlg || e.target === img) close(); });
+  dlg.addEventListener("click", e => { if (e.target === dlg || (e.target === img && !dlg.classList.contains("lb-tall"))) close(); });
   dlg.addEventListener("close", () => { document.documentElement.classList.remove("lb-open"); img.removeAttribute("src"); });
 })();

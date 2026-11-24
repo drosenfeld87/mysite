@@ -195,8 +195,14 @@ a.zoom { display: block; cursor: zoom-in; }
 .lightbox img { max-width: 100%; max-height: calc(100vh - 140px); object-fit: contain; cursor: zoom-out; }
 .lightbox .lb-cap { max-width: 70ch; text-align: center; color: var(--muted); font-size: 15px; margin: 0; }
 .lightbox .lb-close {
-  position: absolute; top: 14px; right: var(--gutter); width: 44px; height: 44px; display: grid; place-items: center;
+  position: fixed; z-index: 1; top: 14px; right: var(--gutter); width: 44px; height: 44px; display: grid; place-items: center;
   background: transparent; color: var(--ink); border: 1px solid var(--line); cursor: pointer; font: 400 24px/1 var(--mono);
 }
 @media (hover: hover) { .lightbox .lb-close:hover { color: var(--accent); border-color: var(--accent); } }
 html.lb-open { overflow: hidden; }
+/* Tall images (full-page screenshots): show at readable width and scroll */
+.lightbox.lb-tall { overflow: auto; overscroll-behavior: contain; }
+.lightbox.lb-tall[open] { justify-content: flex-start; align-items: flex-start; }
+.lightbox.lb-tall img { max-height: none; height: auto; flex: none; cursor: auto; margin-inline: auto; width: 100%; min-width: 900px; max-width: 1440px; }
+.lightbox.lb-tall .lb-cap { margin-inline: auto; }
+.lightbox .lb-close { background: rgb(10 10 10 / .85); }
