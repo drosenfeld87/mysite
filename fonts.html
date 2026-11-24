@@ -26,6 +26,7 @@
       --muted: #9A9893;
       --line: #2A2A2E;
       --accent: #C6FF3D;
+      --accent2: #A98BFF;
     }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; line-height: 1.6; }
@@ -43,7 +44,7 @@
     .toolbar nav a:hover { color: var(--accent); }
     .swatches { display: flex; align-items: center; gap: 8px; }
     .swatches button {
-      width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; cursor: pointer;
+      width: 40px; height: 22px; border-radius: 11px; border: 2px solid transparent; cursor: pointer;
     }
     .swatches button[aria-pressed="true"] { border-color: var(--text); }
 
@@ -58,7 +59,7 @@
       border: 1px solid var(--line); color: var(--muted);
       font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase;
     }
-    .label b { color: var(--accent); font-weight: 500; }
+    .label b { color: var(--accent2); font-weight: 500; }
     .name { font-family: var(--display); margin: 0; line-height: .95; letter-spacing: -0.02em; }
     .role { font-family: var(--body); font-size: clamp(18px, 2.2vw, 24px); color: var(--muted); margin: 20px 0 64px; }
     .role span { color: var(--accent); }
@@ -72,7 +73,7 @@
       font: 400 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em;
       padding: 5px 8px; border: 1px solid var(--line); color: var(--muted);
     }
-    .tags span:first-child { border-color: var(--accent); color: var(--accent); }
+    .tags span:first-child { border-color: var(--accent2); color: var(--accent2); }
     .bio h4 { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 20px 0 16px; }
     .bio p { font-family: var(--body); font-size: 18px; margin: 0 0 16px; max-width: 52ch; }
     .bio .small { font-family: var(--body); font-size: 15px; color: var(--muted); }
@@ -99,7 +100,7 @@
       padding-bottom: 16px; margin-bottom: 64px; border-bottom: 1px solid var(--line);
     }
     #p4 .masthead strong { font-family: var(--display); font-weight: 700; font-size: 20px; font-variation-settings: "wdth" 75; font-stretch: 75%; letter-spacing: .01em; }
-    #p4 .masthead span { font: 400 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+    #p4 .masthead span { font: 400 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--accent2); }
     #p4 .name { font-weight: 800; font-stretch: 75%; font-variation-settings: "wdth" 75; font-size: clamp(44px, 7.5vw, 104px); line-height: 1; max-width: 14ch; }
     #p4 .name em { font-style: normal; color: var(--accent); }
 
@@ -118,19 +119,18 @@
       <a href="#p3">3 · Clash + Space Grotesk</a>
       <a href="#p4">4 · Statement layout</a>
     </nav>
-    <div class="swatches" role="group" aria-label="Accent colour">
-      <span>Accent</span>
-      <button style="background:#C6FF3D" data-c="#C6FF3D" aria-label="Lime" aria-pressed="true"></button>
-      <button style="background:#FF3D8B" data-c="#FF3D8B" aria-label="Hot pink" aria-pressed="false"></button>
-      <button style="background:#3DE8FF" data-c="#3DE8FF" aria-label="Cyan" aria-pressed="false"></button>
-      <button style="background:#FF6B2C" data-c="#FF6B2C" aria-label="Orange" aria-pressed="false"></button>
-      <button style="background:#A98BFF" data-c="#A98BFF" aria-label="Violet" aria-pressed="false"></button>
+    <div class="swatches" role="group" aria-label="Accent colours">
+      <span>Accents</span>
+      <button style="background:linear-gradient(90deg,#C6FF3D 50%,#A98BFF 50%)" data-c="#C6FF3D" data-c2="#A98BFF" aria-label="Lime and violet" aria-pressed="true"></button>
+      <button style="background:linear-gradient(90deg,#C6FF3D 50%,#FF3D8B 50%)" data-c="#C6FF3D" data-c2="#FF3D8B" aria-label="Lime and pink" aria-pressed="false"></button>
+      <button style="background:linear-gradient(90deg,#FF3D8B 50%,#3DE8FF 50%)" data-c="#FF3D8B" data-c2="#3DE8FF" aria-label="Pink and cyan" aria-pressed="false"></button>
+      <button style="background:linear-gradient(90deg,#FF3D8B 50%,#FFB03D 50%)" data-c="#FF3D8B" data-c2="#FFB03D" aria-label="Pink and amber" aria-pressed="false"></button>
     </div>
   </div>
 
   <header class="intro">
     <h1>Type specimens</h1>
-    <p>Four options on a dark background, with your name at a sensible size. Option 4 tries a different layout: name small, a statement as the headline. Body fonts are from the pairings you liked. Set with real site content. Use the dots above to try accent colours. This page is hidden from search engines and not linked from the site.</p>
+    <p>Four options on a dark background, with your name at a sensible size. Option 4 tries a different layout: name small, a statement as the headline. Body fonts are from the pairings you liked. Set with real site content. Use the colour pills above to try accent pairs: the first colour is for highlights and links, the second for tags and small details. This page is hidden from search engines and not linked from the site.</p>
   </header>
 
   <main id="specimens"></main>
@@ -185,6 +185,7 @@
     document.querySelectorAll(".swatches button").forEach(btn => {
       btn.addEventListener("click", () => {
         document.documentElement.style.setProperty("--accent", btn.dataset.c);
+        document.documentElement.style.setProperty("--accent2", btn.dataset.c2);
         document.querySelectorAll(".swatches button").forEach(b => b.setAttribute("aria-pressed", b === btn));
       });
     });
