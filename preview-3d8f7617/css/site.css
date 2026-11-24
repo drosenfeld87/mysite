@@ -47,14 +47,14 @@ a.sticker { text-decoration: none; }
 }
 
 /* ---------- Hero: the type is the image ---------- */
-.hero { padding-top: clamp(48px, 9vh, 120px); padding-bottom: clamp(40px, 7vh, 96px); }
+.hero { padding-top: clamp(40px, 7vh, 96px); padding-bottom: clamp(40px, 7vh, 96px); }
 .hero h1 {
   margin: 0; font-weight: 750; line-height: .82; letter-spacing: -0.015em;
-  font-size: clamp(4.5rem, 17vw, 17rem); text-transform: uppercase;
+  font-size: clamp(4.5rem, 13.5vw, 13rem); text-transform: uppercase;
 }
 .hero h1 .l2 { display: block; color: var(--accent); padding-left: 1.25em; }
 .hero-foot {
-  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: clamp(36px, 6vh, 72px);
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: clamp(28px, 4vh, 56px);
   padding-top: 20px; border-top: 1px solid var(--line);
 }
 .hero-foot .intro { grid-column: 1 / span 6; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.35; margin: 0; }
@@ -176,3 +176,30 @@ html { scroll-padding-top: 88px; }
 .masthead.is-hidden { transform: translateY(-100%); }
 .masthead.is-floating { box-shadow: 0 1px 0 var(--line), 0 10px 30px rgb(0 0 0 / .45); }
 @media (prefers-reduced-motion: reduce) { .masthead { transition: none; } }
+
+/* ===== UX fixes ===== */
+/* Hero calls to action */
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 22px; }
+.hero-cta a { font: 500 13px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 12px 0; color: var(--ink); border-bottom: 1px solid var(--accent); }
+@media (hover: hover) { .hero-cta a:hover { color: var(--accent); } }
+
+/* Touch screens can't hover, so work images show in full colour */
+@media (hover: none) { .strip img { filter: none; } }
+/* Phones: work images become a swipeable row instead of a tall stack */
+@media (max-width: 900px) {
+  .strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 8px; margin-right: calc(-1 * var(--gutter)); }
+  .strip figure { flex: 0 0 78%; scroll-snap-align: start; }
+}
+
+/* Bigger tap areas for small text links (WCAG 2.5.8) */
+.tap { display: inline-block; padding-block: 10px; }
+
+/* Comfortable reading width on project pages */
+.inner main p, .inner main li { max-width: 68ch; }
+
+/* Form fields need a visible edge (non-text contrast 3:1) */
+.contact input, .contact textarea { border-bottom-color: var(--muted); }
+.form-note { margin-top: 10px; }
+
+/* Current section in the masthead */
+.masthead nav a[aria-current="page"] { color: var(--accent); }
