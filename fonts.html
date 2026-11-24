@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Type specimens — Debbie Rosenfeld</title>
+
+  <!-- Fontshare: Clash Display + Satoshi -->
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap">
+  <!-- Google Fonts: one link per family, so one bad name can't break the rest -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <style>
+    :root {
+      --bg: #0E0E10;
+      --surface: #17171A;
+      --text: #E8E6E3;
+      --muted: #9A9893;
+      --line: #2A2A2E;
+      --accent: #C6FF3D;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; line-height: 1.6; }
+    a { color: var(--accent); }
+
+    /* ---------- Toolbar ---------- */
+    .toolbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between;
+      padding: 14px 24px; background: rgba(14,14,16,.92); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line); font: 500 14px/1.4 system-ui, sans-serif;
+    }
+    .toolbar nav { display: flex; flex-wrap: wrap; gap: 16px; }
+    .toolbar nav a { color: var(--text); text-decoration: none; }
+    .toolbar nav a:hover { color: var(--accent); }
+    .swatches { display: flex; align-items: center; gap: 8px; }
+    .swatches button {
+      width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; cursor: pointer;
+    }
+    .swatches button[aria-pressed="true"] { border-color: var(--text); }
+
+    .intro { max-width: 900px; margin: 0 auto; padding: 64px 24px 16px; color: var(--muted); }
+    .intro h1 { color: var(--text); font: 600 28px/1.2 system-ui, sans-serif; margin: 0 0 8px; }
+
+    /* ---------- Specimen ---------- */
+    .specimen { border-top: 1px solid var(--line); padding: 80px 24px; }
+    .inner { max-width: 1100px; margin: 0 auto; }
+    .label {
+      display: inline-block; margin-bottom: 40px; padding: 4px 10px;
+      border: 1px solid var(--line); color: var(--muted);
+      font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+    }
+    .label b { color: var(--accent); font-weight: 500; }
+    .name { font-family: var(--display); margin: 0; line-height: .95; letter-spacing: -0.02em; }
+    .role { font-family: var(--body); font-size: clamp(18px, 2.2vw, 24px); color: var(--muted); margin: 20px 0 64px; }
+    .role span { color: var(--accent); }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .projects { list-style: none; padding: 0; margin: 0; }
+    .projects li { padding: 20px 0; border-top: 1px solid var(--line); }
+    .projects h3 { font-family: var(--display); font-size: clamp(24px, 3vw, 34px); margin: 0 0 10px; line-height: 1.05; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags span {
+      font: 400 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em;
+      padding: 5px 8px; border: 1px solid var(--line); color: var(--muted);
+    }
+    .tags span:first-child { border-color: var(--accent); color: var(--accent); }
+    .bio h4 { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 20px 0 16px; }
+    .bio p { font-family: var(--body); font-size: 18px; margin: 0 0 16px; max-width: 52ch; }
+    .bio .small { font-family: var(--body); font-size: 15px; color: var(--muted); }
+    .bio a { font-family: var(--body); font-weight: 500; }
+
+    /* ---------- The four pairings ---------- */
+    #p1 { --display: "Clash Display", system-ui, sans-serif; --body: "Satoshi", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace; }
+    #p1 .name { font-weight: 600; font-size: clamp(56px, 10vw, 132px); }
+    #p1 .projects h3 { font-weight: 500; }
+
+    #p2 { --display: "Big Shoulders Display", "Big Shoulders", "Arial Narrow", sans-serif; --body: "Inter", system-ui, sans-serif; --mono: "Space Mono", ui-monospace, monospace; }
+    #p2 .name { font-weight: 900; text-transform: uppercase; font-size: clamp(72px, 14vw, 190px); letter-spacing: 0; line-height: .85; }
+    #p2 .projects h3 { font-weight: 700; text-transform: uppercase; letter-spacing: .01em; }
+
+    #p3 { --display: "Syne", system-ui, sans-serif; --body: "Space Grotesk", system-ui, sans-serif; --mono: "Space Mono", ui-monospace, monospace; }
+    #p3 .name { font-weight: 800; font-size: clamp(52px, 9.5vw, 128px); letter-spacing: -0.03em; }
+    #p3 .projects h3 { font-weight: 700; }
+
+    #p4 { --display: "Instrument Serif", Georgia, serif; --body: "Inter", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace; }
+    #p4 .name { font-weight: 400; font-style: italic; font-size: clamp(64px, 11vw, 150px); letter-spacing: -0.01em; }
+    #p4 .projects h3 { font-weight: 400; font-size: clamp(28px, 3.4vw, 40px); }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .specimen { padding: 56px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <nav aria-label="Pairings">
+      <a href="#p1">1 · Clash + Satoshi</a>
+      <a href="#p2">2 · Big Shoulders + Inter</a>
+      <a href="#p3">3 · Syne + Space Grotesk</a>
+      <a href="#p4">4 · Instrument Serif + Inter</a>
+    </nav>
+    <div class="swatches" role="group" aria-label="Accent colour">
+      <span>Accent</span>
+      <button style="background:#C6FF3D" data-c="#C6FF3D" aria-label="Lime" aria-pressed="true"></button>
+      <button style="background:#FF3D8B" data-c="#FF3D8B" aria-label="Hot pink" aria-pressed="false"></button>
+      <button style="background:#3DE8FF" data-c="#3DE8FF" aria-label="Cyan" aria-pressed="false"></button>
+      <button style="background:#FF6B2C" data-c="#FF6B2C" aria-label="Orange" aria-pressed="false"></button>
+      <button style="background:#A98BFF" data-c="#A98BFF" aria-label="Violet" aria-pressed="false"></button>
+    </div>
+  </div>
+
+  <header class="intro">
+    <h1>Type specimens</h1>
+    <p>Four font pairings on a dark background, set with real site content. Use the dots above to try accent colours. This page is hidden from search engines and not linked from the site.</p>
+  </header>
+
+  <main id="specimens"></main>
+
+  <template id="tpl">
+    <section class="specimen">
+      <div class="inner">
+        <div class="label"></div>
+        <h2 class="name">Debbie Rosenfeld</h2>
+        <p class="role">Designer <span>&amp;</span> front-end developer. Toronto.</p>
+        <div class="grid">
+          <ul class="projects">
+            <li><h3>CIO Analytics</h3><div class="tags"><span>Product design</span><span>Front-end dev</span></div></li>
+            <li><h3>Research Infographics</h3><div class="tags"><span>Information design</span><span>Visual design</span></div></li>
+            <li><h3>Diagnostic Reports</h3><div class="tags"><span>Information design</span><span>Report design</span></div></li>
+            <li><h3>Request a Demo Page</h3><div class="tags"><span>Visual design</span><span>UX</span><span>Front-end dev</span></div></li>
+          </ul>
+          <div class="bio">
+            <h4>About</h4>
+            <p>I'm a Toronto-based designer who codes. At Info-Tech Research Group, I design and build the interface for CIO Analytics, an AI-powered analytics platform for IT leaders.</p>
+            <p>Outside of work, I play bass (mostly the metal and punk I listen to), draw graffiti-inspired, abstract and typographic art, and read a lot of horror, usually with a cat or two nearby.</p>
+            <p class="small">Small text sample: Figma, Illustrator, Photoshop, Ruby on Rails, Tailwind CSS, Hotwire. <a href="#">View the project &rarr;</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    const pairings = [
+      ["p1", "Clash Display", "Satoshi", "JetBrains Mono", "Sharp and contemporary"],
+      ["p2", "Big Shoulders Display", "Inter", "Space Mono", "Raw and poster-like"],
+      ["p3", "Syne", "Space Grotesk", "Space Mono", "Quirky and characterful"],
+      ["p4", "Instrument Serif", "Inter", "JetBrains Mono", "Editorial contrast"],
+    ];
+    const main = document.getElementById("specimens");
+    const tpl = document.getElementById("tpl");
+    pairings.forEach(([id, d, b, m, mood], i) => {
+      const node = tpl.content.cloneNode(true);
+      const sec = node.querySelector("section");
+      sec.id = id;
+      sec.querySelector(".label").innerHTML =
+        `<b>${i + 1}</b> · ${mood} · ${d} / ${b} / ${m}`;
+      main.appendChild(node);
+    });
+
+    document.querySelectorAll(".swatches button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.documentElement.style.setProperty("--accent", btn.dataset.c);
+        document.querySelectorAll(".swatches button").forEach(b => b.setAttribute("aria-pressed", b === btn));
+      });
+    });
+  </script>
+</body>
+</html>
