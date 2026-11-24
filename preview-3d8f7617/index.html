@@ -504,11 +504,12 @@
     (() => {
       if (!location.search.includes("palette")) return;
       const P = {
-        "Current: green + pink": ["#7CFF4F", "#FF3D8B"],
-        "1  Soft lime + grey":   ["#B9F45A", "#8C9199"],
-        "2  Ember + warm grey":  ["#FF6B3D", "#A39C93"],
-        "3  Cobalt + steel":     ["#5C8DFF", "#8F99AB"],
-        "4  Ultraviolet + ash":  ["#A98BFF", "#948FA0"]
+        "Current: green + pink":   ["#7CFF4F", "#FF3D8B"],
+        "A  Lime + teal":          ["#A6F25B", "#3FD3B0"],
+        "B  Mint + sky":           ["#5EEAD4", "#7DB4FF"],
+        "C  Violet + rose":        ["#A78BFA", "#F08BB8"],
+        "D  Coral + amber":        ["#FF7A59", "#F5B451"],
+        "E  Chartreuse + gold":    ["#D2F04B", "#F2C14E"]
       };
       const panel = document.getElementById("palette-panel"), box = document.getElementById("palette-btns");
       panel.hidden = false;
