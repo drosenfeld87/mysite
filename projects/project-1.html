@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project One — Your Name</title>
+  <title>CIO Analytics — Your Name</title>
   <!-- Tailwind CSS v4 via CDN (no build step). For production you can
        switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -20,30 +20,82 @@
     </nav>
   </header>
 
-  <main class="max-w-3xl mx-auto px-6 py-16">
+  <main class="max-w-4xl mx-auto px-6 py-16">
     <a class="inline-block mb-8 hover:underline" href="../index.html#projects">&larr; Back to projects</a>
 
-    <h1 class="text-4xl md:text-5xl font-bold mb-2">Project One</h1>
-    <p class="text-neutral-500">Role · Year · Client or context</p>
+    <!-- ===== Summary: everything a skimmer needs ===== -->
+    <h1 class="text-4xl md:text-5xl font-bold mb-3">CIO Analytics</h1>
+    <p class="text-lg mb-4">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
+    <div class="flex flex-wrap gap-2 mb-10">
+            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Product design</span>
+            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Front-end dev</span>
+    </div>
 
+    <!-- At a glance -->
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-neutral-200 mb-10">
+      <div><dt class="text-sm text-neutral-500">Company</dt><dd>Info-Tech Research Group, CIO Analytics dev/design team</dd></div>
+      <div><dt class="text-sm text-neutral-500">Timeline</dt><dd>2025–present</dd></div>
+      <div><dt class="text-sm text-neutral-500">Tools</dt><dd>Figma, Ruby on Rails, Tailwind CSS, ViewComponent, Lookbook, Hotwire (Turbo + Stimulus), Highcharts</dd></div>
+      <div><dt class="text-sm text-neutral-500">Links</dt><dd><a class="underline" href="https://www.infotech.com/cio-analytics" target="_blank" rel="noopener">Marketing page</a></dd></div>
+    </dl>
+
+    <!-- My contribution: design vs. code, side by side -->
+    <h2 class="text-2xl font-bold mb-4">My contribution</h2>
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div>
+        <h3 class="font-semibold mb-2">Designed</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Key Insights component, used app-wide, with multiple variations</li>
+          <li>Contributions to the app's design system</li>
+          <li>Chart redesigns</li>
+          <li>Condensed tables for easier scanning</li>
+          <li>Save-syncing flow</li>
+          <li>Login and error pages</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Built</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Front end of a Ruby on Rails app, styled with Tailwind CSS and a shared design preset</li>
+          <li>Reusable UI components with ViewComponent, documented in Lookbook</li>
+          <li>Interactivity with Hotwire (Turbo + Stimulus), no JavaScript framework</li>
+          <li>Highcharts charts for the v2 dashboards, through the in-house charting-dashboard engine</li>
+          <li>Marketing page (design by the Info-Tech design team)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== Detail: for readers who want more ===== -->
     <!-- Main image or video. Replace with:
-         <img class="w-full aspect-video object-cover my-8" src="../images/project-1-hero.jpg" alt="...">
-         or <video class="w-full my-8" src="../images/project-1.mp4" controls></video> -->
-    <div class="aspect-video my-8 flex items-center justify-center bg-neutral-100 text-neutral-500">Main image or video</div>
+         <img class="w-full aspect-video object-cover" src="../images/project-1-hero.jpg" alt="...">
+         or <video class="w-full" src="../images/project-1.mp4" controls muted playsinline></video> -->
+    <div class="aspect-video flex items-center justify-center bg-neutral-100 text-neutral-500">Main image or video</div>
+    <p class="text-sm text-neutral-500">Screens shown with demo data.</p>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">Overview</h2>
-    <p>What the project is and who it was for.</p>
+    <h2 class="text-2xl font-bold mt-12 mb-2">Overview</h2>
+    <p>CIO Analytics connects to an organization's IT systems, builds live dashboards from its data, compares it against best-practice benchmarks, and turns the results into tailored recommendations for IT leaders.</p>
 
     <h2 class="text-2xl font-bold mt-10 mb-2">The challenge</h2>
-    <p>The problem you were solving.</p>
+    <p>Make complex IT data clear and actionable for busy CIOs and IT leaders.</p>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">What I did</h2>
-    <p>Your process, decisions, and the tools you used.</p>
+    <h2 class="text-2xl font-bold mt-10 mb-2">Process &amp; key decisions</h2>
+    <!-- Feature story: the Key Insights component. Suggested beats:
+         what problem it solves, how you designed its variations,
+         how it's built (ViewComponent + Lookbook) so it stays consistent app-wide.
+         Show 2-3 variations side by side in the screens below. -->
+    <p>Key Insights component: what it does, why it needed variations, and how it's built to stay consistent across the app.</p>
+    <!-- Ideas: building a reusable component library (ViewComponent + Lookbook) so
+         designs translate consistently into code; keeping the app fast and simple
+         with Hotwire instead of a JS framework; designing dashboards that stay
+         readable as the charting engine scales to new modules. -->
 
-    <div class="aspect-video my-8 flex items-center justify-center bg-neutral-100 text-neutral-500">Supporting image</div>
+    <div class="grid md:grid-cols-2 gap-6 my-8">
+      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Key Insights variation 1</div>
+      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Key Insights variation 2</div>
+    </div>
 
     <h2 class="text-2xl font-bold mt-10 mb-2">Result</h2>
-    <p>The outcome, and a link to the live project if there is one.</p>
+    <p>The outcome: launch, adoption, feedback.</p>
 
     <nav class="flex justify-between mt-16 pt-6 border-t border-neutral-200" aria-label="More projects">
       <span></span>

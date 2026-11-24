@@ -20,30 +20,63 @@
     </nav>
   </header>
 
-  <main class="max-w-3xl mx-auto px-6 py-16">
+  <main class="max-w-4xl mx-auto px-6 py-16">
     <a class="inline-block mb-8 hover:underline" href="../index.html#projects">&larr; Back to projects</a>
 
-    <h1 class="text-4xl md:text-5xl font-bold mb-2">Project Three</h1>
-    <p class="text-neutral-500">Role · Year · Client or context</p>
+    <!-- ===== Summary: everything a skimmer needs ===== -->
+    <h1 class="text-4xl md:text-5xl font-bold mb-3">Project Three</h1>
+    <p class="text-lg mb-4">One-line summary of the project.</p>
+    <div class="flex flex-wrap gap-2 mb-10">
+            <span class="text-xs uppercase tracking-wide border border-neutral-300 px-2 py-0.5">Your role</span>
+    </div>
 
+    <!-- At a glance -->
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-neutral-200 mb-10">
+      <div><dt class="text-sm text-neutral-500">Company</dt><dd>Company or client</dd></div>
+      <div><dt class="text-sm text-neutral-500">Year</dt><dd>Year</dd></div>
+      <div><dt class="text-sm text-neutral-500">Tools</dt><dd>Tools used</dd></div>
+      <div><dt class="text-sm text-neutral-500">Links</dt><dd><a class="underline" href="#" target="_blank" rel="noopener">Live site</a></dd></div>
+    </dl>
+
+    <!-- My contribution: design vs. code, side by side -->
+    <h2 class="text-2xl font-bold mb-4">My contribution</h2>
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div>
+        <h3 class="font-semibold mb-2">Designed</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>What you designed</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Built</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>What you built</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== Detail: for readers who want more ===== -->
     <!-- Main image or video. Replace with:
-         <img class="w-full aspect-video object-cover my-8" src="../images/project-3-hero.jpg" alt="...">
-         or <video class="w-full my-8" src="../images/project-3.mp4" controls></video> -->
-    <div class="aspect-video my-8 flex items-center justify-center bg-neutral-100 text-neutral-500">Main image or video</div>
+         <img class="w-full aspect-video object-cover" src="../images/project-3-hero.jpg" alt="...">
+         or <video class="w-full" src="../images/project-3.mp4" controls muted playsinline></video> -->
+    <div class="aspect-video flex items-center justify-center bg-neutral-100 text-neutral-500">Main image or video</div>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">Overview</h2>
+    <h2 class="text-2xl font-bold mt-12 mb-2">Overview</h2>
     <p>What the project is and who it was for.</p>
 
     <h2 class="text-2xl font-bold mt-10 mb-2">The challenge</h2>
     <p>The problem you were solving.</p>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">What I did</h2>
-    <p>Your process, decisions, and the tools you used.</p>
+    <h2 class="text-2xl font-bold mt-10 mb-2">Process &amp; key decisions</h2>
+    <p>One or two decisions you're proud of, and why.</p>
 
-    <div class="aspect-video my-8 flex items-center justify-center bg-neutral-100 text-neutral-500">Supporting image</div>
+    <div class="grid md:grid-cols-2 gap-6 my-8">
+      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Screen 1</div>
+      <div class="aspect-[4/3] flex items-center justify-center bg-neutral-100 text-neutral-500">Screen 2</div>
+    </div>
 
     <h2 class="text-2xl font-bold mt-10 mb-2">Result</h2>
-    <p>The outcome, and a link to the live project if there is one.</p>
+    <p>The outcome: launch, adoption, feedback.</p>
 
     <nav class="flex justify-between mt-16 pt-6 border-t border-neutral-200" aria-label="More projects">
       <a class="hover:underline" href="project-2.html">&larr; Project Two</a>
