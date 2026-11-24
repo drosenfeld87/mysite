@@ -35,8 +35,8 @@
     h1 span { display: block; color: var(--accent); padding-left: 1.25em; }
     .meta { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: clamp(32px, 6vh, 64px); padding-top: 18px; border-top: 1px solid var(--line); }
     footer { display: flex; justify-content: space-between; gap: 24px; padding: 18px var(--gutter) 28px; border-top: 1px solid var(--line); }
-    @keyframes sticker-skew { 0% { transform: skewX(0deg); } 30% { transform: skewX(-12deg); } 60% { transform: skewX(7deg); } 80% { transform: skewX(-3deg); } 100% { transform: skewX(0deg); } }
-    @media (hover: hover) and (prefers-reduced-motion: no-preference) { .sticker:hover { animation: sticker-skew .5s cubic-bezier(.3,.7,.4,1); } }
+    @keyframes sticker-jiggle { 0% { transform: rotate(0deg); } 18% { transform: rotate(7deg); } 36% { transform: rotate(-4deg); } 54% { transform: rotate(2.5deg); } 72% { transform: rotate(-1.2deg); } 88% { transform: rotate(.5deg); } 100% { transform: rotate(0deg); } }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) { .sticker { transform-origin: 0% 0%; } .sticker:hover { animation: sticker-jiggle .7s cubic-bezier(.25,.6,.3,1); } }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     @media (max-width: 700px) { h1 span { padding-left: .4em; } .bar .hide-m { display: none; } }
   </style>

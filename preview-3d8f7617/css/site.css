@@ -155,17 +155,9 @@ footer { display: flex; justify-content: space-between; gap: 24px; margin-top: c
 .label:nth-child(even), .tag:nth-child(even) { rotate: 1.5deg; }
 .index .tags { display: flex; flex-wrap: wrap; gap: 8px; align-self: center; }
 
-/* Name sticker: a quick skew wiggle on hover */
-@keyframes sticker-skew {
-  0%   { transform: skewX(0deg); }
-  30%  { transform: skewX(-12deg); }
-  60%  { transform: skewX(7deg); }
-  80%  { transform: skewX(-3deg); }
-  100% { transform: skewX(0deg); }
-}
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .sticker:hover { animation: sticker-skew .5s cubic-bezier(.3,.7,.4,1); }
-}
+/* Name sticker: jiggles on hover, as if pushed at its bottom-right corner while pinned at the top left */
+@keyframes sticker-jiggle { 0% { transform: rotate(0deg); } 18% { transform: rotate(7deg); } 36% { transform: rotate(-4deg); } 54% { transform: rotate(2.5deg); } 72% { transform: rotate(-1.2deg); } 88% { transform: rotate(.5deg); } 100% { transform: rotate(0deg); } }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .sticker { transform-origin: 0% 0%; } .sticker:hover { animation: sticker-jiggle .7s cubic-bezier(.25,.6,.3,1); } }
 
 /* Sticky masthead: hides while scrolling down, comes back when scrolling up */
 html { scroll-padding-top: 88px; }
