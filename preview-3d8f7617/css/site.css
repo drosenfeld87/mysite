@@ -166,3 +166,13 @@ footer { display: flex; justify-content: space-between; gap: 24px; margin-top: c
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .sticker:hover { animation: sticker-skew .5s cubic-bezier(.3,.7,.4,1); }
 }
+
+/* Sticky masthead: hides while scrolling down, comes back when scrolling up */
+html { scroll-padding-top: 88px; }
+.masthead {
+  position: sticky; top: 0; z-index: 40; background: var(--bg);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.masthead.is-hidden { transform: translateY(-100%); }
+.masthead.is-floating { box-shadow: 0 1px 0 var(--line), 0 10px 30px rgb(0 0 0 / .45); }
+@media (prefers-reduced-motion: reduce) { .masthead { transition: none; } }
