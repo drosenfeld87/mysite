@@ -63,6 +63,29 @@
     }
     @media (prefers-reduced-motion: reduce) { .bg-fx { animation: none; } }
   </style>
+
+  <!-- Zine details: sticker tags, marquee, flexing headline -->
+  <style>
+    .tag { display: inline-block; }
+    .tag:nth-child(odd)  { transform: rotate(-2deg); }
+    .tag:nth-child(even) { transform: rotate(1.5deg); }
+
+    .marquee { overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    .fx-word { display: inline-block; white-space: nowrap; }
+    .fx-ch {
+      display: inline-block;
+      font-variation-settings: "wdth" 75, "wght" 800;
+      transition: font-variation-settings .4s cubic-bezier(.2,.7,.2,1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      .fx-ch { transition: none; }
+    }
+  </style>
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
   <div class="bg-fx" aria-hidden="true"></div>
@@ -83,7 +106,7 @@
 
     <!-- ============ HERO ============ -->
     <section class="max-w-6xl mx-auto px-6 min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-      <h1 class="text-5xl md:text-8xl font-extrabold leading-none max-w-[14ch] mb-6">Pixels in, <span class="text-accent">code out.</span></h1>
+      <h1 data-flex class="text-5xl md:text-8xl font-extrabold leading-none md:whitespace-nowrap mb-6">Pixels in, <span class="text-accent">code out.</span></h1>
       <p class="mb-8 text-lg text-muted flex flex-wrap items-center gap-x-4 gap-y-1">
         <span>Designer and front-end developer</span>
         <span class="inline-flex items-center gap-1.5">
@@ -94,9 +117,14 @@
       <a class="inline-block self-start px-6 py-3 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors" href="#projects">See my work</a>
     </section>
 
+    <!-- ============ MARQUEE (decorative) ============ -->
+    <div class="marquee border-y border-line py-4 font-display text-2xl md:text-3xl font-bold uppercase text-ink/90" aria-hidden="true">
+      <div class="marquee-track items-center"><span class="px-6">Figma</span><span class="text-accent2" >✦</span><span class="px-6">Illustrator</span><span class="text-accent2" >✦</span><span class="px-6">Photoshop</span><span class="text-accent2" >✦</span><span class="px-6">Ruby on Rails</span><span class="text-accent2" >✦</span><span class="px-6">Tailwind CSS</span><span class="text-accent2" >✦</span><span class="px-6">Hotwire</span><span class="text-accent2" >✦</span><span class="px-6">Midjourney</span><span class="text-accent2" >✦</span><span class="px-6">Bass</span><span class="text-accent2" >✦</span><span class="px-6">Metal &amp; punk</span><span class="text-accent2" >✦</span><span class="px-6">Horror novels</span><span class="text-accent2" >✦</span><span class="px-6">Typography</span><span class="text-accent2" >✦</span><span class="px-6">Cats</span><span class="text-accent2" >✦</span><span class="px-6">Figma</span><span class="text-accent2" >✦</span><span class="px-6">Illustrator</span><span class="text-accent2" >✦</span><span class="px-6">Photoshop</span><span class="text-accent2" >✦</span><span class="px-6">Ruby on Rails</span><span class="text-accent2" >✦</span><span class="px-6">Tailwind CSS</span><span class="text-accent2" >✦</span><span class="px-6">Hotwire</span><span class="text-accent2" >✦</span><span class="px-6">Midjourney</span><span class="text-accent2" >✦</span><span class="px-6">Bass</span><span class="text-accent2" >✦</span><span class="px-6">Metal &amp; punk</span><span class="text-accent2" >✦</span><span class="px-6">Horror novels</span><span class="text-accent2" >✦</span><span class="px-6">Typography</span><span class="text-accent2" >✦</span><span class="px-6">Cats</span><span class="text-accent2" >✦</span></div>
+    </div>
+
     <!-- ============ PROJECTS ============ -->
     <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="projects">
-      <h2 class="text-3xl font-bold mb-8">Projects</h2>
+      <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">01 /</span>Projects</h2>
 
       <!-- 4-panel gallery (2x2 on desktop, stacked on mobile).
            To use a real thumbnail, replace each placeholder <div> with:
@@ -109,8 +137,8 @@
           <p class="text-muted mb-2">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span>
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Product design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
           </div>
         </a>
 
@@ -121,8 +149,8 @@
           <p class="text-muted mb-2">Visual frameworks that distill Info-Tech research blueprints into a single, scannable image for IT leaders.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
           </div>
         </a>
 
@@ -133,8 +161,8 @@
           <p class="text-muted mb-2">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
           </div>
         </a>
 
@@ -145,9 +173,9 @@
           <p class="text-muted mb-2">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
           <!-- Role tags: what you did on this project -->
           <div class="flex flex-wrap gap-2">
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span>
-            <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span>
+            <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
           </div>
         </a>
       </div>
@@ -155,7 +183,7 @@
 
     <!-- ============ ABOUT ============ -->
     <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="about">
-      <h2 class="text-3xl font-bold mb-8">About Me</h2>
+      <h2 class="text-3xl font-bold mb-8"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">02 /</span>About Me</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
         <!-- Replace with <img class="aspect-square w-full object-cover" src="images/portrait.jpg" alt="Deb Rosenfeld"> -->
         <div class="aspect-square flex items-center justify-center bg-surface text-muted">Photo</div>
@@ -168,7 +196,7 @@
 
     <!-- ============ CONTACT ============ -->
     <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 border-t border-line" id="contact">
-      <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
+      <h2 class="text-3xl font-bold mb-4"><span class="font-mono text-sm font-normal tracking-widest text-accent2 align-middle mr-3">03 /</span>Contact Me</h2>
       <p class="mb-8">Have a project in mind? Send me a message.</p>
 
       <!--
@@ -219,6 +247,45 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    // Headline letters stretch and thicken near the cursor (Mona Sans width + weight axes)
+    (() => {
+      const h = document.querySelector("[data-flex]");
+      if (!h) return;
+      h.setAttribute("aria-label", h.textContent.replace(/\s+/g, " ").trim());
+      const wrap = node => {
+        [...node.childNodes].forEach(n => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(part => {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.append(" "); return; }
+              const w = document.createElement("span");
+              w.className = "fx-word"; w.setAttribute("aria-hidden", "true");
+              [...part].forEach(c => { const s = document.createElement("span"); s.className = "fx-ch"; s.textContent = c; w.append(s); });
+              frag.append(w);
+            });
+            n.replaceWith(frag);
+          } else wrap(n);
+        });
+      };
+      wrap(h);
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches || !matchMedia("(hover: hover)").matches) return;
+      const chars = [...h.querySelectorAll(".fx-ch")];
+      let raf;
+      h.addEventListener("pointermove", e => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => chars.forEach(c => {
+          const r = c.getBoundingClientRect();
+          const d = Math.abs(e.clientX - (r.left + r.width / 2));
+          const t = Math.max(0, 1 - d / 220);          // 0 far away, 1 under the cursor
+          c.style.fontVariationSettings = `"wdth" ${75 + 37 * t}, "wght" ${800 + 100 * t}`;
+        }));
+      });
+      h.addEventListener("pointerleave", () => chars.forEach(c => c.style.fontVariationSettings = ""));
+    })();
   </script>
 </body>
 </html>

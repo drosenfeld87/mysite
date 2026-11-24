@@ -63,6 +63,29 @@
     }
     @media (prefers-reduced-motion: reduce) { .bg-fx { animation: none; } }
   </style>
+
+  <!-- Zine details: sticker tags, marquee, flexing headline -->
+  <style>
+    .tag { display: inline-block; }
+    .tag:nth-child(odd)  { transform: rotate(-2deg); }
+    .tag:nth-child(even) { transform: rotate(1.5deg); }
+
+    .marquee { overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    .fx-word { display: inline-block; white-space: nowrap; }
+    .fx-ch {
+      display: inline-block;
+      font-variation-settings: "wdth" 75, "wght" 800;
+      transition: font-variation-settings .4s cubic-bezier(.2,.7,.2,1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      .fx-ch { transition: none; }
+    }
+  </style>
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
   <div class="bg-fx" aria-hidden="true"></div>
@@ -86,8 +109,8 @@
     <h1 class="text-4xl md:text-5xl font-bold mb-3">Diagnostic Reports</h1>
     <p class="text-lg mb-4">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
     <div class="flex flex-wrap gap-2 mb-10">
-      <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
-      <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
+      <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Information design</span>
+      <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Report design</span>
     </div>
 
     <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-line mb-10">
@@ -108,9 +131,9 @@
       <h3 class="font-semibold text-xl mb-1">Exponential IT Readiness Diagnostic</h3>
       <p class="text-muted mb-2">A report comparing how ready the organization is for technology-driven transformation with how ready IT is to lead it, scored across core IT domains.</p>
       <div class="flex flex-wrap gap-2 mb-4">
-        <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Designed: full report</span>
-        <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Built: partially</span>
-        <span class="font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Unreleased</span>
+        <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Designed: full report</span>
+        <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Built: partially</span>
+        <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Unreleased</span>
       </div>
       <p class="text-sm text-muted mb-6">I designed the complete report and was partway through coding it when the project was cancelled, so this design was never published. Shown with sample data.</p>
 
