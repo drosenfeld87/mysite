@@ -127,6 +127,13 @@
       to   { opacity: 1; transform: none; text-shadow: 0.025em 0.025em 0 var(--color-accent2); }
     }
 
+    /* Project cards: same lift-and-shadow as the buttons */
+    .card .thumb { transition: transform .18s ease, box-shadow .18s ease; }
+    .card:hover .thumb, .card:focus-visible .thumb { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--color-accent2); }
+    .card:active .thumb { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--color-accent2); }
+    .card:focus-visible { outline: none; }
+    @media (prefers-reduced-motion: reduce) { .card .thumb { transition: none; } }
+
     /* Buttons: sticker-style with a pink offset shadow */
     .btn {
       display: inline-flex; align-items: center; gap: .6em; align-self: flex-start;
@@ -190,8 +197,8 @@
            To use a real thumbnail, replace each placeholder <div> with:
            <img class="aspect-[4/3] w-full object-cover" src="images/project-1.jpg" alt="Short description"> -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <a class="block group" href="projects/project-1.html">
-          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-1-thumb.jpg" alt="CIO Analytics"> -->
+        <a class="card block group" href="projects/project-1.html">
+          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-1-thumb.jpg" alt="CIO Analytics"> -->
           <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 1</div>
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">CIO Analytics</h3>
           <p class="text-muted mb-2">AI and analytics platform that turns IT data into dashboards and advice for CIOs.</p>
@@ -202,8 +209,8 @@
           </div>
         </a>
 
-        <a class="block group" href="projects/project-2.html">
-          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-2-thumb.jpg" alt="Project Two"> -->
+        <a class="card block group" href="projects/project-2.html">
+          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-2-thumb.jpg" alt="Project Two"> -->
           <img class="aspect-[4/3] w-full object-cover" src="images/infographic-genai-security.jpg" alt="Research infographic on security and privacy risks for generative AI">
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Research Infographics</h3>
           <p class="text-muted mb-2">Visual frameworks that distill Info-Tech research blueprints into a single, scannable image for IT leaders.</p>
@@ -214,8 +221,8 @@
           </div>
         </a>
 
-        <a class="block group" href="projects/project-3.html">
-          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-3-thumb.jpg" alt="Project Three"> -->
+        <a class="card block group" href="projects/project-3.html">
+          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-3-thumb.jpg" alt="Project Three"> -->
           <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 3</div>
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Diagnostic Reports</h3>
           <p class="text-muted mb-2">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
@@ -226,8 +233,8 @@
           </div>
         </a>
 
-        <a class="block group" href="projects/project-4.html">
-          <!-- Replace with <img class="aspect-[4/3] w-full object-cover" src="images/project-4-thumb.jpg" alt="Project Four"> -->
+        <a class="card block group" href="projects/project-4.html">
+          <!-- Replace with <img class="thumb aspect-[4/3] w-full object-cover" src="images/project-4-thumb.jpg" alt="Project Four"> -->
           <div class="aspect-[4/3] w-full flex items-center justify-center bg-surface text-muted">Thumbnail 4</div>
           <h3 class="mt-3 mb-1 text-lg font-semibold group-hover:text-accent transition-colors">Request a Demo Page</h3>
           <p class="text-muted mb-2">Lead-generation landing page and sign-up flow for booking a personalized demo with an Info-Tech advisor.</p>
