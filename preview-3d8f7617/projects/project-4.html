@@ -87,9 +87,10 @@
       </div>
     </div>
 
-    <!-- Main image: full-page screenshot or a short screen recording of the form flow.
-         <img class="w-full border border-line" src="../images/demo-page.jpg" alt="..."> -->
-    <div class="aspect-video flex items-center justify-center bg-surface text-muted">Main image or recording of the sign-up flow</div>
+    <figure>
+      <video class="w-full border border-line" src="../video/demo-schedule.mp4" poster="../images/demo-schedule-poster.jpg" data-autoplay muted loop playsinline controls preload="metadata" aria-describedby="vid-schedule"></video>
+      <figcaption id="vid-schedule" class="mt-2"><p class="text-sm text-muted">Prototype of the scheduling step: the visitor picks a day, then chooses from the available call times. If they press Next without choosing a day, the form asks them to select one. Video has no sound.</p></figcaption>
+    </figure>
 
     <h2 class="text-2xl font-bold mt-12 mb-2">Overview</h2>
     <p>The page invites IT leaders to book a personalized demo. It pairs a short sign-up form with a four-step overview of how Infotech works, customer testimonials and client logos to build trust.</p>
@@ -107,8 +108,14 @@
     <p>FLOW: the steps, what you and the UX designer decided, and why.</p>
 
     <div class="grid md:grid-cols-2 gap-6 my-8">
-      <div class="aspect-[4/3] flex items-center justify-center bg-surface text-muted">Form step 1</div>
-      <div class="aspect-[4/3] flex items-center justify-center bg-surface text-muted">Form step 2</div>
+      <figure>
+        <video class="w-full border border-line" src="../video/demo-validation.mp4" poster="../images/demo-validation-poster.jpg" data-autoplay muted loop playsinline controls preload="metadata" aria-describedby="vid-validation"></video>
+        <figcaption id="vid-validation" class="mt-2"><p class="text-sm text-muted">Missing or invalid details: each field explains what&rsquo;s needed, such as a 10-digit phone number or an email in the format thing@business.com. Video has no sound.</p></figcaption>
+      </figure>
+      <figure>
+        <video class="w-full border border-line" src="../video/demo-error.mp4" poster="../images/demo-error-poster.jpg" data-autoplay muted loop playsinline controls preload="metadata" aria-describedby="vid-error"></video>
+        <figcaption id="vid-error" class="mt-2"><p class="text-sm text-muted">Scheduling unavailable: if the booking system is down, the form apologizes and asks the visitor to try again later. Video has no sound.</p></figcaption>
+      </figure>
     </div>
 
     <h2 class="text-2xl font-bold mt-10 mb-2">Result</h2>

@@ -47,3 +47,21 @@
   dlg.addEventListener("click", e => { if (e.target === dlg || (e.target === img && !dlg.classList.contains("lb-tall"))) close(); });
   dlg.addEventListener("close", () => { document.documentElement.classList.remove("lb-open"); img.removeAttribute("src"); });
 })();
+
+/* Prototype videos: play while on screen, never for reduced-motion users */
+(() => {
+  const vids = document.querySelectorAll("video[data-autoplay]");
+  if (!vids.length || !("IntersectionObserver" in window)) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { if (!v.dataset.userPaused) v.play().catch(() => {}); }
+    else if (!v.paused) { v.dataset.autoPausing = "1"; v.pause(); }
+  }), { threshold: 0.5 });
+  vids.forEach(v => {
+    // A pause the visitor chose sticks; pauses from scrolling away don't
+    v.addEventListener("pause", () => { if (v.dataset.autoPausing) delete v.dataset.autoPausing; else v.dataset.userPaused = "1"; });
+    v.addEventListener("play", () => { delete v.dataset.userPaused; });
+    io.observe(v);
+  });
+})();
