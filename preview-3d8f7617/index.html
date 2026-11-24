@@ -111,7 +111,7 @@
   <style>
     /* Headline: printed-sticker look to match the buttons and labels */
     .hl { display: inline-block; }
-    .hl-2 { text-shadow: 0.04em 0.04em 0 var(--color-accent2); }
+    .hl-2 { text-shadow: 0.025em 0.025em 0 var(--color-accent2); }
     @media (prefers-reduced-motion: no-preference) {
       .hl { animation: hl-press .7s cubic-bezier(.2,.8,.2,1) both; }
       .hl-1 { animation-delay: .1s; }
@@ -123,8 +123,8 @@
       to   { opacity: 1; transform: none; }
     }
     @keyframes hl-press-shadow {
-      from { opacity: 0; transform: translate(-0.06em, -0.12em) rotate(-1.5deg); text-shadow: 0.12em 0.12em 0 var(--color-accent2); }
-      to   { opacity: 1; transform: none; text-shadow: 0.04em 0.04em 0 var(--color-accent2); }
+      from { opacity: 0; transform: translate(-0.06em, -0.12em) rotate(-1.5deg); text-shadow: 0.08em 0.08em 0 var(--color-accent2); }
+      to   { opacity: 1; transform: none; text-shadow: 0.025em 0.025em 0 var(--color-accent2); }
     }
 
     /* Buttons: sticker-style with a pink offset shadow */
