@@ -349,24 +349,34 @@
 
 
   <script>
-    // Visitor counter: one hit per browser session; hides itself if the service is unavailable
+    // Visitor counter: one hit per browser session. Tries Abacus, then a backup counting
+    // service; hides itself only if both are unavailable.
     (async () => {
       const box = document.getElementById("visits");
-      const base = "https://abacus.jasoncameron.dev";
-      const key = "debbierosenfeld.com/home";
-      const seen = (() => { try { return sessionStorage.getItem("counted"); } catch { return null; } })();
-      try {
-        const res = await fetch(`${base}/${seen ? "get" : "hit"}/${key}`);
-        if (!res.ok) throw 0;
-        const { value } = await res.json();
-        if (typeof value !== "number") throw 0;
-        try { sessionStorage.setItem("counted", "1"); } catch {}
-        const digits = String(value).padStart(6, "0");
-        const c = box.querySelector(".counter");
-        c.setAttribute("aria-label", `Visitor number ${value}`);
-        c.innerHTML = [...digits].map(d => `<span aria-hidden="true">${d}</span>`).join("");
-        box.classList.remove("hidden");
-      } catch {}
+      let seen = null;
+      try { seen = sessionStorage.getItem("counted"); } catch {}
+      const sources = [
+        async () => {
+          const r = await fetch(`https://abacus.jasoncameron.dev/${seen ? "get" : "hit"}/debbierosenfeld.com/home`);
+          if (!r.ok) throw 0; return (await r.json()).value;
+        },
+        async () => {
+          const r = await fetch(`https://countapi.mileshilliard.com/api/v1/${seen ? "get" : "hit"}/debbierosenfeld-home`);
+          if (!r.ok) throw 0; return (await r.json()).value;
+        },
+      ];
+      for (const get of sources) {
+        try {
+          const value = Number(await get());
+          if (!Number.isFinite(value) || value < 0) continue;
+          try { sessionStorage.setItem("counted", "1"); } catch {}
+          const c = box.querySelector(".counter");
+          c.setAttribute("aria-label", `Visitor number ${value}`);
+          c.innerHTML = [...String(Math.floor(value)).padStart(6, "0")].map(d => `<span aria-hidden="true">${d}</span>`).join("");
+          box.classList.remove("hidden");
+          return;
+        } catch {}
+      }
     })();
   </script>
 </body>
