@@ -80,7 +80,7 @@
     .fx-word { display: inline-block; white-space: nowrap; }
     .fx-ch {
       display: inline-block;
-      font-variation-settings: "wdth" 75, "wght" 800;
+      font-variation-settings: "wdth" 75, "wght" 500;
       transition: font-variation-settings .4s cubic-bezier(.2,.7,.2,1);
     }
     @media (prefers-reduced-motion: reduce) {
@@ -95,8 +95,8 @@
 
   <!-- ============ HEADER / NAV ============ -->
   <header class="sticky top-0 z-10 h-16 flex items-center justify-between px-6 bg-bg/70 backdrop-blur-md border-b border-line">
-    <a class="font-display font-bold text-xl" href="#top">Deb Rosenfeld</a>
-    <nav class="flex gap-6" aria-label="Main">
+    <a class="font-display font-bold text-lg md:text-xl whitespace-nowrap" href="#top">Deb Rosenfeld</a>
+    <nav class="flex gap-4 md:gap-6 text-sm md:text-base" aria-label="Main">
       <a class="hover:text-accent" href="#projects">Projects</a>
       <a class="hover:text-accent" href="#about">About</a>
       <a class="hover:text-accent" href="#contact">Contact</a>
@@ -106,16 +106,17 @@
   <main id="top">
 
     <!-- ============ HERO ============ -->
-    <section class="max-w-6xl mx-auto px-6 min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-      <h1 data-flex class="text-5xl md:text-8xl font-extrabold leading-none md:whitespace-nowrap mb-6">Pixels in, <span class="text-accent">code out.</span></h1>
-      <p class="mb-8 text-lg text-muted flex flex-wrap items-center gap-x-4 gap-y-1">
+    <section class="relative px-6 md:px-12 min-h-[calc(100svh-4rem)] flex flex-col justify-center">
+      <h1 data-flex class="text-[clamp(3.25rem,10vw,11rem)] font-medium leading-[0.9] tracking-tight md:whitespace-nowrap mb-8">Pixels in,<br class="md:hidden"> <span class="text-accent">code out.</span></h1>
+      <p class="mb-10 text-lg md:text-xl text-muted flex flex-wrap items-center gap-x-4 gap-y-1">
         <span>Designer and front-end developer</span>
         <span class="inline-flex items-center gap-1.5">
           <svg class="w-4 h-4 text-accent2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
           Toronto
         </span>
       </p>
-      <a class="inline-block self-start px-6 py-3 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors" href="#projects">See my work</a>
+      <a class="inline-block self-start px-7 py-3.5 border border-accent bg-accent text-bg font-medium hover:bg-transparent hover:text-accent cursor-pointer transition-colors" href="#projects">See my work</a>
+      <a href="#projects" class="absolute bottom-8 left-6 md:left-12 font-mono text-xs uppercase tracking-widest text-muted hover:text-accent">Scroll &darr;</a>
     </section>
 
     <!-- ============ TOOLS MARQUEE (decorative) ============ -->
@@ -282,7 +283,7 @@
           const r = c.getBoundingClientRect();
           const d = Math.abs(e.clientX - (r.left + r.width / 2));
           const t = Math.max(0, 1 - d / 220);          // 0 far away, 1 under the cursor
-          c.style.fontVariationSettings = `"wdth" ${75 + 37 * t}, "wght" ${800 + 100 * t}`;
+          c.style.fontVariationSettings = `"wdth" ${75 + 37 * t}, "wght" ${500 + 250 * t}`;
         }));
       });
       h.addEventListener("pointerleave", () => chars.forEach(c => c.style.fontVariationSettings = ""));
