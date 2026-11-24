@@ -45,12 +45,30 @@
     .bg-fx, .bg-grain { position: fixed; pointer-events: none; z-index: -1; }
     .bg-fx {
       inset: -25vh -25vw;
-      background:
-        radial-gradient(42vmax 42vmax at 18% 22%, rgb(124 255 79 / 0.16), rgb(124 255 79 / 0.05) 40%, transparent 72%),
-        radial-gradient(48vmax 48vmax at 82% 68%, rgb(255 61 139 / 0.18), rgb(255 61 139 / 0.06) 40%, transparent 72%),
-        radial-gradient(34vmax 34vmax at 55% 110%, rgb(124 255 79 / 0.10), transparent 70%);
       animation: bg-drift linear both;
       animation-timeline: scroll(root);
+    }
+    /* Two colour glows that slowly float on their own, independent of scrolling */
+    .bg-fx::before, .bg-fx::after { content: ""; position: absolute; inset: 0; will-change: transform; }
+    .bg-fx::before {
+      background:
+        radial-gradient(42vmax 42vmax at 22% 26%, rgb(124 255 79 / 0.16), rgb(124 255 79 / 0.05) 40%, transparent 72%),
+        radial-gradient(34vmax 34vmax at 55% 105%, rgb(124 255 79 / 0.10), transparent 70%);
+      animation: glow-a 26s ease-in-out infinite alternate;
+    }
+    .bg-fx::after {
+      background: radial-gradient(48vmax 48vmax at 78% 64%, rgb(255 61 139 / 0.18), rgb(255 61 139 / 0.06) 40%, transparent 72%);
+      animation: glow-b 32s ease-in-out infinite alternate;
+    }
+    @keyframes glow-a {
+      0%   { transform: translate3d(0, 0, 0) scale(1); }
+      50%  { transform: translate3d(12vw, 8vh, 0) scale(1.12); }
+      100% { transform: translate3d(4vw, 18vh, 0) scale(0.95); }
+    }
+    @keyframes glow-b {
+      0%   { transform: translate3d(0, 0, 0) scale(1); }
+      50%  { transform: translate3d(-14vw, -10vh, 0) scale(1.1); }
+      100% { transform: translate3d(-6vw, 6vh, 0) scale(1.05); }
     }
     @keyframes bg-drift {
       from { transform: translate3d(0, 0, 0) rotate(0deg); }
@@ -62,10 +80,10 @@
       mix-blend-mode: overlay;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
-    @media (prefers-reduced-motion: reduce) { .bg-fx { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .bg-fx, .bg-fx::before, .bg-fx::after { animation: none; } }
   </style>
 
-  <!-- Zine details: sticker tags, flexing headline -->
+  <!-- Zine details: sticker tags, marquee -->
   <style>
     .tag { display: inline-block; }
     .tag:nth-child(odd)  { transform: rotate(-2deg); }
@@ -88,16 +106,8 @@
       border-radius: 2px;
     }
 
-    .fx-word { display: inline-block; white-space: nowrap; }
-    .fx-ch {
-      display: inline-block;
-      font-variation-settings: "wdth" 75, "wght" 500;
-      transition: font-variation-settings .4s cubic-bezier(.2,.7,.2,1);
-    }
     @media (prefers-reduced-motion: reduce) {
-      .fx-ch { transition: none; }
-    }
-  </style>
+    </style>
   <style>
     /* Buttons: sticker-style with a pink offset shadow */
     .btn {
@@ -137,7 +147,7 @@
     <!-- ============ HERO ============ -->
     <section class="relative px-6 md:px-12 min-h-[calc(100svh-4rem)] flex flex-col justify-center">
       <p class="mb-6"><span class="tag font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-accent2 border border-accent2/45 px-3 py-1.5">Deb Rosenfeld</span></p>
-      <h1 data-flex class="text-[clamp(3.25rem,10vw,11rem)] font-medium leading-[0.9] tracking-tight md:whitespace-nowrap mb-8">Pixels in,<br class="md:hidden"> <span class="text-accent">code out.</span></h1>
+      <h1 class="text-[clamp(3.25rem,10vw,11rem)] font-medium leading-[0.9] tracking-tight md:whitespace-nowrap mb-8">Pixels in,<br class="md:hidden"> <span class="text-accent">code out.</span></h1>
       <p class="mb-10 text-lg md:text-xl text-muted flex flex-wrap items-center gap-x-4 gap-y-1">
         <span>Senior product designer &amp; front-end developer</span>
         <span class="inline-flex items-center gap-1.5">
@@ -286,44 +296,6 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <script>
-    // Headline letters stretch and thicken near the cursor (Mona Sans width + weight axes)
-    (() => {
-      const h = document.querySelector("[data-flex]");
-      if (!h) return;
-      h.setAttribute("aria-label", h.textContent.replace(/\s+/g, " ").trim());
-      const wrap = node => {
-        [...node.childNodes].forEach(n => {
-          if (n.nodeType === 3) {
-            const frag = document.createDocumentFragment();
-            n.textContent.split(/(\s+)/).forEach(part => {
-              if (!part) return;
-              if (/^\s+$/.test(part)) { frag.append(" "); return; }
-              const w = document.createElement("span");
-              w.className = "fx-word"; w.setAttribute("aria-hidden", "true");
-              [...part].forEach(c => { const s = document.createElement("span"); s.className = "fx-ch"; s.textContent = c; w.append(s); });
-              frag.append(w);
-            });
-            n.replaceWith(frag);
-          } else wrap(n);
-        });
-      };
-      wrap(h);
-      if (matchMedia("(prefers-reduced-motion: reduce)").matches || !matchMedia("(hover: hover)").matches) return;
-      const chars = [...h.querySelectorAll(".fx-ch")];
-      let raf;
-      h.addEventListener("pointermove", e => {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => chars.forEach(c => {
-          const r = c.getBoundingClientRect();
-          const d = Math.abs(e.clientX - (r.left + r.width / 2));
-          const t = Math.max(0, 1 - d / 220);          // 0 far away, 1 under the cursor
-          c.style.fontVariationSettings = `"wdth" ${75 + 37 * t}, "wght" ${500 + 250 * t}`;
-        }));
-      });
-      h.addEventListener("pointerleave", () => chars.forEach(c => c.style.fontVariationSettings = ""));
-    })();
-  </script>
 
   <script>
     // Visitor counter: one hit per browser session; hides itself if the service is unavailable
