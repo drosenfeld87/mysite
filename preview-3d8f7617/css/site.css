@@ -154,3 +154,15 @@ footer { display: flex; justify-content: space-between; gap: 24px; margin-top: c
 .label:nth-child(odd), .tag:nth-child(odd) { rotate: -2deg; }
 .label:nth-child(even), .tag:nth-child(even) { rotate: 1.5deg; }
 .index .tags { display: flex; flex-wrap: wrap; gap: 8px; align-self: center; }
+
+/* Name sticker: a quick skew wiggle on hover */
+@keyframes sticker-skew {
+  0%   { transform: skewX(0deg); }
+  30%  { transform: skewX(-12deg); }
+  60%  { transform: skewX(7deg); }
+  80%  { transform: skewX(-3deg); }
+  100% { transform: skewX(0deg); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .sticker:hover { animation: sticker-skew .5s cubic-bezier(.3,.7,.4,1); }
+}
