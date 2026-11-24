@@ -38,8 +38,36 @@
       ::selection { background: var(--color-accent); color: var(--color-bg); }
     }
   </style>
+
+  <!-- Background texture: soft colour glows that drift as you scroll, plus film grain -->
+  <style>
+    .bg-fx, .bg-grain { position: fixed; pointer-events: none; z-index: -1; }
+    .bg-fx {
+      inset: -25vh -25vw;
+      background:
+        radial-gradient(42vmax 42vmax at 18% 22%, rgb(124 255 79 / 0.16), rgb(124 255 79 / 0.05) 40%, transparent 72%),
+        radial-gradient(48vmax 48vmax at 82% 68%, rgb(255 61 139 / 0.18), rgb(255 61 139 / 0.06) 40%, transparent 72%),
+        radial-gradient(34vmax 34vmax at 55% 110%, rgb(124 255 79 / 0.10), transparent 70%);
+      animation: bg-drift linear both;
+      animation-timeline: scroll(root);
+    }
+    @keyframes bg-drift {
+      from { transform: translate3d(0, 0, 0) rotate(0deg); }
+      to   { transform: translate3d(-8vw, -18vh, 0) rotate(28deg); }
+    }
+    .bg-grain {
+      inset: 0;
+      opacity: 0.09;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    @media (prefers-reduced-motion: reduce) { .bg-fx { animation: none; } }
+  </style>
 </head>
 <body class="bg-bg text-ink font-sans leading-relaxed">
+  <div class="bg-fx" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+
 
   <main class="max-w-3xl mx-auto px-6 py-24">
     <h1 class="text-4xl font-bold mb-3">Thanks for your message</h1>
