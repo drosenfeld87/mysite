@@ -77,6 +77,16 @@
     @keyframes marquee { to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
+    /* Retro visitor counter */
+    .counter { display: inline-flex; gap: 3px; padding: 4px; background: #050506; border: 1px solid var(--color-line); box-shadow: inset 0 0 8px rgb(0 0 0 / .8); }
+    .counter span {
+      width: 1.35em; padding: 2px 0; text-align: center;
+      font: 500 18px/1.2 var(--font-mono); color: var(--color-accent);
+      background: linear-gradient(#0c160a 0 49%, #091107 51% 100%);
+      text-shadow: 0 0 6px rgb(124 255 79 / .7);
+      border-radius: 2px;
+    }
+
     .fx-word { display: inline-block; white-space: nowrap; }
     .fx-ch {
       display: inline-block;
@@ -239,6 +249,11 @@
 
   <!-- ============ FOOTER ============ -->
   <footer class="border-t border-line px-6 py-8 text-center text-muted space-y-1">
+    <!-- Old-school visitor counter (counts each browser once per visit, via the free Abacus API) -->
+    <div id="visits" class="hidden pb-4 font-mono text-xs uppercase tracking-widest">
+      <p class="mb-2">You are visitor no.</p>
+      <div class="counter" role="img" aria-label=""></div>
+    </div>
     <p>&copy; <span id="year"></span> Deb Rosenfeld</p>
     <p>
       <a class="hover:text-accent" href="#">LinkedIn</a> ·
@@ -287,6 +302,28 @@
         }));
       });
       h.addEventListener("pointerleave", () => chars.forEach(c => c.style.fontVariationSettings = ""));
+    })();
+  </script>
+
+  <script>
+    // Visitor counter: one hit per browser session; hides itself if the service is unavailable
+    (async () => {
+      const box = document.getElementById("visits");
+      const base = "https://abacus.jasoncameron.dev";
+      const key = "debbierosenfeld.com/home";
+      const seen = (() => { try { return sessionStorage.getItem("counted"); } catch { return null; } })();
+      try {
+        const res = await fetch(`${base}/${seen ? "get" : "hit"}/${key}`);
+        if (!res.ok) throw 0;
+        const { value } = await res.json();
+        if (typeof value !== "number") throw 0;
+        try { sessionStorage.setItem("counted", "1"); } catch {}
+        const digits = String(value).padStart(6, "0");
+        const c = box.querySelector(".counter");
+        c.setAttribute("aria-label", `Visitor number ${value}`);
+        c.innerHTML = [...digits].map(d => `<span aria-hidden="true">${d}</span>`).join("");
+        box.classList.remove("hidden");
+      } catch {}
     })();
   </script>
 </body>
