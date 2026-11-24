@@ -1,77 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-16">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request a Demo — Debbie Rosenfeld</title>
-  <!-- Tailwind CSS v4 via CDN (no build step). For production you can
-       switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <!-- Fonts: Mona Sans (headlines), Satoshi (body), JetBrains Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
-
-  <!-- Design tokens: change colours and fonts here -->
-  <style type="text/tailwindcss">
-    @theme {
-      --color-bg: #0A0A0A;
-      --color-surface: #141413;
-      --color-ink: #EDEBE6;
-      --color-muted: #A8A59F;
-      --color-line: #262624;
-      --color-accent: #FF7A59;
-      --color-accent2: #FF7A59;
-      --color-accent3: #FF7A59;
-      --font-sans: "Satoshi", system-ui, sans-serif;
-      --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, monospace;
-    }
-  </style>
   <link rel="stylesheet" href="../css/site.css">
 </head>
-<body class="inner">
-  <a class="skip" href="#main">Skip to content</a>
-
+<body>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 font-mono text-[13px] text-bg" href="#main">Skip to content</a>
 
   <!-- ============ HEADER / NAV ============ -->
-  <header class="masthead wrap">
+  <header class="masthead grid grid-cols-[1fr_auto] items-center gap-6 border-b border-line px-gutter py-5.5 lg:grid-cols-[1fr_1fr_1fr_auto]">
     <a class="sticker" href="../index.html">Debbie Rosenfeld</a>
-    <span class="mono hide-m">Senior Product Designer</span>
-    <span class="mono hide-m">Toronto</span>
-    <nav aria-label="Main">
-      <a href="../index.html#work" aria-current="page">Work</a>
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#contact">Contact</a>
+    <span class="mono max-lg:hidden">Senior Product Designer</span>
+    <span class="mono max-lg:hidden">Toronto</span>
+    <nav class="flex gap-3.5 text-base lg:gap-5.5 lg:text-[19px]" aria-label="Main">
+      <a class="hover:text-accent aria-[current=page]:text-accent" href="../index.html#work" aria-current="page">Work</a>
+      <a class="hover:text-accent" href="../index.html#about">About</a>
+      <a class="hover:text-accent" href="../index.html#contact">Contact</a>
     </nav>
   </header>
 
-  <main id="main" class="max-w-4xl mx-auto px-6 py-16">
+  <main id="main" class="page py-16">
     <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#work">&larr; Back to projects</a>
 
     <!-- ===== Summary ===== -->
-    <h1 class="text-4xl md:text-5xl font-bold mb-3">Request a Demo</h1>
+    <h1 class="page-title mb-4">Request a Demo</h1>
     <p class="text-lg mb-4">Lead-generation landing page and sign-up flow for booking a personalized demo with an Infotech advisor.</p>
     <div class="flex flex-wrap gap-2 mb-10">
-      <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Visual design</span>
-      <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">UX</span>
-      <span class="tag font-mono text-xs uppercase tracking-wide border border-accent2/45 text-accent2 px-2 py-0.5">Front-end dev</span>
+      <span class="label">Visual design</span>
+      <span class="label">UX</span>
+      <span class="label">Front-end dev</span>
     </div>
 
     <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 py-8 border-y border-line mb-12">
-      <div><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Company</dt><dd>Infotech</dd></div>
-      <div><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Timeline</dt><dd>2023</dd></div>
-      <div class="col-span-2"><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="font-mono text-xs uppercase tracking-wide border border-line text-muted px-2 py-0.5">TOOLS</span></dd></div>
-      <div><dt class="font-mono text-xs uppercase tracking-widest text-muted mb-1.5">Links</dt><dd><a class="tap text-accent underline" href="https://www.infotech.com/request-a-demo" target="_blank" rel="noopener">Live page<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+      <div><dt class="mono mb-1.5">Company</dt><dd>Infotech</dd></div>
+      <div><dt class="mono mb-1.5">Timeline</dt><dd>2023</dd></div>
+      <div class="col-span-2"><dt class="mono mb-1.5">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="chip">TOOLS</span></dd></div>
+      <div><dt class="mono mb-1.5">Links</dt><dd><a class="inline-block py-2.5 text-accent underline" href="https://www.infotech.com/request-a-demo" target="_blank" rel="noopener">Live page<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
     </dl>
 
-    <h2 class="text-2xl font-bold mb-4">My contribution</h2>
+    <h2 class="section-title mb-4">My contribution</h2>
     <div class="grid md:grid-cols-2 gap-6 mb-12">
       <div>
-        <h3 class="font-semibold mb-2">Designed</h3>
+        <h3 class="sub-title mb-2">Designed</h3>
         <ul class="list-disc pl-5 space-y-1">
           <li>Visual design of the full page</li>
           <li>Page UX: layout and content flow, from hero to testimonials and client logos</li>
@@ -79,7 +58,7 @@
         </ul>
       </div>
       <div>
-        <h3 class="font-semibold mb-2">Built</h3>
+        <h3 class="sub-title mb-2">Built</h3>
         <ul class="list-disc pl-5 space-y-1">
           <li>Front end of the page</li>
           <li>Multi-step sign-up form</li>
@@ -92,19 +71,19 @@
       <figcaption id="vid-schedule" class="mt-2"><p class="text-sm text-muted">Prototype of the scheduling step: the visitor picks a day, then chooses from the available call times. If they press Next without choosing a day, the form asks them to select one. Video has no sound.</p></figcaption>
     </figure>
 
-    <h2 class="text-2xl font-bold mt-12 mb-2">Overview</h2>
+    <h2 class="section-title mt-12 mb-2">Overview</h2>
     <p>The page invites IT leaders to book a personalized demo. It pairs a short sign-up form with a four-step overview of how Infotech works, customer testimonials and client logos to build trust.</p>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">The challenge</h2>
+    <h2 class="section-title mt-10 mb-2">The challenge</h2>
     <p>CHALLENGE: e.g. keep the form short enough to complete while still collecting what sales needs.</p>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">Exploring layouts</h2>
+    <h2 class="section-title mt-10 mb-2">Exploring layouts</h2>
     <figure class="my-8">
       <a class="zoom" href="../images/demo-explorations.jpg"><img class="w-full border border-line" src="../images/demo-explorations.jpg" loading="lazy" alt="Figma canvas of landing page explorations: four early versions of the page, six layout options that vary the hero, the How we make IT work steps and the video placement, and the final design with a blue hero, testimonials, client logos and footer."></a>
       <figcaption class="mt-2"><p class="text-sm text-muted">Layout explorations in Figma, from early versions through six options to the final design. Click to enlarge.</p></figcaption>
     </figure>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">The sign-up flow</h2>
+    <h2 class="section-title mt-10 mb-2">The sign-up flow</h2>
     <p>FLOW: the steps, what you and the UX designer decided, and why.</p>
 
     <div class="grid md:grid-cols-2 gap-6 my-8">
@@ -118,7 +97,7 @@
       </figure>
     </div>
 
-    <h2 class="text-2xl font-bold mt-10 mb-2">Result</h2>
+    <h2 class="section-title mt-10 mb-2">Result</h2>
     <p>RESULT: launch, conversion or feedback, if you can share it.</p>
 
     <nav class="flex justify-between mt-16 pt-6 border-t border-line" aria-label="More projects">
@@ -127,11 +106,10 @@
     </nav>
   </main>
 
-  <footer class="wrap">
+  <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
     <span class="mono">&copy; 2026 Debbie Rosenfeld</span>
     <span class="mono">Designed &amp; built by me</span>
   </footer>
-
 
   <script src="../js/site.js" defer></script>
 </body>

@@ -14,115 +14,139 @@
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 font-mono text-[13px] text-bg" href="#main">Skip to content</a>
 
-  <header class="masthead wrap">
+  <!-- ============ HEADER ============ -->
+  <header class="masthead grid grid-cols-[1fr_auto] items-center gap-6 border-b border-line px-gutter py-5.5 lg:grid-cols-[1fr_1fr_1fr_auto]">
     <span class="sticker">Debbie Rosenfeld</span>
-    <span class="mono hide-m">Senior Product Designer</span>
-    <span class="mono hide-m">Toronto</span>
-    <nav aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <span class="mono max-lg:hidden">Senior Product Designer</span>
+    <span class="mono max-lg:hidden">Toronto</span>
+    <nav class="flex gap-3.5 text-base lg:gap-5.5 lg:text-[19px]" aria-label="Main">
+      <a class="hover:text-accent" href="#work">Work</a>
+      <a class="hover:text-accent" href="#about">About</a>
+      <a class="hover:text-accent" href="#contact">Contact</a>
     </nav>
   </header>
 
   <main id="main">
-    <!-- ===== HERO ===== -->
-    <section class="hero wrap">
-      <h1 class="display">Pixels in,<span class="l2">code out.</span></h1>
-      <div class="hero-foot">
-        <div class="intro"><p style="margin:0">Senior product designer and front-end developer. I design product experiences, then build them.</p>
-          <div class="hero-cta"><a href="#work">See selected work &darr;</a><a href="#contact">Get in touch &rarr;</a></div></div>
-        <div class="meta">
+    <!-- ============ HERO ============ -->
+    <section class="px-gutter py-hero">
+      <h1 class="display text-hero font-heavy uppercase">Pixels in,<span class="block pl-[0.4em] text-accent lg:pl-[1.25em]">code out.</span></h1>
+      <div class="mt-[clamp(28px,4vh,56px)] grid grid-cols-12 gap-6 border-t border-line pt-5">
+        <div class="col-span-full text-lead lg:col-span-6">
+          <p>Senior product designer and front-end developer. I design product experiences, then build them.</p>
+          <div class="mt-5.5 flex flex-wrap gap-x-7 gap-y-3">
+            <a class="link-cta" href="#work">See selected work &darr;</a>
+            <a class="link-cta" href="#contact">Get in touch &rarr;</a>
+          </div>
+        </div>
+        <div class="col-span-full grid content-start gap-1.5 lg:col-span-4 lg:col-start-9">
           <span class="mono">Now — Infotech</span>
           <span class="mono">Selected work 2019–2026</span>
         </div>
       </div>
     </section>
 
-    <!-- ===== WORK ===== -->
-    <section class="sec wrap" id="work" aria-labelledby="work-h">
+    <!-- ============ WORK ============ -->
+    <section class="px-gutter pt-section" id="work" aria-labelledby="work-h">
       <h2 id="work-h" class="sr-only">Selected work</h2>
 
-      <ol class="index">
-        <li><a href="projects/project-1.html">
-          <span class="n mono" aria-hidden="true">01</span>
-          <span><h3 class="display">CIO Analytics</h3><span class="sum">AI-powered analytics platform for IT leaders. <span class="role">Product design and front end, alongside back-end developers and data engineers.</span></span></span>
-          <span class="tags"><span class="label">Product design</span><span class="label">Front-end dev</span></span>
-          <span class="yr mono">2025–now</span>
+      <!-- Each project row: number · title and summary · role labels · years -->
+      <ol class="mt-10">
+        <li><a class="group grid grid-cols-[2.5rem_1fr] items-baseline gap-6 border-b border-line py-6.5 lg:grid-cols-[4rem_minmax(0,1fr)_auto_7rem]" href="projects/project-1.html">
+          <span class="mono text-accent" aria-hidden="true">01</span>
+          <span>
+            <h3 class="display text-project font-strong transition-colors group-hover:text-accent">CIO Analytics</h3>
+            <span class="mt-2 block text-[17px] text-muted">AI-powered analytics platform for IT leaders. <span class="text-ink">Product design and front end, alongside back-end developers and data engineers.</span></span>
+          </span>
+          <span class="col-start-2 flex flex-wrap gap-2 self-center lg:col-start-auto lg:flex-nowrap lg:justify-end"><span class="label">Product design</span><span class="label">Front-end dev</span></span>
+          <span class="mono col-start-2 lg:col-start-auto lg:text-right">2025–now</span>
         </a></li>
-        <li><a href="projects/project-2.html">
-          <span class="n mono" aria-hidden="true">02</span>
-          <span><h3 class="display">Research Infographics</h3><span class="sum">Visual frameworks for Infotech research. <span class="role">Wireframe to final design.</span></span></span>
-          <span class="tags"><span class="label">Information design</span><span class="label">Visual design</span></span>
-          <span class="yr mono">2019–now</span>
+        <li><a class="group grid grid-cols-[2.5rem_1fr] items-baseline gap-6 border-b border-line py-6.5 lg:grid-cols-[4rem_minmax(0,1fr)_auto_7rem]" href="projects/project-2.html">
+          <span class="mono text-accent" aria-hidden="true">02</span>
+          <span>
+            <h3 class="display text-project font-strong transition-colors group-hover:text-accent">Research Infographics</h3>
+            <span class="mt-2 block text-[17px] text-muted">Visual frameworks for Infotech research. <span class="text-ink">Wireframe to final design.</span></span>
+          </span>
+          <span class="col-start-2 flex flex-wrap gap-2 self-center lg:col-start-auto lg:flex-nowrap lg:justify-end"><span class="label">Information design</span><span class="label">Visual design</span></span>
+          <span class="mono col-start-2 lg:col-start-auto lg:text-right">2019–now</span>
         </a></li>
-        <li><a href="projects/project-3.html">
-          <span class="n mono" aria-hidden="true">03</span>
-          <span><h3 class="display">Diagnostic Reports</h3><span class="sum">Reports that benchmark IT teams. <span class="role">Designed the full report; coded part of it.</span></span></span>
-          <span class="tags"><span class="label">Information design</span><span class="label">Report design</span></span>
-          <span class="yr mono">2024–2025</span>
+        <li><a class="group grid grid-cols-[2.5rem_1fr] items-baseline gap-6 border-b border-line py-6.5 lg:grid-cols-[4rem_minmax(0,1fr)_auto_7rem]" href="projects/project-3.html">
+          <span class="mono text-accent" aria-hidden="true">03</span>
+          <span>
+            <h3 class="display text-project font-strong transition-colors group-hover:text-accent">Diagnostic Reports</h3>
+            <span class="mt-2 block text-[17px] text-muted">Reports that benchmark IT teams. <span class="text-ink">Designed the full report; coded part of it.</span></span>
+          </span>
+          <span class="col-start-2 flex flex-wrap gap-2 self-center lg:col-start-auto lg:flex-nowrap lg:justify-end"><span class="label">Information design</span><span class="label">Report design</span></span>
+          <span class="mono col-start-2 lg:col-start-auto lg:text-right">2024–2025</span>
         </a></li>
-        <li><a href="projects/project-4.html">
-          <span class="n mono" aria-hidden="true">04</span>
-          <span><h3 class="display">Request a Demo</h3><span class="sum">Landing page and sign-up flow. <span class="role">Designed and built the page.</span></span></span>
-          <span class="tags"><span class="label">Visual design</span><span class="label">UX</span><span class="label">Front-end dev</span></span>
-          <span class="yr mono">2023</span>
+        <li><a class="group grid grid-cols-[2.5rem_1fr] items-baseline gap-6 border-b border-line py-6.5 lg:grid-cols-[4rem_minmax(0,1fr)_auto_7rem]" href="projects/project-4.html">
+          <span class="mono text-accent" aria-hidden="true">04</span>
+          <span>
+            <h3 class="display text-project font-strong transition-colors group-hover:text-accent">Request a Demo</h3>
+            <span class="mt-2 block text-[17px] text-muted">Landing page and sign-up flow. <span class="text-ink">Designed and built the page.</span></span>
+          </span>
+          <span class="col-start-2 flex flex-wrap gap-2 self-center lg:col-start-auto lg:flex-nowrap lg:justify-end"><span class="label">Visual design</span><span class="label">UX</span><span class="label">Front-end dev</span></span>
+          <span class="mono col-start-2 lg:col-start-auto lg:text-right">2023</span>
         </a></li>
       </ol>
     </section>
 
-    <!-- ===== ABOUT ===== -->
-    <section class="sec wrap" id="about" aria-labelledby="about-h">
-      <div class="sec-head">
-        <h2 id="about-h" class="mono"><span class="num" aria-hidden="true">01</span>&nbsp;&nbsp;About</h2>
+    <!-- ============ ABOUT ============ -->
+    <section class="px-gutter pt-section" id="about" aria-labelledby="about-h">
+      <div class="flex items-baseline justify-between border-b border-ink pb-3.5">
+        <h2 id="about-h" class="mono my-2.5"><span class="text-accent" aria-hidden="true">01</span>&nbsp;&nbsp;About</h2>
         <span class="mono" aria-hidden="true">Toronto</span>
       </div>
-      <div class="about">
-        <p class="pull display">I&rsquo;m a senior product designer who codes.</p>
-        <div class="body">
-          <p>I bring 15 years of experience in graphic design and 10 in web and product design.</p>
-          <p>I&rsquo;ve worked at a range of print and web companies. Today I work at Infotech, where I design and build the interface for CIO Analytics, an AI-powered analytics platform for IT leaders, alongside research infographics and diagnostic reports.</p>
-          <p class="quiet">Outside of work: bass (mostly metal and punk), graffiti-inspired and typographic art, a lot of horror, and a cat or two nearby.</p>
+      <div class="mt-10 grid grid-cols-12 gap-6">
+        <p class="display col-span-full text-pull font-strong lg:col-span-7">I&rsquo;m a senior product designer who codes.</p>
+        <div class="col-span-full lg:col-span-4 lg:col-start-9">
+          <p class="mb-4.5">I bring 15 years of experience in graphic design and 10 in web and product design.</p>
+          <p class="mb-4.5">I&rsquo;ve worked at a range of print and web companies. Today I work at Infotech, where I design and build the interface for CIO Analytics, an AI-powered analytics platform for IT leaders, alongside research infographics and diagnostic reports.</p>
+          <p class="mb-4.5 text-muted">Outside of work: bass (mostly metal and punk), graffiti-inspired and typographic art, a lot of horror, and a cat or two nearby.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section class="sec wrap" id="contact" aria-labelledby="contact-h">
-      <div class="sec-head">
-        <span class="mono"><span class="num" aria-hidden="true">02</span>&nbsp;&nbsp;Contact</span>
+    <!-- ============ CONTACT ============ -->
+    <section class="px-gutter pt-section" id="contact" aria-labelledby="contact-h">
+      <div class="flex items-baseline justify-between border-b border-ink pb-3.5">
+        <span class="mono"><span class="text-accent" aria-hidden="true">02</span>&nbsp;&nbsp;Contact</span>
       </div>
-      <div class="contact">
-        <div class="contact-lead">
-          <h2 id="contact-h" class="display">Get in<br>touch.</h2>
-          <div class="hero-cta"><a href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a></div>
+      <div class="mt-10 grid grid-cols-12 gap-6">
+        <div class="col-span-full lg:col-span-6">
+          <h2 id="contact-h" class="display text-contact font-heavy uppercase">Get in<br>touch.</h2>
+          <div class="mt-5.5 flex flex-wrap gap-x-7 gap-y-3">
+            <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
         </div>
+
         <!-- Sends to your Gmail through FormSubmit (see README) -->
-        <form action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
-          <!-- Settings for FormSubmit -->
-        <input type="hidden" name="_subject" value="New message from your portfolio">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://www.debbierosenfeld.com/preview-3d8f7617/thanks.html">
-        <!-- Spam trap: real visitors never fill this in -->
-        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
-          <label class="mono" for="e-name">Name</label>
-          <input id="e-name" name="name" autocomplete="name" required>
-          <label class="mono" for="e-email">Email</label>
-          <input id="e-email" name="email" type="email" autocomplete="email" required>
-          <label class="mono" for="e-msg">Message</label>
-          <textarea id="e-msg" name="message" rows="4" required></textarea>
-          <button class="btn" type="submit">Send &rarr;</button>
-          <p class="mono form-note">All fields required. I usually reply within a few days.</p>
+        <form class="col-span-full grid gap-2 lg:col-span-5 lg:col-start-8" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
+          <!-- FormSubmit settings -->
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://www.debbierosenfeld.com/preview-3d8f7617/thanks.html">
+          <!-- Spam trap: hidden from people, so only bots fill it in -->
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+          <label class="mono mt-2" for="e-name">Name</label>
+          <input class="field" id="e-name" name="name" autocomplete="name" required>
+          <label class="mono mt-2" for="e-email">Email</label>
+          <input class="field" id="e-email" name="email" type="email" autocomplete="email" required>
+          <label class="mono mt-2" for="e-msg">Message</label>
+          <textarea class="field" id="e-msg" name="message" rows="4" required></textarea>
+          <button class="btn mt-4.5" type="submit">Send &rarr;</button>
+          <p class="mono mt-2.5">All fields required. I usually reply within a few days.</p>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="wrap">
+  <!-- ============ FOOTER ============ -->
+  <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
     <span class="mono">&copy; 2026 Debbie Rosenfeld</span>
-    <span class="mono" id="visits" hidden>Visitor no. <span class="visits" id="visit-count"></span></span>
+    <span class="mono" id="visits" hidden>Visitor no. <span class="text-accent" id="visit-count"></span></span>
     <span class="mono">Designed &amp; built by me</span>
   </footer>
 

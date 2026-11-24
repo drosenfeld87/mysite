@@ -1,59 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-16">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thanks — Debbie Rosenfeld</title>
-  <!-- Tailwind CSS v4 via CDN (no build step). For production you can
-       switch to the Tailwind CLI later for a smaller, faster stylesheet. -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <!-- Fonts: Mona Sans (headlines), Satoshi (body), JetBrains Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
-
-  <!-- Design tokens: change colours and fonts here -->
-  <style type="text/tailwindcss">
-    @theme {
-      --color-bg: #0A0A0A;
-      --color-surface: #141413;
-      --color-ink: #EDEBE6;
-      --color-muted: #A8A59F;
-      --color-line: #262624;
-      --color-accent: #FF7A59;
-      --color-accent2: #FF7A59;
-      --color-accent3: #FF7A59;
-      --font-sans: "Satoshi", system-ui, sans-serif;
-      --font-display: "Mona Sans", "Archivo Narrow", system-ui, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, monospace;
-    }
-  </style>
   <link rel="stylesheet" href="css/site.css">
 </head>
-<body class="inner">
-  <a class="skip" href="#main">Skip to content</a>
+<body>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 font-mono text-[13px] text-bg" href="#main">Skip to content</a>
 
-  <header class="masthead wrap">
+  <header class="masthead grid grid-cols-[1fr_auto] items-center gap-6 border-b border-line px-gutter py-5.5 lg:grid-cols-[1fr_1fr_1fr_auto]">
     <a class="sticker" href="index.html">Debbie Rosenfeld</a>
-    <span class="mono hide-m">Senior Product Designer</span>
-    <span class="mono hide-m">Toronto</span>
-    <nav aria-label="Main">
-      <a href="index.html#work">Work</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
+    <span class="mono max-lg:hidden">Senior Product Designer</span>
+    <span class="mono max-lg:hidden">Toronto</span>
+    <nav class="flex gap-3.5 text-base lg:gap-5.5 lg:text-[19px]" aria-label="Main">
+      <a class="hover:text-accent" href="index.html#work">Work</a>
+      <a class="hover:text-accent" href="index.html#about">About</a>
+      <a class="hover:text-accent" href="index.html#contact">Contact</a>
     </nav>
   </header>
 
-
-  <main id="main" class="max-w-3xl mx-auto px-6 py-24">
-    <h1 class="text-4xl font-bold mb-3">Thanks for your message</h1>
+  <main id="main" class="page py-24">
+    <h1 class="page-title mb-4">Thanks for your message</h1>
     <p class="mb-6">I'll get back to you soon.</p>
-    <a class="btn" href="index.html"><span class="arrow arrow-back" aria-hidden="true">&larr;</span> Back to home</a>
+    <a class="btn" href="index.html"><span aria-hidden="true">&larr;</span> Back to home</a>
   </main>
-  <footer class="wrap">
+  <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
     <span class="mono">&copy; 2026 Debbie Rosenfeld</span>
     <span class="mono">Designed &amp; built by me</span>
   </footer>
