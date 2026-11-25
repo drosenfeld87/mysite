@@ -195,6 +195,8 @@
   document.querySelectorAll(".picker [data-k]").forEach(b => b.addEventListener("click", () => {
     document.querySelectorAll(`.picker [data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute("aria-pressed", String(x === b)));
     if (b.dataset.v) document.documentElement.dataset[b.dataset.k] = b.dataset.v; else delete document.documentElement.dataset[b.dataset.k];
+    // The headline's letters keep fixed widths for the weight swap: re-measure them in the new font
+    if (b.dataset.k === "type") document.fonts.ready.then(() => requestAnimationFrame(() => dispatchEvent(new Event("resize"))));
   }));
 </script>
 </body>
