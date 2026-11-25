@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts: Funnel Display (headlines), Funnel Sans (body), JetBrains Mono (Code view labels) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500&display=swap">
-  <link rel="stylesheet" href="css/site.css?v=202611251006">
+  <link rel="stylesheet" href="css/site.css?v=202611251008">
 </head>
 <body>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
@@ -74,16 +74,41 @@
       </ol>
     </section>
 
-    <!-- ============ ABOUT ============ -->
+    <!-- ============ ABOUT: big bio on the left, a small CV column on the right ============ -->
     <section class="px-gutter pt-section" id="about" aria-labelledby="about-h">
       <h2 id="about-h" class="meta border-b border-line pb-3.5">About</h2>
-      <div class="mt-12 grid grid-cols-12 gap-6">
-        <p class="display col-span-full text-pull font-extrabold lg:col-span-7" data-annotate>I&rsquo;m a senior product designer <span class="font-light text-accent">who codes.</span></p>
-        <div class="col-span-full lg:col-span-4 lg:col-start-9">
-          <p class="mb-5">I bring 15 years of experience in graphic design and 10 in web and product design.</p>
-          <p class="mb-5">I&rsquo;ve worked at a range of print and web companies. Today I work at Infotech, where I design and build the interface for CIO Analytics, an AI-powered analytics platform for IT leaders, alongside research infographics and diagnostic reports.</p>
-          <p class="mb-5 text-muted">Outside of work: bass (mostly metal and punk), graffiti-inspired and typographic art, a lot of horror, and a cat or two nearby.</p>
+      <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-14">
+        <div class="display col-span-full text-bio font-light lg:col-span-8" data-annotate>
+          <p>I&rsquo;m Debbie, a <strong class="font-bold">senior product designer who codes</strong>. I bring 15 years of graphic design and 10 in web and product design, most of it at print and web companies.</p>
+          <p class="mt-6">Today I work at <strong class="font-bold">Infotech</strong>, where I design and build the interface for <strong class="font-bold">CIO Analytics</strong>, an AI-powered analytics platform for IT leaders, alongside research infographics and diagnostic reports.</p>
         </div>
+
+        <!-- CV column: short lists, easy to scan -->
+        <dl class="col-span-full grid content-start gap-7 text-[15px] leading-relaxed sm:grid-cols-2 lg:col-span-3 lg:col-start-10 lg:grid-cols-1">
+          <div>
+            <dt class="font-semibold">Now</dt>
+            <dd class="text-muted">Infotech, Senior Product Designer</dd>
+            <dd class="text-muted">CIO Analytics, design &amp; front end</dd>
+          </div>
+          <div>
+            <dt class="font-semibold">Tools</dt>
+            <dd class="text-muted">Figma, Illustrator, Photoshop</dd>
+            <dd class="text-muted">Tailwind CSS, Ruby on Rails</dd>
+            <dd class="text-muted">ViewComponent, Hotwire, Highcharts</dd>
+          </div>
+          <div>
+            <dt class="font-semibold">Off the clock</dt>
+            <dd class="text-muted">Bass, mostly metal and punk</dd>
+            <dd class="text-muted">Graffiti-inspired and typographic art</dd>
+            <dd class="text-muted">A lot of horror</dd>
+            <dd class="text-muted">A cat or two nearby</dd>
+          </div>
+          <div>
+            <dt class="font-semibold">Elsewhere</dt>
+            <dd><a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></dd>
+            <dd><a class="link-cta" href="#contact">Send a message</a></dd>
+          </div>
+        </dl>
       </div>
     </section>
 
@@ -145,6 +170,6 @@
       }
     })();
   </script>
-  <script src="js/site.js?v=202611251006" defer></script>
+  <script src="js/site.js?v=202611251008" defer></script>
 </body>
 </html>

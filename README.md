@@ -25,7 +25,7 @@ The holding page at the root has its own small inline styles, since it's replace
 Style pages with Tailwind classes in the HTML, as usual. Site-specific classes come from the tokens in `tailwind.css`:
 - Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent` (coral pink), `bg-accent-2` (cyan), `bg-surface`
 - Fonts: `font-display`, `font-sans`, `font-mono` (Code view only)
-- Sizes that scale with the screen: `text-hero`, `text-project`, `text-pull`, `text-lead`
+- Sizes that scale with the screen: `text-hero`, `text-project`, `text-pull`, `text-bio`, `text-lead`
 - Spacing: `px-gutter` (page side margin), `pt-section`, `pt-hero`
 - Breakpoint: `lg:` means 900px and wider; `max-lg:` means narrower than 900px
 
