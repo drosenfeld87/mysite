@@ -9,14 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts: Barlow Condensed (headlines), Barlow (body) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;500;700;800&family=Barlow:wght@300;400;500;600;700&display=swap">
-  <link rel="stylesheet" href="../css/site.css?v=20261125140537">
+  <link rel="stylesheet" href="../css/site.css?v=20261125140757">
 </head>
 <body>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
 
   <!-- ============ HEADER / NAV ============ -->
   <header class="masthead flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-gutter py-5.5">
-    <a class="display text-lg font-extrabold uppercase tracking-[.06em] hover:text-accent" href="../index.html">Debbie Rosenfeld</a>
+    <a class="sticker" href="../index.html">Debbie Rosenfeld</a>
     <div class="flex flex-wrap items-center justify-end gap-x-3.5 gap-y-2 lg:gap-x-5.5">
       <nav class="flex gap-3.5 max-sm:text-base lg:gap-5.5" aria-label="Main">
         <a class="hover:text-accent aria-[current=page]:text-accent" href="../index.html#work" aria-current="page">Work</a>
@@ -31,11 +31,12 @@
   </header>
 
   <main id="main" class="page py-16" data-window="request_a_demo.html">
-    <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#work">&larr; Back to projects</a>
+    <a class="link-cta mb-10 inline-block text-[15px]" href="../index.html#work">&larr; Back to projects</a>
 
     <!-- ===== Summary ===== -->
-    <h1 class="page-title mb-4">Request a Demo</h1>
-    <p class="text-lg mb-4">Lead-generation landing page and sign-up flow for booking a personalized demo with an Infotech advisor.</p>
+    <h1 class="page-title mb-5">Request a Demo</h1>
+    <div class="accent-rule mb-6 h-1.5 w-[min(28%,180px)] bg-accent" aria-hidden="true"></div>
+    <p class="mb-6 max-w-[36ch] text-lead">Lead-generation landing page and sign-up flow for booking a personalized demo with an Infotech advisor.</p>
     <div class="flex flex-wrap gap-2 mb-10">
       <span class="tag">Visual design</span>
       <span class="tag">UX</span>
@@ -43,17 +44,17 @@
     </div>
 
     <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 py-8 border-y border-line mb-12">
-      <div><dt class="meta mb-1.5">Company</dt><dd>Infotech</dd></div>
-      <div><dt class="meta mb-1.5">Timeline</dt><dd>2023</dd></div>
-      <div class="col-span-2"><dt class="meta mb-1.5">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="chip">TOOLS</span></dd></div>
-      <div><dt class="meta mb-1.5">Links</dt><dd><a class="inline-block py-2.5 text-accent underline" href="https://www.infotech.com/request-a-demo" target="_blank" rel="noopener">Live page<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Company</dt><dd>Infotech</dd></div>
+      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Timeline</dt><dd>2023</dd></div>
+      <div class="col-span-2"><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="chip">TOOLS</span></dd></div>
+      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Links</dt><dd><a class="link-cta inline-block py-2.5" href="https://www.infotech.com/request-a-demo" target="_blank" rel="noopener">Live page<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
     </dl>
 
     <h2 class="section-title mb-4">My contribution</h2>
     <div class="grid md:grid-cols-2 gap-6 mb-12">
       <div>
         <h3 class="sub-title mb-2">Designed</h3>
-        <ul class="list-disc pl-5 space-y-1">
+        <ul class="list-disc pl-5 space-y-1 marker:text-accent">
           <li>Visual design of the full page</li>
           <li>Page UX: layout and content flow, from hero to testimonials and client logos</li>
           <li>Sign-up flow, designed with a UX designer</li>
@@ -61,7 +62,7 @@
       </div>
       <div>
         <h3 class="sub-title mb-2">Built</h3>
-        <ul class="list-disc pl-5 space-y-1">
+        <ul class="list-disc pl-5 space-y-1 marker:text-accent">
           <li>Front end of the page</li>
           <li>Multi-step sign-up form</li>
         </ul>
@@ -103,7 +104,7 @@
     <p>RESULT: launch, conversion or feedback, if you can share it.</p>
 
     <nav class="flex justify-between mt-16 pt-6 border-t border-line" aria-label="More projects">
-      <a class="hover:text-accent" href="project-3.html">&larr; Diagnostic Reports</a>
+      <a class="display text-xl font-bold uppercase tracking-[.04em] hover:text-accent" href="project-3.html">&larr; Diagnostic Reports</a>
       <span></span>
     </nav>
   </main>
@@ -113,6 +114,6 @@
     <span class="meta">Designed &amp; built by me</span>
   </footer>
 
-  <script src="../js/site.js?v=20261125140537" defer></script>
+  <script src="../js/site.js?v=20261125140757" defer></script>
 </body>
 </html>

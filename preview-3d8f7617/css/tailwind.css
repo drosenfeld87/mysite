@@ -211,7 +211,7 @@
     font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .02em;
     font-size: clamp(1.9rem, 3.4vw, 2.75rem); line-height: 1;
   }
-  .sub-title { font-family: var(--font-display); font-weight: 700; }
+  .sub-title { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
 
   /* Image viewer. js/site.js builds it; links with class="zoom" open it.
      .lb-tall = a full-page screenshot, shown at readable size and scrollable. */
@@ -333,6 +333,8 @@ html.y2k {
     & .text-ink, & strong { color: #000; }
     & :is(h2, h3, .display, .section-title, .sub-title) { font-family: "Arial Black", Impact, sans-serif; color: #000080; letter-spacing: 0; }
     & .text-accent { color: #990000; }
+    & .text-accent-2 { color: #000080; }
+    & .border-accent-2 { border-color: var(--win-shadow); }
     & .border-line, & .border-ink { border-color: var(--win-shadow); }
     & .bg-surface { background: #FFF; box-shadow: var(--bevel-in); }
   }
