@@ -1352,7 +1352,6 @@ html.y2k {
   }
 }
 .y2k-marquee {
-  display: flex;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
