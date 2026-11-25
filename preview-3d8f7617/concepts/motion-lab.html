@@ -20,10 +20,19 @@
     .masthead { top:var(--lab-h, 46px); }
     h1 .ch { display:inline-block; white-space:pre; transition:font-variation-settings .25s ease; }
 
-    /* 1. Typing caret */
-    .caret { display:inline-block; width:.06em; height:.8em; margin-left:.04em; background:var(--color-accent); vertical-align:-.05em; animation:blink 1s steps(1) infinite; }
+    /* 1. Intro: letters rise and sharpen in place (no reflow); the caret glides on top */
+    h1 .code-wrap { position:relative; }
+    h1 .ch.pending { opacity:0; }
+    h1 .ch.typed { animation:type-in .5s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes type-in {
+      from { opacity:0; transform:translateY(.14em); filter:blur(8px); color:var(--color-accent-2); }
+      55%  { color:var(--color-accent-2); }
+      to   { opacity:1; transform:none; filter:blur(0); }
+    }
+    .caret { position:absolute; left:0; top:.14em; width:.06em; height:.82em; background:var(--color-accent); border-radius:2px;
+      transition:transform .12s cubic-bezier(.3,.7,.3,1), opacity .3s; animation:blink 1s steps(1) infinite; }
+    .caret.typing { animation:none; }
     @keyframes blink { 50% { opacity:0; } }
-    .ch.mono { font-family:var(--font-mono); font-weight:500; font-size:.82em; }
 
     /* 2. Draggable stickers */
     html.fx-drag .sticker { cursor:grab; touch-action:none; user-select:none; position:relative; z-index:5; }
@@ -235,21 +244,27 @@
   const pix = split(pixelsText), code = split(codeSpan);
   pix.forEach(s => s.dataset.base = 800); code.forEach(s => s.dataset.base = 300);
 
-  // 1. Pixels in: resolve from chunky pixels. Code out: type it, mono first, then display font.
+  // 1. Pixels in: resolve from chunky pixels in small steps. Code out: letters rise in one by one, caret gliding ahead.
   if (on("intro") && !reduce) {
     const tile = document.getElementById("px-tile"), grow = document.getElementById("px-grow");
     pixelsText.style.filter = "url(#pixelate)";
-    const sizes = [28, 22, 16, 12, 8, 5, 3];
-    sizes.forEach((sz, i) => setTimeout(() => { tile.setAttribute("width", sz); tile.setAttribute("height", sz); grow.setAttribute("radius", sz / 2); }, 120 + i * 110));
-    setTimeout(() => { pixelsText.style.filter = ""; }, 120 + sizes.length * 110);
-    code.forEach(c => c.style.visibility = "hidden");
-    const caret = document.createElement("span"); caret.className = "caret"; caret.setAttribute("aria-hidden", "true"); codeSpan.prepend(caret);
-    const start = 120 + sizes.length * 110 + 150;
+    const sizes = [26, 22, 18, 15, 12, 10, 8, 6, 5, 4, 3, 2];
+    const step = 65;
+    sizes.forEach((sz, i) => setTimeout(() => { tile.setAttribute("width", sz); tile.setAttribute("height", sz); grow.setAttribute("radius", sz / 2); }, 100 + i * step));
+    setTimeout(() => { pixelsText.style.filter = ""; }, 100 + sizes.length * step);
+
+    codeSpan.classList.add("code-wrap");
+    code.forEach(c => c.classList.add("pending"));
+    const caret = document.createElement("span"); caret.className = "caret typing"; caret.setAttribute("aria-hidden", "true"); codeSpan.append(caret);
+    const moveTo = x => caret.style.transform = `translateX(${x}px)`;
+    moveTo(0);
+    const start = 100 + sizes.length * step + 120, gap = 85;
     code.forEach((c, i) => setTimeout(() => {
-      c.style.visibility = ""; c.classList.add("mono"); c.after(caret);
-      setTimeout(() => c.classList.remove("mono"), 260);
-    }, start + i * 95));
-    setTimeout(() => caret.remove(), start + code.length * 95 + 1600);
+      c.classList.remove("pending"); c.classList.add("typed");
+      moveTo(c.offsetLeft + c.offsetWidth);
+    }, start + i * gap));
+    setTimeout(() => caret.classList.remove("typing"), start + code.length * gap);
+    setTimeout(() => { caret.style.opacity = 0; setTimeout(() => caret.remove(), 300); }, start + code.length * gap + 1800);
   }
 
   // 2. Peelable stickers: drag anywhere; double-click to put back
