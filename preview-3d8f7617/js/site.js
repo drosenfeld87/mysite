@@ -1,7 +1,7 @@
 /* =====================================================================
    Debbie Rosenfeld — site script (loaded with defer on every page)
      1. Sticky header
-     2. Remembered switches: Design / Code and Now / Y2K
+     2. Now / Y2K switch (remembered between pages)
      3. Image viewer
      4. Prototype videos
      5. Headline weight swap (home page)
@@ -26,7 +26,7 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   bar.addEventListener("focusin", () => bar.classList.remove("is-hidden")); // keyboard users always get the menu back
 })();
 
-/* 2. Remembered switches. Each button group sets a class on <html> and is remembered between pages. */
+/* 2. Remembered switch: a button group that sets a class on <html> and is remembered between pages */
 function rememberedSwitch({ selector, key, values, onChange }) {
   const buttons = document.querySelectorAll(selector);
   if (!buttons.length) return;
@@ -40,19 +40,6 @@ function rememberedSwitch({ selector, key, values, onChange }) {
   set(saved);
   buttons.forEach(b => b.addEventListener("click", () => set(b.dataset.value)));
 }
-
-// Design / Code: the Code view labels elements with their Tailwind classes. Its mono font loads only when needed.
-rememberedSwitch({
-  selector: ".view-switch [data-value]", key: "view", values: ["design", "code"],
-  onChange: v => {
-    document.documentElement.classList.toggle("spec", v === "code");
-    if (v === "code" && !document.getElementById("mono-font")) {
-      const link = Object.assign(document.createElement("link"), { id: "mono-font", rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" });
-      document.head.append(link);
-    }
-  },
-});
 
 // Now / Y2K: Y2K turns the site into a 2002 personal homepage (styles: tailwind.css, section 5)
 rememberedSwitch({

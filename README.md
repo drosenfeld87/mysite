@@ -5,8 +5,8 @@ Personal portfolio site. Plain HTML styled with Tailwind CSS v4, hosted on GitHu
 ## Design
 Dark, type-led direction: near-black background with a soft coral-pink and cyan glow and still grain.
 Funnel Display for headlines, Funnel Sans for body text. Coral pink (#FF7268) for accent phrases, numbers and links;
-cyan (#5CE1E6) for the name sticker, role labels and the Code view. Projects are listed as a numbered set list.
-Signature: a Design / Code switch in the header that shows each labelled element's Tailwind classes, the column grid and redlines.
+cyan (#5CE1E6) for the name sticker and role labels. Projects are listed as a numbered set list.
+Signature: a Now / Y2K switch in the header that turns the site into a 2002 personal homepage.
 
 ## Structure
 - `index.html` (repo root): the public "Coming soon" holding page
@@ -24,7 +24,7 @@ The holding page at the root has its own small inline styles, since it's replace
 ## Editing styles (Tailwind)
 Style pages with Tailwind classes in the HTML, as usual. Site-specific classes come from the tokens in `tailwind.css`:
 - Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent` (coral pink), `bg-accent-2` (cyan), `bg-surface`
-- Fonts: `font-display`, `font-sans`, `font-mono` (Code view only)
+- Fonts: `font-display`, `font-sans`
 - Sizes that scale with the screen: `text-hero`, `text-project`, `text-pull`, `text-bio`, `text-lead`
 - Spacing: `px-gutter` (page side margin), `pt-section`, `pt-hero`
 - Breakpoint: `lg:` means 900px and wider; `max-lg:` means narrower than 900px
@@ -33,16 +33,12 @@ Components, for pieces repeated on many pages: `display` (headline font), `meta`
 (cyan die-cut label), `sticker-name`, `chip` (tool tag), `btn`, `link-cta`, `field`, `setlist`/`track`, `page`,
 `page-title`, `section-title`, `sub-title`. Utility classes override them, e.g. `class="meta text-accent"`.
 
-Code view: add `data-annotate` to any element and the Code view will label it with its own classes
-(`data-annotate="right"` puts the label on the right).
-
-Switches: the Design / Code and Now / Y2K buttons are `<button data-value="…">` inside `.view-switch` / `.era-switch`;
-js/site.js remembers the choice between pages.
+Switch: the Now / Y2K buttons are `<button data-value="…">` inside `.era-switch`; js/site.js remembers the choice between pages.
 
 Headline weight swap (home page): the `<h1 data-swap>` holds a hidden full sentence for screen readers and two
 `aria-hidden` parts with `data-weight="800"` / `data-weight="300"`. Off for touch screens and reduced motion.
 
-Y2K mode: the Now / Y2K switch turns the site into a 2002 personal homepage. Its styles are section 5 of
+Y2K mode: the Now / Y2K switch turns the site into a 2002 personal homepage. Its styles are section 4 of
 `tailwind.css`. Give a section `data-window="name.exe"` to make it a Windows 98 window in Y2K mode;
 anything with class `y2k-only` shows only in Y2K mode.
 

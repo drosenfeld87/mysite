@@ -5,7 +5,8 @@
 @layer theme {
   :root, :host {
     --font-sans: "Funnel Sans", system-ui, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
@@ -217,12 +218,6 @@
   .relative {
     position: relative;
   }
-  .top-0 {
-    top: 0px;
-  }
-  .left-\[calc\(var\(--spacing-gutter\)-24px\)\] {
-    left: calc(var(--spacing-gutter) - 24px);
-  }
   .z-10 {
     z-index: 10;
   }
@@ -330,9 +325,6 @@
   }
   .aspect-\[4\/3\] {
     aspect-ratio: 4/3;
-  }
-  .h-\(--spacing-hero\) {
-    height: var(--spacing-hero);
   }
   .w-full {
     width: 100%;
@@ -640,11 +632,6 @@
   @media (width < 56.25rem) {
     .max-lg\:flex-col {
       flex-direction: column;
-    }
-  }
-  @media (width < 40rem) {
-    .max-sm\:hidden {
-      display: none;
     }
   }
   @media (width >= 40rem) {
@@ -1003,96 +990,6 @@
       margin-inline: auto;
     }
   }
-  .view-switch {
-    display: inline-flex;
-    padding: 3px;
-    border: 1px solid var(--color-line);
-    border-radius: 999px;
-    font-size: 14px;
-    & button {
-      padding: 6px 14px;
-      border-radius: 999px;
-      color: var(--color-muted);
-      cursor: pointer;
-    }
-    & button[aria-pressed="true"] {
-      background: var(--color-ink);
-      color: var(--color-bg);
-      font-weight: 600;
-    }
-  }
-  html.spec .view-switch button[aria-pressed="true"] {
-    background: var(--color-accent-2);
-  }
-  [data-annotate] {
-    position: relative;
-  }
-  html.spec [data-annotate] {
-    outline: 1px dashed var(--color-accent-2);
-    outline-offset: 4px;
-  }
-  html.spec [data-annotate]::after {
-    content: attr(class);
-    content: attr(class) / "";
-    position: absolute;
-    left: -4px;
-    top: -26px;
-    z-index: 30;
-    pointer-events: none;
-    white-space: nowrap;
-    padding: 4px 6px;
-    background: var(--color-accent-2);
-    color: var(--color-bg);
-    font: 500 11px/1 var(--font-mono);
-    letter-spacing: 0;
-    font-style: normal;
-    text-transform: none;
-  }
-  html.spec .sticker-name::after {
-    rotate: 5deg;
-  }
-  html.spec [data-annotate="right"]::after {
-    left: auto;
-    right: -4px;
-  }
-  html.spec body {
-    background-image: linear-gradient(to right, color-mix(in srgb, #5CE1E6 9%, transparent) var(--spacing-gutter), transparent var(--spacing-gutter), transparent calc(100% - var(--spacing-gutter)), color-mix(in srgb, #5CE1E6 9%, transparent) calc(100% - var(--spacing-gutter))), linear-gradient(to right, color-mix(in srgb, #5CE1E6 12%, transparent) 1px, transparent 1px);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-image: linear-gradient(to right, color-mix(in srgb, var(--color-accent-2) 9%, transparent) var(--spacing-gutter), transparent var(--spacing-gutter), transparent calc(100% - var(--spacing-gutter)), color-mix(in srgb, var(--color-accent-2) 9%, transparent) calc(100% - var(--spacing-gutter))), linear-gradient(to right, color-mix(in srgb, var(--color-accent-2) 12%, transparent) 1px, transparent 1px);
-    }
-    background-size: 100% 100%, calc((100% - 2 * var(--spacing-gutter)) / 12) 100%;
-    background-position: 0 0, var(--spacing-gutter) 0;
-  }
-  .rl {
-    display: none;
-  }
-  html.spec .rl {
-    display: block;
-    position: absolute;
-    border-left: 1px solid var(--color-accent-2);
-    color: var(--color-accent-2);
-    font: 500 11px/1 var(--font-mono);
-    &::before, &::after {
-      content: "";
-      position: absolute;
-      left: -6px;
-      width: 11px;
-      border-top: 1px solid var(--color-accent-2);
-    }
-    &::before {
-      top: 0;
-    }
-    &::after {
-      bottom: 0;
-    }
-    & span {
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      translate: 0 -50%;
-      white-space: nowrap;
-    }
-  }
 }
 @keyframes sticker-jiggle {
   0% {
@@ -1177,19 +1074,19 @@ html.y2k {
   & .masthead a:hover {
     color: #FF0000;
   }
-  & .view-switch, & .era-switch {
+  & .era-switch {
     border: 0;
     border-radius: 0;
     background: var(--win);
     box-shadow: var(--bevel-in);
     padding: 2px;
   }
-  & :is(.view-switch, .era-switch) button {
+  & .era-switch button {
     border-radius: 0;
     color: #000;
     font: 12px Tahoma, Verdana, sans-serif;
   }
-  & :is(.view-switch, .era-switch) button[aria-pressed="true"] {
+  & .era-switch button[aria-pressed="true"] {
     background: #000080;
     color: #FFF;
   }

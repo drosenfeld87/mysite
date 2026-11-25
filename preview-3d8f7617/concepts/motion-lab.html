@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts: Funnel Display (headlines), Funnel Sans (body), JetBrains Mono (Code view labels) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500&display=swap">
-  <link rel="stylesheet" href="../css/site.css?v=20261125113349">
+  <link rel="stylesheet" href="../css/site.css?v=20261125113617">
   <style>
     /* ===== Motion lab ===== */
     .lab { position:sticky; top:0; z-index:60; display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px; padding:12px var(--spacing-gutter); background:#1B1A18; border-bottom:1px solid var(--color-line); font-size:14px; }
@@ -92,20 +92,15 @@
         <a class="hover:text-accent" href="#about">About</a>
         <a class="hover:text-accent" href="#contact">Contact</a>
       </nav>
-      <div class="view-switch max-sm:hidden" role="group" aria-label="View">
-        <button type="button" data-value="design" aria-pressed="true">Design</button>
-        <button type="button" data-value="code" aria-pressed="false">Code</button>
-      </div>
     </div>
   </header>
 
   <main id="main">
     <!-- ============ HERO ============ -->
-    <section class="relative px-gutter pt-hero pb-10">
-      <span class="rl top-0 left-[calc(var(--spacing-gutter)-24px)] h-(--spacing-hero)" aria-hidden="true"><span>pt-hero · clamp(48px, 10vh, 120px)</span></span>
-      <p class="relative z-10 -mb-[.12em] ml-1 leading-none"><span class="sticker sticker-name" data-annotate>Debbie Rosenfeld</span></p>
-      <h1 class="display text-hero font-extrabold" data-annotate="right">Pixels in, <span class="font-light whitespace-nowrap text-accent">code out.</span></h1>
-      <p class="mt-10 max-w-[36ch] text-lead" data-annotate>Senior product designer who codes. I design product experiences, then build them, down to the last class name.</p>
+    <section class="px-gutter pt-hero pb-10">
+      <p class="relative z-10 -mb-[.12em] ml-1 leading-none"><span class="sticker sticker-name">Debbie Rosenfeld</span></p>
+      <h1 class="display text-hero font-extrabold">Pixels in, <span class="font-light whitespace-nowrap text-accent">code out.</span></h1>
+      <p class="mt-10 max-w-[36ch] text-lead">Senior product designer who codes. I design product experiences, then build them, down to the last class name.</p>
       <div class="mt-9 flex flex-wrap gap-8">
         <a class="link-cta" href="#work">See selected work &darr;</a>
         <a class="link-cta" href="#contact">Get in touch &rarr;</a>
@@ -116,7 +111,7 @@
     <section class="px-gutter pt-20" id="work" aria-labelledby="work-h">
       <h2 id="work-h" class="sr-only">Selected work</h2>
       <ol class="setlist">
-        <li><a class="track border-t border-line" href="../projects/project-1.html" data-annotate="right">
+        <li><a class="track border-t border-line" href="../projects/project-1.html">
           <h3 class="display text-project font-extrabold transition-colors">CIO Analytics</h3>
           <span class="dots" aria-hidden="true"></span>
           <span class="font-medium tabular-nums">2025–now</span>
@@ -138,7 +133,7 @@
           <h3 class="display text-project font-extrabold transition-colors">Request a Demo</h3>
           <span class="dots" aria-hidden="true"></span>
           <span class="font-medium tabular-nums">2023</span>
-          <span class="track-meta"><span>Landing page and sign-up flow. <span class="text-ink">Designed and built the page.</span></span><span class="flex flex-wrap gap-2" data-annotate><span class="sticker">Visual design</span><span class="sticker">UX</span><span class="sticker">Front-end dev</span></span></span>
+          <span class="track-meta"><span>Landing page and sign-up flow. <span class="text-ink">Designed and built the page.</span></span><span class="flex flex-wrap gap-2"><span class="sticker">Visual design</span><span class="sticker">UX</span><span class="sticker">Front-end dev</span></span></span>
         </a></li>
       </ol>
     </section>
@@ -147,7 +142,7 @@
     <section class="px-gutter pt-section" id="about" aria-labelledby="about-h">
       <h2 id="about-h" class="meta border-b border-line pb-3.5">About</h2>
       <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-14">
-        <div class="display col-span-full text-bio font-light lg:col-span-8" data-annotate>
+        <div class="display col-span-full text-bio font-light lg:col-span-8">
           <p>I&rsquo;m Debbie, a <strong class="font-bold">senior product designer who codes</strong>. I bring 15 years of graphic design and 10 in web and product design, most of it at print and web companies.</p>
           <p class="mt-6">Today I work at <strong class="font-bold">Infotech</strong>, where I design and build the interface for <strong class="font-bold">CIO Analytics</strong>, an AI-powered analytics platform for IT leaders, alongside research infographics and diagnostic reports.</p>
         </div>
@@ -185,14 +180,14 @@
     <section class="px-gutter pt-section" id="contact" aria-labelledby="contact-h">
       <div class="grid grid-cols-12 gap-6 border-t-2 border-ink pt-12">
         <div class="col-span-full lg:col-span-6">
-          <h2 id="contact-h" class="display text-pull font-extrabold" data-annotate>Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
+          <h2 id="contact-h" class="display text-pull font-extrabold">Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
           <div class="mt-7 flex flex-wrap gap-7">
             <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
           </div>
         </div>
 
         <!-- Sends to your Gmail through FormSubmit (see README) -->
-        <form class="col-span-full grid gap-2 lg:col-span-5 lg:col-start-8" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST" data-annotate>
+        <form class="col-span-full grid gap-2 lg:col-span-5 lg:col-start-8" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
           <!-- FormSubmit settings -->
           <input type="hidden" name="_subject" value="New message from your portfolio">
           <input type="hidden" name="_template" value="table">
@@ -222,7 +217,7 @@
   </footer>
 
 
-  <script src="../js/site.js?v=20261125113349" defer></script>
+  <script src="../js/site.js?v=20261125113617" defer></script>
 <script>
 /* ===== Motion lab experiments ===== */
 (() => {
