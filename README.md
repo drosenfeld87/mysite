@@ -29,8 +29,8 @@ Style pages with Tailwind classes in the HTML, as usual. Site-specific classes c
 - Spacing: `px-gutter` (page side margin), `pt-section`, `pt-hero`
 - Breakpoint: `lg:` means 900px and wider; `max-lg:` means narrower than 900px
 
-Components, for pieces repeated on many pages: `display` (headline font), `meta` (small grey text), `sticker`
-(cyan die-cut label), `sticker-name`, `chip` (tool tag), `btn`, `link-cta`, `field`, `setlist`/`track`, `page`,
+Components, for pieces repeated on many pages: `display` (headline font), `meta` (small grey text), `tag`
+(cyan role label), `sticker` (the name sticker), `chip` (tool tag), `btn`, `link-cta`, `field`, `setlist`/`track`, `page`,
 `page-title`, `section-title`, `sub-title`. Utility classes override them, e.g. `class="meta text-accent"`.
 
 Switch: the Now / Y2K buttons are `<button data-value="…">` inside `.era-switch`; js/site.js remembers the choice between pages.

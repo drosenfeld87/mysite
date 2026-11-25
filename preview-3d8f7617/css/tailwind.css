@@ -112,18 +112,18 @@
   /* Small secondary text: section labels, footer, fact labels */
   .meta { font-size: 15px; line-height: 1.4; color: var(--color-muted); }
 
-  /* Die-cut stickers: solid cyan with a light "cut" edge, alternately tilted */
-  .sticker {
-    display: inline-block; padding: 4px 10px; border-radius: 8px; white-space: nowrap;
-    background: var(--color-accent-2); color: #0B1A1B; box-shadow: 0 0 0 2px var(--color-ink);
-    font: 800 12px/1.4 var(--font-display);
-    &:nth-child(odd) { rotate: -3deg; }
-    &:nth-child(even) { rotate: 2deg; }
+  /* Role labels ("Product design"): soft cyan tint */
+  .tag {
+    display: inline-block; padding: 5px 10px; border-radius: 6px; white-space: nowrap;
+    background: color-mix(in srgb, var(--color-accent-2) 14%, transparent); color: var(--color-accent-2);
+    font: 600 13px/1.3 var(--font-sans);
   }
-  /* Your name, slapped on the corner of the headline. Jiggles on hover. */
-  .sticker.sticker-name {
-    padding: 8px 16px; border-radius: 10px; box-shadow: 0 0 0 3px var(--color-ink);
-    font-size: clamp(15px, 1.5vw, 20px); line-height: 1; rotate: -5deg; transform-origin: 0 0;
+
+  /* Your name above the headline: the same soft tint as the role labels, larger. Jiggles on hover. */
+  .sticker {
+    display: inline-block; padding: 7px 14px; border-radius: 8px; white-space: nowrap; transform-origin: 0 0;
+    background: color-mix(in srgb, var(--color-accent-2) 14%, transparent); color: var(--color-accent-2);
+    font: 700 clamp(15px, 1.4vw, 19px)/1.2 var(--font-sans);
     @media (hover: hover) { &:hover { animation: sticker-jiggle .7s cubic-bezier(.25, .6, .3, 1); } }
   }
 
@@ -281,7 +281,7 @@ html.y2k {
   }
   & h1 [data-weight="300"] { background: linear-gradient(180deg, #FFF 0%, #FF66CC 45%, #CC33FF 52%, #66FFFF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 900; }
   & h1 .ch { display: inline; width: auto !important; font-variation-settings: normal !important; } /* overrides the weight swap's inline styles */
-  & .sticker.sticker-name {
+  & .sticker {
     background: linear-gradient(180deg, #E6FFFF 0%, #8FE9FF 48%, #4CCDF2 52%, #A6F4FF 100%); color: #002B40;
     border-radius: 999px; box-shadow: 0 0 0 2px #FFF, 0 4px 10px rgb(0 0 0 / .5); rotate: 0deg; font-family: "Trebuchet MS", Verdana, sans-serif;
   }
@@ -320,7 +320,7 @@ html.y2k {
   & .track .dots { border-color: var(--win-shadow); }
   & .track > :nth-child(3) { color: #333; } /* the year */
   & .track:hover h3 { color: #FF0000; }
-  & .sticker:not(.sticker-name), & .chip {
+  & .tag, & .chip {
     background: var(--win); color: #000; border: 0; border-radius: 0; rotate: 0deg; box-shadow: var(--bevel-out);
     font: 11px/1.4 Tahoma, Verdana, sans-serif; padding: 3px 8px;
   }
