@@ -246,7 +246,7 @@
     & > :is(figure, div) + *, & > * + :is(figure, div) { margin-top: clamp(48px, 6vw, 72px); }
     & > figure + figure { margin-top: clamp(72px, 9vw, 120px); } /* stacked figures only, not side-by-side pairs */
     & h3 + :is(p, ul) { margin-top: 12px; }
-    & figure > a.zoom + .grid { margin-top: clamp(24px, 3vw, 40px); } /* report cover, then its page grid */
+    & figure > :is(a.zoom, .grid) + :is(a.zoom, .grid) { margin-top: clamp(32px, 4vw, 56px); } /* covers, grids and full-width pages inside a report */
     & li + li { margin-top: .65rem !important; } /* one rhythm inside lists (beats Tailwind's space-y) */
   }
   /* Screenshots and videos sit in a soft dark frame instead of glaring straight off the background */
