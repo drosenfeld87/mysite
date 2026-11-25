@@ -3,9 +3,9 @@
 Personal portfolio site. Plain HTML styled with Tailwind CSS v4, hosted on GitHub Pages at debbierosenfeld.com.
 
 ## Design
-Dark, type-led direction ("Nocturne"): near-black plum background with a low wine glow, a vignette and still grain.
-Barlow Condensed in caps for headlines, Barlow (light) for body text. Raspberry (#DD5A8C) for accent phrases, numbers
-and links; mauve (#C9A0B4) for the name label, role labels and the About heading. Projects are listed as a numbered set list.
+Dark, type-led direction ("Nocturne"): almost-black plum background with magenta and violet glows, a vignette and still grain.
+Barlow Condensed in caps for headlines, Barlow (light) for body text. Hot raspberry (#FF4D94) for accent phrases, numbers
+and links; orchid (#E7A6D8) for the name label, role labels and the About heading. Projects are listed as a numbered set list.
 Signature: a Now / Y2K switch in the header that turns the site into a 2002 personal homepage.
 
 ## Structure
@@ -23,14 +23,14 @@ The holding page at the root has its own small inline styles, since it's replace
 
 ## Editing styles (Tailwind)
 Style pages with Tailwind classes in the HTML, as usual. Site-specific classes come from the tokens in `tailwind.css`:
-- Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent` (raspberry), `text-accent-2` (mauve), `bg-surface`
+- Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent` (raspberry), `text-accent-2` (orchid), `bg-surface`
 - Fonts: `font-display`, `font-sans`
 - Sizes that scale with the screen: `text-hero`, `text-project`, `text-pull`, `text-bio`, `text-lead`
 - Spacing: `px-gutter` (page side margin), `pt-section`, `pt-hero`
 - Breakpoint: `lg:` means 900px and wider; `max-lg:` means narrower than 900px
 
 Components, for pieces repeated on many pages: `display` (headline font), `meta` (small grey text), `tag`
-(cyan role label), `sticker` (the name sticker), `chip` (tool tag), `btn`, `link-cta`, `field`, `setlist`/`track`, `page`,
+(role label), `sticker` (the name sticker), `chip` (tool tag), `btn`, `link-cta`, `field`, `setlist`/`track`, `page`,
 `page-title`, `section-title`, `sub-title`. Utility classes override them, e.g. `class="meta text-accent"`.
 
 Switch: the Now / Y2K buttons are `<button data-value="…">` inside `.era-switch`; js/site.js remembers the choice between pages.

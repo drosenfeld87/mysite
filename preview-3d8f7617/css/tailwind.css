@@ -25,14 +25,14 @@
 @theme {
   /* Colours */
   /* Palette: "Nocturne" */
-  --color-bg: #0C060E;        /* page background: near-black plum */
-  --color-surface: #160B19;   /* placeholder boxes */
-  --color-ink: #F1E4EA;       /* main text */
-  --color-muted: #B4A0AB;     /* secondary text (8.2:1 contrast on bg) */
-  --color-line: #2A1628;      /* dividers and borders */
-  --color-accent: #DD5A8C;    /* raspberry: accent phrases, numbers, links */
-  --color-accent-deep: #C2477A; /* deeper raspberry: end of the title hover gradient (4.3:1) */
-  --color-accent-2: #C9A0B4;  /* mauve: name label, role labels, About heading */
+  --color-bg: #08030A;        /* page background: almost-black plum */
+  --color-surface: #150818;   /* placeholder boxes */
+  --color-ink: #F7E9F0;       /* main text */
+  --color-muted: #C3A7B9;     /* secondary text (9.3:1 contrast on bg) */
+  --color-line: #36153A;      /* dividers and borders */
+  --color-accent: #FF4D94;    /* hot raspberry: accent phrases, numbers, links */
+  --color-accent-deep: #E0306F; /* deeper raspberry: end of the title hover gradient (4.7:1) */
+  --color-accent-2: #E7A6D8;  /* orchid: name label, role labels, About heading */
 
   /* Fonts: font-display (condensed caps headlines), font-sans (body) */
   --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
@@ -83,13 +83,13 @@
   /* Visible keyboard focus everywhere */
   :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-  /* Background: a low wine-coloured glow from below, a faint plum glow top left, a dark vignette, and still grain on top */
+  /* Background: a magenta glow from below, a violet glow top left, a dark vignette, and still grain on top */
   body::before {
     content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
     background:
-      radial-gradient(70vmax 50vmax at 85% 110%, rgb(120 30 70 / .35), transparent 70%),
-      radial-gradient(50vmax 40vmax at 0% -10%, rgb(70 20 60 / .30), transparent 70%),
-      radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / .55));
+      radial-gradient(70vmax 50vmax at 85% 110%, rgb(200 20 100 / .42), transparent 70%),
+      radial-gradient(55vmax 42vmax at 0% -10%, rgb(110 25 150 / .38), transparent 70%),
+      radial-gradient(ellipse at center, transparent 50%, rgb(0 0 0 / .7));
   }
   body::after {
     content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .08;
