@@ -216,10 +216,10 @@
      Sections: a numbered label in a left rail, content on the right. */
   .page.case { max-width: calc(76rem + 2 * var(--spacing-gutter)); }
   .case-hero {
-    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 64px 24px; align-items: end; padding-top: clamp(16px, 3vw, 48px);
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 64px 24px; align-items: start; padding-top: clamp(16px, 3vw, 48px);
     & .case-hero-text { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; gap: 36px; }
     & .case-facts { grid-column: 1 / -1; }
-    @variant lg { & .case-hero-text { grid-column: 1 / span 7; } & .case-facts { grid-column: 9 / span 4; } }
+    @variant lg { & .case-hero-text { grid-column: 1 / span 7; } & .case-facts { grid-column: 9 / span 4; margin-top: 64px; } }
   }
   .case-facts {
     & div { display: grid; gap: 6px; padding: 18px 0; border-top: 1px solid var(--color-line); }
@@ -246,7 +246,7 @@
     & > :is(figure, div) + *, & > * + :is(figure, div) { margin-top: clamp(48px, 6vw, 72px); }
     & figure + figure { margin-top: clamp(72px, 9vw, 120px); }
     & h3 + :is(p, ul) { margin-top: 12px; }
-    & li + li { margin-top: .65rem; }
+    & li + li { margin-top: .65rem !important; } /* one rhythm inside lists (beats Tailwind's space-y) */
   }
   /* Screenshots and videos sit in a soft dark frame instead of glaring straight off the background */
   .case :is(a.zoom, video) { padding: clamp(8px, 1.1vw, 14px); background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 14px; }
