@@ -7,9 +7,9 @@
   <title>Request a Demo — Debbie Rosenfeld</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body), JetBrains Mono (Code view labels) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500&display=swap">
-  <link rel="stylesheet" href="../css/site.css?v=202611251119">
+  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body). JetBrains Mono loads only for the Code view. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+  <link rel="stylesheet" href="../css/site.css?v=202611251132">
 </head>
 <body>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
@@ -23,13 +23,13 @@
         <a class="hover:text-accent" href="../index.html#about">About</a>
         <a class="hover:text-accent" href="../index.html#contact">Contact</a>
       </nav>
-      <div class="era-switch" role="group" aria-label="Era">
-        <button type="button" data-era="now" aria-pressed="true">Now</button>
-        <button type="button" data-era="y2k" aria-pressed="false">Y2K</button>
+      <div class="era-switch" role="group" aria-label="Visual style: now, or 2002 Y2K homepage">
+        <button type="button" data-value="now" aria-pressed="true">Now</button>
+        <button type="button" data-value="y2k" aria-pressed="false">Y2K</button>
       </div>
-      <div class="view-switch max-sm:hidden" role="group" aria-label="View">
-        <button type="button" data-view="design" aria-pressed="true">Design</button>
-        <button type="button" data-view="code" aria-pressed="false">Code</button>
+      <div class="view-switch max-sm:hidden" role="group" aria-label="Page view: design, or code with Tailwind classes shown">
+        <button type="button" data-value="design" aria-pressed="true">Design</button>
+        <button type="button" data-value="code" aria-pressed="false">Code</button>
       </div>
     </div>
   </header>
@@ -85,7 +85,7 @@
 
     <h2 class="section-title mt-10 mb-2">Exploring layouts</h2>
     <figure class="my-8">
-      <a class="zoom" href="../images/demo-explorations.jpg"><img class="w-full border border-line" src="../images/demo-explorations.jpg" loading="lazy" alt="Figma canvas of landing page explorations: four early versions of the page, six layout options that vary the hero, the How we make IT work steps and the video placement, and the final design with a blue hero, testimonials, client logos and footer."></a>
+      <a class="zoom" href="../images/demo-explorations.jpg"><img width="1408" height="1502" class="w-full border border-line" src="../images/demo-explorations.jpg" loading="lazy" alt="Figma canvas of landing page explorations: four early versions of the page, six layout options that vary the hero, the How we make IT work steps and the video placement, and the final design with a blue hero, testimonials, client logos and footer."></a>
       <figcaption class="mt-2"><p class="text-sm text-muted">Layout explorations in Figma, from early versions through six options to the final design. Click to enlarge.</p></figcaption>
     </figure>
 
@@ -117,6 +117,6 @@
     <span class="meta">Designed &amp; built by me</span>
   </footer>
 
-  <script src="../js/site.js?v=202611251119" defer></script>
+  <script src="../js/site.js?v=202611251132" defer></script>
 </body>
 </html>

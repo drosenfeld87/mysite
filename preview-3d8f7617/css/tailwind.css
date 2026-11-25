@@ -123,9 +123,9 @@
     &:nth-child(even) { rotate: 2deg; }
   }
   /* Your name, slapped on the corner of the headline. Jiggles on hover. */
-  .sticker-name {
+  .sticker.sticker-name {
     padding: 8px 16px; border-radius: 10px; box-shadow: 0 0 0 3px var(--color-ink);
-    font-size: clamp(15px, 1.5vw, 20px); line-height: 1; rotate: -5deg !important; transform-origin: 0 0;
+    font-size: clamp(15px, 1.5vw, 20px); line-height: 1; rotate: -5deg; transform-origin: 0 0;
     @media (hover: hover) { &:hover { animation: sticker-jiggle .7s cubic-bezier(.25, .6, .3, 1); } }
   }
 
@@ -150,8 +150,11 @@
   .field {
     background: transparent; color: var(--color-ink); padding: 10px 0; outline: none;
     border-bottom: 1px solid var(--color-muted);
-    &:focus { border-color: var(--color-accent); }
+    &:focus { border-color: var(--color-accent); box-shadow: 0 1px 0 var(--color-accent); }
   }
+
+  /* Headline letters for the weight swap (js/site.js sets each one's width so the line never shifts) */
+  .ch { display: inline-block; text-align: center; transition: font-variation-settings .2s ease; }
 
   /* Sticky header. js/site.js adds .is-hidden while scrolling down
      and .is-floating once the page has scrolled. */
@@ -229,7 +232,7 @@
   .view-switch {
     display: inline-flex; padding: 3px; border: 1px solid var(--color-line); border-radius: 999px; font-size: 14px;
     & button { padding: 6px 14px; border-radius: 999px; color: var(--color-muted); cursor: pointer; }
-    & button[aria-pressed="true"] { background: var(--color-ink); color: var(--color-bg); }
+    & button[aria-pressed="true"] { background: var(--color-ink); color: var(--color-bg); font-weight: 600; }
   }
   html.spec .view-switch button[aria-pressed="true"] { background: var(--color-accent-2); }
 
@@ -287,7 +290,7 @@
 .era-switch {
   display: inline-flex; padding: 3px; border: 1px solid var(--color-line); border-radius: 999px; font-size: 14px;
   & button { padding: 6px 12px; border-radius: 999px; color: var(--color-muted); cursor: pointer; }
-  & button[aria-pressed="true"] { background: var(--color-accent); color: var(--color-bg); }
+  & button[aria-pressed="true"] { background: var(--color-accent); color: var(--color-bg); font-weight: 600; }
 }
 .y2k-only { display: none; }
 
@@ -304,6 +307,7 @@ html.y2k {
   }
   & body::before, & body::after { display: none; }
   & .y2k-only { display: block; }
+  & .y2k-marquee { display: flex; }
   & a { color: #FFFF66; text-decoration: underline; }
 
   /* Header: a grey toolbar */
@@ -317,37 +321,39 @@ html.y2k {
   /* Headline: chrome WordArt */
   & h1, & .page-title {
     font-family: "Arial Black", Impact, sans-serif; font-weight: 900; letter-spacing: 0; line-height: 1.05;
-    background: linear-gradient(180deg, #FFFFFF 0%, #B8C6D9 40%, #3B4A61 50%, #C7D4E6 58%, #FFFFFF 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #C4D0E0 40%, #7A89A6 50%, #D0DBEA 58%, #FFFFFF 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
     filter: drop-shadow(3px 3px 0 #FF00CC);
   }
-  & h1 span { background: linear-gradient(180deg, #FFF 0%, #FF66CC 45%, #9900CC 52%, #66FFFF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 900; }
-  & .sticker-name {
-    background: linear-gradient(180deg, #DFFFFF 0%, #66E0FF 48%, #00A6E0 52%, #7FF0FF 100%); color: #FFF; text-shadow: 0 1px 2px #004466;
-    border-radius: 999px; box-shadow: 0 0 0 2px #FFF, 0 4px 10px rgb(0 0 0 / .5); rotate: 0deg !important; font-family: "Trebuchet MS", Verdana, sans-serif;
+  & h1 [data-weight="300"] { background: linear-gradient(180deg, #FFF 0%, #FF66CC 45%, #CC33FF 52%, #66FFFF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 900; }
+  & h1 .ch { display: inline; width: auto !important; font-variation-settings: normal !important; } /* overrides the weight swap's inline styles */
+  & .sticker.sticker-name {
+    background: linear-gradient(180deg, #E6FFFF 0%, #8FE9FF 48%, #4CCDF2 52%, #A6F4FF 100%); color: #002B40;
+    border-radius: 999px; box-shadow: 0 0 0 2px #FFF, 0 4px 10px rgb(0 0 0 / .5); rotate: 0deg; font-family: "Trebuchet MS", Verdana, sans-serif;
   }
   & .text-lead { font-family: Verdana, sans-serif; font-size: 18px; }
 
   /* Sections become Windows 98 windows */
   & [data-window] {
-    margin: 48px var(--spacing-gutter) 0; padding: 40px 20px 24px !important; position: relative;
+    margin: 48px var(--spacing-gutter) 0; padding: 40px 20px 24px; position: relative;
     background: var(--win); color: #000; box-shadow: var(--bevel-out), 6px 6px 0 rgb(0 0 0 / .5);
     &::before {
-      content: attr(data-window); position: absolute; left: 3px; right: 3px; top: 3px; height: 24px; padding: 0 8px;
+      content: attr(data-window); content: attr(data-window) / ""; position: absolute; left: 3px; right: 3px; top: 3px; height: 24px; padding: 0 8px;
       display: flex; align-items: center; color: #FFF; font: bold 13px/1 Tahoma, Verdana, sans-serif;
       background: linear-gradient(90deg, #000080, #1084D0);
     }
     &::after {
-      content: "_  \25A1  \2715"; position: absolute; right: 8px; top: 7px; color: #000; font: bold 11px/1 Tahoma, sans-serif;
+      content: "_  \25A1  \2715"; content: "_  \25A1  \2715" / ""; position: absolute; right: 8px; top: 7px; color: #000; font: bold 11px/1 Tahoma, sans-serif;
       padding: 2px 5px; background: var(--win); box-shadow: var(--bevel-out); white-space: pre;
     }
     & a { color: #0000EE; }
     & a:visited { color: #551A8B; }
-    & :is(.text-muted, .meta, .track-meta, dd) { color: #333 !important; }
+    & :is(.text-muted, .meta, .track-meta, dd) { color: #333; }
     & .text-ink, & strong { color: #000; }
     & :is(h2, h3, .display, .section-title, .sub-title) { font-family: "Arial Black", Impact, sans-serif; color: #000080; letter-spacing: 0; }
     & .text-accent { color: #990000; }
     & .border-line, & .border-ink { border-color: var(--win-shadow); }
+    & .bg-surface { background: #FFF; box-shadow: var(--bevel-in); }
   }
   & .track::before { color: #990000; font-family: "Courier New", monospace; }
   & .track .dots { border-color: var(--win-shadow); }
@@ -359,7 +365,7 @@ html.y2k {
   & .btn { background: var(--win); color: #000; border-radius: 0; box-shadow: var(--bevel-out); font: 13px Tahoma, Verdana, sans-serif; }
   & .btn:active { box-shadow: var(--bevel-in); }
   & .field { background: #FFF; color: #000; padding: 4px 6px; border: 0; box-shadow: var(--bevel-in); font-family: Verdana, sans-serif; }
-  & img, & video { box-shadow: var(--bevel-out); padding: 3px; background: var(--win); border: 0 !important; }
+  & img, & video { box-shadow: var(--bevel-out); padding: 3px; background: var(--win); border: 0; }
 
   /* Footer and the visitor counter as an LCD odometer */
   & footer { color: #CCC; border-color: #333366; }
@@ -368,14 +374,17 @@ html.y2k {
 }
 
 /* Scrolling welcome banner and "under construction" stripe (Y2K only) */
-.y2k-marquee { overflow: hidden; white-space: nowrap; background: #000; color: #39FF14; font: bold 14px/2 "Courier New", monospace; border-block: 2px solid #FF00CC; }
-.y2k-marquee span { display: inline-block; padding-left: 100%; animation: marquee 22s linear infinite; }
+.y2k-marquee { display: flex; align-items: center; overflow: hidden; white-space: nowrap; background: #000; color: #39FF14; font: bold 14px/2 "Courier New", monospace; border-block: 2px solid #FF00CC; }
+.y2k-marquee button { flex: none; position: relative; z-index: 1; min-width: 32px; min-height: 28px; margin: 0 6px; background: #C0C0C0; color: #000; font: 11px/1 Tahoma, sans-serif; box-shadow: inset -1px -1px #000, inset 1px 1px #FFF; cursor: pointer; }
+.y2k-marquee span { display: inline-block; padding-left: 100%; animation: marquee 22s linear infinite; will-change: transform; }
+.y2k-marquee.paused span { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-100%); } }
 .y2k-construction {
   margin: 28px var(--spacing-gutter) 0; padding: 6px 12px; text-align: center; color: #000; font: bold 14px/1.6 Verdana, sans-serif;
   background: repeating-linear-gradient(-45deg, #FFD400 0 16px, #111 16px 32px);
 }
 .y2k-construction span { background: #FFD400; padding: 2px 10px; }
-.sparkle { position: fixed; z-index: 90; pointer-events: none; color: #FFFF66; font-size: 14px; animation: sparkle .8s ease-out forwards; }
-@keyframes sparkle { to { opacity: 0; transform: translateY(14px) scale(.4) rotate(90deg); } }
-@media (prefers-reduced-motion: reduce) { .y2k-marquee span { animation: none; padding-left: 1rem; } .sparkle { display: none; } }
+.sparkle { position: fixed; z-index: 90; pointer-events: none; color: #FFFF66; font-size: 14px; opacity: 0; }
+.sparkle.on { animation: sparkle .8s ease-out forwards; }
+@keyframes sparkle { from { opacity: 1; } to { opacity: 0; transform: translateY(14px) scale(.4) rotate(90deg); } }
+@media (prefers-reduced-motion: reduce) { .y2k-marquee span { padding-left: 1rem; } .y2k-marquee button { display: none; } }

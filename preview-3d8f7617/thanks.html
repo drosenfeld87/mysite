@@ -7,9 +7,9 @@
   <title>Thanks — Debbie Rosenfeld</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body), JetBrains Mono (Code view labels) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500&display=swap">
-  <link rel="stylesheet" href="css/site.css?v=202611251119">
+  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body). JetBrains Mono loads only for the Code view. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+  <link rel="stylesheet" href="css/site.css?v=202611251132">
 </head>
 <body>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
@@ -22,13 +22,13 @@
         <a class="hover:text-accent" href="index.html#about">About</a>
         <a class="hover:text-accent" href="index.html#contact">Contact</a>
       </nav>
-      <div class="era-switch" role="group" aria-label="Era">
-        <button type="button" data-era="now" aria-pressed="true">Now</button>
-        <button type="button" data-era="y2k" aria-pressed="false">Y2K</button>
+      <div class="era-switch" role="group" aria-label="Visual style: now, or 2002 Y2K homepage">
+        <button type="button" data-value="now" aria-pressed="true">Now</button>
+        <button type="button" data-value="y2k" aria-pressed="false">Y2K</button>
       </div>
-      <div class="view-switch max-sm:hidden" role="group" aria-label="View">
-        <button type="button" data-view="design" aria-pressed="true">Design</button>
-        <button type="button" data-view="code" aria-pressed="false">Code</button>
+      <div class="view-switch max-sm:hidden" role="group" aria-label="Page view: design, or code with Tailwind classes shown">
+        <button type="button" data-value="design" aria-pressed="true">Design</button>
+        <button type="button" data-value="code" aria-pressed="false">Code</button>
       </div>
     </div>
   </header>
@@ -43,6 +43,6 @@
     <span class="meta">Designed &amp; built by me</span>
   </footer>
 
-  <script src="js/site.js?v=202611251119" defer></script>
+  <script src="js/site.js?v=202611251132" defer></script>
 </body>
 </html>
