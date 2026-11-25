@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Style lab · Debbie Rosenfeld — Senior Product Designer &amp; Front-End Developer</title>
+  <meta name="description" content="Debbie Rosenfeld is a senior product designer and front-end developer in Toronto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body). -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Anton&display=swap">
+  <link rel="stylesheet" href="../css/site.css?v=20261125131722">
+  <style>
+    /* ===== Style lab: palettes and type treatments ===== */
+    .picker { position:sticky; top:0; z-index:60; display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:10px var(--spacing-gutter); background:#1B1A18; color:#F1EEE8; border-bottom:1px solid #2A2826; font:14px/1.3 "Funnel Sans",system-ui,sans-serif; }
+    .picker span { color:#A8A59F; margin-left:8px; }
+    .picker button { padding:6px 12px; border-radius:999px; border:1px solid #3A3835; cursor:pointer; }
+    .picker button[aria-pressed="true"] { background:#F1EEE8; color:#111; font-weight:700; }
+    .picker i { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; }
+    .masthead { top:var(--lab-h, 46px); background:color-mix(in srgb, var(--color-bg) 85%, transparent); }
+
+    /* --- Palettes: each one only swaps the colour tokens --- */
+    html[data-palette="nectar"] { --color-bg:#1B1640; --color-surface:#241D52; --color-ink:#F7F5FF; --color-muted:#BDB7DD; --color-line:#3A3270; --color-accent:#FF6B6B; --color-accent-deep:#E8545A; --color-accent-2:#4ECDC4; }
+    html[data-palette="nocturne"] { --color-bg:#160A1A; --color-surface:#22102A; --color-ink:#FBEFF4; --color-muted:#C9B2BF; --color-line:#3A1F36; --color-accent:#F2609B; --color-accent-deep:#D9437F; --color-accent-2:#F7C6D9; }
+    html[data-palette="nebula"] { --color-bg:#031B2A; --color-surface:#0A2338; --color-ink:#EAF7FB; --color-muted:#A2BDCB; --color-line:#173A52; --color-accent:#FF7268; --color-accent-deep:#E85A4F; --color-accent-2:#22D3D1; }
+    html[data-palette="luma"] { --color-bg:#F6F4EE; --color-surface:#ECE8DF; --color-ink:#141414; --color-muted:#5C5A55; --color-line:#DCD7CC; --color-accent:#C23B31; --color-accent-deep:#9E2C23; --color-accent-2:#0B7A74; }
+    html[data-palette="luma"] body::after { opacity:.05; }
+
+    /* --- Type: serif with an italic accent line (board 1) --- */
+    html[data-type="serif"] { --font-display:"Fraunces", Georgia, serif; }
+    html[data-type="serif"] h1, html[data-type="serif"] .track h3, html[data-type="serif"] #contact h2, html[data-type="serif"] .text-bio { font-weight:400; letter-spacing:-.01em; }
+    html[data-type="serif"] h1 [data-weight="300"], html[data-type="serif"] #contact h2 span { font-style:italic; font-weight:400; }
+    html[data-type="serif"] h1 .ch { transition:none; }
+    html[data-type="serif"] .track h3 { font-weight:400; }
+
+    /* --- Type: condensed caps with an accent rule (board 2) --- */
+    html[data-type="caps"] { --font-display:"Anton", Impact, sans-serif; }
+    html[data-type="caps"] h1, html[data-type="caps"] .track h3, html[data-type="caps"] #contact h2 { text-transform:uppercase; font-weight:400; letter-spacing:.005em; line-height:.95; }
+    html[data-type="caps"] h1 { font-size:clamp(4.2rem, 13vw, 12.5rem); }
+    html[data-type="caps"] h1 [data-weight="300"] { font-weight:400; }
+    html[data-type="caps"] h1::after { content:""; display:block; width:min(28%, 240px); height:6px; margin-top:.25em; background:var(--color-accent); }
+    html[data-type="caps"] .text-bio { font-family:"Funnel Sans", sans-serif; }
+    html[data-type="caps"] #about-h, html[data-type="caps"] .sticker { text-transform:uppercase; letter-spacing:.14em; font-weight:700; }
+    html[data-type="caps"] #about-h { color:var(--color-accent-2); border-color:var(--color-accent-2); }
+  </style>
+</head>
+<body>
+  <div class="picker" role="group" aria-label="Style lab">
+    <span>Palette:</span>
+    <button type="button" data-k="palette" data-v="" aria-pressed="true"><i style="background:#FF7268"></i>Current</button>
+    <button type="button" data-k="palette" data-v="nectar" aria-pressed="false"><i style="background:#1B1640;box-shadow:inset 0 0 0 3px #FF6B6B"></i>Neon Nectar</button>
+    <button type="button" data-k="palette" data-v="nocturne" aria-pressed="false"><i style="background:#160A1A;box-shadow:inset 0 0 0 3px #F2609B"></i>Nocturne</button>
+    <button type="button" data-k="palette" data-v="nebula" aria-pressed="false"><i style="background:#031B2A;box-shadow:inset 0 0 0 3px #22D3D1"></i>Nebula</button>
+    <button type="button" data-k="palette" data-v="luma" aria-pressed="false"><i style="background:#F6F4EE;box-shadow:inset 0 0 0 3px #C23B31"></i>Luma (light)</button>
+    <span>Type:</span>
+    <button type="button" data-k="type" data-v="" aria-pressed="true">Current</button>
+    <button type="button" data-k="type" data-v="serif" aria-pressed="false">Serif + italic</button>
+    <button type="button" data-k="type" data-v="caps" aria-pressed="false">Condensed caps</button>
+  </div>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="masthead flex items-center justify-end gap-6 px-gutter py-5.5">
+    <div class="flex flex-wrap items-center justify-end gap-x-3.5 gap-y-2 lg:gap-x-5.5">
+      <nav class="flex gap-3.5 max-sm:text-base lg:gap-5.5" aria-label="Main">
+        <a class="hover:text-accent" href="#work">Work</a>
+        <a class="hover:text-accent" href="#about">About</a>
+        <a class="hover:text-accent" href="#contact">Contact</a>
+      </nav>
+      <div class="era-switch" role="group" aria-label="Visual style: now, or 2002 Y2K homepage">
+        <button type="button" data-value="now" aria-pressed="true">Now</button>
+        <button type="button" data-value="y2k" aria-pressed="false">Y2K</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Y2K mode only -->
+    <div class="y2k-only y2k-marquee"><button type="button" aria-pressed="false" aria-label="Pause scrolling banner">&#10074;&#10074;</button><span aria-hidden="true">&#9733; Welcome to Debbie&rsquo;s homepage!!! &#9733; Senior product designer who codes &#9733; Best viewed in 1024&times;768 &#9733; Sign my guestbook (the contact form) &#9733; Last updated: today &#9733;</span></div>
+    <!-- ============ HERO ============ -->
+    <section class="px-gutter pt-hero pb-10">
+      <p class="mb-4 leading-none"><span class="sticker">Debbie Rosenfeld</span></p>
+      <h1 class="display text-hero font-extrabold" data-swap>
+        <span class="sr-only">Pixels in, code out.</span>
+        <span aria-hidden="true" data-weight="800">Pixels in, </span><span class="font-light whitespace-nowrap text-accent" aria-hidden="true" data-weight="300">code out.</span>
+      </h1>
+      <p class="mt-10 max-w-[36ch] text-lead">Senior product designer who codes. I design product experiences, then build them, down to the last class name.</p>
+      <div class="mt-9 flex flex-wrap gap-8">
+        <a class="link-cta" href="#work">See selected work &darr;</a>
+        <a class="link-cta" href="#contact">Get in touch &rarr;</a>
+      </div>
+    </section>
+
+    <div class="y2k-only y2k-construction" aria-hidden="true"><span>&#128679; This site is under construction &#128679;</span></div>
+
+    <!-- ============ WORK: a set list ============ -->
+    <section class="px-gutter pt-20" id="work" data-window="set_list.exe" aria-labelledby="work-h">
+      <h2 id="work-h" class="sr-only">Selected work</h2>
+      <ol class="setlist">
+        <li><a class="track border-t border-line" href="../projects/project-1.html">
+          <h3 class="display text-project font-extrabold">CIO Analytics</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2025–now</span>
+          <span class="track-meta"><span>AI-powered analytics platform for IT leaders. <span class="text-ink">Product design and front end, alongside back-end developers and data engineers.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Product design</span><span class="tag">Front-end dev</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="../projects/project-2.html">
+          <h3 class="display text-project font-extrabold">Research Infographics</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2019–now</span>
+          <span class="track-meta"><span>Visual frameworks for Infotech research. <span class="text-ink">Wireframe to final design.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Information design</span><span class="tag">Visual design</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="../projects/project-3.html">
+          <h3 class="display text-project font-extrabold">Diagnostic Reports</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2024–25</span>
+          <span class="track-meta"><span>Reports that benchmark IT teams. <span class="text-ink">Designed the full report; coded part of it.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Information design</span><span class="tag">Report design</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="../projects/project-4.html">
+          <h3 class="display text-project font-extrabold">Request a Demo</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2023</span>
+          <span class="track-meta"><span>Landing page and sign-up flow. <span class="text-ink">Designed and built the page.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Visual design</span><span class="tag">UX</span><span class="tag">Front-end dev</span></span></span>
+        </a></li>
+      </ol>
+    </section>
+
+    <!-- ============ ABOUT: big bio on the left, a small CV column on the right ============ -->
+    <section class="px-gutter pt-section" id="about" data-window="about_me.txt" aria-labelledby="about-h">
+      <h2 id="about-h" class="meta border-b border-line pb-3.5">About</h2>
+      <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-12">
+        <p class="display col-span-full text-bio font-light lg:col-span-7">I&rsquo;m Debbie: 15 years in graphic design, 10 in web and product. Today I design and build <strong class="font-bold">CIO Analytics</strong> at Infotech.</p>
+
+        <!-- Quick facts: one line each -->
+        <dl class="col-span-full grid content-start gap-6 text-[15px] leading-relaxed lg:col-span-4 lg:col-start-9">
+          <div>
+            <dt class="text-muted">Now</dt>
+            <dd>Senior Product Designer, Infotech</dd>
+          </div>
+          <div>
+            <dt class="text-muted">Tools</dt>
+            <dd>Figma, Adobe CC, Tailwind CSS, Rails, Hotwire</dd>
+          </div>
+          <div>
+            <dt class="text-muted">Off the clock</dt>
+            <dd>Bass, type art, horror, cats</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="px-gutter pt-section" id="contact" data-window="contact.html" aria-labelledby="contact-h">
+      <div class="grid grid-cols-12 gap-6 border-t-2 border-ink pt-12">
+        <div class="col-span-full lg:col-span-6">
+          <h2 id="contact-h" class="display text-pull font-extrabold">Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
+          <div class="mt-7 flex flex-wrap gap-7">
+            <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+
+        <!-- Sends to your Gmail through FormSubmit (see README) -->
+        <form class="col-span-full grid gap-2 lg:col-span-5 lg:col-start-8" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
+          <!-- FormSubmit settings -->
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://debbierosenfeld.com/preview-3d8f7617/thanks.html">
+          <!-- Spam trap: hidden from people, so only bots fill it in -->
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+          <label class="meta mt-2" for="e-name">Name</label>
+          <input class="field" id="e-name" name="name" autocomplete="name" required>
+          <label class="meta mt-2" for="e-email">Email</label>
+          <input class="field" id="e-email" name="email" type="email" autocomplete="email" required>
+          <label class="meta mt-2" for="e-msg">Message</label>
+          <textarea class="field" id="e-msg" name="message" rows="4" required></textarea>
+          <button class="btn mt-4.5" type="submit">Send &rarr;</button>
+          <p class="meta mt-2.5">All fields required. I usually reply within a few days.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
+    <span class="meta">&copy; 2026 Debbie Rosenfeld</span>
+    <span class="meta" id="visits" hidden>Visitor no. <span class="text-accent" id="visit-count"></span></span>
+    <span class="meta">Designed &amp; built by me</span>
+  </footer>
+
+
+  <script src="../js/site.js?v=20261125131722" defer></script>
+<script>
+  document.documentElement.style.setProperty("--lab-h", document.querySelector(".picker").offsetHeight + "px");
+  document.querySelectorAll(".picker [data-k]").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(`.picker [data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    if (b.dataset.v) document.documentElement.dataset[b.dataset.k] = b.dataset.v; else delete document.documentElement.dataset[b.dataset.k];
+  }));
+</script>
+</body>
+</html>
