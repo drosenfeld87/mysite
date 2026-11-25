@@ -1,145 +1,130 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CIO Analytics — Debbie Rosenfeld</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Fonts: Barlow Condensed (headlines), Barlow (body) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;500;700;800&family=Barlow:wght@300;400;500;600;700&display=swap">
-  <link rel="stylesheet" href="../css/site.css?v=20261125140757">
+<meta charset="utf-8"/>
+<meta content="noindex, nofollow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CIO Analytics — Debbie Rosenfeld</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Fonts: Barlow Condensed (headlines), Barlow (body) -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;500;700;800&amp;family=Barlow:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/site.css?v=20261125141432" rel="stylesheet"/>
 </head>
 <body>
-  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
+<a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
+<!-- ============ HEADER / NAV ============ -->
+<header class="masthead flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-gutter py-5.5">
+<a class="sticker" href="../index.html">Debbie Rosenfeld</a>
+<div class="flex flex-wrap items-center justify-end gap-x-3.5 gap-y-2 lg:gap-x-5.5">
+<nav aria-label="Main" class="flex gap-3.5 max-sm:text-base lg:gap-5.5">
+<a aria-current="page" class="hover:text-accent aria-[current=page]:text-accent" href="../index.html#work">Work</a>
+<a class="hover:text-accent" href="../index.html#about">About</a>
+<a class="hover:text-accent" href="../index.html#contact">Contact</a>
+</nav>
+<div aria-label="Visual style: now, or 2002 Y2K homepage" class="era-switch" role="group">
+<button aria-pressed="true" data-value="now" type="button">Now</button>
+<button aria-pressed="false" data-value="y2k" type="button">Y2K</button>
+</div>
+</div>
+</header>
+<main class="page case pt-12 pb-16" data-window="cio_analytics.html" id="main">
 
-  <!-- ============ HEADER / NAV ============ -->
-  <header class="masthead flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-gutter py-5.5">
-    <a class="sticker" href="../index.html">Debbie Rosenfeld</a>
-    <div class="flex flex-wrap items-center justify-end gap-x-3.5 gap-y-2 lg:gap-x-5.5">
-      <nav class="flex gap-3.5 max-sm:text-base lg:gap-5.5" aria-label="Main">
-        <a class="hover:text-accent aria-[current=page]:text-accent" href="../index.html#work" aria-current="page">Work</a>
-        <a class="hover:text-accent" href="../index.html#about">About</a>
-        <a class="hover:text-accent" href="../index.html#contact">Contact</a>
-      </nav>
-      <div class="era-switch" role="group" aria-label="Visual style: now, or 2002 Y2K homepage">
-        <button type="button" data-value="now" aria-pressed="true">Now</button>
-        <button type="button" data-value="y2k" aria-pressed="false">Y2K</button>
-      </div>
-    </div>
-  </header>
+<!-- ===== Summary: everything a skimmer needs ===== -->
 
-  <main id="main" class="page py-16" data-window="cio_analytics.html">
-    <a class="link-cta mb-10 inline-block text-[15px]" href="../index.html#work">&larr; Back to projects</a>
 
-    <!-- ===== Summary: everything a skimmer needs ===== -->
-    <h1 class="page-title mb-5">CIO Analytics</h1>
-    <div class="accent-rule mb-6 h-1.5 w-[min(28%,180px)] bg-accent" aria-hidden="true"></div>
-    <p class="mb-6 max-w-[36ch] text-lead">Infotech&rsquo;s platform for running the IT department from a single view: data, insights, benchmarks and advice in one place.</p>
-    <div class="flex flex-wrap gap-2 mb-10">
-            <span class="tag">Product design</span>
-            <span class="tag">Front-end dev</span>
-    </div>
 
-    <!-- At a glance -->
-    <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 py-8 border-y border-line mb-12">
-      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Company</dt><dd>Infotech</dd></div>
-      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Timeline</dt><dd>2025–now</dd></div>
-      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">My role</dt><dd>Product design &amp; front-end development</dd></div>
-      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Team</dt><dd>Back-end developers &amp; data engineers</dd></div>
-      <div class="col-span-2"><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="chip">Figma</span><span class="chip">Ruby on Rails</span><span class="chip">Tailwind CSS</span><span class="chip">ViewComponent</span><span class="chip">Lookbook</span><span class="chip">Hotwire (Turbo + Stimulus)</span><span class="chip">Highcharts</span></dd></div>
-      <div><dt class="mb-1.5 text-xs uppercase tracking-[.14em] text-muted">Links</dt><dd><a class="link-cta inline-block py-2.5" href="https://www.infotech.com/cio-analytics" target="_blank" rel="noopener">Marketing page<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
-    </dl>
 
-    <!-- My contribution: design vs. code, side by side -->
-    <h2 class="section-title mb-4">My contribution</h2>
-    <p class="mb-8 text-muted">I worked on a cross-functional team: back-end developers and data engineers built the data platform and services, and I owned the product design and the front end that IT leaders use.</p>
-    <div class="grid md:grid-cols-2 gap-6 mb-12">
-      <div>
-        <h3 class="sub-title mb-2">Designed</h3>
-        <ul class="list-disc pl-5 space-y-1 marker:text-accent">
-          <li>Key Insights component, used app-wide, with multiple variations</li>
-          <li>Contributions to the app's design system</li>
-          <li>Chart redesigns</li>
-          <li>Condensed tables for easier scanning</li>
-          <li>Save-syncing flow</li>
-          <li>Login and error pages</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="sub-title mb-2">Built</h3>
-        <ul class="list-disc pl-5 space-y-1 marker:text-accent">
-          <li>Front end of a Ruby on Rails app, styled with Tailwind CSS and a shared design preset</li>
-          <li>Reusable UI components with ViewComponent, documented in Lookbook</li>
-          <li>Interactivity with Hotwire (Turbo + Stimulus), no JavaScript framework</li>
-          <li>Highcharts charts for the v2 dashboards, through the in-house charting-dashboard engine</li>
-          <li>Marketing page (design by the Infotech design team)</li>
-        </ul>
-      </div>
-    </div>
+<!-- At a glance -->
+<header class="case-hero"><div class="case-hero-text"><a class="link-cta inline-block text-[15px]" href="../index.html#work">← Back to projects</a><h1 class="page-title">CIO Analytics</h1><div aria-hidden="true" class="accent-rule h-1.5 w-[min(28%,180px)] bg-accent"></div><p class="text-lead max-w-[36ch]">Infotech’s platform for running the IT department from a single view: data, insights, benchmarks and advice in one place.</p><p class="case-cta"><a class="link-cta inline-block py-2.5" href="https://www.infotech.com/cio-analytics" rel="noopener" target="_blank">Marketing page ↗<span class="sr-only"> (opens in a new tab)</span></a></p></div><dl class="case-facts"><div><dt>Role</dt><dd>Product design &amp; front-end development</dd></div><div><dt>Team</dt><dd>Back-end developers &amp; data engineers</dd></div><div><dt>Company</dt><dd>Infotech</dd></div><div><dt>Timeline</dt><dd>2025–now</dd></div><div><dt>Tools</dt><dd>Figma · Ruby on Rails · Tailwind CSS · ViewComponent · Lookbook · Hotwire (Turbo + Stimulus) · Highcharts</dd></div></dl></header>
 
-    <!-- ===== Detail: for readers who want more ===== -->
+    <section aria-labelledby="s1" class="case-section"><h2 class="case-label" id="s1">My contribution</h2><div class="case-body">
+<p>I worked on a cross-functional team: back-end developers and data engineers built the data platform and services, and I owned the product design and the front end that IT leaders use.</p>
+<div class="grid md:grid-cols-2 gap-x-12 gap-y-12">
+<div>
+<h3 class="sub-title mb-2">Designed</h3>
+<ul class="list-disc pl-5 space-y-1 marker:text-accent">
+<li>Key Insights component, used app-wide, with multiple variations</li>
+<li>Contributions to the app's design system</li>
+<li>Chart redesigns</li>
+<li>Condensed tables for easier scanning</li>
+<li>Save-syncing flow</li>
+<li>Login and error pages</li>
+</ul>
+</div>
+<div>
+<h3 class="sub-title mb-2">Coded</h3>
+<ul class="list-disc pl-5 space-y-1 marker:text-accent">
+<li>Front end of a Ruby on Rails app, styled with Tailwind CSS and a shared design preset</li>
+<li>Reusable UI components with ViewComponent, documented in Lookbook</li>
+<li>Interactivity with Hotwire (Turbo + Stimulus), no JavaScript framework</li>
+<li>Highcharts charts for the v2 dashboards, through the in-house charting-dashboard engine</li>
+<li>Marketing page (design by the Infotech design team)</li>
+</ul>
+</div>
+</div>
+<!-- ===== Detail: for readers who want more ===== -->
+</div></section>
 
-    <h2 class="section-title mt-12 mb-2">Overview</h2>
-    <p>CIO Analytics brings data, business intelligence, AI and Infotech&rsquo;s advisory into one integrated platform. It connects and normalizes an organization&rsquo;s IT data, turns it into dashboards and insights, benchmarks it against peers, and pairs the results with Infotech&rsquo;s research to deliver data-driven advice.</p>
-    <p class="mt-4">Around that core, IT leaders can prioritize initiatives, plan projects and track the value they deliver, use AI to surface insights and answer questions about their data, and work in focused modules such as Application Discovery and Identity Governance.</p>
+    <section aria-labelledby="s2" class="case-section"><h2 class="case-label" id="s2">Overview</h2><div class="case-body">
+<p>CIO Analytics brings data, business intelligence, AI and Infotech’s advisory into one integrated platform. It connects and normalizes an organization’s IT data, turns it into dashboards and insights, benchmarks it against peers, and pairs the results with Infotech’s research to deliver data-driven advice.</p>
+<p>Around that core, IT leaders can prioritize initiatives, plan projects and track the value they deliver, use AI to surface insights and answer questions about their data, and work in focused modules such as Application Discovery and Identity Governance.</p>
+</div></section>
 
-    <h2 class="section-title mt-10 mb-2">The challenge</h2>
-    <p>IT leaders manage data spread across many systems and have limited time to interpret it. The platform combines data, peer benchmarks, advisory content and AI-generated insights, and each layer must remain clear and actionable for senior IT decision-makers.</p>
+    <section aria-labelledby="s3" class="case-section"><h2 class="case-label" id="s3">The challenge</h2><div class="case-body">
+<p>IT leaders manage data spread across many systems and have limited time to interpret it. The platform combines data, peer benchmarks, advisory content and AI-generated insights, and each layer must remain clear and actionable for senior IT decision-makers.</p>
+</div></section>
 
-    <h2 class="section-title mt-10 mb-2">Process &amp; key decisions</h2>
-    <!-- Feature story: the Key Insights component. Suggested beats:
+    <section aria-labelledby="s4" class="case-section"><h2 class="case-label" id="s4">Process &amp; key decisions</h2><div class="case-body">
+<!-- Feature story: the Key Insights component. Suggested beats:
          what problem it solves, how you designed its variations,
          how it's built (ViewComponent + Lookbook) so it stays consistent app-wide.
          Show 2-3 variations side by side in the screens below. -->
-    <p>Key Insights component: what it does, why it needed variations, and how it's built to stay consistent across the app.</p>
-    <!-- Ideas: building a reusable component library (ViewComponent + Lookbook) so
+<p>Key Insights component: what it does, why it needed variations, and how it's built to stay consistent across the app.</p>
+<!-- Ideas: building a reusable component library (ViewComponent + Lookbook) so
          designs translate consistently into code; keeping the app fast and simple
          with Hotwire instead of a JS framework; designing dashboards that stay
          readable as the charting engine scales to new modules. -->
+<div class="grid md:grid-cols-2 gap-x-12 gap-y-12">
+<figure class="m-0">
+<a class="zoom" href="../images/cio-insight-metrics.webp"><img alt="Key Insights panel, full version: a highlighted key insight about rising incidents, a strategic priority, a What's working card in green, an Areas for improvement card in orange, and an AI recommendation." class="w-full" height="1025" loading="lazy" src="../images/cio-insight-metrics.webp" width="540"/></a>
+<figcaption class="text-sm text-muted mt-2">Full version on the metrics pages: insight, priority, what’s working, what to improve and an AI recommendation.</figcaption>
+</figure>
+<figure class="m-0">
+<a class="zoom" href="../images/cio-insight-satisfaction.webp"><img alt="Key Insights panel, detail version: a key insight about low survey coverage, followed by response coverage and score distribution sections with recommended actions, and an AI recommendation." class="w-full" height="960" loading="lazy" src="../images/cio-insight-satisfaction.webp" width="490"/></a>
+<figcaption class="text-sm text-muted mt-2">Detail version: the insight broken into supporting findings, each with a recommended action.</figcaption>
+</figure>
+</div>
+</div></section>
 
-    <div class="grid md:grid-cols-2 gap-6 my-8">
-      <figure class="m-0">
-        <a class="zoom" href="../images/cio-insight-metrics.webp"><img width="540" height="1025" class="w-full border border-line" src="../images/cio-insight-metrics.webp" loading="lazy" alt="Key Insights panel, full version: a highlighted key insight about rising incidents, a strategic priority, a What's working card in green, an Areas for improvement card in orange, and an AI recommendation."></a>
-        <figcaption class="text-sm text-muted mt-2">Full version on the metrics pages: insight, priority, what&rsquo;s working, what to improve and an AI recommendation.</figcaption>
-      </figure>
-      <figure class="m-0">
-        <a class="zoom" href="../images/cio-insight-satisfaction.webp"><img width="490" height="960" class="w-full border border-line" src="../images/cio-insight-satisfaction.webp" loading="lazy" alt="Key Insights panel, detail version: a key insight about low survey coverage, followed by response coverage and score distribution sections with recommended actions, and an AI recommendation."></a>
-        <figcaption class="text-sm text-muted mt-2">Detail version: the insight broken into supporting findings, each with a recommended action.</figcaption>
-      </figure>
-    </div>
+    <section aria-labelledby="s5" class="case-section"><h2 class="case-label" id="s5">More screens</h2><div class="case-body">
+<div class="grid md:grid-cols-2 gap-x-12 gap-y-12">
+<figure class="m-0">
+<a class="zoom" href="../images/cio-full-executive-summary.webp"><img alt="Executive Summary screen: an overall health score gauge reading 88.7, category scores, and a table of twelve weighted metrics with month-over-month changes." class="w-full" height="1068" loading="lazy" sizes="(min-width: 1040px) 960px, 100vw" src="../images/cio-exec-health.webp" srcset="../images/cio-exec-health-800.webp 800w, ../images/cio-exec-health-1200.webp 1200w, ../images/cio-exec-health.webp 1547w" width="1547"/></a>
+<figcaption class="text-sm text-muted mt-2">Executive Summary: overall health score and weighted metrics.</figcaption>
+</figure>
+<figure class="m-0">
+<a class="zoom" href="../images/cio-exec-treemap.webp"><img alt="Ticket Volume Overview: a treemap of ticket categories, with Customer Relationship the largest block at 37 percent, next to a key insight panel." class="w-full" height="1158" loading="lazy" sizes="(min-width: 1040px) 960px, 100vw" src="../images/cio-exec-treemap.webp" srcset="../images/cio-exec-treemap-800.webp 800w, ../images/cio-exec-treemap-1200.webp 1200w, ../images/cio-exec-treemap.webp 1547w" width="1547"/></a>
+<figcaption class="text-sm text-muted mt-2">Ticket volume treemap with its Key Insights panel.</figcaption>
+</figure>
+<figure class="m-0 md:col-span-2">
+<a class="zoom" href="../images/cio-full-end-user-satisfaction.webp"><img alt="End-User Satisfaction screen: ticket satisfaction chart, department satisfaction table, sentiment analysis and feedback comments. Commenter names are blurred." class="w-full" height="630" loading="lazy" sizes="(min-width: 1040px) 960px, 100vw" src="../images/cio-satisfaction-thumb.webp" srcset="../images/cio-satisfaction-thumb-800.webp 800w, ../images/cio-satisfaction-thumb.webp 1440w" width="1440"/></a>
+<figcaption class="text-sm text-muted mt-2">End-User Satisfaction. Click to see the full page. Names are blurred for privacy.</figcaption>
+</figure>
+</div>
+</div></section>
 
-    <h2 class="section-title mt-10 mb-2">More screens</h2>
-    <div class="grid md:grid-cols-2 gap-6 my-8">
-      <figure class="m-0">
-        <a class="zoom" href="../images/cio-full-executive-summary.webp"><img width="1547" height="1068" class="w-full border border-line" src="../images/cio-exec-health.webp" srcset="../images/cio-exec-health-800.webp 800w, ../images/cio-exec-health-1200.webp 1200w, ../images/cio-exec-health.webp 1547w" sizes="(min-width: 1040px) 960px, 100vw" loading="lazy" alt="Executive Summary screen: an overall health score gauge reading 88.7, category scores, and a table of twelve weighted metrics with month-over-month changes."></a>
-        <figcaption class="text-sm text-muted mt-2">Executive Summary: overall health score and weighted metrics.</figcaption>
-      </figure>
-      <figure class="m-0">
-        <a class="zoom" href="../images/cio-exec-treemap.webp"><img width="1547" height="1158" class="w-full border border-line" src="../images/cio-exec-treemap.webp" srcset="../images/cio-exec-treemap-800.webp 800w, ../images/cio-exec-treemap-1200.webp 1200w, ../images/cio-exec-treemap.webp 1547w" sizes="(min-width: 1040px) 960px, 100vw" loading="lazy" alt="Ticket Volume Overview: a treemap of ticket categories, with Customer Relationship the largest block at 37 percent, next to a key insight panel."></a>
-        <figcaption class="text-sm text-muted mt-2">Ticket volume treemap with its Key Insights panel.</figcaption>
-      </figure>
-      <figure class="m-0 md:col-span-2">
-        <a class="zoom" href="../images/cio-full-end-user-satisfaction.webp"><img class="w-full border border-line" src="../images/cio-satisfaction-thumb.webp" srcset="../images/cio-satisfaction-thumb-800.webp 800w, ../images/cio-satisfaction-thumb.webp 1440w" sizes="(min-width: 1040px) 960px, 100vw" width="1440" height="630" loading="lazy" alt="End-User Satisfaction screen: ticket satisfaction chart, department satisfaction table, sentiment analysis and feedback comments. Commenter names are blurred."></a>
-        <figcaption class="text-sm text-muted mt-2">End-User Satisfaction. Click to see the full page. Names are blurred for privacy.</figcaption>
-      </figure>
-    </div>
+    <section aria-labelledby="s6" class="case-section"><h2 class="case-label" id="s6">Result</h2><div class="case-body">
+<p>The outcome: launch, adoption, feedback.</p>
 
-    <h2 class="section-title mt-10 mb-2">Result</h2>
-    <p>The outcome: launch, adoption, feedback.</p>
+</div></section>
 
-    <nav class="flex justify-between mt-16 pt-6 border-t border-line" aria-label="More projects">
-      <span></span>
-      <a class="display text-xl font-bold uppercase tracking-[.04em] hover:text-accent" href="project-2.html">Research Infographics &rarr;</a>
-    </nav>
-  </main>
-
-  <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
-    <span class="meta">&copy; 2026 Debbie Rosenfeld</span>
-    <span class="meta">Designed &amp; built by me</span>
-  </footer>
-
-  <script src="../js/site.js?v=20261125140757" defer></script>
+    <nav aria-label="More projects" class="case-next"><a class="next" href="project-2.html"><span class="lbl">Next project</span><span class="ttl">Research Infographics<span aria-hidden="true"> →</span></span></a></nav></main>
+<footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
+<span class="meta">© 2026 Debbie Rosenfeld</span>
+<span class="meta">Designed &amp; built by me</span>
+</footer>
+<script defer="" src="../js/site.js?v=20261125141432"></script>
 </body>
 </html>
