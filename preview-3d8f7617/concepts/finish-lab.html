@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-  :root { --bg:#0E0D0C; --ink:#F1EEE8; --muted:#A8A59F; --line:#2A2826; --accent:#FF7A59; --g:clamp(20px,4vw,56px); }
+  :root { --bg:#0E0D0C; --ink:#F1EEE8; --muted:#A8A59F; --line:#2A2826; --accent:#FF6E80; --g:clamp(20px,4vw,56px); }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--ink); font:400 19px/1.6 var(--body-f); }
   a { color:inherit; }
@@ -123,13 +123,19 @@
       <button type="button" data-tex="tex-glow" aria-pressed="false">Glow</button>
       <button type="button" data-tex="tex-glowgrain" aria-pressed="false">Glow + grain</button>
     </div>
+    <div class="grp" role="group" aria-label="Main colour"><span>Main colour:</span>
+      <button type="button" data-a="#FF7A59" aria-pressed="false"><i class="swatch" style="background:#FF7A59"></i>Coral (current)</button>
+      <button type="button" data-a="#FF7268" aria-pressed="false"><i class="swatch" style="background:#FF7268"></i>Coral pink</button>
+      <button type="button" data-a="#FF6E80" aria-pressed="true"><i class="swatch" style="background:#FF6E80"></i>Pinker</button>
+      <button type="button" data-a="#FF6F9A" aria-pressed="false"><i class="swatch" style="background:#FF6F9A"></i>Rosy</button>
+    </div>
     <div class="grp" role="group" aria-label="Second colour"><span>Second colour:</span>
       <button type="button" data-c="#5CE1E6" aria-pressed="true"><i class="swatch" style="background:#5CE1E6"></i>Cyan</button>
       <button type="button" data-c="#B8A4FF" aria-pressed="false"><i class="swatch" style="background:#B8A4FF"></i>Lilac</button>
       <button type="button" data-c="#7B93FF" aria-pressed="false"><i class="swatch" style="background:#7B93FF"></i>Cobalt</button>
       <button type="button" data-c="#FFD45C" aria-pressed="false"><i class="swatch" style="background:#FFD45C"></i>Butter</button>
     </div>
-    <p>Coral = design, second colour = code: flip the Design / Code switch to see it. Every other sticker uses it too.</p>
+    <p>Main colour = design, second colour = code: flip the Design / Code switch to see it. Every other sticker uses it too.</p>
   </div>
   <div class="gutter l" aria-hidden="true"></div><div class="gutter r" aria-hidden="true"></div>
 
@@ -191,6 +197,11 @@
     groups.tex.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
     document.body.className = document.body.className.replace(/\btex-\S+/g, "").trim();
     if (b.dataset.tex) document.body.classList.add(b.dataset.tex);
+  }));
+  const mains = document.querySelectorAll("[data-a]");
+  mains.forEach(b => b.addEventListener("click", () => {
+    mains.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    document.documentElement.style.setProperty("--accent", b.dataset.a);
   }));
   groups.c.forEach(b => b.addEventListener("click", () => {
     groups.c.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
