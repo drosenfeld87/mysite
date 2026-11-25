@@ -1,6 +1,6 @@
 # Debbie Rosenfeld — portfolio
 
-Personal portfolio site. Plain HTML styled with Tailwind CSS v4, hosted on GitHub Pages at www.debbierosenfeld.com.
+Personal portfolio site. Plain HTML styled with Tailwind CSS v4, hosted on GitHub Pages at debbierosenfeld.com.
 
 ## Design
 Dark, type-led direction: near-black background with a soft coral-pink and cyan glow and still grain.
