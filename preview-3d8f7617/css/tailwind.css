@@ -30,7 +30,7 @@
   --color-muted: #A8A59F;     /* secondary text (7.9:1 contrast on bg) */
   --color-line: #2A2826;      /* dividers and borders */
   --color-accent: #FF7268;    /* coral pink: accent phrases, numbers, links */
-  --color-accent-deep: #D2473D; /* deeper coral: end of the title hover gradient */
+  --color-accent-deep: #E85A4F; /* deeper coral: end of the title hover gradient */
   --color-accent-2: #5CE1E6;  /* cyan: name sticker, role labels */
 
   /* Fonts: font-display (headlines), font-sans (body) */
