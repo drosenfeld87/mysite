@@ -35,16 +35,16 @@
     --color-accent-2: #5CE1E6;
     --font-display: "Funnel Display", system-ui, sans-serif;
     --text-hero: clamp(4rem, 11vw, 10.5rem);
-    --text-hero--line-height: .92;
-    --text-hero--letter-spacing: -0.03em;
+    --text-hero--line-height: 1;
+    --text-hero--letter-spacing: -0.015em;
     --text-project: clamp(2.2rem, 5vw, 4.5rem);
-    --text-project--line-height: 1;
-    --text-project--letter-spacing: -0.03em;
+    --text-project--line-height: 1.08;
+    --text-project--letter-spacing: -0.01em;
     --text-pull: clamp(2.2rem, 4.4vw, 4.25rem);
-    --text-pull--line-height: 1.02;
-    --text-pull--letter-spacing: -0.03em;
+    --text-pull--line-height: 1.1;
+    --text-pull--letter-spacing: -0.01em;
     --text-lead: clamp(20px, 1.7vw, 24px);
-    --text-lead--line-height: 1.4;
+    --text-lead--line-height: 1.5;
     --spacing-gutter: clamp(20px, 4vw, 56px);
     --spacing-section: clamp(72px, 10vh, 140px);
     --spacing-hero: clamp(48px, 10vh, 120px);
@@ -267,8 +267,8 @@
   .mt-section {
     margin-top: var(--spacing-section);
   }
-  .-mb-\[\.35em\] {
-    margin-bottom: calc(.35em * -1);
+  .-mb-\[\.12em\] {
+    margin-bottom: calc(.12em * -1);
   }
   .mb-1 {
     margin-bottom: var(--spacing);
@@ -285,8 +285,8 @@
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
   }
-  .mb-4\.5 {
-    margin-bottom: calc(var(--spacing) * 4.5);
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
   }
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
@@ -335,6 +335,9 @@
   }
   .max-w-\[34ch\] {
     max-width: 34ch;
+  }
+  .max-w-\[36ch\] {
+    max-width: 36ch;
   }
   .-rotate-3 {
     rotate: calc(3deg * -1);
@@ -389,6 +392,9 @@
   }
   .gap-7 {
     gap: calc(var(--spacing) * 7);
+  }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
   }
   :where(.space-y-1 > :not(:last-child)) {
     --tw-space-y-reverse: 0;
@@ -469,11 +475,11 @@
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
-  .pt-8 {
-    padding-top: calc(var(--spacing) * 8);
-  }
   .pt-12 {
     padding-top: calc(var(--spacing) * 12);
+  }
+  .pt-20 {
+    padding-top: calc(var(--spacing) * 20);
   }
   .pt-hero {
     padding-top: var(--spacing-hero);
@@ -611,6 +617,10 @@
   }
   .ring-ink {
     --tw-ring-color: var(--color-ink);
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .transition-colors {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
@@ -847,8 +857,8 @@
     display: grid;
     grid-template-columns: 3rem minmax(0, auto) 1fr auto;
     align-items: baseline;
-    gap: 16px;
-    padding: 22px 0;
+    gap: 12px 20px;
+    padding: 36px 0;
     &::before {
       counter-increment: track;
       content: counter(track, decimal-leading-zero);
@@ -891,16 +901,16 @@
   .page-title {
     font-family: var(--font-display);
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.015em;
     font-size: clamp(3rem, 7vw, 6rem);
-    line-height: .95;
+    line-height: 1.04;
   }
   .section-title {
     font-family: var(--font-display);
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     font-size: clamp(1.75rem, 3vw, 2.4rem);
-    line-height: 1.05;
+    line-height: 1.15;
   }
   .sub-title {
     font-family: var(--font-display);
@@ -1210,6 +1220,11 @@
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -1237,6 +1252,7 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
     }
   }
 }

@@ -40,16 +40,16 @@
 
   /* Type sizes that scale with the screen: text-hero, text-project … */
   --text-hero: clamp(4rem, 11vw, 10.5rem);             /* "Pixels in, code out." */
-  --text-hero--line-height: .92;
-  --text-hero--letter-spacing: -0.03em;
+  --text-hero--line-height: 1;
+  --text-hero--letter-spacing: -0.015em;
   --text-project: clamp(2.2rem, 5vw, 4.5rem);          /* project names in the set list */
-  --text-project--line-height: 1;
-  --text-project--letter-spacing: -0.03em;
+  --text-project--line-height: 1.08;
+  --text-project--letter-spacing: -0.01em;
   --text-pull: clamp(2.2rem, 4.4vw, 4.25rem);          /* About statement, closing line */
-  --text-pull--line-height: 1.02;
-  --text-pull--letter-spacing: -0.03em;
+  --text-pull--line-height: 1.1;
+  --text-pull--letter-spacing: -0.01em;
   --text-lead: clamp(20px, 1.7vw, 24px);               /* hero intro */
-  --text-lead--line-height: 1.4;
+  --text-lead--line-height: 1.5;
 
   /* Spacing: px-gutter, pt-section, pt-hero */
   --spacing-gutter: clamp(20px, 4vw, 56px);    /* left/right page margin */
@@ -164,7 +164,7 @@
   /* Set list: numbered tracks, dotted leaders, years like song lengths */
   .setlist { list-style: none; counter-reset: track; }
   .track {
-    display: grid; grid-template-columns: 3rem minmax(0, auto) 1fr auto; align-items: baseline; gap: 16px; padding: 22px 0;
+    display: grid; grid-template-columns: 3rem minmax(0, auto) 1fr auto; align-items: baseline; gap: 12px 20px; padding: 36px 0;
     &::before { counter-increment: track; content: counter(track, decimal-leading-zero); color: var(--color-accent); font-weight: 700; }
     & .dots { border-bottom: 2px dotted #4A4744; translate: 0 -.4em; }
     & .track-meta { grid-column: 2 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; color: var(--color-muted); font-size: 17px; }
@@ -180,12 +180,12 @@
     & :is(p, li) { max-width: 68ch; } /* comfortable reading width */
   }
   .page-title {
-    font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em;
-    font-size: clamp(3rem, 7vw, 6rem); line-height: .95;
+    font-family: var(--font-display); font-weight: 800; letter-spacing: -0.015em;
+    font-size: clamp(3rem, 7vw, 6rem); line-height: 1.04;
   }
   .section-title {
-    font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em;
-    font-size: clamp(1.75rem, 3vw, 2.4rem); line-height: 1.05;
+    font-family: var(--font-display); font-weight: 800; letter-spacing: -0.01em;
+    font-size: clamp(1.75rem, 3vw, 2.4rem); line-height: 1.15;
   }
   .sub-title { font-family: var(--font-display); font-weight: 700; }
 
