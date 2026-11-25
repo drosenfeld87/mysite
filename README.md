@@ -44,6 +44,9 @@ npm run build    # one-off, minified build: run before committing
 ```
 A class that isn't already used somewhere on the site won't work until you rebuild.
 
+**Cache tip:** the pages load `css/site.css?v=…` and `js/site.js?v=…`. After rebuilding, bump that number in the
+pages' `<link>` and `<script>` tags so browsers fetch the new files instead of an old cached copy.
+
 ## Contact form (sends to Gmail)
 Uses FormSubmit (formsubmit.co). To hide the email address from the page source, swap it in the form's
 action URL for the random alias FormSubmit provides after activation.
