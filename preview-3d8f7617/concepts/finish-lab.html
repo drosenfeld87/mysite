@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-  :root { --bg:#0E0D0C; --ink:#F1EEE8; --muted:#A8A59F; --line:#2A2826; --accent:#FF6E80; --g:clamp(20px,4vw,56px); }
+  :root { --bg:#0E0D0C; --ink:#F1EEE8; --muted:#A8A59F; --line:#2A2826; --accent:#FF7268; --g:clamp(20px,4vw,56px); }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--ink); font:400 19px/1.6 var(--body-f); }
   a { color:inherit; }
@@ -49,8 +49,8 @@
   .row p { margin:8px 0 0; color:var(--muted); font-size:17px; }
   @media (hover:hover) { .row:hover h3 { font-style:italic; color:var(--accent); } }
   .stickers { display:flex; gap:8px; }
-  .tag { font-family:var(--sticker-f); display:inline-block; padding:4px 10px; border-radius:8px; background:var(--accent); color:#160C08; box-shadow:0 0 0 2px var(--ink); font-size:12px; font-weight:900; white-space:nowrap; }
-  .tag:nth-child(odd){rotate:-3deg} .tag:nth-child(even){rotate:2deg; background:var(--accent2);}
+  .tag { font-family:var(--sticker-f); display:inline-block; padding:4px 10px; border-radius:8px; background:var(--accent2); color:#160C08; box-shadow:0 0 0 2px var(--ink); font-size:12px; font-weight:900; white-space:nowrap; }
+  .tag:nth-child(odd){rotate:-3deg} .tag:nth-child(even){rotate:2deg;}
   .note { color:var(--muted); font-size:15px; padding:0 var(--g) 60px; }
 
 
@@ -125,8 +125,8 @@
     </div>
     <div class="grp" role="group" aria-label="Main colour"><span>Main colour:</span>
       <button type="button" data-a="#FF7A59" aria-pressed="false"><i class="swatch" style="background:#FF7A59"></i>Coral (current)</button>
-      <button type="button" data-a="#FF7268" aria-pressed="false"><i class="swatch" style="background:#FF7268"></i>Coral pink</button>
-      <button type="button" data-a="#FF6E80" aria-pressed="true"><i class="swatch" style="background:#FF6E80"></i>Pinker</button>
+      <button type="button" data-a="#FF7268" aria-pressed="true"><i class="swatch" style="background:#FF7268"></i>Coral pink</button>
+      <button type="button" data-a="#FF6E80" aria-pressed="false"><i class="swatch" style="background:#FF6E80"></i>Pinker</button>
       <button type="button" data-a="#FF6F9A" aria-pressed="false"><i class="swatch" style="background:#FF6F9A"></i>Rosy</button>
     </div>
     <div class="grp" role="group" aria-label="Second colour"><span>Second colour:</span>
@@ -135,7 +135,7 @@
       <button type="button" data-c="#7B93FF" aria-pressed="false"><i class="swatch" style="background:#7B93FF"></i>Cobalt</button>
       <button type="button" data-c="#FFD45C" aria-pressed="false"><i class="swatch" style="background:#FFD45C"></i>Butter</button>
     </div>
-    <p>Main colour = design, second colour = code: flip the Design / Code switch to see it. Every other sticker uses it too.</p>
+    <p>Main colour = design, second colour = code: flip the Design / Code switch to see it. The role labels use it too.</p>
   </div>
   <div class="gutter l" aria-hidden="true"></div><div class="gutter r" aria-hidden="true"></div>
 
