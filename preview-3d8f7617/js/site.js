@@ -98,6 +98,7 @@ rememberedSwitch({
 (() => {
   const h1 = document.querySelector("h1[data-swap]");
   if (!h1 || reduceMotion || !matchMedia("(hover: hover)").matches) return;
+  const WEIGHTS = [300, 500, 800];  // Barlow Condensed weights loaded in the page head
   const letters = [];
   h1.querySelectorAll("[data-weight]").forEach(part => {
     const weight = +part.dataset.weight;
@@ -117,8 +118,8 @@ rememberedSwitch({
     frame = 0;
     for (const l of letters) {
       const k = Math.max(0, 1 - Math.hypot(px - l.x, py - l.y) / 240);     // 1 under the pointer, 0 far away
-      const w = Math.round(l.weight + ((l.weight === 800 ? 300 : 800) - l.weight) * k);
-      l.el.style.fontVariationSettings = k ? `"wght" ${w}` : "";
+      const w = l.weight + ((l.weight === 800 ? 300 : 800) - l.weight) * k;
+      l.el.style.fontWeight = k ? String(WEIGHTS.reduce((a, b) => Math.abs(b - w) < Math.abs(a - w) ? b : a)) : "";  // snap to a loaded weight
     }
   };
   h1.addEventListener("pointermove", e => {

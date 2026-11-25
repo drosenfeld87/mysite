@@ -8,9 +8,9 @@
   <meta name="description" content="Debbie Rosenfeld is a senior product designer and front-end developer in Toronto.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body). -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
-  <link rel="stylesheet" href="css/site.css?v=20261125131722">
+  <!-- Fonts: Barlow Condensed (headlines), Barlow (body) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;500;700;800&family=Barlow:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/site.css?v=20261125140234">
 </head>
 <body>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
@@ -36,11 +36,12 @@
     <!-- ============ HERO ============ -->
     <section class="px-gutter pt-hero pb-10">
       <p class="mb-4 leading-none"><span class="sticker">Debbie Rosenfeld</span></p>
-      <h1 class="display text-hero font-extrabold" data-swap>
+      <h1 class="display text-hero font-extrabold uppercase" data-swap>
         <span class="sr-only">Pixels in, code out.</span>
-        <span aria-hidden="true" data-weight="800">Pixels in, </span><span class="font-light whitespace-nowrap text-accent" aria-hidden="true" data-weight="300">code out.</span>
+        <span aria-hidden="true" data-weight="800">Pixels in, </span><span class="whitespace-nowrap text-accent" aria-hidden="true" data-weight="800">code out.</span>
       </h1>
-      <p class="mt-10 max-w-[36ch] text-lead">Senior product designer who codes. I design product experiences, then build them, down to the last class name.</p>
+      <div class="accent-rule mt-[clamp(16px,3vw,40px)] h-1.5 w-[min(28%,240px)] bg-accent" aria-hidden="true"></div>
+      <p class="mt-10 max-w-[30ch] text-lead">Senior product designer who codes. I design product experiences, then build them, down to the last class name.</p>
       <div class="mt-9 flex flex-wrap gap-8">
         <a class="link-cta" href="#work">See selected work &darr;</a>
         <a class="link-cta" href="#contact">Get in touch &rarr;</a>
@@ -54,25 +55,25 @@
       <h2 id="work-h" class="sr-only">Selected work</h2>
       <ol class="setlist">
         <li><a class="track border-t border-line" href="projects/project-1.html">
-          <h3 class="display text-project font-extrabold">CIO Analytics</h3>
+          <h3 class="display text-project font-extrabold uppercase">CIO Analytics</h3>
           <span class="dots" aria-hidden="true"></span>
           <span class="font-medium tabular-nums">2025–now</span>
           <span class="track-meta"><span>AI-powered analytics platform for IT leaders. <span class="text-ink">Product design and front end, alongside back-end developers and data engineers.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Product design</span><span class="tag">Front-end dev</span></span></span>
         </a></li>
         <li><a class="track border-t border-line" href="projects/project-2.html">
-          <h3 class="display text-project font-extrabold">Research Infographics</h3>
+          <h3 class="display text-project font-extrabold uppercase">Research Infographics</h3>
           <span class="dots" aria-hidden="true"></span>
           <span class="font-medium tabular-nums">2019–now</span>
           <span class="track-meta"><span>Visual frameworks for Infotech research. <span class="text-ink">Wireframe to final design.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Information design</span><span class="tag">Visual design</span></span></span>
         </a></li>
         <li><a class="track border-t border-line" href="projects/project-3.html">
-          <h3 class="display text-project font-extrabold">Diagnostic Reports</h3>
+          <h3 class="display text-project font-extrabold uppercase">Diagnostic Reports</h3>
           <span class="dots" aria-hidden="true"></span>
           <span class="font-medium tabular-nums">2024–25</span>
           <span class="track-meta"><span>Reports that benchmark IT teams. <span class="text-ink">Designed the full report; coded part of it.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Information design</span><span class="tag">Report design</span></span></span>
         </a></li>
         <li><a class="track border-t border-line" href="projects/project-4.html">
-          <h3 class="display text-project font-extrabold">Request a Demo</h3>
+          <h3 class="display text-project font-extrabold uppercase">Request a Demo</h3>
           <span class="dots" aria-hidden="true"></span>
           <span class="font-medium tabular-nums">2023</span>
           <span class="track-meta"><span>Landing page and sign-up flow. <span class="text-ink">Designed and built the page.</span></span><span class="flex flex-wrap gap-2"><span class="tag">Visual design</span><span class="tag">UX</span><span class="tag">Front-end dev</span></span></span>
@@ -82,23 +83,23 @@
 
     <!-- ============ ABOUT: big bio on the left, a small CV column on the right ============ -->
     <section class="px-gutter pt-section" id="about" data-window="about_me.txt" aria-labelledby="about-h">
-      <h2 id="about-h" class="meta border-b border-line pb-3.5">About</h2>
+      <h2 id="about-h" class="border-b border-accent-2 pb-3.5 text-[13px] font-bold uppercase tracking-[.14em] text-accent-2">About</h2>
       <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-12">
-        <p class="display col-span-full text-bio font-light lg:col-span-7">I&rsquo;m Debbie: 15 years in graphic design, 10 in web and product. Today I design and build <strong class="font-bold">CIO Analytics</strong> at Infotech.</p>
+        <p class="col-span-full text-bio lg:col-span-7">I&rsquo;m Debbie: 15 years in graphic design, 10 in web and product. Today I design and build <strong class="font-bold">CIO Analytics</strong> at Infotech.</p>
 
         <!-- Quick facts: one line each -->
         <dl class="col-span-full grid content-start gap-6 text-[15px] leading-relaxed lg:col-span-4 lg:col-start-9">
           <div>
-            <dt class="text-muted">Now</dt>
-            <dd>Senior Product Designer, Infotech</dd>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Now</dt>
+            <dd class="text-[17px] font-medium">Senior Product Designer, Infotech</dd>
           </div>
           <div>
-            <dt class="text-muted">Tools</dt>
-            <dd>Figma, Adobe CC, Tailwind CSS, Rails, Hotwire</dd>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Tools</dt>
+            <dd class="text-[17px] font-medium">Figma, Adobe CC, Tailwind CSS, Rails, Hotwire</dd>
           </div>
           <div>
-            <dt class="text-muted">Off the clock</dt>
-            <dd>Bass, type art, horror, cats</dd>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Off the clock</dt>
+            <dd class="text-[17px] font-medium">Bass, type art, horror, cats</dd>
           </div>
         </dl>
       </div>
@@ -108,7 +109,7 @@
     <section class="px-gutter pt-section" id="contact" data-window="contact.html" aria-labelledby="contact-h">
       <div class="grid grid-cols-12 gap-6 border-t-2 border-ink pt-12">
         <div class="col-span-full lg:col-span-6">
-          <h2 id="contact-h" class="display text-pull font-extrabold">Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
+          <h2 id="contact-h" class="display text-pull font-extrabold uppercase">Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
           <div class="mt-7 flex flex-wrap gap-7">
             <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
           </div>
@@ -162,6 +163,6 @@
       }
     })();
   </script>
-  <script src="js/site.js?v=20261125131722" defer></script>
+  <script src="js/site.js?v=20261125140234" defer></script>
 </body>
 </html>

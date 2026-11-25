@@ -3,9 +3,9 @@
 Personal portfolio site. Plain HTML styled with Tailwind CSS v4, hosted on GitHub Pages at debbierosenfeld.com.
 
 ## Design
-Dark, type-led direction: near-black background with a soft coral-pink and cyan glow and still grain.
-Funnel Display for headlines, Funnel Sans for body text. Coral pink (#FF7268) for accent phrases, numbers and links;
-cyan (#5CE1E6) for the name sticker and role labels. Projects are listed as a numbered set list.
+Dark, type-led direction ("Nocturne"): near-black plum background with a low wine glow, a vignette and still grain.
+Barlow Condensed in caps for headlines, Barlow (light) for body text. Raspberry (#DD5A8C) for accent phrases, numbers
+and links; mauve (#C9A0B4) for the name label, role labels and the About heading. Projects are listed as a numbered set list.
 Signature: a Now / Y2K switch in the header that turns the site into a 2002 personal homepage.
 
 ## Structure
@@ -23,7 +23,7 @@ The holding page at the root has its own small inline styles, since it's replace
 
 ## Editing styles (Tailwind)
 Style pages with Tailwind classes in the HTML, as usual. Site-specific classes come from the tokens in `tailwind.css`:
-- Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent` (coral pink), `bg-accent-2` (cyan), `bg-surface`
+- Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent` (raspberry), `text-accent-2` (mauve), `bg-surface`
 - Fonts: `font-display`, `font-sans`
 - Sizes that scale with the screen: `text-hero`, `text-project`, `text-pull`, `text-bio`, `text-lead`
 - Spacing: `px-gutter` (page side margin), `pt-section`, `pt-hero`
@@ -35,8 +35,8 @@ Components, for pieces repeated on many pages: `display` (headline font), `meta`
 
 Switch: the Now / Y2K buttons are `<button data-value="…">` inside `.era-switch`; js/site.js remembers the choice between pages.
 
-Headline weight swap (home page): the `<h1 data-swap>` holds a hidden full sentence for screen readers and two
-`aria-hidden` parts with `data-weight="800"` / `data-weight="300"`. Off for touch screens and reduced motion.
+Headline weight swap (home page): the `<h1 data-swap>` holds a hidden full sentence for screen readers and
+`aria-hidden` parts with `data-weight`; letters near the pointer step between the loaded weights (300 / 500 / 800). Off for touch screens and reduced motion.
 
 Y2K mode: the Now / Y2K switch turns the site into a 2002 personal homepage. Its styles are section 4 of
 `tailwind.css`. Give a section `data-window="name.exe"` to make it a Windows 98 window in Y2K mode;
