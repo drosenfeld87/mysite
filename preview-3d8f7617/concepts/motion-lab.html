@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Motion lab · Debbie Rosenfeld — Senior Product Designer &amp; Front-End Developer</title>
+  <meta name="description" content="Debbie Rosenfeld is a senior product designer and front-end developer in Toronto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body), JetBrains Mono (Code view labels) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="../css/site.css?v=202611251008">
+  <style>
+    /* ===== Motion lab ===== */
+    .lab { position:sticky; top:0; z-index:60; display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px; padding:12px var(--spacing-gutter); background:#1B1A18; border-bottom:1px solid var(--color-line); font-size:14px; }
+    .lab b { color:var(--color-muted); font-weight:500; }
+    .lab label { display:inline-flex; gap:6px; align-items:center; cursor:pointer; }
+    .lab input { accent-color:var(--color-accent-2); width:16px; height:16px; }
+    .masthead { top:var(--lab-h, 46px); }
+    h1 .ch { display:inline-block; white-space:pre; transition:font-variation-settings .25s ease; }
+
+    /* 1. Typing caret */
+    .caret { display:inline-block; width:.06em; height:.8em; margin-left:.04em; background:var(--color-accent); vertical-align:-.05em; animation:blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity:0; } }
+    .ch.mono { font-family:var(--font-mono); font-weight:500; font-size:.82em; }
+
+    /* 2. Draggable stickers */
+    html.fx-drag .sticker { cursor:grab; touch-action:none; user-select:none; position:relative; z-index:5; }
+    html.fx-drag .sticker.dragging { cursor:grabbing; z-index:50; filter:drop-shadow(0 10px 14px rgb(0 0 0 / .45)); }
+
+    /* 3. Now playing equalizer */
+    .track { position:relative; }
+    .eq { position:absolute; left:0; top:calc(36px + .35em); display:none; gap:3px; align-items:flex-end; height:18px; }
+    .eq i { width:4px; background:var(--color-accent); border-radius:1px; animation:eq 0.9s ease-in-out infinite; }
+    .eq i:nth-child(2) { animation-delay:-.3s; } .eq i:nth-child(3) { animation-delay:-.6s; } .eq i:nth-child(4) { animation-delay:-.15s; }
+    @keyframes eq { 0%,100% { height:4px; } 50% { height:18px; } }
+    html.fx-eq .track:is(:hover,:focus-visible)::before { color:transparent; }
+    html.fx-eq .track:is(:hover,:focus-visible) .eq { display:flex; }
+    @media (prefers-reduced-motion: reduce) { .eq i { animation:none; height:12px; } }
+
+    /* 5. Measure mode */
+    .measure { position:fixed; z-index:70; pointer-events:none; outline:1px solid var(--color-accent-2); background:color-mix(in srgb, var(--color-accent-2) 10%, transparent); display:none; }
+    .measure span { position:absolute; left:50%; top:100%; translate:-50% 6px; padding:3px 6px; border-radius:4px; background:var(--color-accent-2); color:#0B1A1B; font:600 11px/1 var(--font-mono); white-space:nowrap; }
+    .hint { color:var(--color-muted); font-size:15px; }
+
+    /* 6. Cat */
+    .cat { position:fixed; left:-120px; bottom:8px; z-index:80; width:96px; pointer-events:none; color:var(--color-ink); }
+    .cat.walk { animation:walk 7s linear forwards; }
+    .cat svg { display:block; animation:bob .4s ease-in-out infinite; }
+    .cat .say { position:absolute; left:58px; top:-30px; padding:4px 9px; border-radius:10px; background:var(--color-accent-2); color:#0B1A1B; font:700 13px/1 var(--font-display); }
+    @keyframes walk { to { left:calc(100vw + 40px); } }
+    @keyframes bob { 50% { translate:0 -3px; } }
+    @media (prefers-reduced-motion: reduce) { .cat.walk { animation:none; left:24px; } .cat svg { animation:none; } }
+  </style>
+</head>
+<body>
+  <div class="lab" role="group" aria-label="Motion experiments">
+    <b>Motion lab:</b>
+    <label><input type="checkbox" data-fx="intro" checked> 1 · Pixels in, code out (reload to replay)</label>
+    <label><input type="checkbox" data-fx="drag" checked> 2 · Peelable stickers</label>
+    <label><input type="checkbox" data-fx="eq" checked> 3 · Now playing</label>
+    <label><input type="checkbox" data-fx="weight" checked> 4 · Weight swap</label>
+    <label><input type="checkbox" data-fx="measure" checked> 5 · Measure (hold Option/Alt)</label>
+    <label><input type="checkbox" data-fx="cat" checked> 6 · Type &ldquo;meow&rdquo;</label>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="pixelate" x="0" y="0" width="100%" height="100%">
+      <feFlood x="0" y="0" height="1" width="1" result="dot"/>
+      <feComposite id="px-tile" width="12" height="12" in="dot" result="cell"/>
+      <feTile in="cell" result="grid"/>
+      <feComposite in="SourceGraphic" in2="grid" operator="in"/>
+      <feMorphology id="px-grow" operator="dilate" radius="6"/>
+    </filter>
+  </svg>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="masthead flex items-center justify-end gap-6 px-gutter py-5.5">
+    <div class="flex items-center gap-3.5 lg:gap-5.5">
+      <nav class="flex gap-3.5 lg:gap-5.5" aria-label="Main">
+        <a class="hover:text-accent" href="#work">Work</a>
+        <a class="hover:text-accent" href="#about">About</a>
+        <a class="hover:text-accent" href="#contact">Contact</a>
+      </nav>
+      <div class="view-switch max-sm:hidden" role="group" aria-label="View">
+        <button type="button" data-view="design" aria-pressed="true">Design</button>
+        <button type="button" data-view="code" aria-pressed="false">Code</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="relative px-gutter pt-hero pb-10">
+      <span class="rl top-0 left-[calc(var(--spacing-gutter)-24px)] h-(--spacing-hero)" aria-hidden="true"><span>pt-hero · clamp(48px, 10vh, 120px)</span></span>
+      <p class="relative z-10 -mb-[.12em] ml-1 leading-none"><span class="sticker sticker-name" data-annotate>Debbie Rosenfeld</span></p>
+      <h1 class="display text-hero font-extrabold" data-annotate="right">Pixels in, <span class="font-light whitespace-nowrap text-accent">code out.</span></h1>
+      <p class="mt-10 max-w-[36ch] text-lead" data-annotate>Senior product designer who codes. I design product experiences, then build them, down to the last class name.</p>
+      <div class="mt-9 flex flex-wrap gap-8">
+        <a class="link-cta" href="#work">See selected work &darr;</a>
+        <a class="link-cta" href="#contact">Get in touch &rarr;</a>
+      </div>
+    </section>
+
+    <!-- ============ WORK: a set list ============ -->
+    <section class="px-gutter pt-20" id="work" aria-labelledby="work-h">
+      <h2 id="work-h" class="meta mb-4">Set list · selected work, 2019 to now</h2>
+      <ol class="setlist">
+        <li><a class="track border-t border-line" href="../projects/project-1.html" data-annotate="right">
+          <h3 class="display text-project font-extrabold transition-colors">CIO Analytics</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2025–now</span>
+          <span class="track-meta"><span>AI-powered analytics platform for IT leaders. <span class="text-ink">Product design and front end, alongside back-end developers and data engineers.</span></span><span class="flex flex-wrap gap-2"><span class="sticker">Product design</span><span class="sticker">Front-end dev</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="../projects/project-2.html">
+          <h3 class="display text-project font-extrabold transition-colors">Research Infographics</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2019–now</span>
+          <span class="track-meta"><span>Visual frameworks for Infotech research. <span class="text-ink">Wireframe to final design.</span></span><span class="flex flex-wrap gap-2"><span class="sticker">Information design</span><span class="sticker">Visual design</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="../projects/project-3.html">
+          <h3 class="display text-project font-extrabold transition-colors">Diagnostic Reports</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2024–25</span>
+          <span class="track-meta"><span>Reports that benchmark IT teams. <span class="text-ink">Designed the full report; coded part of it.</span></span><span class="flex flex-wrap gap-2"><span class="sticker">Information design</span><span class="sticker">Report design</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="../projects/project-4.html">
+          <h3 class="display text-project font-extrabold transition-colors">Request a Demo</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2023</span>
+          <span class="track-meta"><span>Landing page and sign-up flow. <span class="text-ink">Designed and built the page.</span></span><span class="flex flex-wrap gap-2" data-annotate><span class="sticker">Visual design</span><span class="sticker">UX</span><span class="sticker">Front-end dev</span></span></span>
+        </a></li>
+      </ol>
+    </section>
+
+    <!-- ============ ABOUT: big bio on the left, a small CV column on the right ============ -->
+    <section class="px-gutter pt-section" id="about" aria-labelledby="about-h">
+      <h2 id="about-h" class="meta border-b border-line pb-3.5">About</h2>
+      <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-14">
+        <div class="display col-span-full text-bio font-light lg:col-span-8" data-annotate>
+          <p>I&rsquo;m Debbie, a <strong class="font-bold">senior product designer who codes</strong>. I bring 15 years of graphic design and 10 in web and product design, most of it at print and web companies.</p>
+          <p class="mt-6">Today I work at <strong class="font-bold">Infotech</strong>, where I design and build the interface for <strong class="font-bold">CIO Analytics</strong>, an AI-powered analytics platform for IT leaders, alongside research infographics and diagnostic reports.</p>
+        </div>
+
+        <!-- CV column: short lists, easy to scan -->
+        <dl class="col-span-full grid content-start gap-7 text-[15px] leading-relaxed sm:grid-cols-2 lg:col-span-3 lg:col-start-10 lg:grid-cols-1">
+          <div>
+            <dt class="font-semibold">Now</dt>
+            <dd class="text-muted">Infotech, Senior Product Designer</dd>
+            <dd class="text-muted">CIO Analytics, design &amp; front end</dd>
+          </div>
+          <div>
+            <dt class="font-semibold">Tools</dt>
+            <dd class="text-muted">Figma, Illustrator, Photoshop</dd>
+            <dd class="text-muted">Tailwind CSS, Ruby on Rails</dd>
+            <dd class="text-muted">ViewComponent, Hotwire, Highcharts</dd>
+          </div>
+          <div>
+            <dt class="font-semibold">Off the clock</dt>
+            <dd class="text-muted">Bass, mostly metal and punk</dd>
+            <dd class="text-muted">Graffiti-inspired and typographic art</dd>
+            <dd class="text-muted">A lot of horror</dd>
+            <dd class="text-muted">A cat or two nearby</dd>
+          </div>
+          <div>
+            <dt class="font-semibold">Elsewhere</dt>
+            <dd><a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></dd>
+            <dd><a class="link-cta" href="#contact">Send a message</a></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="px-gutter pt-section" id="contact" aria-labelledby="contact-h">
+      <div class="grid grid-cols-12 gap-6 border-t-2 border-ink pt-12">
+        <div class="col-span-full lg:col-span-6">
+          <h2 id="contact-h" class="display text-pull font-extrabold" data-annotate>Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
+          <div class="mt-7 flex flex-wrap gap-7">
+            <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+
+        <!-- Sends to your Gmail through FormSubmit (see README) -->
+        <form class="col-span-full grid gap-2 lg:col-span-5 lg:col-start-8" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST" data-annotate>
+          <!-- FormSubmit settings -->
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://debbierosenfeld.com/preview-3d8f7617/thanks.html">
+          <!-- Spam trap: hidden from people, so only bots fill it in -->
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+          <label class="meta mt-2" for="e-name">Name</label>
+          <input class="field" id="e-name" name="name" autocomplete="name" required>
+          <label class="meta mt-2" for="e-email">Email</label>
+          <input class="field" id="e-email" name="email" type="email" autocomplete="email" required>
+          <label class="meta mt-2" for="e-msg">Message</label>
+          <textarea class="field" id="e-msg" name="message" rows="4" required></textarea>
+          <button class="btn mt-4.5" type="submit">Send &rarr;</button>
+          <p class="meta mt-2.5">All fields required. I usually reply within a few days.</p>
+          <p class="hint">Psst: hold Option/Alt and hover anything to measure it.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
+    <span class="meta">&copy; 2026 Debbie Rosenfeld</span>
+    <span class="meta" id="visits" hidden>Visitor no. <span class="text-accent" id="visit-count"></span></span>
+    <span class="meta">Designed &amp; built by me</span>
+  </footer>
+
+
+  <script src="../js/site.js?v=202611251008" defer></script>
+<script>
+/* ===== Motion lab experiments ===== */
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const on = fx => root.classList.contains("fx-" + fx);
+  document.querySelectorAll(".lab [data-fx]").forEach(cb => {
+    const apply = () => root.classList.toggle("fx-" + cb.dataset.fx, cb.checked);
+    apply(); cb.addEventListener("change", apply);
+  });
+  root.style.setProperty("--lab-h", document.querySelector(".lab").offsetHeight + "px");
+
+  // Split the headline into letters (screen readers still get the whole sentence)
+  const h1 = document.querySelector("h1");
+  h1.setAttribute("aria-label", h1.textContent.trim());
+  const split = el => { const t = el.textContent; el.textContent = ""; return [...t].map(c => { const s = document.createElement("span"); s.className = "ch"; s.textContent = c; s.setAttribute("aria-hidden", "true"); el.append(s); return s; }); };
+  const codeSpan = h1.querySelector("span");
+  const pixelsText = document.createElement("span"); pixelsText.textContent = h1.firstChild.textContent; h1.firstChild.replaceWith(pixelsText);
+  const pix = split(pixelsText), code = split(codeSpan);
+  pix.forEach(s => s.dataset.base = 800); code.forEach(s => s.dataset.base = 300);
+
+  // 1. Pixels in: resolve from chunky pixels. Code out: type it, mono first, then display font.
+  if (on("intro") && !reduce) {
+    const tile = document.getElementById("px-tile"), grow = document.getElementById("px-grow");
+    pixelsText.style.filter = "url(#pixelate)";
+    const sizes = [28, 22, 16, 12, 8, 5, 3];
+    sizes.forEach((sz, i) => setTimeout(() => { tile.setAttribute("width", sz); tile.setAttribute("height", sz); grow.setAttribute("radius", sz / 2); }, 120 + i * 110));
+    setTimeout(() => { pixelsText.style.filter = ""; }, 120 + sizes.length * 110);
+    code.forEach(c => c.style.visibility = "hidden");
+    const caret = document.createElement("span"); caret.className = "caret"; caret.setAttribute("aria-hidden", "true"); codeSpan.prepend(caret);
+    const start = 120 + sizes.length * 110 + 150;
+    code.forEach((c, i) => setTimeout(() => {
+      c.style.visibility = ""; c.classList.add("mono"); c.after(caret);
+      setTimeout(() => c.classList.remove("mono"), 260);
+    }, start + i * 95));
+    setTimeout(() => caret.remove(), start + code.length * 95 + 1600);
+  }
+
+  // 2. Peelable stickers: drag anywhere; double-click to put back
+  document.querySelectorAll(".sticker").forEach(st => {
+    let sx, sy, ox = 0, oy = 0, moved = false;
+    st.addEventListener("pointerdown", e => {
+      if (!on("drag")) return;
+      e.preventDefault(); st.setPointerCapture(e.pointerId); st.classList.add("dragging");
+      sx = e.clientX - ox; sy = e.clientY - oy; moved = false;
+    });
+    st.addEventListener("pointermove", e => {
+      if (!st.classList.contains("dragging")) return;
+      ox = e.clientX - sx; oy = e.clientY - sy; if (Math.abs(ox) + Math.abs(oy) > 3) moved = true;
+      st.style.translate = `${ox}px ${oy}px`;
+    });
+    st.addEventListener("pointerup", () => st.classList.remove("dragging"));
+    st.addEventListener("click", e => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    st.closest("a")?.addEventListener("click", e => { if (moved) { e.preventDefault(); moved = false; } });
+    st.addEventListener("dblclick", () => { ox = oy = 0; st.style.translate = ""; });
+  });
+
+  // 3. Now playing: equalizer bars in place of the track number
+  document.querySelectorAll(".track").forEach(t => { const eq = document.createElement("span"); eq.className = "eq"; eq.setAttribute("aria-hidden", "true"); eq.innerHTML = "<i></i><i></i><i></i><i></i>"; t.append(eq); });
+
+  // 4. Weight swap: near the pointer, heavy letters go light and light letters go heavy
+  const letters = [...pix, ...code];
+  h1.addEventListener("pointermove", e => {
+    if (!on("weight") || reduce) return;
+    letters.forEach(l => {
+      const r = l.getBoundingClientRect();
+      const k = Math.max(0, 1 - Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)) / 240);
+      const base = +l.dataset.base, target = base === 800 ? 300 : 800;
+      l.style.fontVariationSettings = `"wght" ${Math.round(base + (target - base) * k)}`;
+    });
+  });
+  h1.addEventListener("pointerleave", () => letters.forEach(l => l.style.fontVariationSettings = ""));
+
+  // 5. Measure mode: hold Option/Alt and hover anything
+  const box = document.createElement("div"); box.className = "measure"; box.innerHTML = "<span></span>"; box.setAttribute("aria-hidden", "true"); document.body.append(box);
+  let alt = false, last = null;
+  const show = el => {
+    if (!el || !alt || !on("measure") || el === document.body || el.closest(".lab")) { box.style.display = "none"; return; }
+    const r = el.getBoundingClientRect();
+    Object.assign(box.style, { display: "block", left: r.left + "px", top: r.top + "px", width: r.width + "px", height: r.height + "px" });
+    box.firstChild.textContent = `${Math.round(r.width)} × ${Math.round(r.height)}`;
+  };
+  addEventListener("keydown", e => { if (e.key === "Alt") { alt = true; show(last); } });
+  addEventListener("keyup", e => { if (e.key === "Alt") { alt = false; show(null); } });
+  addEventListener("blur", () => { alt = false; show(null); });
+  addEventListener("pointermove", e => { last = e.target; show(last); });
+  addEventListener("scroll", () => show(last), { passive: true });
+
+  // 6. Type "meow": a cat strolls across the bottom of the screen
+  let typed = "";
+  addEventListener("keydown", e => {
+    if (!on("cat") || e.target.closest("input, textarea")) return;
+    typed = (typed + e.key.toLowerCase()).slice(-4);
+    if (typed !== "meow" || document.querySelector(".cat")) return;
+    const cat = document.createElement("div"); cat.className = "cat walk"; cat.setAttribute("role", "img"); cat.setAttribute("aria-label", "A cat walks by");
+    cat.innerHTML = `<span class="say">meow</span><svg viewBox="0 0 120 70" fill="currentColor" aria-hidden="true">
+      <path d="M18 34c-9-2-14-10-12-16 1-3 5-3 6 0 2 6 6 9 12 10z"/>
+      <ellipse cx="52" cy="40" rx="34" ry="17"/>
+      <circle cx="92" cy="30" r="14"/><path d="M82 20l2-14 9 10zM96 16l9-10 1 14z"/>
+      <rect x="26" y="50" width="7" height="18" rx="3"/><rect x="40" y="52" width="7" height="16" rx="3"/>
+      <rect x="62" y="52" width="7" height="16" rx="3"/><rect x="74" y="50" width="7" height="18" rx="3"/>
+      <circle cx="88" cy="28" r="2" fill="#0E0D0C"/><circle cx="97" cy="28" r="2" fill="#0E0D0C"/></svg>`;
+    document.body.append(cat);
+    setTimeout(() => cat.remove(), reduce ? 2500 : 7200);
+  });
+})();
+</script>
+</body>
+</html>
