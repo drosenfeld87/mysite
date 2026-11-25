@@ -65,3 +65,19 @@
     io.observe(v);
   });
 })();
+
+/* Design / Code switch: Code view shows each labelled element's Tailwind classes,
+   the column grid and redlines. The choice is remembered between pages. */
+(() => {
+  const buttons = document.querySelectorAll(".view-switch [data-view]");
+  if (!buttons.length) return;
+  const set = view => {
+    document.documentElement.classList.toggle("spec", view === "code");
+    buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
+    try { localStorage.setItem("view", view); } catch {}
+  };
+  let saved = "design";
+  try { saved = localStorage.getItem("view") || "design"; } catch {}
+  set(saved);
+  buttons.forEach(b => b.addEventListener("click", () => set(b.dataset.view)));
+})();

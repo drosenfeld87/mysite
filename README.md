@@ -3,8 +3,10 @@
 Personal portfolio site. Plain HTML styled with Tailwind CSS v4, hosted on GitHub Pages at www.debbierosenfeld.com.
 
 ## Design
-Editorial, type-led direction: flat near-black background, one coral accent (#FF7A59), still film grain,
-Mona Sans (condensed) for display type, Satoshi for body text, JetBrains Mono for labels.
+Dark, type-led direction: near-black background with a soft coral-pink and cyan glow and still grain.
+Funnel Display for headlines, Funnel Sans for body text. Coral pink (#FF7268) for accent phrases, numbers and links;
+cyan (#5CE1E6) for the name sticker, role labels and the Code view. Projects are listed as a numbered set list.
+Signature: a Design / Code switch in the header that shows each labelled element's Tailwind classes, the column grid and redlines.
 
 ## Structure
 - `index.html` (repo root): the public "Coming soon" holding page
@@ -21,15 +23,18 @@ The holding page at the root has its own small inline styles, since it's replace
 
 ## Editing styles (Tailwind)
 Style pages with Tailwind classes in the HTML, as usual. Site-specific classes come from the tokens in `tailwind.css`:
-- Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent`, `bg-surface`
-- Fonts: `font-display`, `font-sans`, `font-mono`; weights `font-heavy` (750) and `font-strong` (650)
-- Sizes that scale with the screen: `text-hero`, `text-contact`, `text-project`, `text-pull`, `text-lead`
-- Spacing: `px-gutter` (page side margin), `pt-section`, `py-hero`
+- Colours: `bg-bg`, `text-ink`, `text-muted`, `border-line`, `text-accent` (coral pink), `bg-accent-2` (cyan), `bg-surface`
+- Fonts: `font-display`, `font-sans`, `font-mono` (Code view only)
+- Sizes that scale with the screen: `text-hero`, `text-project`, `text-pull`, `text-lead`
+- Spacing: `px-gutter` (page side margin), `pt-section`, `pt-hero`
 - Breakpoint: `lg:` means 900px and wider; `max-lg:` means narrower than 900px
 
-Components, for pieces repeated on many pages: `display` (condensed headline font), `mono` (small uppercase label),
-`sticker`, `label` (tilted coral tag), `chip` (grey tool tag), `btn`, `link-cta`, `field`, `page`, `page-title`,
-`section-title`, `sub-title`. Utility classes override them, e.g. `class="mono text-accent"`.
+Components, for pieces repeated on many pages: `display` (headline font), `meta` (small grey text), `sticker`
+(cyan die-cut label), `sticker-name`, `chip` (tool tag), `btn`, `link-cta`, `field`, `setlist`/`track`, `page`,
+`page-title`, `section-title`, `sub-title`. Utility classes override them, e.g. `class="meta text-accent"`.
+
+Code view: add `data-annotate` to any element and the Code view will label it with its own classes
+(`data-annotate="right"` puts the label on the right).
 
 **After changing classes or `tailwind.css`, rebuild `site.css`** (needs Node.js), from the preview folder:
 ```

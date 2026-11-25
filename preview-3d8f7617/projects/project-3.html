@@ -5,48 +5,50 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diagnostic Reports — Debbie Rosenfeld</title>
-  <!-- Fonts: Mona Sans (headlines), Satoshi (body), JetBrains Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+  <!-- Fonts: Funnel Display (headlines), Funnel Sans (body), JetBrains Mono (Code view labels) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500&display=swap">
   <link rel="stylesheet" href="../css/site.css">
 </head>
 <body>
-  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 font-mono text-[13px] text-bg" href="#main">Skip to content</a>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
 
   <!-- ============ HEADER / NAV ============ -->
-  <header class="masthead grid grid-cols-[1fr_auto] items-center gap-6 border-b border-line px-gutter py-5.5 lg:grid-cols-[1fr_1fr_1fr_auto]">
-    <a class="sticker" href="../index.html">Debbie Rosenfeld</a>
-    <span class="mono max-lg:hidden">Senior Product Designer</span>
-    <span class="mono max-lg:hidden">Toronto</span>
-    <nav class="flex gap-3.5 text-base lg:gap-5.5 lg:text-[19px]" aria-label="Main">
-      <a class="hover:text-accent aria-[current=page]:text-accent" href="../index.html#work" aria-current="page">Work</a>
-      <a class="hover:text-accent" href="../index.html#about">About</a>
-      <a class="hover:text-accent" href="../index.html#contact">Contact</a>
-    </nav>
+  <header class="masthead flex items-center justify-between gap-6 px-gutter py-5.5">
+    <a class="display text-lg font-extrabold hover:text-accent" href="../index.html">Debbie Rosenfeld</a>
+    <div class="flex items-center gap-3.5 lg:gap-5.5">
+      <nav class="flex gap-3.5 lg:gap-5.5" aria-label="Main">
+        <a class="hover:text-accent aria-[current=page]:text-accent" href="../index.html#work" aria-current="page">Work</a>
+        <a class="hover:text-accent" href="../index.html#about">About</a>
+        <a class="hover:text-accent" href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="view-switch max-sm:hidden" role="group" aria-label="View">
+        <button type="button" data-view="design" aria-pressed="true">Design</button>
+        <button type="button" data-view="code" aria-pressed="false">Code</button>
+      </div>
+    </div>
   </header>
 
   <main id="main" class="page py-16">
     <a class="inline-block mb-8 text-muted hover:text-accent" href="../index.html#work">&larr; Back to projects</a>
 
     <!-- ===== Summary ===== -->
-    <h1 class="page-title mb-4">Diagnostic Reports</h1>
+    <h1 class="page-title mb-4" data-annotate>Diagnostic Reports</h1>
     <p class="text-lg mb-4">Report designs that turn diagnostic survey results into clear findings IT leaders can act on.</p>
-    <div class="flex flex-wrap gap-2 mb-10">
-      <span class="label">Information design</span>
-      <span class="label">Report design</span>
+    <div class="flex flex-wrap gap-2 mb-10" data-annotate>
+      <span class="sticker">Information design</span>
+      <span class="sticker">Report design</span>
     </div>
 
-    <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 py-8 border-y border-line mb-12">
-      <div><dt class="mono mb-1.5">Company</dt><dd>Infotech</dd></div>
-      <div><dt class="mono mb-1.5">Timeline</dt><dd>2024–2025</dd></div>
-      <div class="col-span-2"><dt class="mono mb-1.5">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="chip">TOOLS</span></dd></div>
-      <div><dt class="mono mb-1.5">Format</dt><dd>Multi-page reports</dd></div>
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 py-8 border-y border-line mb-12" data-annotate>
+      <div><dt class="meta mb-1.5">Company</dt><dd>Infotech</dd></div>
+      <div><dt class="meta mb-1.5">Timeline</dt><dd>2024–2025</dd></div>
+      <div class="col-span-2"><dt class="meta mb-1.5">Tools</dt><dd class="flex flex-wrap gap-2 mt-2"><span class="chip">TOOLS</span></dd></div>
+      <div><dt class="meta mb-1.5">Format</dt><dd>Multi-page reports</dd></div>
     </dl>
 
-    <h2 class="section-title mb-2">About this work</h2>
+    <h2 class="section-title mb-2" data-annotate>About this work</h2>
     <p class="mb-4">What Infotech diagnostics are: who takes them, what the report tells them, and how it's used.</p>
     <p class="mb-12">My role and process: what you designed (layouts, charts, templates), who you worked with, and key decisions.</p>
 
@@ -57,9 +59,9 @@
       <h3 class="sub-title mb-1 text-xl">Exponential IT Readiness Diagnostic</h3>
       <p class="text-muted mb-2">A report comparing how ready the organization is for technology-driven transformation with how ready IT is to lead it, scored across core IT domains.</p>
       <div class="flex flex-wrap gap-2 mb-4">
-        <span class="label">Designed: full report</span>
-        <span class="label">Built: partially</span>
-        <span class="label">Unreleased</span>
+        <span class="sticker">Designed: full report</span>
+        <span class="sticker">Built: partially</span>
+        <span class="sticker">Unreleased</span>
       </div>
       <p class="text-sm text-muted mb-6">I designed the complete report and was partway through coding it when the project was cancelled, so this design was never published. Shown with sample data.</p>
 
@@ -119,8 +121,8 @@
   </main>
 
   <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
-    <span class="mono">&copy; 2026 Debbie Rosenfeld</span>
-    <span class="mono">Designed &amp; built by me</span>
+    <span class="meta">&copy; 2026 Debbie Rosenfeld</span>
+    <span class="meta">Designed &amp; built by me</span>
   </footer>
 
   <script src="../js/site.js" defer></script>
