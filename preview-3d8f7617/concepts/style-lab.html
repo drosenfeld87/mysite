@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-font="anton" data-body="contrast" data-palette="nocturne">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts: Funnel Display (headlines), Funnel Sans (body). -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Fraunces:opsz,wght@9..144,300..700&family=Anton&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Anton&family=Bebas+Neue&family=League+Gothic&family=Barlow+Condensed:wght@800&family=Big+Shoulders+Display:wght@800&family=Oswald:wght@700&display=swap">
   <link rel="stylesheet" href="../css/site.css?v=20261125131722">
   <style>
-    /* ===== Style lab: palettes and type treatments ===== */
+    /* ===== Style lab: condensed caps, two palettes, body contrast ===== */
     .picker { position:sticky; top:0; z-index:60; display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:10px var(--spacing-gutter); background:#1B1A18; color:#F1EEE8; border-bottom:1px solid #2A2826; font:14px/1.3 "Funnel Sans",system-ui,sans-serif; }
     .picker span { color:#A8A59F; margin-left:8px; }
     .picker button { padding:6px 12px; border-radius:999px; border:1px solid #3A3835; cursor:pointer; }
@@ -20,48 +20,56 @@
     .picker i { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; }
     .masthead { top:var(--lab-h, 46px); background:color-mix(in srgb, var(--color-bg) 85%, transparent); }
 
-    /* --- Palettes: each one only swaps the colour tokens --- */
-    html[data-palette="nectar"] { --color-bg:#130F30; --color-surface:#1C1742; --color-ink:#F7F5FF; --color-muted:#BDB7DD; --color-line:#302A5E; --color-accent:#FF6B6B; --color-accent-deep:#E8545A; --color-accent-2:#4ECDC4; }
+    /* --- Palettes --- */
     html[data-palette="nocturne"] { --color-bg:#0C060E; --color-surface:#160B19; --color-ink:#F1E4EA; --color-muted:#B4A0AB; --color-line:#2A1628; --color-accent:#DD5A8C; --color-accent-deep:#B53E6C; --color-accent-2:#C9A0B4; }
-    /* Moodier: a low wine-coloured glow from below and a dark vignette at the edges */
     html[data-palette="nocturne"] body::before { background:
       radial-gradient(70vmax 50vmax at 85% 110%, rgb(120 30 70 / .35), transparent 70%),
       radial-gradient(50vmax 40vmax at 0% -10%, rgb(70 20 60 / .30), transparent 70%),
       radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / .55)); }
-    html[data-palette="nebula"] { --color-bg:#031B2A; --color-surface:#0A2338; --color-ink:#EAF7FB; --color-muted:#A2BDCB; --color-line:#173A52; --color-accent:#FF7268; --color-accent-deep:#E85A4F; --color-accent-2:#22D3D1; }
-    html[data-palette="luma"] { --color-bg:#F6F4EE; --color-surface:#ECE8DF; --color-ink:#141414; --color-muted:#5C5A55; --color-line:#DCD7CC; --color-accent:#C23B31; --color-accent-deep:#9E2C23; --color-accent-2:#0B7A74; }
-    html[data-palette="luma"] body::after { opacity:.05; }
+    html[data-palette="nectar"] { --color-bg:#130F30; --color-surface:#1C1742; --color-ink:#F7F5FF; --color-muted:#BDB7DD; --color-line:#302A5E; --color-accent:#FF6B6B; --color-accent-deep:#E8545A; --color-accent-2:#4ECDC4; }
 
-    /* --- Type: upright serif, the accent line lighter and in colour --- */
-    html[data-type="serif"] { --font-display:"Fraunces", Georgia, serif; }
-    html[data-type="serif"] h1, html[data-type="serif"] .track h3, html[data-type="serif"] #contact h2, html[data-type="serif"] .text-bio { font-weight:400; letter-spacing:-.01em; }
-    html[data-type="serif"] h1 [data-weight="300"], html[data-type="serif"] #contact h2 span { font-weight:300; } /* upright, lighter, in colour: no italics */
-    html[data-type="serif"] h1 .ch { transition:none; }
-    html[data-type="serif"] .track h3 { font-weight:400; }
+    /* --- Condensed caps (every font) --- */
+    html[data-font="anton"] { --font-display:"Anton", Impact, sans-serif; --cap-w:400; --cap-size:clamp(4rem, 13vw, 12.5rem); }
+    html[data-font="bebas"] { --font-display:"Bebas Neue", Impact, sans-serif; --cap-w:400; --cap-size:clamp(4rem, 15vw, 14rem); }
+    html[data-font="league"] { --font-display:"League Gothic", Impact, sans-serif; --cap-w:400; --cap-size:clamp(4rem, 16vw, 15rem); }
+    html[data-font="barlow"] { --font-display:"Barlow Condensed", Impact, sans-serif; --cap-w:800; --cap-size:clamp(4rem, 14vw, 13rem); }
+    html[data-font="shoulders"] { --font-display:"Big Shoulders Display", Impact, sans-serif; --cap-w:800; --cap-size:clamp(4rem, 14vw, 13rem); }
+    html[data-font="oswald"] { --font-display:"Oswald", Impact, sans-serif; --cap-w:700; --cap-size:clamp(4rem, 12vw, 11.5rem); }
+    h1, .track h3, #contact h2 { text-transform:uppercase; font-weight:var(--cap-w); letter-spacing:.005em; line-height:.95; }
+    h1 { font-size:var(--cap-size); }
+    h1 [data-weight="300"] { font-weight:var(--cap-w); }
+    h1 .ch { transition:none; }
+    h1::after { content:""; display:block; width:min(28%, 240px); height:6px; margin-top:.25em; background:var(--color-accent); }
+    .text-bio { font-family:"Funnel Sans", sans-serif; }
+    #about-h, .sticker { text-transform:uppercase; letter-spacing:.14em; font-weight:700; }
+    #about-h { color:var(--color-accent-2); border-color:var(--color-accent-2); }
 
-    /* --- Type: condensed caps with an accent rule (board 2) --- */
-    html[data-type="caps"] { --font-display:"Anton", Impact, sans-serif; }
-    html[data-type="caps"] h1, html[data-type="caps"] .track h3, html[data-type="caps"] #contact h2 { text-transform:uppercase; font-weight:400; letter-spacing:.005em; line-height:.95; }
-    html[data-type="caps"] h1 { font-size:clamp(4.2rem, 13vw, 12.5rem); }
-    html[data-type="caps"] h1 [data-weight="300"] { font-weight:400; }
-    html[data-type="caps"] h1::after { content:""; display:block; width:min(28%, 240px); height:6px; margin-top:.25em; background:var(--color-accent); }
-    html[data-type="caps"] .text-bio { font-family:"Funnel Sans", sans-serif; }
-    html[data-type="caps"] #about-h, html[data-type="caps"] .sticker { text-transform:uppercase; letter-spacing:.14em; font-weight:700; }
-    html[data-type="caps"] #about-h { color:var(--color-accent-2); border-color:var(--color-accent-2); }
+    /* --- Body: more contrast in size and weight --- */
+    html[data-body="contrast"] .text-lead { font-size:clamp(22px, 2.1vw, 30px); font-weight:300; line-height:1.4; max-width:30ch; }
+    html[data-body="contrast"] .track-meta { font-size:18px; font-weight:300; }
+    html[data-body="contrast"] .track-meta .text-ink { font-weight:600; }
+    html[data-body="contrast"] .text-bio { font-size:clamp(1.5rem, 2.5vw, 2.3rem); font-weight:300; line-height:1.35; }
+    html[data-body="contrast"] .text-bio strong { font-weight:700; }
+    html[data-body="contrast"] #about dt { font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+    html[data-body="contrast"] #about dd { font-size:17px; font-weight:500; }
+    html[data-body="contrast"] .link-cta { font-weight:600; }
   </style>
 </head>
 <body>
   <div class="picker" role="group" aria-label="Style lab">
+    <span>Font:</span>
+    <button type="button" data-k="font" data-v="anton" aria-pressed="true" style="font-family:'Anton';font-weight:400;text-transform:uppercase;letter-spacing:.02em">Anton</button>
+    <button type="button" data-k="font" data-v="bebas" aria-pressed="false" style="font-family:'Bebas Neue';font-weight:400;text-transform:uppercase;letter-spacing:.02em">Bebas Neue</button>
+    <button type="button" data-k="font" data-v="league" aria-pressed="false" style="font-family:'League Gothic';font-weight:400;text-transform:uppercase;letter-spacing:.02em">League Gothic</button>
+    <button type="button" data-k="font" data-v="barlow" aria-pressed="false" style="font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.02em">Barlow Condensed</button>
+    <button type="button" data-k="font" data-v="shoulders" aria-pressed="false" style="font-family:'Big Shoulders Display';font-weight:800;text-transform:uppercase;letter-spacing:.02em">Big Shoulders</button>
+    <button type="button" data-k="font" data-v="oswald" aria-pressed="false" style="font-family:'Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.02em">Oswald</button>
+    <span>Body:</span>
+    <button type="button" data-k="body" data-v="" aria-pressed="false">Current</button>
+    <button type="button" data-k="body" data-v="contrast" aria-pressed="true">Contrasted</button>
     <span>Palette:</span>
-    <button type="button" data-k="palette" data-v="" aria-pressed="true"><i style="background:#FF7268"></i>Current</button>
+    <button type="button" data-k="palette" data-v="nocturne" aria-pressed="true"><i style="background:#0C060E;box-shadow:inset 0 0 0 3px #DD5A8C"></i>Nocturne</button>
     <button type="button" data-k="palette" data-v="nectar" aria-pressed="false"><i style="background:#130F30;box-shadow:inset 0 0 0 3px #FF6B6B"></i>Neon Nectar</button>
-    <button type="button" data-k="palette" data-v="nocturne" aria-pressed="false"><i style="background:#0C060E;box-shadow:inset 0 0 0 3px #DD5A8C"></i>Nocturne</button>
-    <button type="button" data-k="palette" data-v="nebula" aria-pressed="false"><i style="background:#031B2A;box-shadow:inset 0 0 0 3px #22D3D1"></i>Nebula</button>
-    <button type="button" data-k="palette" data-v="luma" aria-pressed="false"><i style="background:#F6F4EE;box-shadow:inset 0 0 0 3px #C23B31"></i>Luma (light)</button>
-    <span>Type:</span>
-    <button type="button" data-k="type" data-v="" aria-pressed="true">Current</button>
-    <button type="button" data-k="type" data-v="serif" aria-pressed="false">Serif</button>
-    <button type="button" data-k="type" data-v="caps" aria-pressed="false">Condensed caps</button>
   </div>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
 
@@ -201,8 +209,9 @@
     document.querySelectorAll(`.picker [data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute("aria-pressed", String(x === b)));
     if (b.dataset.v) document.documentElement.dataset[b.dataset.k] = b.dataset.v; else delete document.documentElement.dataset[b.dataset.k];
     // The headline's letters keep fixed widths for the weight swap: re-measure them in the new font
-    if (b.dataset.k === "type") document.fonts.ready.then(() => requestAnimationFrame(() => dispatchEvent(new Event("resize"))));
+    document.fonts.ready.then(() => requestAnimationFrame(() => dispatchEvent(new Event("resize"))));
   }));
+  document.fonts.ready.then(() => dispatchEvent(new Event("resize")));
 </script>
 </body>
 </html>
