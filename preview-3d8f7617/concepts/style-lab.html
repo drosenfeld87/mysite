@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts: Funnel Display (headlines), Funnel Sans (body). -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Anton&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Fraunces:opsz,wght@9..144,300..700&family=Anton&display=swap">
   <link rel="stylesheet" href="../css/site.css?v=20261125131722">
   <style>
     /* ===== Style lab: palettes and type treatments ===== */
@@ -27,10 +27,10 @@
     html[data-palette="luma"] { --color-bg:#F6F4EE; --color-surface:#ECE8DF; --color-ink:#141414; --color-muted:#5C5A55; --color-line:#DCD7CC; --color-accent:#C23B31; --color-accent-deep:#9E2C23; --color-accent-2:#0B7A74; }
     html[data-palette="luma"] body::after { opacity:.05; }
 
-    /* --- Type: serif with an italic accent line (board 1) --- */
+    /* --- Type: upright serif, the accent line lighter and in colour --- */
     html[data-type="serif"] { --font-display:"Fraunces", Georgia, serif; }
     html[data-type="serif"] h1, html[data-type="serif"] .track h3, html[data-type="serif"] #contact h2, html[data-type="serif"] .text-bio { font-weight:400; letter-spacing:-.01em; }
-    html[data-type="serif"] h1 [data-weight="300"], html[data-type="serif"] #contact h2 span { font-style:italic; font-weight:400; }
+    html[data-type="serif"] h1 [data-weight="300"], html[data-type="serif"] #contact h2 span { font-weight:300; } /* upright, lighter, in colour: no italics */
     html[data-type="serif"] h1 .ch { transition:none; }
     html[data-type="serif"] .track h3 { font-weight:400; }
 
@@ -55,7 +55,7 @@
     <button type="button" data-k="palette" data-v="luma" aria-pressed="false"><i style="background:#F6F4EE;box-shadow:inset 0 0 0 3px #C23B31"></i>Luma (light)</button>
     <span>Type:</span>
     <button type="button" data-k="type" data-v="" aria-pressed="true">Current</button>
-    <button type="button" data-k="type" data-v="serif" aria-pressed="false">Serif + italic</button>
+    <button type="button" data-k="type" data-v="serif" aria-pressed="false">Serif</button>
     <button type="button" data-k="type" data-v="caps" aria-pressed="false">Condensed caps</button>
   </div>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
