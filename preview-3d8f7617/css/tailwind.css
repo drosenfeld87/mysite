@@ -171,11 +171,22 @@
     &::before { counter-increment: track; content: counter(track, decimal-leading-zero); color: var(--color-accent); font-weight: 700; }
     & .dots { border-bottom: 2px dotted #4A4744; translate: 0 -.4em; }
     & .track-meta { grid-column: 2 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; color: var(--color-muted); font-size: 17px; }
-    & h3 { overflow-wrap: break-word; hyphens: auto; }
+    /* Title: a coral-to-cyan gradient sweeps in from the left on hover or keyboard focus.
+       Two backgrounds clipped to the text: the gradient (grows from 0% wide) over plain ink. */
+    & h3 {
+      overflow-wrap: break-word; hyphens: auto;
+      background-image: linear-gradient(90deg, var(--color-accent), var(--color-accent-2)), linear-gradient(var(--color-ink), var(--color-ink));
+      background-image: linear-gradient(90deg in oklch longer hue, var(--color-accent), var(--color-accent-2)), linear-gradient(var(--color-ink), var(--color-ink)); /* the long way round the colour wheel: through pink, purple and blue, not grey or green */
+      background-size: 0% 100%, 100% 100%; background-repeat: no-repeat;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      transition: background-size .6s cubic-bezier(.3, .7, .2, 1);
+      @media (forced-colors: active) { color: CanvasText; background: none; }
+    }
+    &:focus-visible h3 { background-size: 100% 100%, 100% 100%; }
     @variant max-lg { grid-template-columns: 2.4rem 1fr auto; & .dots { display: none; } }
     /* Small phones: the year drops under the title so long names never push it off-screen */
     @variant max-sm { grid-template-columns: 2.4rem minmax(0, 1fr); row-gap: 6px; & > :nth-child(3) { grid-column: 2; font-size: 15px; color: var(--color-muted); } }
-    @media (hover: hover) { &:hover h3 { color: var(--color-accent); } }
+    @media (hover: hover) { &:hover h3 { background-size: 100% 100%, 100% 100%; } }
   }
 
   /* Project pages: content column aligned to the home page's left edge */
@@ -319,7 +330,8 @@ html.y2k {
   & .track::before { color: #990000; font-family: "Courier New", monospace; }
   & .track .dots { border-color: var(--win-shadow); }
   & .track > :nth-child(3) { color: #333; } /* the year */
-  & .track:hover h3 { color: #FF0000; }
+  & .track h3 { background: none; color: #000080; }
+  & .track:is(:hover, :focus-visible) h3 { color: #FF0000; }
   & .tag, & .chip {
     background: var(--win); color: #000; border: 0; border-radius: 0; rotate: 0deg; box-shadow: var(--bevel-out);
     font: 11px/1.4 Tahoma, Verdana, sans-serif; padding: 3px 8px;
