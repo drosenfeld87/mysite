@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts: Funnel Display (headlines), Funnel Sans (body), JetBrains Mono (Code view labels) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@500&display=swap">
-  <link rel="stylesheet" href="css/site.css?v=202611251008">
+  <link rel="stylesheet" href="css/site.css?v=202611251119">
 </head>
 <body>
   <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
@@ -23,6 +23,10 @@
         <a class="hover:text-accent" href="#about">About</a>
         <a class="hover:text-accent" href="#contact">Contact</a>
       </nav>
+      <div class="era-switch" role="group" aria-label="Era">
+        <button type="button" data-era="now" aria-pressed="true">Now</button>
+        <button type="button" data-era="y2k" aria-pressed="false">Y2K</button>
+      </div>
       <div class="view-switch max-sm:hidden" role="group" aria-label="View">
         <button type="button" data-view="design" aria-pressed="true">Design</button>
         <button type="button" data-view="code" aria-pressed="false">Code</button>
@@ -31,6 +35,8 @@
   </header>
 
   <main id="main">
+    <!-- Y2K mode only -->
+    <div class="y2k-only y2k-marquee" aria-hidden="true"><span>&#9733; Welcome to Debbie&rsquo;s homepage!!! &#9733; Senior product designer who codes &#9733; Best viewed in 1024&times;768 &#9733; Sign my guestbook (the contact form) &#9733; Last updated: today &#9733;</span></div>
     <!-- ============ HERO ============ -->
     <section class="relative px-gutter pt-hero pb-10">
       <span class="rl top-0 left-[calc(var(--spacing-gutter)-24px)] h-(--spacing-hero)" aria-hidden="true"><span>pt-hero · clamp(48px, 10vh, 120px)</span></span>
@@ -43,8 +49,10 @@
       </div>
     </section>
 
+    <div class="y2k-only y2k-construction" aria-hidden="true"><span>&#128679; This site is under construction &#128679;</span></div>
+
     <!-- ============ WORK: a set list ============ -->
-    <section class="px-gutter pt-20" id="work" aria-labelledby="work-h">
+    <section class="px-gutter pt-20" id="work" data-window="set_list.exe" aria-labelledby="work-h">
       <h2 id="work-h" class="meta mb-4">Set list · selected work, 2019 to now</h2>
       <ol class="setlist">
         <li><a class="track border-t border-line" href="projects/project-1.html" data-annotate="right">
@@ -75,7 +83,7 @@
     </section>
 
     <!-- ============ ABOUT: big bio on the left, a small CV column on the right ============ -->
-    <section class="px-gutter pt-section" id="about" aria-labelledby="about-h">
+    <section class="px-gutter pt-section" id="about" data-window="about_me.txt" aria-labelledby="about-h">
       <h2 id="about-h" class="meta border-b border-line pb-3.5">About</h2>
       <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-14">
         <div class="display col-span-full text-bio font-light lg:col-span-8" data-annotate>
@@ -113,7 +121,7 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="px-gutter pt-section" id="contact" aria-labelledby="contact-h">
+    <section class="px-gutter pt-section" id="contact" data-window="contact.html" aria-labelledby="contact-h">
       <div class="grid grid-cols-12 gap-6 border-t-2 border-ink pt-12">
         <div class="col-span-full lg:col-span-6">
           <h2 id="contact-h" class="display text-pull font-extrabold" data-annotate>Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
@@ -170,6 +178,6 @@
       }
     })();
   </script>
-  <script src="js/site.js?v=202611251008" defer></script>
+  <script src="js/site.js?v=202611251119" defer></script>
 </body>
 </html>

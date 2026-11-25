@@ -24,6 +24,7 @@
     --tracking-wide: 0.025em;
     --leading-relaxed: 1.625;
     --radius-lg: 0.5rem;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -343,6 +344,9 @@
   .max-w-\[36ch\] {
     max-width: 36ch;
   }
+  .grow {
+    flex-grow: 1;
+  }
   .-rotate-3 {
     rotate: calc(3deg * -1);
   }
@@ -410,6 +414,9 @@
   }
   .gap-x-6 {
     column-gap: calc(var(--spacing) * 6);
+  }
+  .gap-y-3 {
+    row-gap: calc(var(--spacing) * 3);
   }
   .gap-y-8 {
     row-gap: calc(var(--spacing) * 8);
@@ -647,10 +654,21 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
+  .blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .filter {
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
   .transition-colors {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
   }
   .odd\:-rotate-3:nth-child(odd) {
     rotate: calc(3deg * -1);
@@ -1155,6 +1173,279 @@
     transform: rotate(0deg);
   }
 }
+.era-switch {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 14px;
+  & button {
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--color-muted);
+    cursor: pointer;
+  }
+  & button[aria-pressed="true"] {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+}
+.y2k-only {
+  display: none;
+}
+html.y2k {
+  --win: #C0C0C0;
+  --win-light: #FFFFFF;
+  --win-shadow: #808080;
+  --win-dark: #000000;
+  --bevel-out: inset -1px -1px var(--win-dark), inset 1px 1px var(--win-light), inset -2px -2px var(--win-shadow), inset 2px 2px #DFDFDF;
+  --bevel-in: inset -1px -1px var(--win-light), inset 1px 1px var(--win-shadow), inset -2px -2px #DFDFDF, inset 2px 2px var(--win-dark);
+  & body {
+    background-color: #000033;
+    color: #FFF;
+    font: 15px/1.6 Verdana, Tahoma, Geneva, sans-serif;
+    background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent), radial-gradient(1px 1px at 90px 110px, #ccf, transparent), radial-gradient(1.5px 1.5px at 150px 60px, #fff, transparent), radial-gradient(1px 1px at 200px 170px, #ffc, transparent);
+    background-size: 240px 200px;
+  }
+  & body::before, & body::after {
+    display: none;
+  }
+  & .y2k-only {
+    display: block;
+  }
+  & a {
+    color: #FFFF66;
+    text-decoration: underline;
+  }
+  & .masthead {
+    background: var(--win);
+    color: #000;
+    box-shadow: var(--bevel-out);
+    backdrop-filter: none;
+  }
+  & .masthead a {
+    color: #0000EE;
+  }
+  & .masthead a:hover {
+    color: #FF0000;
+  }
+  & .view-switch, & .era-switch {
+    border: 0;
+    border-radius: 0;
+    background: var(--win);
+    box-shadow: var(--bevel-in);
+    padding: 2px;
+  }
+  & :is(.view-switch, .era-switch) button {
+    border-radius: 0;
+    color: #000;
+    font: 12px Tahoma, Verdana, sans-serif;
+  }
+  & :is(.view-switch, .era-switch) button[aria-pressed="true"] {
+    background: #000080;
+    color: #FFF;
+  }
+  & h1, & .page-title {
+    font-family: "Arial Black", Impact, sans-serif;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1.05;
+    background: linear-gradient(180deg, #FFFFFF 0%, #B8C6D9 40%, #3B4A61 50%, #C7D4E6 58%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(3px 3px 0 #FF00CC);
+  }
+  & h1 span {
+    background: linear-gradient(180deg, #FFF 0%, #FF66CC 45%, #9900CC 52%, #66FFFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+  }
+  & .sticker-name {
+    background: linear-gradient(180deg, #DFFFFF 0%, #66E0FF 48%, #00A6E0 52%, #7FF0FF 100%);
+    color: #FFF;
+    text-shadow: 0 1px 2px #004466;
+    border-radius: 999px;
+    box-shadow: 0 0 0 2px #FFF, 0 4px 10px rgb(0 0 0 / .5);
+    rotate: 0deg !important;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+  }
+  & .text-lead {
+    font-family: Verdana, sans-serif;
+    font-size: 18px;
+  }
+  & [data-window] {
+    margin: 48px var(--spacing-gutter) 0;
+    padding: 40px 20px 24px !important;
+    position: relative;
+    background: var(--win);
+    color: #000;
+    box-shadow: var(--bevel-out), 6px 6px 0 rgb(0 0 0 / .5);
+    &::before {
+      content: attr(data-window);
+      position: absolute;
+      left: 3px;
+      right: 3px;
+      top: 3px;
+      height: 24px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      color: #FFF;
+      font: bold 13px/1 Tahoma, Verdana, sans-serif;
+      background: linear-gradient(90deg, #000080, #1084D0);
+    }
+    &::after {
+      content: "_  \25A1  \2715";
+      position: absolute;
+      right: 8px;
+      top: 7px;
+      color: #000;
+      font: bold 11px/1 Tahoma, sans-serif;
+      padding: 2px 5px;
+      background: var(--win);
+      box-shadow: var(--bevel-out);
+      white-space: pre;
+    }
+    & a {
+      color: #0000EE;
+    }
+    & a:visited {
+      color: #551A8B;
+    }
+    & :is(.text-muted, .meta, .track-meta, dd) {
+      color: #333 !important;
+    }
+    & .text-ink, & strong {
+      color: #000;
+    }
+    & :is(h2, h3, .display, .section-title, .sub-title) {
+      font-family: "Arial Black", Impact, sans-serif;
+      color: #000080;
+      letter-spacing: 0;
+    }
+    & .text-accent {
+      color: #990000;
+    }
+    & .border-line, & .border-ink {
+      border-color: var(--win-shadow);
+    }
+  }
+  & .track::before {
+    color: #990000;
+    font-family: "Courier New", monospace;
+  }
+  & .track .dots {
+    border-color: var(--win-shadow);
+  }
+  & .track:hover h3 {
+    color: #FF0000;
+  }
+  & .sticker:not(.sticker-name), & .chip {
+    background: var(--win);
+    color: #000;
+    border: 0;
+    border-radius: 0;
+    rotate: 0deg;
+    box-shadow: var(--bevel-out);
+    font: 11px/1.4 Tahoma, Verdana, sans-serif;
+    padding: 3px 8px;
+  }
+  & .btn {
+    background: var(--win);
+    color: #000;
+    border-radius: 0;
+    box-shadow: var(--bevel-out);
+    font: 13px Tahoma, Verdana, sans-serif;
+  }
+  & .btn:active {
+    box-shadow: var(--bevel-in);
+  }
+  & .field {
+    background: #FFF;
+    color: #000;
+    padding: 4px 6px;
+    border: 0;
+    box-shadow: var(--bevel-in);
+    font-family: Verdana, sans-serif;
+  }
+  & img, & video {
+    box-shadow: var(--bevel-out);
+    padding: 3px;
+    background: var(--win);
+    border: 0 !important;
+  }
+  & footer {
+    color: #CCC;
+    border-color: #333366;
+  }
+  & footer .meta {
+    color: #CCC;
+  }
+  & #visit-count {
+    background: #000;
+    color: #39FF14;
+    font: bold 15px/1 "Courier New", monospace;
+    padding: 3px 6px;
+    letter-spacing: .15em;
+    box-shadow: var(--bevel-in);
+  }
+}
+.y2k-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #000;
+  color: #39FF14;
+  font: bold 14px/2 "Courier New", monospace;
+  border-block: 2px solid #FF00CC;
+}
+.y2k-marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 22s linear infinite;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+.y2k-construction {
+  margin: 28px var(--spacing-gutter) 0;
+  padding: 6px 12px;
+  text-align: center;
+  color: #000;
+  font: bold 14px/1.6 Verdana, sans-serif;
+  background: repeating-linear-gradient(-45deg, #FFD400 0 16px, #111 16px 32px);
+}
+.y2k-construction span {
+  background: #FFD400;
+  padding: 2px 10px;
+}
+.sparkle {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+  color: #FFFF66;
+  font-size: 14px;
+  animation: sparkle .8s ease-out forwards;
+}
+@keyframes sparkle {
+  to {
+    opacity: 0;
+    transform: translateY(14px) scale(.4) rotate(90deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .y2k-marquee span {
+    animation: none;
+    padding-left: 1rem;
+  }
+  .sparkle {
+    display: none;
+  }
+}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -1267,6 +1558,63 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -1295,6 +1643,20 @@
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-outline-style: solid;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+      --tw-ease: initial;
     }
   }
 }

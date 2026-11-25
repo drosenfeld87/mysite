@@ -36,6 +36,10 @@ Components, for pieces repeated on many pages: `display` (headline font), `meta`
 Code view: add `data-annotate` to any element and the Code view will label it with its own classes
 (`data-annotate="right"` puts the label on the right).
 
+Y2K mode: the Now / Y2K switch turns the site into a 2002 personal homepage. Its styles are section 5 of
+`tailwind.css`. Give a section `data-window="name.exe"` to make it a Windows 98 window in Y2K mode;
+anything with class `y2k-only` shows only in Y2K mode.
+
 **After changing classes or `tailwind.css`, rebuild `site.css`** (needs Node.js), from the preview folder:
 ```
 npm install      # first time only

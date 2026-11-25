@@ -81,3 +81,29 @@
   set(saved);
   buttons.forEach(b => b.addEventListener("click", () => set(b.dataset.view)));
 })();
+
+/* Now / Y2K switch: Y2K turns the site into a 2002 personal homepage (styles in tailwind.css, section 5).
+   Remembered between pages. Adds a sparkle trail to the cursor unless "reduce motion" is on. */
+(() => {
+  const buttons = document.querySelectorAll(".era-switch [data-era]");
+  if (!buttons.length) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let last = 0;
+  const sparkle = e => {
+    const now = performance.now(); if (now - last < 45) return; last = now;
+    const s = document.createElement("span"); s.className = "sparkle"; s.textContent = Math.random() > .5 ? "✦" : "✧";
+    s.setAttribute("aria-hidden", "true"); s.style.left = e.clientX + 6 + "px"; s.style.top = e.clientY + 6 + "px";
+    document.body.append(s); setTimeout(() => s.remove(), 800);
+  };
+  const set = era => {
+    const y2k = era === "y2k";
+    document.documentElement.classList.toggle("y2k", y2k);
+    buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.era === era)));
+    if (!reduce) (y2k ? addEventListener : removeEventListener)("pointermove", sparkle);
+    try { localStorage.setItem("era", era); } catch {}
+  };
+  let saved = "now";
+  try { saved = localStorage.getItem("era") || "now"; } catch {}
+  set(saved);
+  buttons.forEach(b => b.addEventListener("click", () => set(b.dataset.era)));
+})();
