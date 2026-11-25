@@ -39,7 +39,7 @@
   --font-sans: "Barlow", system-ui, sans-serif;
 
   /* Type sizes that scale with the screen: text-hero, text-project … */
-  --text-hero: clamp(3.4rem, 14vw, 13rem);             /* "PIXELS IN, CODE OUT." */
+  --text-hero: clamp(3rem, 14vw, 13rem);               /* "PIXELS IN, CODE OUT." */
   --text-hero--line-height: .92;
   --text-hero--letter-spacing: .005em;
   --text-project: clamp(2.4rem, 5.6vw, 5rem);          /* project names in the set list */
@@ -298,6 +298,7 @@ html.y2k {
     filter: drop-shadow(3px 3px 0 #FF00CC);
   }
   & h1 .text-accent { background: linear-gradient(180deg, #FFF 0%, #FF66CC 45%, #CC33FF 52%, #66FFFF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 900; }
+  & h1 { font-size: clamp(2.5rem, 8.5vw, 8rem); } /* Arial Black is about twice as wide as the condensed font */
   & h1 .ch { display: inline; width: auto !important; font-weight: inherit !important; } /* overrides the weight swap's inline styles */
   & :is(h1, h2, h3, .page-title, .section-title, .btn, .sticker) { text-transform: none; letter-spacing: 0; }
   & .sticker {

@@ -102,7 +102,7 @@ rememberedSwitch({
   const letters = [];
   h1.querySelectorAll("[data-weight]").forEach(part => {
     const weight = +part.dataset.weight;
-    part.innerHTML = [...part.textContent].map(c => `<span class="ch">${c === " " ? "&nbsp;" : c}</span>`).join("");
+    part.innerHTML = [...part.textContent].map(c => c === " " ? " " : `<span class="ch">${c}</span>`).join("");  // spaces stay real spaces so the line can wrap
     part.querySelectorAll(".ch").forEach(el => letters.push({ el, weight, x: 0, y: 0 }));
   });
   const measure = () => letters.forEach(l => {
