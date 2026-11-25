@@ -133,15 +133,15 @@ rememberedSwitch({
 (() => {
   const root = document.documentElement;
   if (!reduceMotion) {
-    const pool = Array.from({ length: 14 }, () => {
-      const s = document.createElement("span");
-      s.className = "sparkle"; s.setAttribute("aria-hidden", "true"); s.textContent = "✦";
-      document.body.append(s); return s;
-    });
-    let i = 0, last = 0;
+    let pool = null, i = 0, last = 0;
     addEventListener("pointermove", e => {
       if (!root.classList.contains("y2k") || e.pointerType === "touch") return;
       const now = performance.now(); if (now - last < 50) return; last = now;
+      pool ??= Array.from({ length: 14 }, () => {  // created the first time it's needed, then reused
+        const s = document.createElement("span");
+        s.className = "sparkle"; s.setAttribute("aria-hidden", "true"); s.textContent = "\u2726";
+        document.body.append(s); return s;
+      });
       const s = pool[i++ % pool.length];
       s.style.left = e.clientX + 6 + "px"; s.style.top = e.clientY + 6 + "px";
       s.classList.remove("on"); void s.offsetWidth; s.classList.add("on");  // restart the animation

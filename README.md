@@ -53,6 +53,10 @@ A class that isn't already used somewhere on the site won't work until you rebui
 **Cache tip:** the pages load `css/site.css?v=…` and `js/site.js?v=…`. After rebuilding, bump that number in the
 pages' `<link>` and `<script>` tags so browsers fetch the new files instead of an old cached copy.
 
+## Images
+Images are WebP. Most have three sizes: `name.webp` (full), `name-1200.webp` and `name-800.webp`, and the pages list them
+in `srcset` so phones download a smaller file. To add an image, export the three sizes, then copy an existing `<img>` tag.
+
 ## Contact form (sends to Gmail)
 Uses FormSubmit (formsubmit.co). To hide the email address from the page source, swap it in the form's
 action URL for the random alias FormSubmit provides after activation.
