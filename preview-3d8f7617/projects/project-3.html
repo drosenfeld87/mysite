@@ -151,20 +151,24 @@
 <figcaption class="mt-2" id="vid-speech"><p class="text-sm text-muted">A CIO Business Vision question with speech-to-text: pressing Stop listening switches the button to Stopping while it finishes. Video has no sound.</p></figcaption>
 </figure>
 <h3 class="sub-title text-xl">Why it matters</h3>
-<p>Open-ended questions get the most useful answers, but typing long responses is slow, and hard for people with motor or reading difficulties. Speaking lets them answer in their own words.</p>
+<p>Typing long answers is slow, and harder still for people with motor or reading difficulties. Speaking lets them answer in their own words.</p>
 <h3 class="sub-title text-xl">Designing for what goes wrong</h3>
-<p>Speech-to-text depends on the browser, the microphone and the connection. I designed a clear state for each case:</p>
+<p>A clear state for each case:</p>
 <ul class="list-disc pl-5 marker:text-accent">
-<li><strong class="text-ink">Listening and stopping</strong>, so people always know when the mic is on</li>
-<li><strong class="text-ink">Microphone blocked</strong>, with steps to turn it back on</li>
-<li><strong class="text-ink">No voice detected</strong>, prompting people to try again</li>
-<li><strong class="text-ink">Language detection</strong>, so answers come out in the language spoken</li>
-<li><strong class="text-ink">Technical difficulties</strong>, when the service is unavailable</li>
+<li><strong class="text-ink">Listening / stopped:</strong> you always know when the mic is on</li>
+<li><strong class="text-ink">Mic blocked:</strong> steps to turn it back on</li>
+<li><strong class="text-ink">No mic or mic in use:</strong> what to check</li>
+<li><strong class="text-ink">Character limit:</strong> recording stops automatically</li>
+<li><strong class="text-ink">Service down:</strong> a clear message to try again later</li>
 </ul>
 <h3 class="sub-title text-xl">Help when it fails</h3>
-<p>A troubleshooting link beside the button opens a help page with a short how-to video and answers to common problems.</p>
+<p>A troubleshooting link opens a how-to video and answers to common problems.</p>
 <h3 class="sub-title text-xl">Design to code</h3>
-<p>I designed the icons and made all the animations, took the design through approval, then built the front end on Azure Speech-to-Text. I tested it for WCAG keyboard access, and our UX director and QA tested it too.</p>
+<ul class="list-disc pl-5 marker:text-accent">
+<li>Designed the icons and animations, and took them through approval</li>
+<li>Built the front end on Azure Speech-to-Text</li>
+<li>Tested for WCAG keyboard access, with UX director and QA review</li>
+</ul>
 
 <figure>
 <a class="zoom" href="../images/survey-speech-wip.webp"><img alt="A Figma canvas of the speech-to-text work in progress: dozens of survey screen variations grouped by state, including language detection, blocked microphone, technical difficulties and no voice detected, an approved set, icon and animation explorations, and an FAQ page. Collaborator avatars are blurred." class="w-full" height="1506" loading="lazy" sizes="(min-width: 1040px) 960px, 100vw" src="../images/survey-speech-wip.webp" srcset="../images/survey-speech-wip-800.webp 800w, ../images/survey-speech-wip-1200.webp 1200w, ../images/survey-speech-wip.webp 2062w" width="2062"/></a>
