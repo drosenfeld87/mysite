@@ -80,6 +80,14 @@ rememberedSwitch({
 
 /* 4. Prototype videos: play while on screen; never autoplay with "reduce motion". A pause the visitor chose sticks. */
 (() => {
+  // Posters further down the page load only as they come near the screen
+  const later = document.querySelectorAll("video[data-poster]");
+  const showPoster = v => { v.poster = v.dataset.poster; v.removeAttribute("data-poster"); };
+  if ("IntersectionObserver" in window) {
+    const near = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { showPoster(e.target); near.unobserve(e.target); } }), { rootMargin: "800px 0px" });
+    later.forEach(v => near.observe(v));
+  } else later.forEach(showPoster);
+
   const vids = document.querySelectorAll("video[data-autoplay]");
   if (!vids.length || reduceMotion || !("IntersectionObserver" in window)) return;
   const io = new IntersectionObserver(entries => entries.forEach(({ target: v, isIntersecting }) => {
