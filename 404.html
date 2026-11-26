@@ -59,8 +59,28 @@
     }
     @media (hover: hover) { .link-cta:hover { color: var(--accent); } }
     a.sticker { text-decoration: none; }
-    .code { margin: 0 0 18px; color: var(--accent-2); font-weight: 700; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; }
-    .links { display: flex; flex-wrap: wrap; gap: 0 28px; }
+
+    /* Error page: centred, with a "no signal" icon, a status line and a glitchy headline */
+    main.error { align-items: center; text-align: center; }
+    .signal { width: clamp(72px, 9vw, 104px); height: auto; margin-bottom: 28px; }
+    .status {
+      margin: 0 0 22px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+      color: var(--accent-2); font: 500 14px/1.4 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: .06em;
+    }
+    .status::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
+    main.error h1 { font-size: clamp(3rem, 12vw, 10rem); text-shadow: -3px 0 rgb(231 166 216 / .55), 3px 0 rgb(255 77 148 / .45); }
+    main.error h1 span { text-shadow: none; }
+    main.error .rule { margin-inline: auto; }
+    main.error .lead { margin-inline: auto; max-width: 26ch; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 32px; margin-top: 36px; }
+    .btn {
+      display: inline-block; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #1A0510;
+      font-weight: 700; text-decoration: none;
+    }
+    @media (hover: hover) { .btn:hover { background: #FF77AE; } }
+    .actions .link-cta { margin-top: 0; }
+    @keyframes glitch { 0%, 92%, 100% { transform: none; } 94% { transform: translateX(-4px) skewX(-6deg); } 96% { transform: translateX(3px); } }
+    @media (prefers-reduced-motion: no-preference) { main.error h1 { animation: glitch 4s steps(1) infinite; } }
     @media (max-width: 600px) { footer { flex-direction: column; align-items: flex-start; gap: 6px; } }
   </style>
 </head>
@@ -70,15 +90,22 @@
     <span class="muted">Toronto</span>
   </header>
 
-  <main>
-    <p class="code">Error</p>
+  <main class="error">
+    <svg class="signal" viewBox="0 0 96 80" aria-hidden="true">
+      <rect x="6" y="56" width="14" height="18" rx="3" fill="#FF4D94"/>
+      <rect x="28" y="42" width="14" height="32" rx="3" fill="#36153A"/>
+      <rect x="50" y="26" width="14" height="48" rx="3" fill="#36153A"/>
+      <rect x="72" y="8" width="14" height="66" rx="3" fill="#36153A"/>
+      <path d="M8 8l20 20M28 8L8 28" stroke="#E7A6D8" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <p class="status">Error · page unavailable</p>
     <h1>Lost the<span>signal.</span></h1>
     <div class="rule" aria-hidden="true"></div>
     <p class="lead">This page isn&rsquo;t available right now.</p>
-    <p class="links">
-      <a class="link-cta" href="/">Back to home &rarr;</a>
+    <div class="actions">
+      <a class="btn" href="/">Back to home</a>
       <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
-    </p>
+    </div>
   </main>
 
   <footer>
