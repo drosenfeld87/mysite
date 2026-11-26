@@ -73,15 +73,16 @@
 </div></section>
 <section aria-labelledby="s4" class="case-section"><h2 class="case-label" id="s4">Process &amp; key decisions</h2><div class="case-body">
 <h3 class="sub-title text-xl">Key Insights component</h3>
-<!-- Feature story: the Key Insights component. Suggested beats:
-         what problem it solves, how you designed its variations,
-         how it's built (ViewComponent + Lookbook) so it stays consistent app-wide.
-         Show 2-3 variations side by side in the screens below. -->
-<p>Key Insights component: what it does, why it needed variations, and how it's built to stay consistent across the app.</p>
-<!-- Ideas: building a reusable component library (ViewComponent + Lookbook) so
-         designs translate consistently into code; keeping the app fast and simple
-         with Hotwire instead of a JS framework; designing dashboards that stay
-         readable as the charting engine scales to new modules. -->
+
+<ul class="list-disc pl-5 marker:text-accent">
+<li><strong class="text-ink">Problem:</strong> the visual hierarchy of the Insights column wasn’t consistent or obvious.</li>
+<li><strong class="text-ink">Goal:</strong> one hierarchy to use throughout the app.</li>
+<li><strong class="text-ink">Title:</strong> a more prominent Data Insights title and icon.</li>
+<li><strong class="text-ink">Charts:</strong> designed to sit inside a Key Insight.</li>
+<li><strong class="text-ink">Subsections:</strong> consistent titles and styling, such as AI Recommendation and Response Coverage.</li>
+<li><strong class="text-ink">AI icons:</strong> consistent iconography for AI content.</li>
+</ul>
+
 <div class="grid md:grid-cols-2 gap-x-12 gap-y-12">
 <figure class="m-0">
 <a class="zoom" href="../images/cio-insight-metrics.webp"><img alt="Key Insights panel, full version: a highlighted key insight about rising incidents, a strategic priority, a What’s working card in green, an Areas for improvement card in orange, and an AI recommendation." class="w-full" height="1025" loading="lazy" src="../images/cio-insight-metrics.webp" width="540"/></a>
