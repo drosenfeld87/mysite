@@ -8,12 +8,12 @@
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap">
   <style>
-    :root { --bg:#08030A; --ink:#F7E9F0; --muted:#C3A7B9; --line:#36153A; --accent:#FF4D94; --accent-2:#E7A6D8; --gutter:clamp(20px,4vw,56px); }
+    :root { --bg:#08030A; --ink:#F7E9F0; --accent:#FF4D94; }
     * { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; }
-    body { display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font: 300 19px/1.6 "Barlow", system-ui, sans-serif; }
+    body { display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font: 400 19px/1.6 "Barlow", system-ui, sans-serif; }
 
     /* Background: magenta and violet glows, a vignette, and still grain */
     body::before {
@@ -28,65 +28,21 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    a { color: inherit; }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-    .muted { color: var(--muted); }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    header, footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px var(--gutter); }
-    footer { padding-bottom: 28px; border-top: 1px solid var(--line); font-size: 15px; font-weight: 400; }
-
-    /* Name label: soft orchid tint, spaced caps */
-    .sticker {
-      display: inline-block; padding: 7px 14px; border-radius: 8px; transform-origin: 0 0;
-      background: color-mix(in srgb, var(--accent-2) 14%, transparent); color: var(--accent-2);
-      font: 700 clamp(13px, 1.2vw, 16px)/1.2 "Barlow", sans-serif; text-transform: uppercase; letter-spacing: .14em;
-    }
-    @keyframes jiggle { 18% { transform: rotate(7deg); } 36% { transform: rotate(-4deg); } 54% { transform: rotate(2.5deg); } 72% { transform: rotate(-1.2deg); } 88% { transform: rotate(.5deg); } 100% { transform: none; } }
-    @media (hover: hover) and (prefers-reduced-motion: no-preference) { .sticker:hover { animation: jiggle .7s cubic-bezier(.25,.6,.3,1); } }
-
-    main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 48px var(--gutter); }
-    h1 {
-      margin: 0; font: 800 clamp(3rem, 14vw, 13rem)/.92 "Barlow Condensed", "Arial Narrow", sans-serif;
-      text-transform: uppercase; letter-spacing: .005em;
-    }
-    h1 span { display: block; color: var(--accent); }
-    .rule { width: min(28%, 240px); height: 6px; margin-top: clamp(16px, 3vw, 40px); background: var(--accent); }
-    .lead { max-width: 30ch; margin: 36px 0 0; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.4; }
-    .link-cta {
-      display: inline-block; margin-top: 28px; padding: 10px 0; font-weight: 600;
-      text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 6px;
-    }
-    @media (hover: hover) { .link-cta:hover { color: var(--accent); } }
-    a.sticker { text-decoration: none; }
-
-    /* Error page: centred, with a "no signal" icon and a status line */
-    main.error { align-items: center; text-align: center; }
+    /* A "no signal" icon, one line and a way home */
+    main { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 48px 24px; text-align: center; }
     .signal { width: clamp(72px, 9vw, 104px); height: auto; margin-bottom: 28px; }
-    .status {
-      margin: 0 0 22px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
-      color: var(--accent-2); font: 500 14px/1.4 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: .06em;
-    }
-    .status::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
-    main.error h1 { max-width: 18ch; font: 600 clamp(28px, 4vw, 48px)/1.2 "Barlow", system-ui, sans-serif; text-transform: none; letter-spacing: 0; }
-    .actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 32px; margin-top: 36px; }
+    h1 { max-width: 18ch; margin: 0; font: 600 clamp(28px, 4vw, 48px)/1.2 "Barlow", system-ui, sans-serif; }
     .btn {
-      display: inline-block; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #1A0510;
+      display: inline-block; margin-top: 32px; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #1A0510;
       font-weight: 700; text-decoration: none;
     }
     @media (hover: hover) { .btn:hover { background: #FF77AE; } }
-    .actions .link-cta { margin-top: 0; }
-
-    @media (max-width: 600px) { footer { flex-direction: column; align-items: flex-start; gap: 6px; } }
   </style>
 </head>
 <body>
-  <header>
-    <a class="sticker" href="/">Debbie Rosenfeld</a>
-    <span class="muted">Toronto</span>
-  </header>
-
-  <main class="error">
+  <main>
     <svg class="signal" viewBox="0 0 96 80" aria-hidden="true">
       <rect x="6" y="56" width="14" height="18" rx="3" fill="#FF4D94"/>
       <rect x="28" y="42" width="14" height="32" rx="3" fill="#36153A"/>
@@ -94,17 +50,8 @@
       <rect x="72" y="8" width="14" height="66" rx="3" fill="#36153A"/>
       <path d="M8 8l20 20M28 8L8 28" stroke="#E7A6D8" stroke-width="6" stroke-linecap="round"/>
     </svg>
-    <p class="status">Error · page unavailable</p>
     <h1>This page isn&rsquo;t available right now.</h1>
-    <div class="actions">
-      <a class="btn" href="/">Back to home</a>
-      <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
-    </div>
+    <a class="btn" href="/">Back to home</a>
   </main>
-
-  <footer>
-    <span class="muted">&copy; 2026 Debbie Rosenfeld</span>
-    <span class="muted">Designed &amp; built by me</span>
-  </footer>
 </body>
 </html>
