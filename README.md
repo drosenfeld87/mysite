@@ -65,6 +65,12 @@ in `srcset` so phones download a smaller file. To add an image, export the three
 Uses FormSubmit (formsubmit.co). The form posts to FormSubmit's random alias for the inbox, so no email address
 appears in the page source. After sending, visitors land on `thanks.html` (the form's `_next` field).
 
+## Checks
+`tests/check_site.py` opens every page in a real browser, in both Now and Y2K modes at phone, tablet and desktop widths,
+and checks layout, accessibility (contrast, image descriptions, labels, headings), script errors and missing files.
+GitHub runs it on every push (`.github/workflows/checks.yml`); a red ✗ next to a commit means something needs fixing.
+To run it yourself: `pip install playwright && playwright install chromium`, then `python tests/check_site.py`.
+
 ## Launch checklist
 1. Move the preview folder's contents to the repo root (replacing the holding page) and update the form's `_next` URL.
    Run `npm run build` once more from the root.
