@@ -41,7 +41,7 @@ function rememberedSwitch({ selector, key, values, onChange }) {
   buttons.forEach(b => b.addEventListener("click", () => set(b.dataset.value)));
 }
 
-// Now / Y2K: Y2K turns the site into a 2002 personal homepage (styles: tailwind.css, section 5)
+// Now / Y2K: Y2K turns the site into a 2002 personal homepage (styles: tailwind.css, section 4)
 rememberedSwitch({
   selector: ".era-switch [data-value]", key: "era", values: ["now", "y2k"],
   onChange: v => document.documentElement.classList.toggle("y2k", v === "y2k"),
