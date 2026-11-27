@@ -9,20 +9,16 @@ and links; orchid (#E7A6D8) for the name label, role labels and the About headin
 Signature: a Now / Y2K switch in the header that turns the site into a 2002 personal homepage.
 
 ## Structure
-- `index.html` (repo root): the public "Coming soon" holding page
-- `404.html` (repo root): the error page GitHub Pages shows for any address that doesn't exist
-- `favicon.svg`, `og-image.jpg` (repo root): the tab icon and the image shown when a link is shared
-- The full site lives in an unlisted preview folder until launch:
-  - `index.html`: home page (work, about, contact)
-  - `projects/project-1.html` to `project-4.html`: one page per project
-  - `thanks.html`: shown after the contact form is sent
-  - `css/tailwind.css`: **the stylesheet you edit**: colours, fonts and type sizes (the `@theme` block), page defaults, and a few named components
-  - `css/site.css`: built from `tailwind.css`; the pages load this file. Don't edit it by hand
-  - `js/site.js`: sticky header, image viewer, prototype videos, the Now / Y2K switch
-  - `scripts/bump-version.mjs`: updates the `?v=` cache numbers; `npm run build` runs it
-  - `images/`, `video/`: project media
-
-The holding page at the root has its own small inline styles, since it's replaced at launch.
+- `index.html`: home page (work, about, contact)
+- `projects/`: one page per project: `cio-analytics.html`, `research-infographics.html`, `diagnostics.html`, `request-a-demo.html`
+- `thanks.html`: shown after the contact form is sent
+- `404.html`: the error page GitHub Pages shows for any address that doesn't exist
+- `favicon.svg`, `og-image.jpg`: the tab icon and the image shown when a link is shared
+- `css/tailwind.css`: **the stylesheet you edit**: colours, fonts and type sizes (the `@theme` block), page defaults, and a few named components
+- `css/site.css`: built from `tailwind.css`; the pages load this file. Don't edit it by hand
+- `js/site.js`: sticky header, image viewer, prototype videos, the Now / Y2K switch
+- `scripts/bump-version.mjs`: updates the `?v=` cache numbers; `npm run build` runs it
+- `images/`, `video/`: project media
 
 ## Editing styles (Tailwind)
 Style pages with Tailwind classes in the HTML, as usual. Site-specific classes come from the tokens in `tailwind.css`:
@@ -45,7 +41,7 @@ Y2K mode: the Now / Y2K switch turns the site into a 2002 personal homepage. Its
 `tailwind.css`. Give a section `data-window="name.exe"` to make it a Windows 98 window in Y2K mode;
 anything with class `y2k-only` shows only in Y2K mode.
 
-**After changing classes or `tailwind.css`, rebuild `site.css`** (needs Node.js), from the preview folder:
+**After changing classes or `tailwind.css`, rebuild `site.css`** (needs Node.js), from the repo root:
 ```
 npm install      # first time only
 npm run dev      # rebuilds every time you save; stop with Ctrl+C
@@ -71,9 +67,6 @@ and checks layout, accessibility (contrast, image descriptions, labels, headings
 GitHub runs it on every push (`.github/workflows/checks.yml`); a red ✗ next to a commit means something needs fixing.
 To run it yourself: `pip install playwright && playwright install chromium`, then `python tests/check_site.py`.
 
-## Launch checklist
-1. Move the preview folder's contents to the repo root (replacing the holding page) and update the form's `_next` URL.
-   Run `npm run build` once more from the root.
-2. Remove `noindex` from the pages.
-3. Rename `projects/project-1.html` … `project-4.html` to descriptive names (e.g. `cio-analytics.html`) and update the links.
-4. In Settings > Pages, confirm the custom domain and tick Enforce HTTPS.
+## Launch
+Launched 27 November 2026: the site moved from its unlisted preview folder to the repo root, replacing the
+"Coming soon" page; `noindex` was removed and the project pages got descriptive names.

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debbie Rosenfeld — Coming soon</title>
-  <meta name="description" content="Portfolio of Debbie Rosenfeld, senior product designer and front-end developer in Toronto. Coming soon.">
+  <title>Debbie Rosenfeld — Senior Product Designer &amp; Front-End Developer</title>
+  <meta name="description" content="Debbie Rosenfeld is a senior product designer and front-end developer in Toronto.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="Debbie Rosenfeld — Coming soon">
-  <meta property="og:description" content="Portfolio of Debbie Rosenfeld, senior product designer and front-end developer in Toronto. Coming soon.">
+  <meta property="og:title" content="Debbie Rosenfeld — Senior Product Designer &amp; Front-End Developer">
+  <meta property="og:description" content="Debbie Rosenfeld is a senior product designer and front-end developer in Toronto.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://debbierosenfeld.com/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -16,76 +16,157 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@300;400;600;700&display=swap">
-  <!-- Holding page: its own small styles, matching the site's "Nocturne" theme. Replaced at launch. -->
-  <style>
-    :root { --bg:#08030A; --ink:#F7E9F0; --muted:#C3A7B9; --line:#36153A; --accent:#FF4D94; --accent-2:#E7A6D8; --gutter:clamp(20px,4vw,56px); }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-    body { display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font: 300 19px/1.6 "Barlow", system-ui, sans-serif; }
-
-    /* Background: magenta and violet glows, a vignette, and still grain */
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background:
-        radial-gradient(70vmax 50vmax at 85% 110%, rgb(200 20 100 / .42), transparent 70%),
-        radial-gradient(55vmax 42vmax at 0% -10%, rgb(110 25 150 / .38), transparent 70%),
-        radial-gradient(ellipse at center, transparent 50%, rgb(0 0 0 / .7));
-    }
-    body::after {
-      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .08;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    a { color: inherit; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-    .muted { color: var(--muted); }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-    header, footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px var(--gutter); }
-    footer { padding-bottom: 28px; border-top: 1px solid var(--line); font-size: 15px; font-weight: 400; }
-
-    /* Name label: soft orchid tint, spaced caps */
-    .sticker {
-      display: inline-block; padding: 7px 14px; border-radius: 8px; transform-origin: 0 0;
-      background: color-mix(in srgb, var(--accent-2) 14%, transparent); color: var(--accent-2);
-      font: 700 clamp(13px, 1.2vw, 16px)/1.2 "Barlow", sans-serif; text-transform: uppercase; letter-spacing: .14em;
-    }
-    @keyframes jiggle { 18% { transform: rotate(7deg); } 36% { transform: rotate(-4deg); } 54% { transform: rotate(2.5deg); } 72% { transform: rotate(-1.2deg); } 88% { transform: rotate(.5deg); } 100% { transform: none; } }
-    @media (hover: hover) and (prefers-reduced-motion: no-preference) { .sticker:hover { animation: jiggle .7s cubic-bezier(.25,.6,.3,1); } }
-
-    main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 48px var(--gutter); }
-    h1 {
-      margin: 0; font: 800 clamp(3rem, 14vw, 13rem)/.92 "Barlow Condensed", "Arial Narrow", sans-serif;
-      text-transform: uppercase; letter-spacing: .005em;
-    }
-    h1 span { display: block; color: var(--accent); }
-    .rule { width: min(28%, 240px); height: 6px; margin-top: clamp(16px, 3vw, 40px); background: var(--accent); }
-    .lead { max-width: 30ch; margin: 36px 0 0; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.4; }
-    .link-cta {
-      display: inline-block; margin-top: 28px; padding: 10px 0; font-weight: 600;
-      text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 6px;
-    }
-    @media (hover: hover) { .link-cta:hover { color: var(--accent); } }
-    @media (max-width: 600px) { footer { flex-direction: column; align-items: flex-start; gap: 6px; } }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;500;700;800&family=Barlow:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/site.css?v=1795808941">
 </head>
 <body>
-  <header>
-    <span class="sticker">Debbie Rosenfeld</span>
-    <span class="muted">Toronto</span>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-accent px-4 py-2.5 text-bg" href="#main">Skip to content</a>
+
+  <header class="masthead flex items-center justify-end gap-6 px-gutter py-5.5">
+    <div class="flex flex-wrap items-center justify-end gap-x-3.5 gap-y-2 lg:gap-x-5.5">
+      <nav class="flex gap-3.5 max-sm:text-base lg:gap-5.5" aria-label="Main">
+        <a class="hover:text-accent" href="#work">Work</a>
+        <a class="hover:text-accent" href="#about">About</a>
+        <a class="hover:text-accent" href="#contact">Contact</a>
+      </nav>
+      <div class="era-switch" role="group" aria-label="Visual style: now, or 2002 Y2K homepage">
+        <button type="button" data-value="now" aria-pressed="true">Now</button>
+        <button type="button" data-value="y2k" aria-pressed="false">Y2K</button>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <h1>Portfolio<span>coming soon.</span></h1>
-    <div class="rule" aria-hidden="true"></div>
-    <p class="lead">Senior product designer and front-end developer. The full portfolio is on its way.</p>
-    <p><a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a></p>
+  <main id="main">
+    <div class="y2k-only y2k-marquee"><button type="button" aria-pressed="false" aria-label="Pause scrolling banner">&#10074;&#10074;</button><span aria-hidden="true">&#9733; Welcome to Debbie&rsquo;s homepage!!! &#9733; Senior product designer who codes &#9733; Best viewed in 1024&times;768 &#9733; Sign my guestbook (the contact form) &#9733; Last updated: today &#9733;</span></div>
+    <section class="px-gutter pt-hero pb-10">
+      <p class="mb-4 leading-none"><span class="sticker">Debbie Rosenfeld</span></p>
+      <h1 class="display text-hero font-extrabold uppercase" data-swap>
+        <span class="sr-only">Pixels in, code out.</span>
+        <span aria-hidden="true" data-weight="800">Pixels in, </span><span class="whitespace-nowrap text-accent" aria-hidden="true" data-weight="800">code out.</span>
+      </h1>
+      <div class="accent-rule mt-[clamp(16px,3vw,40px)] h-1.5 w-[min(28%,240px)] bg-accent" aria-hidden="true"></div>
+      <p class="mt-10 max-w-[30ch] text-lead">Toronto-based senior product designer who codes.<br>I design product experiences, then build them, down to the last class name.</p>
+      <div class="mt-9 flex flex-wrap gap-8">
+        <a class="link-cta" href="#work">See selected work &darr;</a>
+        <a class="link-cta" href="#contact">Get in touch &rarr;</a>
+      </div>
+    </section>
+
+    <div class="y2k-only y2k-construction" aria-hidden="true"><span>&#128679; This site is under construction &#128679;</span></div>
+
+    <section class="px-gutter pt-20" id="work" data-window="set_list.exe" aria-labelledby="work-h">
+      <h2 id="work-h" class="sr-only">Selected work</h2>
+      <ol class="setlist">
+        <li><a class="track border-t border-line" href="projects/cio-analytics.html">
+          <h3 class="display text-project font-extrabold uppercase">CIO Analytics</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2025–now</span>
+          <span class="track-meta"><span>AI-powered analytics platform for IT leaders.</span><span class="flex flex-wrap gap-2"><span class="tag">Product design</span><span class="tag">Front-end dev</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="projects/research-infographics.html">
+          <h3 class="display text-project font-extrabold uppercase">Research Infographics</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2019–now</span>
+          <span class="track-meta"><span>Visual frameworks for Infotech research.</span><span class="flex flex-wrap gap-2"><span class="tag">Information design</span><span class="tag">Visual design</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="projects/diagnostics.html">
+          <h3 class="display text-project font-extrabold uppercase">Diagnostics</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2024–25</span>
+          <span class="track-meta"><span>Surveys and reports that benchmark IT teams.</span><span class="flex flex-wrap gap-2"><span class="tag">Information design</span><span class="tag">Report design</span></span></span>
+        </a></li>
+        <li><a class="track border-t border-line" href="projects/request-a-demo.html">
+          <h3 class="display text-project font-extrabold uppercase">Request a Demo</h3>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="font-medium tabular-nums">2023</span>
+          <span class="track-meta"><span>Landing page and sign-up flow.</span><span class="flex flex-wrap gap-2"><span class="tag">Visual design</span><span class="tag">UX</span><span class="tag">Front-end dev</span></span></span>
+        </a></li>
+      </ol>
+    </section>
+
+    <section class="px-gutter pt-section" id="about" data-window="about_me.txt" aria-labelledby="about-h">
+      <h2 id="about-h" class="border-b border-accent-2 pb-3.5 text-[13px] font-bold uppercase tracking-[.14em] text-accent-2">About</h2>
+      <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-12">
+        <p class="col-span-full text-bio lg:col-span-7">I&rsquo;m Debbie: 15 years in graphic design, 10 in web and product. Today I&rsquo;m a senior product designer at Infotech, working across all product teams and focusing mostly on the <strong class="font-bold">CIO Analytics</strong> app.</p>
+
+        <dl class="col-span-full grid content-start gap-6 text-[15px] leading-relaxed lg:col-span-4 lg:col-start-9">
+          <div>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Now</dt>
+            <dd class="text-[17px] font-medium">Senior Product Designer, Infotech</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Located</dt>
+            <dd class="text-[17px] font-medium">Toronto, Canada</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Past</dt>
+            <dd class="text-[17px] font-medium"><a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">Full history on LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a></dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Tools</dt>
+            <dd class="text-[17px] font-medium">Figma, Adobe CC, Tailwind CSS, Rails</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-[.14em] text-muted">Off the clock</dt>
+            <dd class="text-[17px] font-medium">Playing bass (mostly metal and punk), graffiti-inspired art and drawing, and horror books and movies</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="px-gutter pt-section" id="contact" data-window="contact.html" aria-labelledby="contact-h">
+      <div class="grid grid-cols-12 gap-6 border-t-2 border-ink pt-12">
+        <div class="col-span-full lg:col-span-6">
+          <h2 id="contact-h" class="display text-pull font-extrabold uppercase">Need someone who can design it <span class="font-light text-accent">and</span> build it?</h2>
+          <div class="mt-7 flex flex-wrap gap-7">
+            <a class="link-cta" href="https://www.linkedin.com/in/debbie-rosenfeld" target="_blank" rel="noopener">LinkedIn &rarr;<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+
+        <form class="col-span-full grid gap-2 lg:col-span-5 lg:col-start-8" action="https://formsubmit.co/a0d62c81d4e6444dd28686a224ae4776" method="POST">
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://debbierosenfeld.com/thanks.html">
+          <!-- Spam trap: hidden from people, so only bots fill it in -->
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+          <label class="meta mt-2" for="e-name">Name</label>
+          <input class="field" id="e-name" name="name" autocomplete="name" required>
+          <label class="meta mt-2" for="e-email">Email</label>
+          <input class="field" id="e-email" name="email" type="email" autocomplete="email" required>
+          <label class="meta mt-2" for="e-msg">Message</label>
+          <textarea class="field" id="e-msg" name="message" rows="4" required></textarea>
+          <button class="btn mt-4.5" type="submit">Send &rarr;</button>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <span class="muted">&copy; 2026 Debbie Rosenfeld</span>
-    <span class="muted">Designed &amp; built by me</span>
+  <footer class="mt-section flex justify-between gap-6 border-t border-line px-gutter pt-4.5 pb-7 max-lg:flex-col">
+    <span class="meta">&copy; 2026 Debbie Rosenfeld</span>
+    <span class="meta" id="visits" hidden>Visitor no. <span class="text-accent" id="visit-count"></span></span>
+    <span class="meta">Designed &amp; built by me</span>
   </footer>
+
+
+  <script>
+    // Visitor counter: one hit per browser session; hides itself if both services are unavailable
+    (async () => {
+      const box = document.getElementById("visits"), out = document.getElementById("visit-count");
+      let seen = null; try { seen = sessionStorage.getItem("counted"); } catch {}
+      const sources = [
+        async () => { const r = await fetch(`https://abacus.jasoncameron.dev/${seen ? "get" : "hit"}/debbierosenfeld.com/home`); if (!r.ok) throw 0; return (await r.json()).value; },
+        async () => { const r = await fetch(`https://countapi.mileshilliard.com/api/v1/${seen ? "get" : "hit"}/debbierosenfeld-home`); if (!r.ok) throw 0; return (await r.json()).value; },
+      ];
+      for (const get of sources) {
+        try {
+          const v = Number(await get()); if (!Number.isFinite(v) || v < 0) continue;
+          try { sessionStorage.setItem("counted", "1"); } catch {}
+          out.textContent = String(Math.floor(v)).padStart(6, "0"); box.hidden = false; return;
+        } catch {}
+      }
+    })();
+  </script>
+  <script src="js/site.js?v=1795808941" defer></script>
 </body>
 </html>
